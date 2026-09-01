@@ -1,0 +1,28 @@
+.button {
+  position: fixed;
+  right: 1.35rem;
+  bottom: 1.35rem;
+  z-index: 41;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: #7cff3a;
+  color: #0a140c;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #b8ff6a;
+}
+
+@media (max-width: 640px) {
+  .button {
+    right: 1rem;
+    bottom: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
