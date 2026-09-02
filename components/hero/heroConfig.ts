@@ -22,9 +22,10 @@ export const HERO_COPY = {
 
 export const NAV_COPY = {
   links: [
-    { href: "#sobre", labelKey: "about", icon: "about" },
     { href: "#mercados", labelKey: "markets", icon: "markets" },
-    { href: "#precos", labelKey: "pricing", icon: "pricing" },
+    { href: "#por-que-bullex", labelKey: "why", icon: "why" },
+    { href: "#premios", labelKey: "prizes", icon: "prizes" },
+    { href: "#sobre", labelKey: "about", icon: "about" },
     { href: "#faq", labelKey: "faq", icon: "faq" },
   ],
 } as const;

@@ -25,24 +25,32 @@ const FREQ_HEIGHTS = [
 
 function NavLinkIcon({ name }: { name: (typeof NAV_COPY.links)[number]["icon"] }) {
   switch (name) {
-    case "about":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="5" r="2.2" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M3.4 13c.7-2.1 2.4-3.2 4.6-3.2s3.9 1.1 4.6 3.2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        </svg>
-      );
     case "markets":
       return (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M2 12.5 5.5 8l2.6 2.4L14 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
-    case "pricing":
+    case "why":
       return (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2.8 8.8 8.2 3.4a1.2 1.2 0 0 1 .9-.4h3.6v3.6c0 .3-.1.7-.4.9L7.2 13.2a1.2 1.2 0 0 1-1.8 0L2.8 10.6a1.2 1.2 0 0 1 0-1.8Z" stroke="currentColor" strokeWidth="1.4" />
-          <circle cx="11.2" cy="4.8" r="0.7" fill="currentColor" />
+          <path d="M4.2 11.2 8 3.8l3.8 7.4H4.2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+          <path d="M6.2 9.4h3.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      );
+    case "prizes":
+      return (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M5.2 7.2V4.6h5.6v2.6c0 1.7-1.2 3-2.8 3s-2.8-1.3-2.8-3Z" stroke="currentColor" strokeWidth="1.4" />
+          <path d="M5.2 4.6H3.6c-.7 0-1.2.6-1.1 1.3.2 1.2 1.2 2 2.4 2.1M10.8 4.6h1.6c.7 0 1.2.6 1.1 1.3-.2 1.2-1.2 2-2.4 2.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M6.4 13.2h3.2M8 10.2v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      );
+    case "about":
+      return (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="5" r="2.2" stroke="currentColor" strokeWidth="1.4" />
+          <path d="M3.4 13c.7-2.1 2.4-3.2 4.6-3.2s3.9 1.1 4.6 3.2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
         </svg>
       );
     case "faq":
@@ -101,7 +109,7 @@ export function HeroSection() {
         <div className={styles.navInner}>
           <Link className={styles.brand} href="/">
             <Image
-              src="/images/bullex-logo.png"
+              src="/images/bullex-logo.webp"
               alt={tNav("brand")}
               width={755}
               height={330}

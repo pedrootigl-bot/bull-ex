@@ -212,7 +212,7 @@
 @media (hover: hover) and (pointer: fine) {
   .navLinks a:hover,
   .navLinks a:focus-visible {
-    max-width: 158px;
+    max-width: 176px;
     padding: 0 16px 0 14px;
     gap: 8px;
     color: #7cff3a;
@@ -222,7 +222,7 @@
 
   .navLinks a:hover span,
   .navLinks a:focus-visible span {
-    max-width: 110px;
+    max-width: 128px;
     opacity: 1;
   }
 

@@ -12,7 +12,7 @@ export function AboutSection() {
         <div className={styles.media}>
           <Image
             className={styles.image}
-            src="/images/bull-quem-somos.jpg"
+            src="/images/bull-quem-somos.webp"
             alt={t("imageAlt")}
             fill
             sizes="(max-width: 900px) 100vw, 60vw"

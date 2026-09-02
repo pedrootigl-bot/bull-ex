@@ -9,8 +9,9 @@ export const FOOTER_COPY = {
       links: [
         { href: "#mercados", label: "Mercados" },
         { href: "#por-que-bullex", label: "Por que Bullex" },
+        { href: "#premios", label: "Prêmios" },
         { href: "#sobre", label: "Quem somos" },
-        { href: "#precos", label: "Preços" },
+        { href: "#faq", label: "FAQ" },
       ],
     },
     {

@@ -13,8 +13,9 @@ export function SiteFooter() {
       links: [
         { href: "#mercados", label: t("markets") },
         { href: "#por-que-bullex", label: t("why") },
+        { href: "#premios", label: t("prizes") },
         { href: "#sobre", label: t("about") },
-        { href: "#precos", label: t("pricing") },
+        { href: "#faq", label: t("faq") },
       ],
     },
     {
@@ -42,7 +43,7 @@ export function SiteFooter() {
           <div>
             <Link className={styles.brand} href="/">
               <Image
-                src="/images/bullex-logo.png"
+                src="/images/bullex-logo.webp"
                 alt={t("brand")}
                 width={755}
                 height={330}

@@ -48,7 +48,7 @@ export function PlatformSection() {
                 <span className={styles.camera} aria-hidden="true" />
                 <Image
                   className={styles.image}
-                  src="/images/bullex-platform.png"
+                  src="/images/bullex-platform.webp"
                   alt={t("imageAlt")}
                   width={1600}
                   height={1000}

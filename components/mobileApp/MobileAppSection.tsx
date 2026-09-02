@@ -12,7 +12,7 @@ export function MobileAppSection() {
         <div className={styles.visual}>
           <Image
             className={styles.photo}
-            src="/images/bullex-mobile-app.jpg"
+            src="/images/bullex-mobile-app.webp"
             alt={t("photoAlt")}
             width={900}
             height={1100}
