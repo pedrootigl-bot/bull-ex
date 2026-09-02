@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
@@ -11,6 +11,7 @@ import styles from "./hero.module.css";
 type FinancialGlobeProps = {
   reducedMotion: boolean;
   tier: ViewportTier;
+  onReadyChange?: (ready: boolean) => void;
 };
 
 function particleCount(tier: ViewportTier) {
@@ -162,9 +163,21 @@ function GlobeScene({
   );
 }
 
-export function FinancialGlobe({ reducedMotion, tier }: FinancialGlobeProps) {
+export function FinancialGlobe({
+  reducedMotion,
+  tier,
+  onReadyChange,
+}: FinancialGlobeProps) {
   const frameloop =
     HERO_THEME.enableAnimation && !reducedMotion ? "always" : "demand";
+  const onReadyChangeRef = useRef(onReadyChange);
+  onReadyChangeRef.current = onReadyChange;
+
+  useEffect(() => {
+    return () => {
+      onReadyChangeRef.current?.(false);
+    };
+  }, []);
 
   return (
     <div className={styles.globeStage} aria-hidden="true">
@@ -178,6 +191,13 @@ export function FinancialGlobe({ reducedMotion, tier }: FinancialGlobeProps) {
           powerPreference: "high-performance",
           stencil: false,
           depth: true,
+        }}
+        onCreated={() => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              onReadyChangeRef.current?.(true);
+            });
+          });
         }}
       >
         <PerspectiveCamera makeDefault position={[0, 0.42, 4.35]} fov={36} near={0.1} far={20} />

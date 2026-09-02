@@ -1,14 +1,13 @@
 .hero {
   position: relative;
-  min-height: 128vh;
+  min-height: 100vh;
   background: #000;
   color: #fff;
 }
 
 .heroStage {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -46,34 +45,15 @@
   z-index: 2;
   pointer-events: none;
   opacity: 0;
-  will-change: opacity;
-}
-
-.visualZoom {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  transform-origin: center 38%;
-  will-change: transform, opacity, filter;
-}
-
-.zoomItem {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  transform-origin: center center;
-  will-change: transform, opacity, filter;
+  transform: scale(0.92);
+  transform-origin: 50% 38%;
+  will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroVisuals {
     opacity: 1;
-    will-change: auto;
-  }
-
-  .visualZoom,
-  .zoomItem {
+    transform: none;
     will-change: auto;
   }
 }
@@ -460,7 +440,7 @@
 
 .content [data-hero-rise] {
   opacity: 0;
-  transform: translateY(56px);
+  transform: translateY(88px);
   will-change: transform, opacity;
 }
 
@@ -680,10 +660,6 @@
 }
 
 @media (max-width: 640px) {
-  .hero {
-    min-height: 118vh;
-  }
-
   .brandLogo {
     height: 28px;
     max-width: 128px;

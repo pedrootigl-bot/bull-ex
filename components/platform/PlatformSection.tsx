@@ -53,8 +53,7 @@ export function PlatformSection() {
                   width={1600}
                   height={1000}
                   sizes="(max-width: 900px) 100vw, min(1180px, 91vw)"
-                  quality={100}
-                  unoptimized
+                  quality={85}
                 />
               </div>
             </div>

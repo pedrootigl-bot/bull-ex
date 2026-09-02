@@ -52,8 +52,7 @@ export function MobileAppSection() {
             width={900}
             height={1100}
             sizes="(max-width: 820px) 78vw, 420px"
-            quality={100}
-            unoptimized
+            quality={85}
           />
         </div>
 

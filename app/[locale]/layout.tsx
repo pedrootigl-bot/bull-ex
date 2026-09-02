@@ -1,12 +1,18 @@
-import { LegalNotice } from "@/components/legal/LegalNotice";
-import { BackToTop } from "@/components/ui/BackToTop";
 import { HTML_LANG, isPathLocale, localeToPathLocale, pathLocaleToLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Inter, Noto_Sans_Thai } from "next/font/google";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+const LegalNotice = dynamic(() =>
+  import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
+);
+const BackToTop = dynamic(() =>
+  import("@/components/ui/BackToTop").then((mod) => mod.BackToTop),
+);
 
 const inter = Inter({
   subsets: ["latin", "latin-ext", "cyrillic", "vietnamese"],

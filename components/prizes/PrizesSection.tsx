@@ -128,8 +128,7 @@ function PrizeReveal({
               alt={t(`cards.${id}.imageAlt`)}
               fill
               sizes="(max-width: 900px) 100vw, min(720px, 52vw)"
-              quality={100}
-              priority={index === 0}
+              quality={90}
             />
           </motion.div>
         ) : (

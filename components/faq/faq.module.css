@@ -4,6 +4,8 @@
   color: #fff;
   padding: 4.2rem 0 5.4rem;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 880px;
 }
 
 .section::after {

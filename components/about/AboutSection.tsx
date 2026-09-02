@@ -56,9 +56,7 @@ export function AboutSection() {
             alt={t("imageAlt")}
             fill
             sizes="(max-width: 900px) 100vw, 60vw"
-            quality={100}
-            unoptimized
-            priority
+            quality={85}
           />
           <div className={styles.mediaFade} aria-hidden="true" />
         </div>

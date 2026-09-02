@@ -5,17 +5,10 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useViewportTier } from "@/hooks/useViewportTier";
 import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-  type MotionStyle,
-} from "motion/react";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HERO_COPY, HERO_THEME, NAV_COPY } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import { OrbitalLines } from "./OrbitalLines";
@@ -77,22 +70,6 @@ function NavLinkIcon({ name }: { name: (typeof NAV_COPY.links)[number]["icon"] }
   }
 }
 
-function ScrollZoomItem({
-  children,
-  style,
-  className,
-}: {
-  children: ReactNode;
-  style?: MotionStyle;
-  className?: string;
-}) {
-  return (
-    <motion.div className={`${styles.zoomItem} ${className ?? ""}`} style={style}>
-      {children}
-    </motion.div>
-  );
-}
-
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
   const tier = useViewportTier();
@@ -103,6 +80,8 @@ export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
   const [navScrolled, setNavScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [globeReady, setGlobeReady] = useState(false);
+  const entrancePlayedRef = useRef(false);
   const stats = [
     { value: tHero("stats.demoValue"), label: tHero("stats.demoLabel") },
     { value: tHero("stats.feesValue"), label: tHero("stats.feesLabel") },
@@ -131,82 +110,93 @@ export function HeroSection() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Mantém o hero estável no início; o zoom entra depois da 1ª faixa de scroll.
-  const zoomStart = 0.38;
-
-  const itemScale = useTransform(scrollYProgress, [0, zoomStart, 1], [1, 1, 1.22]);
-  const itemOpacity = useTransform(scrollYProgress, [0, zoomStart, 0.95], [1, 1, 0]);
-  const itemBlur = useTransform(scrollYProgress, [0, zoomStart, 1], [0, 0, 16]);
-  const itemFilter = useMotionTemplate`blur(${itemBlur}px)`;
-
-  const visualScale = useTransform(scrollYProgress, [0, zoomStart, 1], [1, 1, 1.42]);
-  const visualOpacity = useTransform(scrollYProgress, [0, zoomStart, 0.98], [1, 1, 0]);
-  const visualBlur = useTransform(scrollYProgress, [0, zoomStart, 1], [0, 0, 24]);
-  const visualFilter = useMotionTemplate`blur(${visualBlur}px)`;
-
-  const freqOpacity = useTransform(scrollYProgress, [0, zoomStart, 0.85], [1, 1, 0]);
-  const freqScale = useTransform(scrollYProgress, [0, zoomStart, 1], [1, 1, 1.15]);
-
-  const itemZoomStyle: MotionStyle | undefined = reducedMotion
-    ? undefined
-    : {
-        scale: itemScale,
-        opacity: itemOpacity,
-        filter: itemFilter,
-      };
-
-  const visualZoomStyle: MotionStyle | undefined = reducedMotion
-    ? undefined
-    : {
-        scale: visualScale,
-        opacity: visualOpacity,
-        filter: visualFilter,
-      };
-
-  const freqZoomStyle: MotionStyle | undefined = reducedMotion
-    ? undefined
-    : {
-        scale: freqScale,
-        opacity: freqOpacity,
-      };
-
   useEffect(() => {
     const hero = heroRef.current;
     const content = contentRef.current;
-    if (!hero || !content || reducedMotion) {
+    if (!hero || !content) {
       return;
     }
 
     const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
     const items = content.querySelectorAll<HTMLElement>("[data-hero-rise]");
 
+    if (reducedMotion) {
+      visuals.forEach((node) => {
+        node.style.opacity = "1";
+        node.style.transform = "none";
+      });
+      items.forEach((node) => {
+        node.style.opacity = "1";
+        node.style.transform = "none";
+      });
+      return;
+    }
+
+    // Mantém textos ocultos até o WebGL estar pintado — evita FOUC / ordem invertida.
     const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      gsap.set(visuals, {
+        opacity: 0,
+        scale: 0.92,
+        transformOrigin: "50% 38%",
+      });
+      gsap.set(items, {
+        opacity: 0,
+        y: 88,
+      });
+
+      if (!globeReady) {
+        return;
+      }
+
+      if (entrancePlayedRef.current) {
+        gsap.set(items, { opacity: 0, y: 40 });
+        gsap
+          .timeline()
+          .to(visuals, { opacity: 1, scale: 1, duration: 0.55, ease: "power2.out" })
+          .to(
+            items,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.55,
+              stagger: 0.08,
+              clearProps: "transform",
+            },
+            "+=0.2",
+          );
+        return;
+      }
+
+      const timeline = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        onComplete: () => {
+          entrancePlayedRef.current = true;
+        },
+      });
+
       timeline
         .to(visuals, {
           opacity: 1,
-          duration: 1.2,
+          scale: 1,
+          duration: 1.45,
+          ease: "power2.out",
         })
         .to(
           items,
           {
             y: 0,
             opacity: 1,
-            duration: 0.95,
-            stagger: 0.14,
+            duration: 0.9,
+            stagger: 0.13,
+            ease: "power3.out",
             clearProps: "transform",
           },
-          "+=0.12",
+          "+=0.55",
         );
     }, hero);
 
     return () => ctx.revert();
-  }, [reducedMotion]);
+  }, [reducedMotion, globeReady]);
 
   return (
     <header
@@ -231,13 +221,15 @@ export function HeroSection() {
           />
         </svg>
 
-        <motion.div className={styles.visualZoom} style={visualZoomStyle}>
-          <div className={styles.heroVisuals} data-hero-visual>
-            <HeroGlow reducedMotion={reducedMotion} />
-            <FinancialGlobe reducedMotion={reducedMotion} tier={tier} />
-            <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
-          </div>
-        </motion.div>
+        <div className={styles.heroVisuals} data-hero-visual>
+          <HeroGlow reducedMotion={reducedMotion} />
+          <FinancialGlobe
+            reducedMotion={reducedMotion}
+            tier={tier}
+            onReadyChange={setGlobeReady}
+          />
+          <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
+        </div>
 
         <nav
           className={`${styles.nav} ${navScrolled ? styles.navScrolled : ""} ${menuOpen ? styles.navMenuOpen : ""}`}
@@ -319,85 +311,71 @@ export function HeroSection() {
         </nav>
 
         <section className={styles.content} ref={contentRef}>
-          <ScrollZoomItem style={itemZoomStyle}>
-            <h1 className={styles.headline} data-hero-rise>
-              {tHero("headline")}
-            </h1>
-          </ScrollZoomItem>
-
-          <ScrollZoomItem style={itemZoomStyle}>
-            <p className={styles.subheadline} data-hero-rise>
-              {tHero("subheadline")}
-            </p>
-          </ScrollZoomItem>
-
-          <ScrollZoomItem style={itemZoomStyle}>
-            <div className={styles.menuCard} data-hero-rise>
-              <span className={styles.beam} aria-hidden="true" />
-              <span className={styles.menuCardInner}>
-                <span className={styles.menuCardIcon} aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
-                    <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
-                    <path
-                      d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
-                      stroke="currentColor"
-                      strokeWidth="1.3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
-                {tHero("investorsCard")}
+          <h1 className={styles.headline} data-hero-rise>
+            {tHero("headline")}
+          </h1>
+          <p className={styles.subheadline} data-hero-rise>
+            {tHero("subheadline")}
+          </p>
+          <div className={styles.menuCard} data-hero-rise>
+            <span className={styles.beam} aria-hidden="true" />
+            <span className={styles.menuCardInner}>
+              <span className={styles.menuCardIcon} aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
+                  <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
+                  <path
+                    d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
-            </div>
-          </ScrollZoomItem>
-
-          <ScrollZoomItem style={itemZoomStyle}>
-            <a
-              className={styles.cta}
-              href={HERO_COPY.ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-hero-rise
-            >
-              <span className={styles.beam} aria-hidden="true" />
-              <span className={styles.ctaInner}>
-                {tHero("cta")}
-                <span className={styles.ctaIcon} aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path
-                      d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
-                      stroke="#fff"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
+              {tHero("investorsCard")}
+            </span>
+          </div>
+          <a
+            className={styles.cta}
+            href={HERO_COPY.ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-hero-rise
+          >
+            <span className={styles.beam} aria-hidden="true" />
+            <span className={styles.ctaInner}>
+              {tHero("cta")}
+              <span className={styles.ctaIcon} aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path
+                    d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
+                    stroke="#fff"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </span>
-            </a>
-          </ScrollZoomItem>
-
-          <ScrollZoomItem style={itemZoomStyle}>
-            <div className={styles.stats} data-hero-rise>
-              {stats.map((stat, index) => (
-                <div key={stat.label} style={{ display: "contents" }}>
-                  {index > 0 ? <div className={styles.divider} aria-hidden="true" /> : null}
-                  <div className={styles.stat}>
-                    <strong>{stat.value}</strong>
-                    <span>{stat.label}</span>
-                  </div>
+            </span>
+          </a>
+          <div className={styles.stats} data-hero-rise>
+            {stats.map((stat, index) => (
+              <div key={stat.label} style={{ display: "contents" }}>
+                {index > 0 ? <div className={styles.divider} aria-hidden="true" /> : null}
+                <div className={styles.stat}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
                 </div>
-              ))}
-            </div>
-          </ScrollZoomItem>
+              </div>
+            ))}
+          </div>
         </section>
 
-        <motion.div className={styles.freq} style={freqZoomStyle} aria-hidden="true">
+        <div className={styles.freq} aria-hidden="true">
           {FREQ_HEIGHTS.map((height, index) => (
             <i key={`${height}-${index}`} style={{ height }} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </header>
   );

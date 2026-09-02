@@ -4,6 +4,8 @@
   color: #fff;
   padding: 4.5rem 0 5.5rem;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 920px;
 }
 
 .inner {

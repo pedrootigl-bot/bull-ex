@@ -112,8 +112,8 @@ export function TestimonialsSection() {
                     alt={t(`items.${item.id}.photoAlt`)}
                     width={72}
                     height={72}
-                    quality={100}
-                    unoptimized
+                    sizes="72px"
+                    quality={85}
                   />
                   <div>
                     <p className={styles.name}>{item.name}</p>
