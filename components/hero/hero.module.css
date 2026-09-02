@@ -143,13 +143,17 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.03em;
   justify-self: start;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.brandLogo {
+  display: block;
+  height: 32px;
+  width: auto;
+  max-width: 148px;
+  object-fit: contain;
 }
 
 .navLinks {
@@ -390,6 +394,11 @@
 }
 
 @media (max-width: 640px) {
+  .brandLogo {
+    height: 28px;
+    max-width: 128px;
+  }
+
   .globeStage {
     width: 180vw;
     height: 42vh;

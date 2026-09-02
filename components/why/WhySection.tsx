@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
@@ -24,13 +24,12 @@ export function WhySection() {
             <div className={styles.visual}>
               <Image
                 className={styles.photo}
-                src="/images/bullex-bull-suit.jpg"
+                src="/images/bullex-why-bull.jpg"
                 alt={t("photoAlt")}
-                width={720}
-                height={960}
-                sizes="(max-width: 980px) 100vw, 42vw"
-                quality={100}
-                unoptimized
+                width={682}
+                height={1024}
+                sizes="(max-width: 980px) 70vw, 360px"
+                quality={90}
               />
             </div>
 

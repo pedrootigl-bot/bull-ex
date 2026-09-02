@@ -75,12 +75,12 @@
 }
 
 .photo {
-  width: 68%;
-  max-width: 280px;
+  width: 100%;
+  max-width: 360px;
   height: auto;
   display: block;
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center top;
   image-rendering: auto;
 }
 

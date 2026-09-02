@@ -6,6 +6,7 @@ import { useViewportTier } from "@/hooks/useViewportTier";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { HERO_COPY, HERO_THEME, NAV_COPY } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import { OrbitalLines } from "./OrbitalLines";
@@ -99,11 +100,14 @@ export function HeroSection() {
       <nav className={styles.nav} aria-label={tNav("aria")}>
         <div className={styles.navInner}>
           <Link className={styles.brand} href="/">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-              <path d="M4 16.5 11 4.5l7 12" stroke="#fff" strokeWidth="1.8" strokeLinejoin="round" />
-              <path d="M7.2 16.5h7.6" stroke={HERO_THEME.accent} strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-            {tNav("brand")}
+            <Image
+              src="/images/bullex-logo.png"
+              alt={tNav("brand")}
+              width={755}
+              height={330}
+              className={styles.brandLogo}
+              priority
+            />
           </Link>
           <ul className={styles.navLinks}>
             {NAV_COPY.links.map((link) => (

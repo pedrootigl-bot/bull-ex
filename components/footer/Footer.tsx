@@ -1,6 +1,7 @@
-import { HERO_COPY, HERO_THEME } from "@/components/hero/heroConfig";
+import { HERO_COPY } from "@/components/hero/heroConfig";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import styles from "./footer.module.css";
 
 export function SiteFooter() {
@@ -40,11 +41,13 @@ export function SiteFooter() {
         <div className={styles.top}>
           <div>
             <Link className={styles.brand} href="/">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-                <path d="M4 16.5 11 4.5l7 12" stroke="#fff" strokeWidth="1.8" strokeLinejoin="round" />
-                <path d="M7.2 16.5h7.6" stroke={HERO_THEME.accent} strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-              {t("brand")}
+              <Image
+                src="/images/bullex-logo.png"
+                alt={t("brand")}
+                width={755}
+                height={330}
+                className={styles.brandLogo}
+              />
             </Link>
             <p className={styles.tagline}>{t("tagline")}</p>
             <a className={styles.cta} href={HERO_COPY.ctaHref} target="_blank" rel="noopener noreferrer">
