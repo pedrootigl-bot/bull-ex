@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
 import type { WHY_COPY } from "./whyConfig";
 
-type FeatureIcon = (typeof WHY_COPY.features)[number]["icon"];
-type BarIcon = (typeof WHY_COPY.bars)[number]["icon"];
-type WhyIconName = FeatureIcon | BarIcon | "bull";
+type WhyIconName = (typeof WHY_COPY.features)[number] | (typeof WHY_COPY.bars)[number] | "bull";
 
 function frame(children: ReactNode) {
   return (

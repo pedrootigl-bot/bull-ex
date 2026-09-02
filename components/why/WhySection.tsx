@@ -1,35 +1,23 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
 
-function highlightCallout(text: string, highlights: readonly string[]) {
-  const pattern = new RegExp(`(${highlights.map((item) => item.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "g");
-  const parts = text.split(pattern);
-
-  return parts.map((part, index) =>
-    highlights.includes(part) ? (
-      <span className={styles.highlight} key={`${part}-${index}`}>
-        {part}
-      </span>
-    ) : (
-      <span key={`${part}-${index}`}>{part}</span>
-    ),
-  );
-}
-
 export function WhySection() {
+  const t = useTranslations("why");
+
   return (
     <section className={styles.section} id={WHY_COPY.id} aria-labelledby="why-title">
       <div className={styles.inner}>
         <div className={styles.layout}>
           <div className={styles.intro}>
-            <p className={styles.eyebrow}>{WHY_COPY.eyebrow}</p>
+            <p className={styles.eyebrow}>{t("eyebrow")}</p>
             <h2 className={styles.title} id="why-title">
-              {WHY_COPY.titleBefore}
-              <span className={styles.highlight}>{WHY_COPY.titleHighlight}</span>
+              {t("titleBefore")}
+              <span className={styles.highlight}>{t("titleHighlight")}</span>
             </h2>
-            <p className={styles.subtitle}>{WHY_COPY.subtitle}</p>
+            <p className={styles.subtitle}>{t("subtitle")}</p>
           </div>
 
           <div className={styles.aside}>
@@ -37,7 +25,7 @@ export function WhySection() {
               <Image
                 className={styles.photo}
                 src="/images/bullex-bull-suit.jpg"
-                alt="Figura com máscara de touro verde, representando a identidade da Bullex"
+                alt={t("photoAlt")}
                 width={720}
                 height={960}
                 sizes="(max-width: 980px) 100vw, 42vw"
@@ -47,14 +35,14 @@ export function WhySection() {
             </div>
 
             <div className={styles.bar}>
-              {WHY_COPY.bars.map((item) => (
-                <article className={styles.barItem} key={item.title}>
+              {WHY_COPY.bars.map((icon) => (
+                <article className={styles.barItem} key={icon}>
                   <div className={styles.iconWrap}>
-                    <WhyIcon name={item.icon} />
+                    <WhyIcon name={icon} />
                   </div>
                   <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
+                    <h3>{t(`bars.${icon}.title`)}</h3>
+                    <p>{t(`bars.${icon}.text`)}</p>
                   </div>
                 </article>
               ))}
@@ -62,14 +50,14 @@ export function WhySection() {
           </div>
 
           <div className={styles.features}>
-            {WHY_COPY.features.map((feature) => (
-              <article className={styles.feature} key={feature.title}>
+            {WHY_COPY.features.map((icon) => (
+              <article className={styles.feature} key={icon}>
                 <div className={styles.iconWrap}>
-                  <WhyIcon name={feature.icon} />
+                  <WhyIcon name={icon} />
                 </div>
                 <div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.text}</p>
+                  <h3>{t(`features.${icon}.title`)}</h3>
+                  <p>{t(`features.${icon}.text`)}</p>
                 </div>
               </article>
             ))}
@@ -77,7 +65,11 @@ export function WhySection() {
 
           <p className={styles.callout}>
             <WhyIcon name="bull" />
-            <span>{highlightCallout(WHY_COPY.callout, WHY_COPY.calloutHighlights)}</span>
+            <span>
+              {t.rich("callout", {
+                highlight: (chunks) => <span className={styles.highlight}>{chunks}</span>,
+              })}
+            </span>
           </p>
         </div>
       </div>

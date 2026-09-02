@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test:i18n": "npx --yes tsx --test i18n/resolveLocale.test.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "gsap": "^3.15.0",
     "next": "^16.3.4",
+    "next-intl": "^4.14.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "three": "^0.185.1"

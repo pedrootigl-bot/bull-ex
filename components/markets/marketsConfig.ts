@@ -12,9 +12,6 @@ export type MarketItem = {
 
 export const MARKETS_COPY = {
   id: "mercados",
-  badge: "+ 250 opções",
-  title: "Mais de 200 ativos para investir de forma descomplicada.",
-  subtitle: "Escolha um dos ativos e comece a investir com apenas alguns cliques.",
 } as const;
 
 export const MARKET_ITEMS: readonly MarketItem[] = [

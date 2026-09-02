@@ -1,0 +1,123 @@
+.section {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: 0.2rem 0 3.6rem;
+  overflow: hidden;
+}
+
+.inner {
+  width: min(1100px, calc(100% - 9vw));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 1.2rem 2.4rem;
+  align-items: center;
+}
+
+.visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+}
+
+.photo {
+  width: min(100%, 460px);
+  height: auto;
+  object-fit: contain;
+  background: #000;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 28rem;
+}
+
+.title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.18;
+  color: #fff;
+  text-align: left;
+}
+
+.highlight {
+  color: #7cff3a;
+}
+
+.subtitle {
+  margin: 0 0 1.7rem;
+  color: #8d8d8d;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 54px;
+  padding: 0.45rem 1.15rem 0.45rem 0.85rem;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.store:hover {
+  border-color: rgba(124, 255, 58, 0.35);
+  background: #161616;
+}
+
+.playIcon {
+  flex-shrink: 0;
+}
+
+.storeCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+}
+
+.storeCopy small {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b0b0b0;
+}
+
+.storeCopy strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+@media (max-width: 820px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .copy {
+    align-items: center;
+    max-width: none;
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .photo {
+    width: min(100%, 380px);
+  }
+}

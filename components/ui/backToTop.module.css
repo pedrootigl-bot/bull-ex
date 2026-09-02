@@ -1,8 +1,41 @@
-.button {
+.dock {
   position: fixed;
   right: 1.35rem;
   bottom: 1.35rem;
   z-index: 41;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.install {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.4rem 0.95rem 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.install:hover {
+  border-color: rgba(124, 255, 58, 0.4);
+  background: #161616;
+}
+
+.playIcon {
+  flex-shrink: 0;
+}
+
+.button {
   width: 44px;
   height: 44px;
   display: grid;
@@ -18,10 +51,25 @@
   background: #b8ff6a;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .install {
+    transition: none;
+  }
+}
+
 @media (max-width: 640px) {
-  .button {
+  .dock {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .install {
+    min-height: 40px;
+    padding: 0.35rem 0.8rem 0.35rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .button {
     width: 40px;
     height: 40px;
   }

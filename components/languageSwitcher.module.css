@@ -1,0 +1,59 @@
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 36px;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(26, 26, 26, 0.85);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.trigger:hover {
+  border-color: rgba(124, 255, 58, 0.28);
+  color: #7cff3a;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  min-width: 168px;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.option,
+.optionActive {
+  width: 100%;
+  display: block;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #d8d8d8;
+  font-size: 0.88rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:hover,
+.optionActive {
+  background: rgba(124, 255, 58, 0.12);
+  color: #7cff3a;
+}

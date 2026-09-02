@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { CompanyLogo } from "./CompanyLogo";
 import { MARKET_ITEMS, MARKETS_COPY } from "./marketsConfig";
 import { Sparkline } from "./Sparkline";
@@ -53,14 +54,16 @@ function MarqueeRow({ reverse }: { reverse?: boolean }) {
 }
 
 export function MarketsSection() {
+  const t = useTranslations("markets");
+
   return (
     <section className={styles.section} id={MARKETS_COPY.id} aria-labelledby="markets-title">
       <div className={styles.header}>
-        <p className={styles.miniCard}>{MARKETS_COPY.badge}</p>
+        <p className={styles.miniCard}>{t("badge")}</p>
         <h2 className={styles.title} id="markets-title">
-          {MARKETS_COPY.title}
+          {t("title")}
         </h2>
-        <p className={styles.subtitle}>{MARKETS_COPY.subtitle}</p>
+        <p className={styles.subtitle}>{t("subtitle")}</p>
       </div>
       <MarqueeRow />
       <MarqueeRow reverse />

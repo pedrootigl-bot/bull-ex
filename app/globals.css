@@ -8,6 +8,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #167a32 #050805;
   scroll-behavior: smooth;
+  scroll-padding-top: 4.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -21,6 +22,7 @@ body {
   min-height: 100%;
   background: #000;
   color: #fff;
+  font-family: inherit, var(--font-thai), "Noto Sans Thai", "Leelawadee UI", sans-serif;
 }
 
 html::-webkit-scrollbar {

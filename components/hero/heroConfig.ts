@@ -17,26 +17,14 @@ export const HERO_THEME = {
 } as const;
 
 export const HERO_COPY = {
-  headline:
-    "Negocie ações, criptomoedas e produtos de câmbio de forma simplificada!",
-  subheadline:
-    "Cadastre-se e ganhe US$ 10.000 em sua conta demo para aprender a investir.",
-  cta: "ABRA SUA CONTA GRATUITA",
   ctaHref: "https://trade.bull-ex.com/pt/register",
-  stats: [
-    { value: "US$ 10.000", label: "Saldo inicial na demo" },
-    { value: "0 taxas", label: "Para abrir sua conta" },
-    { value: "24/7", label: "Mercados globais" },
-  ],
 } as const;
 
 export const NAV_COPY = {
-  brand: "Bull-ex",
   links: [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#mercados", label: "Mercados" },
-    { href: "#precos", label: "Preços" },
-    { href: "#faq", label: "FAQ" },
+    { href: "#sobre", labelKey: "about", icon: "about" },
+    { href: "#mercados", labelKey: "markets", icon: "markets" },
+    { href: "#precos", labelKey: "pricing", icon: "pricing" },
+    { href: "#faq", labelKey: "faq", icon: "faq" },
   ],
-  login: "Entrar",
 } as const;

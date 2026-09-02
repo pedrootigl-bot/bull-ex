@@ -1,10 +1,11 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { TESTIMONIALS, TESTIMONIALS_COPY, type TestimonialStars } from "./testimonialsConfig";
 import styles from "./testimonials.module.css";
 
-function StarRow({ count }: { count: TestimonialStars }) {
+function StarRow({ count, label }: { count: TestimonialStars; label: string }) {
   return (
-    <div className={styles.stars} aria-label={`${count} de 5 estrelas`}>
+    <div className={styles.stars} aria-label={label}>
       {Array.from({ length: 5 }, (_, index) => {
         const filled = index < count;
         return (
@@ -25,6 +26,8 @@ function StarRow({ count }: { count: TestimonialStars }) {
 }
 
 export function TestimonialsSection() {
+  const t = useTranslations("testimonials");
+
   return (
     <section
       className={styles.section}
@@ -33,11 +36,11 @@ export function TestimonialsSection() {
     >
       <div className={styles.inner}>
         <header className={styles.header}>
-          <p className={styles.eyebrow}>{TESTIMONIALS_COPY.eyebrow}</p>
+          <p className={styles.eyebrow}>{t("eyebrow")}</p>
           <h2 className={styles.title} id="testimonials-title">
-            {TESTIMONIALS_COPY.title}
+            {t("title")}
           </h2>
-          <p className={styles.subtitle}>{TESTIMONIALS_COPY.subtitle}</p>
+          <p className={styles.subtitle}>{t("subtitle")}</p>
         </header>
 
         <ul className={styles.grid}>
@@ -47,7 +50,7 @@ export function TestimonialsSection() {
                 <Image
                   className={styles.photo}
                   src={item.photo}
-                  alt={item.photoAlt}
+                  alt={t(`items.${item.id}.photoAlt`)}
                   width={72}
                   height={72}
                   quality={100}
@@ -55,10 +58,10 @@ export function TestimonialsSection() {
                 />
                 <div>
                   <p className={styles.name}>{item.name}</p>
-                  <StarRow count={item.stars} />
+                  <StarRow count={item.stars} label={t("stars", { count: item.stars })} />
                 </div>
               </div>
-              <p className={styles.quote}>{item.quote}</p>
+              <p className={styles.quote}>{t(`items.${item.id}.quote`)}</p>
             </li>
           ))}
         </ul>

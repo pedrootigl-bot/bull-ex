@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { ABOUT_COPY } from "./aboutConfig";
 import styles from "./about.module.css";
 
 export function AboutSection() {
+  const t = useTranslations("about");
+
   return (
     <section className={styles.section} id={ABOUT_COPY.id} aria-labelledby="about-title">
       <div className={styles.grid}>
@@ -10,7 +13,7 @@ export function AboutSection() {
           <Image
             className={styles.image}
             src="/images/bull-quem-somos.jpg"
-            alt="Touro em posição de ataque diante de uma cidade iluminada em verde, símbolo de mercado em alta"
+            alt={t("imageAlt")}
             fill
             sizes="(max-width: 900px) 100vw, 60vw"
             quality={100}
@@ -22,12 +25,12 @@ export function AboutSection() {
 
         <div className={styles.copy}>
           <h2 className={styles.title} id="about-title">
-            {ABOUT_COPY.title}
+            {t("title")}
           </h2>
           <div className={styles.paragraphs}>
-            <p className={styles.lead}>{ABOUT_COPY.lead}</p>
-            <p>{ABOUT_COPY.body}</p>
-            <p className={styles.tagline}>{ABOUT_COPY.tagline}</p>
+            <p className={styles.lead}>{t("lead")}</p>
+            <p>{t("body")}</p>
+            <p className={styles.tagline}>{t("tagline")}</p>
           </div>
         </div>
       </div>

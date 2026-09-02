@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "title": "Bull-ex — Giao dịch cổ phiếu, crypto và ngoại hối",
+    "description": "Đăng ký và nhận 10.000 USD trong tài khoản demo để học cách đầu tư."
+  },
+  "navigation": {
+    "aria": "Menu chính",
+    "brand": "Bull-ex",
+    "about": "Về chúng tôi",
+    "markets": "Thị trường",
+    "pricing": "Giá",
+    "faq": "FAQ",
+    "login": "Đăng nhập"
+  },
+  "hero": {
+    "headline": "Giao dịch cổ phiếu, tiền mã hóa và sản phẩm ngoại hối một cách đơn giản hơn.",
+    "subheadline": "Đăng ký và nhận 10.000 USD trong tài khoản demo để học cách đầu tư.",
+    "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
+    "stats": {
+      "demoValue": "US$ 10.000",
+      "demoLabel": "Số dư ban đầu trên demo",
+      "feesValue": "0 phí",
+      "feesLabel": "Để mở tài khoản",
+      "hoursValue": "24/7",
+      "hoursLabel": "Thị trường toàn cầu"
+    }
+  },
+  "footer": {
+    "brand": "Bullex",
+    "tagline": "Nơi công nghệ gặp thị trường.",
+    "cta": "Mở tài khoản miễn phí",
+    "platform": "Nền tảng",
+    "markets": "Thị trường",
+    "why": "Vì sao chọn Bullex",
+    "about": "Chúng tôi là ai",
+    "pricing": "Giá",
+    "support": "Hỗ trợ",
+    "faq": "FAQ",
+    "openAccount": "Mở tài khoản",
+    "login": "Đăng nhập",
+    "legal": "Pháp lý",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Quyền riêng tư",
+    "risk": "Cảnh báo rủi ro",
+    "disclaimer": "Giao dịch tài sản tiềm ẩn rủi ro. Chỉ dùng vốn bạn có thể chấp nhận mất. Nội dung mang tính giáo dục, không phải khuyến nghị đầu tư.",
+    "copyright": "© 2026 Bullex. Mọi quyền được bảo lưu."
+  },
+  "legalNotice": {
+    "text": "Bullex không được ủy quyền bởi cơ quan quản lý chứng khoán Brazil (CNMV) để chào bán hoặc trung gian chứng khoán công khai tại Brazil. Khi truy cập trang Bullex, bạn xác nhận đã biết và đồng ý với các hạn chế này. Chi tiết xem trong Hợp đồng khách hàng.",
+    "close": "Đóng thông báo"
+  },
+  "common": {
+    "backToTop": "Lên đầu trang",
+    "installApp": "Cài ứng dụng"
+  },
+  "markets": {
+    "badge": "+ 250 lựa chọn",
+    "title": "Hơn 200 tài sản để đầu tư, không phức tạp.",
+    "subtitle": "Chọn một tài sản và bắt đầu chỉ với vài cú nhấp."
+  },
+  "why": {
+    "eyebrow": "Vì sao Bullex?",
+    "titleBefore": "Vì sao Bullex là môi giới phù hợp cho ",
+    "titleHighlight": "nhà đầu tư nghiêm túc?",
+    "subtitle": "Tại Bullex, chúng tôi kết hợp công nghệ, an toàn và điều kiện riêng cho người giao dịch ở mức cao.",
+    "callout": "Hơn cả một môi giới: đối tác chiến lược để bạn <highlight>giao dịch không giới hạn</highlight> và <highlight>đi xa hơn</highlight>.",
+    "photoAlt": "Nhân vật đeo mặt nạ bò đực màu xanh lá, đại diện cho bản sắc Bullex",
+    "features": {
+      "liquidity": {
+        "title": "Thanh khoản cao",
+        "text": "Khớp lệnh nhanh và ổn định ngay cả khối lượng lớn."
+      },
+      "security": {
+        "title": "An toàn và tin cậy",
+        "text": "Hạ tầng vững và tuân thủ các tiêu chuẩn cao."
+      },
+      "exclusive": {
+        "title": "Điều kiện riêng",
+        "text": "Spread cạnh tranh, đòn bẩy linh hoạt và chi phí thấp hơn."
+      },
+      "support": {
+        "title": "Hỗ trợ cao cấp",
+        "text": "Đội ngũ sẵn sàng khi bạn cần, 24 giờ mỗi ngày."
+      },
+      "platform": {
+        "title": "Nền tảng nâng cao",
+        "text": "Công cụ chuyên nghiệp và công nghệ hiện đại cho giao dịch."
+      },
+      "diversify": {
+        "title": "Đa dạng hóa thông minh",
+        "text": "Tiếp cận nhiều thị trường và cơ hội trong một chỗ."
+      }
+    },
+    "bars": {
+      "speed": {
+        "title": "Khớp lệnh nhanh",
+        "text": "Lệnh được thực hiện trong mili giây."
+      },
+      "lock": {
+        "title": "Bảo vệ nâng cao",
+        "text": "Vốn và dữ liệu của bạn được bảo vệ."
+      },
+      "manage": {
+        "title": "Quản lý chuyên nghiệp",
+        "text": "Công cụ và báo cáo để quyết định tốt hơn."
+      },
+      "premium": {
+        "title": "Trải nghiệm cao cấp",
+        "text": "Môi trường thiết kế cho hiệu suất cao."
+      }
+    }
+  },
+  "about": {
+    "title": "Chúng tôi là ai",
+    "lead": "Tại Bullex, thị trường luôn chuyển động — và chúng tôi cũng vậy.",
+    "body": "Chúng tôi là nền tảng giao dịch được xây để mang tốc độ, công nghệ và trải nghiệm vận hành đơn giản, thẳng hơn. Chúng tôi tạo môi trường để trader vào thị trường, tìm cơ hội và dựa vào cấu trúc đồng hành từng giai đoạn hành trình.",
+    "tagline": "Bullex. Nơi công nghệ gặp thị trường.",
+    "imageAlt": "Bò tót tư thế tấn công trước thành phố ánh sáng xanh lá, biểu tượng thị trường tăng"
+  },
+  "testimonials": {
+    "eyebrow": "Người đã thử",
+    "title": "Họ đang nói gì",
+    "subtitle": "Chúng tôi không xin câu chữ đẹp. Lấy từ hỗ trợ và nhóm chat.",
+    "stars": "{count} trên 5 sao",
+    "items": {
+      "camila": {
+        "photoAlt": "Ảnh của Camila",
+        "quote": "Mở demo chiều thứ Bảy vì trì hoãn mấy tháng. 10 nghìn USD giả giúp bớt sợ bấm nhầm. Chưa bỏ tiền thật — chồng tôi sẽ nổi đóa. Nhưng ít ra đã hiểu lệnh thị trường. App đứng khoảng 20 giây một lần, suýt đóng tài khoản. Nó sống lại. Tôi ở lại."
+      },
+      "rogerio": {
+        "photoAlt": "Ảnh của Rogério",
+        "quote": "Anh trai giao dịch ở XP và trêu là tôi chẳng hiểu gì. Mở demo ở đây, một buổi chiều đã đặt lệnh. Màn hình gọn, không 40 nút. Gửi câu hỏi tối Chủ nhật, họ trả lời sáng Thứ Hai — với tôi ổn. Bốn sao vì vẫn đang demo, nhưng đủ thích để giới thiệu với em rể."
+      },
+      "thiago": {
+        "photoAlt": "Ảnh của Thiago",
+        "quote": "Anh họ gửi link, tôi thề là lừa đảo. Thử demo, làm khoảng 15 lệnh crypto xem số dư có biến không. Không biến. Thích chỗ không thúc đòn bẩy suốt, vì tôi sẽ sập bẫy. Đăng ký thật tuần này. Nếu hỏng sẽ quay lại đây chửi."
+      },
+      "juliana": {
+        "photoAlt": "Ảnh của Juliana",
+        "quote": "Đã lỗ một ít ở môi giới khác (không nêu tên, xấu hổ). Ở đây giao diện ít làm tôi lạc. Biểu đồ nên đầy đủ hơn, khối lượng rõ hơn. Nhưng việc tôi làm — mua cổ phiếu rồi quên — thì ổn. Mất công tìm lịch sử. Chỉ hai cú nhấp. Tại tôi chậm."
+      },
+      "eduardo": {
+        "photoAlt": "Ảnh của Eduardo",
+        "quote": "Xác minh mất 2 ngày, suýt bỏ. Rồi xong. Hôm qua lần đầu đời giao dịch ngoại hối, 50 đô chỉ để cảm. Lệnh khớp nhanh. Tôi không phải trader, làm xây dựng, nên nếu tôi mở được và bấm được thì ai cũng làm được. Con gái giúp đăng ký, nói thật."
+      },
+      "fernanda": {
+        "photoAlt": "Ảnh của Fernanda",
+        "quote": "Bớt một sao vì đăng ký chậm trên 4G TIM, nhìn màn hình cả phút. Còn lại số dư demo hiện ngay. Em gái cũng mở. Nó không thấy lịch sử, tôi thấy. So ảnh app trên WhatsApp. Chẳng cách mạng gì, chỉ là không cảm thấy ngốc khi dùng."
+      }
+    }
+  },
+  "platform": {
+    "aria": "Nền tảng Bullex trên máy tính và điện thoại",
+    "imageAlt": "Giao diện Bullex trên máy tính với biểu đồ nến và trên điện thoại với nút Lên và Xuống"
+  },
+  "highlights": {
+    "aria": "Điểm nổi bật của nền tảng",
+    "items": {
+      "execution": {
+        "title": "Khớp lệnh chuẩn tổ chức",
+        "text": "Lệnh nhanh và ổn định ngay cả khi biến động cao."
+      },
+      "security": {
+        "title": "An toàn và tuân thủ",
+        "text": "Hạ tầng được bảo vệ và tiêu chuẩn để giao dịch tự tin."
+      },
+      "access": {
+        "title": "Truy cập toàn cầu 24/7",
+        "text": "Cổ phiếu, crypto và ngoại hối trong một trải nghiệm, mọi lúc."
+      }
+    }
+  },
+  "mobileApp": {
+    "titleBefore": "Không chỉ trên máy tính. Bullex cũng có trên ",
+    "titleHighlight": "di động.",
+    "subtitle": "Giao dịch mọi nơi với ứng dụng trên Google Play.",
+    "storeEyebrow": "Tải trên",
+    "storeName": "Google Play",
+    "storeAria": "Tải ứng dụng Bullex trên Google Play",
+    "photoAlt": "Điện thoại đang mở ứng dụng Bullex"
+  },
+  "prizes": {
+    "eyebrow": "Phần thưởng cao cấp",
+    "title": "Giải thưởng",
+    "leadBefore": "Phần thưởng ",
+    "leadHighlight": "độc quyền",
+    "leadAfter": " cho ai giao dịch cùng chúng tôi.",
+    "body": "Mỗi lệnh bạn tích điểm và đổi lấy giải thưởng thật.",
+    "cta": "Tôi muốn nhận giải",
+    "featuredBadge": "Giải lớn",
+    "points": {
+      "points": "Tích điểm mỗi lệnh.",
+      "redeem": "Đổi giải thưởng độc quyền.",
+      "safe": "An toàn và minh bạch 100%."
+    },
+    "barNote": "Minh bạch từng bước. Bạn luôn kiểm soát.",
+    "barSocial": "+25.000 khách hàng đã được trao thưởng.",
+    "cards": {
+      "car": {
+        "title": "Xe ",
+        "titleHighlight": "0 km",
+        "text": "Giải được mong muốn nhất cho ai giao dịch ở cấp cao.",
+        "imageAlt": "Xe mới từ chương trình giải thưởng Bullex"
+      },
+      "box": {
+        "title": "Trader top Box",
+        "titleHighlight": "",
+        "text": "Cơ hội nhận món quà này tận nhà",
+        "imageAlt": "Trader top Box của Bullex"
+      },
+      "tech": {
+        "title": "Trader top",
+        "titleHighlight": "",
+        "text": "Cơ hội nhận món quà này tận nhà",
+        "imageAlt": "Tượng Trader top của Bullex"
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Câu hỏi thường gặp",
+    "title": "Về Bullex",
+    "items": {
+      "unique": {
+        "q": "Điều gì làm Bullex khác biệt?",
+        "a": "Bullex nổi bật với nền tảng trực quan và công cụ giao dịch nâng cao. Trải nghiệm đơn giản, giúp ra quyết định nhanh trên máy tính và điện thoại."
+      },
+      "trust": {
+        "q": "Tại sao tôi nên tin tưởng Bullex?",
+        "a": "Niềm tin là nền tảng. Bullex tuân thủ chuẩn mực đạo đức cao và dùng công nghệ bảo mật để bảo vệ thông tin khách hàng. Đội ngũ cam kết trải nghiệm giao dịch ổn định và minh bạch."
+      },
+      "start": {
+        "q": "Bắt đầu như thế nào?",
+        "a": "Đăng ký, mở tài khoản demo với 10.000 USD và khám phá nền tảng. Khi sẵn sàng giao dịch thật, nạp tiền và dùng hỗ trợ ở từng bước."
+      },
+      "instruments": {
+        "q": "Tôi có thể giao dịch những công cụ nào?",
+        "a": "Bullex có cặp tiền tệ, hàng hóa, chỉ số và tiền mã hóa. Hơn 200 tài sản để khám phá và giao dịch chỉ với vài cú nhấp."
+      },
+      "security": {
+        "q": "Dữ liệu cá nhân được bảo vệ ra sao?",
+        "a": "Bảo mật dữ liệu là ưu tiên. Chúng tôi dùng mã hóa và các biện pháp bảo vệ để giữ bí mật và toàn vẹn thông tin khách hàng."
+      },
+      "education": {
+        "q": "Bullex có tài liệu học cho người mới không?",
+        "a": "Có. Có hướng dẫn, webinar và tài liệu để người mới hiểu thị trường và luyện trên demo trước khi dùng vốn thật."
+      }
+    }
+  },
+  "languageSwitcher": {
+    "label": "Ngôn ngữ",
+    "pt-BR": "Português",
+    "en": "English",
+    "es": "Español",
+    "ru": "Русский",
+    "th": "ไทย",
+    "vi": "Tiếng Việt"
+  }
+}
