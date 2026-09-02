@@ -352,7 +352,7 @@
   border-radius: 999px;
   overflow: hidden;
   text-decoration: none;
-  color: #fff;
+  color: #0a0a0a;
   isolation: isolate;
 }
 
@@ -379,8 +379,9 @@
   gap: 0.7rem;
   padding: 0.38rem 0.4rem 0.38rem 1rem;
   border-radius: 999px;
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0a0a0a;
   font-size: 0.88rem;
   font-weight: 500;
   transition: border-color 0.25s ease, background-color 0.25s ease;
@@ -388,14 +389,14 @@
 
 .navCta:hover .navCtaInner {
   border-color: transparent;
-  background: #0a0a0a;
+  background: #f3f3f3;
 }
 
 .navCtaIcon {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #2a2a2a;
+  background: #111;
   display: grid;
   place-items: center;
 }
@@ -519,7 +520,7 @@
   overflow: hidden;
   isolation: isolate;
   text-decoration: none;
-  color: #fff;
+  color: #0a0a0a;
 }
 
 .ctaInner {
@@ -530,9 +531,9 @@
   gap: 1.1rem;
   padding: 0.42rem 0.42rem 0.42rem 1.35rem;
   border-radius: 999px;
-  background: #050505;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0a0a0a;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -541,7 +542,7 @@
 
 .cta:hover .ctaInner {
   border-color: transparent;
-  background: #0a0a0a;
+  background: #f3f3f3;
   transform: translateY(-1px);
 }
 
@@ -549,7 +550,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #2a2a2a;
+  background: #111;
   display: grid;
   place-items: center;
 }
