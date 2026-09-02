@@ -1,5 +1,9 @@
+"use client";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 import { TESTIMONIALS, TESTIMONIALS_COPY, type TestimonialStars } from "./testimonialsConfig";
 import styles from "./testimonials.module.css";
 
@@ -27,10 +31,53 @@ function StarRow({ count, label }: { count: TestimonialStars; label: string }) {
 
 export function TestimonialsSection() {
   const t = useTranslations("testimonials");
+  const reducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visibleCount, setVisibleCount] = useState(0);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisibleCount(TESTIMONIALS.length);
+      return;
+    }
+
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        setVisibleCount((count) => (count === 0 ? 1 : count));
+        observer.disconnect();
+      },
+      { threshold: 0.22 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  function handlePopEnd(index: number) {
+    if (reducedMotion) {
+      return;
+    }
+    if (index !== visibleCount - 1) {
+      return;
+    }
+    if (visibleCount >= TESTIMONIALS.length) {
+      return;
+    }
+    setVisibleCount((count) => count + 1);
+  }
 
   return (
     <section
       className={styles.section}
+      ref={sectionRef}
       id={TESTIMONIALS_COPY.id}
       aria-labelledby="testimonials-title"
     >
@@ -44,26 +91,39 @@ export function TestimonialsSection() {
         </header>
 
         <ul className={styles.grid}>
-          {TESTIMONIALS.map((item) => (
-            <li key={item.id} className={styles.card}>
-              <div className={styles.cardTop}>
-                <Image
-                  className={styles.photo}
-                  src={item.photo}
-                  alt={t(`items.${item.id}.photoAlt`)}
-                  width={72}
-                  height={72}
-                  quality={100}
-                  unoptimized
-                />
-                <div>
-                  <p className={styles.name}>{item.name}</p>
-                  <StarRow count={item.stars} label={t("stars", { count: item.stars })} />
+          {TESTIMONIALS.map((item, index) => {
+            const isVisible = index < visibleCount;
+
+            return (
+              <li
+                key={item.id}
+                className={`${styles.card} ${isVisible ? styles.cardPop : styles.cardHidden} ${reducedMotion ? styles.motionStatic : ""}`}
+                onAnimationEnd={(event) => {
+                  if (event.target !== event.currentTarget) {
+                    return;
+                  }
+                  handlePopEnd(index);
+                }}
+              >
+                <div className={styles.cardTop}>
+                  <Image
+                    className={styles.photo}
+                    src={item.photo}
+                    alt={t(`items.${item.id}.photoAlt`)}
+                    width={72}
+                    height={72}
+                    quality={100}
+                    unoptimized
+                  />
+                  <div>
+                    <p className={styles.name}>{item.name}</p>
+                    <StarRow count={item.stars} label={t("stars", { count: item.stars })} />
+                  </div>
                 </div>
-              </div>
-              <p className={styles.quote}>{t(`items.${item.id}.quote`)}</p>
-            </li>
-          ))}
+                <p className={styles.quote}>{t(`items.${item.id}.quote`)}</p>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

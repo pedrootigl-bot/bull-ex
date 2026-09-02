@@ -1,11 +1,15 @@
+"use client";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import {
-  FEATURED_PRIZE,
+  PRIZE_CARDS,
   PRIZE_IMAGES,
   PRIZE_POINTS,
   PRIZES_COPY,
-  ROW_PRIZES,
   type PrizeId,
 } from "./prizesConfig";
 import styles from "./prizes.module.css";
@@ -47,45 +51,91 @@ function PointIcon({ item }: { item: (typeof PRIZE_POINTS)[number] }) {
   }
 }
 
-function PrizeMedia({ id, featured }: { id: PrizeId; featured?: boolean }) {
+function PrizeReveal({
+  id,
+  index,
+  reverse,
+}: {
+  id: PrizeId;
+  index: number;
+  reverse: boolean;
+}) {
   const t = useTranslations("prizes");
+  const reducedMotion = useReducedMotion();
+  const ref = useRef<HTMLElement>(null);
   const src = PRIZE_IMAGES[id];
-  const alt = t(`cards.${id}.imageAlt`);
+  const number = String(index + 1).padStart(2, "0");
 
-  if (src) {
-    return (
-      <Image
-        className={featured ? styles.featuredPhoto : styles.photo}
-        src={src}
-        alt={alt}
-        fill
-        sizes={featured ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 28vw"}
-        quality={100}
-        unoptimized
-      />
-    );
-  }
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
-  return <div className={styles.placeholder} aria-hidden="true" />;
-}
-
-function PrizeCard({ id, featured, number }: { id: PrizeId; featured?: boolean; number: string }) {
-  const t = useTranslations("prizes");
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0, 0.42],
+    ["inset(0% 50% 0% 50%)", "inset(0% 0% 0% 0%)"],
+  );
+  const scale = useTransform(scrollYProgress, [0, 0.42, 1], [1.28, 1, 1.08]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const copyOpacity = useTransform(scrollYProgress, [0.08, 0.36], [0, 1]);
+  const copyY = useTransform(scrollYProgress, [0.08, 0.36], [28, 0]);
 
   return (
-    <article className={featured ? styles.featured : styles.card}>
-      <div className={featured ? styles.featuredMedia : styles.media}>
-        <PrizeMedia featured={featured} id={id} />
-        <div className={styles.mediaFade} aria-hidden="true" />
-      </div>
-      <div className={styles.cardCopy}>
-        {featured ? <p className={styles.badge}>{t("featuredBadge")}</p> : <span className={styles.index}>{number}</span>}
-        <h3 className={styles.cardTitle}>
-          {t(`cards.${id}.title`)}
-          {featured ? <span className={styles.cardHighlight}>{t(`cards.${id}.titleHighlight`)}</span> : null}
-        </h3>
-        <p className={styles.cardText}>{t(`cards.${id}.text`)}</p>
-      </div>
+    <article
+      className={`${styles.reveal} ${reverse ? styles.revealReverse : ""}`}
+      ref={ref}
+    >
+      <motion.div
+        className={styles.revealCopy}
+        style={
+          reducedMotion
+            ? undefined
+            : {
+                opacity: copyOpacity,
+                y: copyY,
+              }
+        }
+      >
+        <div className={styles.copyMeta}>
+          <span className={styles.index}>{number}</span>
+          {id === "car" ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
+        </div>
+
+        <p className={styles.product}>{t(`cards.${id}.title`)}</p>
+        <h3 className={styles.cardStatement}>{t(`cards.${id}.text`)}</h3>
+      </motion.div>
+
+      <motion.div
+        className={styles.revealMask}
+        style={reducedMotion ? undefined : { clipPath }}
+      >
+        {src ? (
+          <motion.div
+            className={styles.revealMedia}
+            style={
+              reducedMotion
+                ? undefined
+                : {
+                    scale,
+                    y: imageY,
+                  }
+            }
+          >
+            <Image
+              className={styles.revealPhoto}
+              src={src}
+              alt={t(`cards.${id}.imageAlt`)}
+              fill
+              sizes="(max-width: 900px) 100vw, min(720px, 52vw)"
+              quality={100}
+              priority={index === 0}
+            />
+          </motion.div>
+        ) : (
+          <div className={styles.placeholder} aria-hidden="true" />
+        )}
+      </motion.div>
     </article>
   );
 }
@@ -96,31 +146,37 @@ export function PrizesSection() {
   return (
     <section className={styles.section} id={PRIZES_COPY.id} aria-labelledby="prizes-title">
       <div className={styles.inner}>
-        <div className={styles.layout}>
-          <div className={styles.intro}>
-            <p className={styles.eyebrow}>{t("eyebrow")}</p>
-            <h2 className={styles.title} id="prizes-title">
-              {t("title")}
-            </h2>
-            <p className={styles.lead}>
-              {t("leadBefore")}
-              <span className={styles.highlight}>{t("leadHighlight")}</span>
-              {t("leadAfter")}
-            </p>
-            <p className={styles.body}>{t("body")}</p>
+        <div className={styles.intro}>
+          <p className={styles.eyebrow}>{t("eyebrow")}</p>
+          <h2 className={styles.title} id="prizes-title">
+            {t("title")}
+          </h2>
+          <p className={styles.lead}>
+            {t("leadBefore")}
+            <span className={styles.highlight}>{t("leadHighlight")}</span>
+            {t("leadAfter")}
+          </p>
+          <p className={styles.body}>{t("body")}</p>
+
+          <div className={styles.introActions}>
             <a className={styles.cta} href={PRIZES_COPY.ctaHref}>
-              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                <path
-                  d="M3.2 9.2h11.6M9.4 3.4 15 9l-5.6 5.6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {t("cta")}
+              <span className={styles.ctaBeam} aria-hidden="true" />
+              <span className={styles.ctaInner}>
+                {t("cta")}
+                <span className={styles.ctaIcon} aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </span>
             </a>
+
             <ul className={styles.points}>
               {PRIZE_POINTS.map((item) => (
                 <li key={item}>
@@ -132,17 +188,12 @@ export function PrizesSection() {
               ))}
             </ul>
           </div>
+        </div>
 
-          <div className={styles.boards}>
-            <div className={styles.gridFeatured}>
-              <PrizeCard featured id={FEATURED_PRIZE} number="01" />
-            </div>
-            <div className={styles.gridRow}>
-              {ROW_PRIZES.map((id, index) => (
-                <PrizeCard id={id} key={id} number={String(index + 2).padStart(2, "0")} />
-              ))}
-            </div>
-          </div>
+        <div className={styles.reveals}>
+          {PRIZE_CARDS.map((id, index) => (
+            <PrizeReveal id={id} index={index} key={id} reverse={index % 2 === 1} />
+          ))}
         </div>
 
         <footer className={styles.bar}>

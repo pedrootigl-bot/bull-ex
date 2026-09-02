@@ -84,6 +84,74 @@
   image-rendering: auto;
 }
 
+.fromLeft,
+.fromRight,
+.fromDown {
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.fromLeft {
+  transform: translateX(-64px);
+}
+
+.fromRight {
+  transform: translateX(72px);
+}
+
+.fromDown {
+  transform: translateY(-40px);
+}
+
+.features .fromDown.in:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.features .fromDown.in:nth-child(2) {
+  transition-delay: 0.18s;
+}
+
+.features .fromDown.in:nth-child(3) {
+  transition-delay: 0.26s;
+}
+
+.features .fromDown.in:nth-child(4) {
+  transition-delay: 0.34s;
+}
+
+.features .fromDown.in:nth-child(5) {
+  transition-delay: 0.42s;
+}
+
+.features .fromDown.in:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+.fromLeft.in,
+.fromRight.in,
+.fromDown.in {
+  transform: none;
+  opacity: 1;
+}
+
+.delayBar.in {
+  transition-delay: 0.12s;
+}
+
+.delayCallout.in {
+  transition-delay: 0.16s;
+}
+
+.motionStatic {
+  transform: none;
+  opacity: 1;
+  transition: none;
+  will-change: auto;
+}
+
 .eyebrow {
   color: #7cff3a;
   font-size: 0.78rem;
@@ -195,5 +263,24 @@
   .features,
   .bar {
     grid-template-columns: 1fr;
+  }
+
+  .fromLeft {
+    transform: translateX(-36px);
+  }
+
+  .fromRight {
+    transform: translateX(40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fromLeft,
+  .fromRight,
+  .fromDown {
+    transform: none;
+    opacity: 1;
+    transition: none;
+    will-change: auto;
   }
 }

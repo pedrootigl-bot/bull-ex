@@ -1,261 +1,267 @@
 {
-    "meta":  {
-                 "title":  "Bull-ex — Trade stocks, crypto and FX",
-                 "description":  "Sign up and get US$ 10,000 in your demo account to learn how to invest."
-             },
-    "navigation":  {
-                       "aria":  "Main",
-                       "brand":  "Bull-ex",
-                       "about":  "About",
-                       "markets":  "Markets",
-                       "pricing":  "Pricing",
-                       "faq":  "FAQ",
-                       "login":  "Sign in",
-                       "why":  "Why Bullex",
-                       "prizes":  "Prizes"
-                   },
-    "hero":  {
-                 "headline":  "Trade stocks, cryptocurrencies and FX products the simple way!",
-                 "subheadline":  "Sign up and get US$ 10,000 in your demo account to learn how to invest.",
-                 "cta":  "OPEN YOUR FREE ACCOUNT",
-                 "stats":  {
-                               "demoValue":  "US$ 10,000",
-                               "demoLabel":  "Starting demo balance",
-                               "feesValue":  "0 fees",
-                               "feesLabel":  "To open your account",
-                               "hoursValue":  "24/7",
-                               "hoursLabel":  "Global markets"
-                           }
-             },
-    "footer":  {
-                   "brand":  "Bullex",
-                   "tagline":  "Where technology meets the market.",
-                   "cta":  "Open your free account",
-                   "platform":  "Platform",
-                   "markets":  "Markets",
-                   "why":  "Why Bullex",
-                   "about":  "About us",
-                   "pricing":  "Pricing",
-                   "support":  "Support",
-                   "faq":  "FAQ",
-                   "openAccount":  "Open account",
-                   "login":  "Sign in",
-                   "legal":  "Legal",
-                   "terms":  "Terms of use",
-                   "privacy":  "Privacy",
-                   "risk":  "Risk notices",
-                   "disclaimer":  "Trading involves risk. Only operate with capital you can afford to lose. Educational content, not investment advice.",
-                   "copyright":  "© 2026 Bullex. All rights reserved.",
-                   "prizes":  "Prizes"
-               },
-    "legalNotice":  {
-                        "text":  "Bullex is not authorized by Brazil’s securities regulator (CNMV) to publicly offer or intermediate securities in Brazil. By accessing the Bullex website, you acknowledge and agree to these restrictions. For more information, see the Client Agreement.",
-                        "close":  "Close notice"
-                    },
-    "common":  {
-                   "backToTop":  "Back to top",
-                   "installApp":  "Install app"
-               },
-    "markets":  {
-                    "badge":  "+ 250 options",
-                    "title":  "More than 200 assets to invest in, without the usual hassle.",
-                    "subtitle":  "Pick an asset and start investing in just a few clicks."
-                },
-    "why":  {
-                "eyebrow":  "Why Bullex?",
-                "titleBefore":  "Why is Bullex the right broker for ",
-                "titleHighlight":  "serious investors?",
-                "subtitle":  "At Bullex we combine technology, security and exclusive conditions for people who trade at a high level.",
-                "callout":  "More than a broker: a strategic partner so you can \u003chighlight\u003etrade without limits\u003c/highlight\u003e and \u003chighlight\u003ego further\u003c/highlight\u003e.",
-                "photoAlt":  "Figure wearing a green bull mask, representing the Bullex identity",
-                "features":  {
-                                 "liquidity":  {
-                                                   "title":  "Top-tier liquidity",
-                                                   "text":  "Fast, stable execution even on large volumes."
-                                               },
-                                 "security":  {
-                                                  "title":  "Security and trust",
-                                                  "text":  "Robust infrastructure that follows high compliance standards."
-                                              },
-                                 "exclusive":  {
-                                                   "title":  "Exclusive conditions",
-                                                   "text":  "Competitive spreads, flexible leverage and lower costs."
-                                               },
-                                 "support":  {
-                                                 "title":  "Premium support",
-                                                 "text":  "Dedicated help when you need it, 24 hours a day."
-                                             },
-                                 "platform":  {
-                                                  "title":  "Advanced platform",
-                                                  "text":  "Professional tools and modern tech for your trades."
-                                              },
-                                 "diversify":  {
-                                                   "title":  "Smarter diversification",
-                                                   "text":  "Access different markets and opportunities in one place."
-                                               }
-                             },
-                "bars":  {
-                             "speed":  {
-                                           "title":  "Fast execution",
-                                           "text":  "Orders filled in milliseconds."
-                                       },
-                             "lock":  {
-                                          "title":  "Advanced protection",
-                                          "text":  "Your funds and data stay protected."
-                                      },
-                             "manage":  {
-                                            "title":  "Professional management",
-                                            "text":  "Tools and reports for better decisions."
-                                        },
-                             "premium":  {
-                                             "title":  "Premium experience",
-                                             "text":  "An environment built for high performance."
-                                         }
-                         }
-            },
-    "about":  {
-                  "title":  "About us",
-                  "lead":  "At Bullex, the market is moving — and so are we.",
-                  "body":  "We are a trading platform built for speed, technology and a simpler, more direct way to operate. We created an environment where traders can access the market, explore opportunities and rely on a structure designed to follow every stage of the journey.",
-                  "tagline":  "Bullex. Where technology meets the market.",
-                  "imageAlt":  "A bull in attack stance in front of a city lit in green, a symbol of a rising market"
-              },
-    "testimonials":  {
-                         "eyebrow":  "People who already tried it",
-                         "title":  "What folks are saying",
-                         "subtitle":  "We didn’t ask for pretty copy. We used what landed in support and the group chat.",
-                         "stars":  "{count} out of 5 stars",
-                         "items":  {
-                                       "camila":  {
-                                                      "photoAlt":  "Photo of Camila",
-                                                      "quote":  "I opened the demo on a Saturday afternoon because I’d been putting this off for months. The fake US$ 10k helps with that fear of clicking the wrong thing. I still haven’t put real money in — my husband would kill me. But at least I get market orders now. The app froze for like 20 seconds once and I almost closed the account. It came back. I stayed."
-                                                  },
-                                       "rogerio":  {
-                                                       "photoAlt":  "Photo of Rogério",
-                                                       "quote":  "My brother trades at XP and kept teasing me that I wouldn’t get any of it. I opened the demo here and by the afternoon I was placing orders. The screen is cleaner, not 40 buttons. I sent a question Sunday night and they replied Monday morning — that’s fine by me. Four stars because I’m still on demo, but I already liked it enough to tell my brother-in-law."
-                                                   },
-                                       "thiago":  {
-                                                      "photoAlt":  "Photo of Thiago",
-                                                      "quote":  "My cousin sent me the link and I swore it was a scam lol. I tested the demo, did like 15 crypto trades just to see if the balance would vanish. It didn’t. I like that it doesn’t push leverage all the time, because I would’ve fallen for it. I signed up for real this week. If it goes wrong I’ll come back here and complain."
-                                                  },
-                                       "juliana":  {
-                                                       "photoAlt":  "Photo of Juliana",
-                                                       "quote":  "I’d already lost a bit at another broker (not naming them, embarrassing). Here at least the UI doesn’t lose me. I wish the chart was fuller, volume more obvious, that kind of thing. But for what I do — buy some stocks and forget — it’s fine. Took me a while to find history. It was two clicks. That’s on me."
-                                                   },
-                                       "eduardo":  {
-                                                       "photoAlt":  "Photo of Eduardo",
-                                                       "quote":  "Verification took 2 days and I almost gave up. Then it went through. Yesterday I traded FX for the first time in my life, 50 dollars just to feel it. The order filled fast. I’m not a trader, I work construction, so if I managed to open it and click, anyone can. My daughter helped with the signup, to be honest."
-                                                   },
-                                       "fernanda":  {
-                                                        "photoAlt":  "Photo of Fernanda",
-                                                        "quote":  "I took one star off because signup was slow on TIM 4G. I stared at the screen for a minute. Other than that the demo balance showed up right away. My sister opened one too. She couldn’t find history, I found it. We compare app screenshots on WhatsApp. Nothing revolutionary, I just didn’t feel stupid using it."
-                                                    }
-                                   }
-                     },
-    "platform":  {
-                     "aria":  "Bullex platform on desktop and mobile",
-                     "imageAlt":  "Bullex trading platform on desktop with a candlestick chart and on mobile with Up and Down buttons"
-                 },
-    "highlights":  {
-                       "aria":  "Platform highlights",
-                       "items":  {
-                                     "execution":  {
-                                                       "title":  "Institutional execution",
-                                                       "text":  "Fast, stable orders even in high-volatility windows."
-                                                   },
-                                     "security":  {
-                                                      "title":  "Security and compliance",
-                                                      "text":  "Protected infrastructure and standards built for confident trading."
-                                                  },
-                                     "access":  {
-                                                    "title":  "Global access 24/7",
-                                                    "text":  "Stocks, crypto and FX in one experience, at any hour."
-                                                }
-                                 }
-                   },
-    "mobileApp":  {
-                      "titleBefore":  "Not just on desktop. Bullex is also on ",
-                      "titleHighlight":  "mobile.",
-                      "subtitle":  "Trade from anywhere with the app on Google Play.",
-                      "storeEyebrow":  "Get it on",
-                      "storeName":  "Google Play",
-                      "storeAria":  "Download the Bullex app on Google Play",
-                      "photoAlt":  "Hand holding a phone with the Bullex app"
-                  },
-    "prizes":  {
-                   "eyebrow":  "Premium rewards",
-                   "title":  "Prizes",
-                   "leadBefore":  "Exclusive ",
-                   "leadHighlight":  "rewards",
-                   "leadAfter":  " for those who trade with us.",
-                   "body":  "Earn points on every trade and redeem them for real prizes.",
-                   "cta":  "I want to win prizes",
-                   "featuredBadge":  "Grand prize",
-                   "points":  {
-                                  "points":  "Earn points on every trade.",
-                                  "redeem":  "Redeem exclusive prizes.",
-                                  "safe":  "100% secure and transparent."
-                              },
-                   "barNote":  "Transparency at every step. You stay in control.",
-                   "barSocial":  "+25,000 clients have already been rewarded.",
-                   "cards":  {
-                                 "car":  {
-                                             "title":  "Brand-new ",
-                                             "titleHighlight":  "car",
-                                             "text":  "The most wanted prize for those who trade at the highest level.",
-                                             "imageAlt":  "Brand-new car from the Bullex rewards program"
-                                         },
-                                 "box":  {
-                                             "title":  "Trader top Box",
-                                             "titleHighlight":  "",
-                                             "text":  "Your chance to receive this gift at home",
-                                             "imageAlt":  "Bullex Trader top Box"
-                                         },
-                                 "tech":  {
-                                              "title":  "Trader top",
-                                              "titleHighlight":  "",
-                                              "text":  "Your chance to receive this gift at home",
-                                              "imageAlt":  "Bullex Trader top statue"
-                                          }
-                             }
-               },
-    "faq":  {
-                "eyebrow":  "Frequently asked questions",
-                "title":  "About Bullex",
-                "items":  {
-                              "unique":  {
-                                             "q":  "What makes Bullex unique?",
-                                             "a":  "Bullex stands out with an intuitive platform and advanced tools for financial trading. The focus is a simple experience, with features built for fast decisions on desktop and mobile."
-                                         },
-                              "trust":  {
-                                            "q":  "Why should I trust Bullex?",
-                                            "a":  "Trust comes first. Bullex follows high ethical standards and uses secure technology to protect client information. The team is committed to a reliable, transparent trading experience."
-                                        },
-                              "start":  {
-                                            "q":  "How to start?",
-                                            "a":  "Register, open the demo account with US$ 10,000, and explore the platform. When you are ready to trade live, deposit funds and use support at every step."
-                                        },
-                              "instruments":  {
-                                                  "q":  "What financial instruments can I trade?",
-                                                  "a":  "Bullex offers currency pairs, commodities, indices, and cryptocurrencies. There are more than 200 assets to explore and trade in a few clicks."
-                                              },
-                              "security":  {
-                                               "q":  "How do you protect the security of my personal data?",
-                                               "a":  "Your data security is a priority. We use encryption and security measures to keep client information confidential and intact."
-                                           },
-                              "education":  {
-                                                "q":  "Does Bullex offer educational resources for beginners?",
-                                                "a":  "Yes. Bullex provides tutorials, webinars, and learning materials so beginners can understand the basics and practice on the demo before risking capital."
-                                            }
-                          }
-            },
-    "languageSwitcher":  {
-                             "label":  "Language",
-                             "pt-BR":  "Português",
-                             "en":  "English",
-                             "es":  "Español",
-                             "ru":  "Русский",
-                             "th":  "ไทย",
-                             "vi":  "Tiếng Việt"
-                         }
+  "meta": {
+    "title": "Bull-ex — Trade stocks, crypto and FX",
+    "description": "Sign up and get US$ 10,000 in your demo account to learn how to invest."
+  },
+  "navigation": {
+    "aria": "Main",
+    "brand": "Bull-ex",
+    "about": "About",
+    "markets": "Markets",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "login": "Sign in",
+    "why": "Why Bullex",
+    "prizes": "Prizes",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "headline": "Trade stocks, cryptocurrencies and FX products the simple way!",
+    "subheadline": "Sign up and get US$ 10,000 in your demo account to learn how to invest.",
+    "cta": "OPEN YOUR FREE ACCOUNT",
+    "stats": {
+      "demoValue": "US$ 10,000",
+      "demoLabel": "Starting demo balance",
+      "feesValue": "0 fees",
+      "feesLabel": "To open your account",
+      "hoursValue": "24/7",
+      "hoursLabel": "Global markets"
+    },
+    "investorsCard": "+200k investors"
+  },
+  "footer": {
+    "brand": "Bullex",
+    "tagline": "Where technology meets the market.",
+    "cta": "Open your free account",
+    "platform": "Platform",
+    "markets": "Markets",
+    "why": "Why Bullex",
+    "about": "About us",
+    "pricing": "Pricing",
+    "support": "Support",
+    "faq": "FAQ",
+    "openAccount": "Open account",
+    "login": "Sign in",
+    "legal": "Legal",
+    "terms": "Terms of use",
+    "privacy": "Privacy",
+    "risk": "Risk notices",
+    "disclaimer": "Trading involves risk. Only operate with capital you can afford to lose. Educational content, not investment advice.",
+    "copyright": "© 2026 Bullex. All rights reserved.",
+    "prizes": "Prizes",
+    "riskAlert": "Risk Warning: The financial products offered by the company carry a high level of risk and may result in loss. You should never invest money you cannot afford to lose.",
+    "companyLegal": "Digital Smart LLC Address: Lighthouse Trust Nevis Ltd, Suite 1, A.L. Evelyn Ltd Building, Main Street, Charlestown, Nevis, Registration Number L 22205",
+    "paymentsLegal": "Payment transactions managed by: DIGITAL SMART CY LIMITED Address: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
+  },
+  "legalNotice": {
+    "text": "Bullex is not authorized by Brazil’s securities regulator (CNMV) to publicly offer or intermediate securities in Brazil. By accessing the Bullex website, you acknowledge and agree to these restrictions. For more information, see the Client Agreement.",
+    "close": "Close notice"
+  },
+  "common": {
+    "backToTop": "Back to top",
+    "installApp": "Install app"
+  },
+  "markets": {
+    "badge": "+ 250 options",
+    "title": "More than 200 assets to invest in, without the usual hassle.",
+    "subtitle": "Pick an asset and start investing in just a few clicks."
+  },
+  "why": {
+    "eyebrow": "Why Bullex?",
+    "titleBefore": "Why is Bullex the right broker for ",
+    "titleHighlight": "serious investors?",
+    "subtitle": "At Bullex we combine technology, security and exclusive conditions for people who trade at a high level.",
+    "callout": "More than a broker: a strategic partner so you can <highlight>trade without limits</highlight> and <highlight>go further</highlight>.",
+    "photoAlt": "Figure wearing a green bull mask, representing the Bullex identity",
+    "features": {
+      "liquidity": {
+        "title": "Top-tier liquidity",
+        "text": "Fast, stable execution even on large volumes."
+      },
+      "security": {
+        "title": "Security and trust",
+        "text": "Robust infrastructure that follows high compliance standards."
+      },
+      "exclusive": {
+        "title": "Exclusive conditions",
+        "text": "Competitive spreads, flexible leverage and lower costs."
+      },
+      "support": {
+        "title": "Premium support",
+        "text": "Dedicated help when you need it, 24 hours a day."
+      },
+      "platform": {
+        "title": "Advanced platform",
+        "text": "Professional tools and modern tech for your trades."
+      },
+      "diversify": {
+        "title": "Smarter diversification",
+        "text": "Access different markets and opportunities in one place."
+      }
+    },
+    "bars": {
+      "speed": {
+        "title": "Fast execution",
+        "text": "Orders filled in milliseconds."
+      },
+      "lock": {
+        "title": "Advanced protection",
+        "text": "Your funds and data stay protected."
+      },
+      "manage": {
+        "title": "Professional management",
+        "text": "Tools and reports for better decisions."
+      },
+      "premium": {
+        "title": "Premium experience",
+        "text": "An environment built for high performance."
+      }
+    }
+  },
+  "about": {
+    "title": "About us",
+    "lead": "At Bullex, the market is moving — and so are we.",
+    "body": "We are a trading platform built for speed, technology and a simpler, more direct way to operate. We created an environment where traders can access the market, explore opportunities and rely on a structure designed to follow every stage of the journey.",
+    "tagline": "Bullex. Where technology meets the market.",
+    "imageAlt": "A bull in attack stance in front of a city lit in green, a symbol of a rising market"
+  },
+  "testimonials": {
+    "eyebrow": "People who already tried it",
+    "title": "What folks are saying",
+    "subtitle": "We didn’t ask for pretty copy. We used what landed in support and the group chat.",
+    "stars": "{count} out of 5 stars",
+    "items": {
+      "camila": {
+        "photoAlt": "Photo of Camila",
+        "quote": "I opened the demo on a Saturday afternoon because I’d been putting this off for months. The fake US$ 10k helps with that fear of clicking the wrong thing. I still haven’t put real money in — my husband would kill me. But at least I get market orders now. The app froze for like 20 seconds once and I almost closed the account. It came back. I stayed."
+      },
+      "rogerio": {
+        "photoAlt": "Photo of Rogério",
+        "quote": "My brother trades at XP and kept teasing me that I wouldn’t get any of it. I opened the demo here and by the afternoon I was placing orders. The screen is cleaner, not 40 buttons. I sent a question Sunday night and they replied Monday morning — that’s fine by me. Four stars because I’m still on demo, but I already liked it enough to tell my brother-in-law."
+      },
+      "thiago": {
+        "photoAlt": "Photo of Thiago",
+        "quote": "My cousin sent me the link and I swore it was a scam lol. I tested the demo, did like 15 crypto trades just to see if the balance would vanish. It didn’t. I like that it doesn’t push leverage all the time, because I would’ve fallen for it. I signed up for real this week. If it goes wrong I’ll come back here and complain."
+      },
+      "juliana": {
+        "photoAlt": "Photo of Juliana",
+        "quote": "I’d already lost a bit at another broker (not naming them, embarrassing). Here at least the UI doesn’t lose me. I wish the chart was fuller, volume more obvious, that kind of thing. But for what I do — buy some stocks and forget — it’s fine. Took me a while to find history. It was two clicks. That’s on me."
+      },
+      "eduardo": {
+        "photoAlt": "Photo of Eduardo",
+        "quote": "Verification took 2 days and I almost gave up. Then it went through. Yesterday I traded FX for the first time in my life, 50 dollars just to feel it. The order filled fast. I’m not a trader, I work construction, so if I managed to open it and click, anyone can. My daughter helped with the signup, to be honest."
+      },
+      "fernanda": {
+        "photoAlt": "Photo of Fernanda",
+        "quote": "I took one star off because signup was slow on TIM 4G. I stared at the screen for a minute. Other than that the demo balance showed up right away. My sister opened one too. She couldn’t find history, I found it. We compare app screenshots on WhatsApp. Nothing revolutionary, I just didn’t feel stupid using it."
+      }
+    }
+  },
+  "platform": {
+    "aria": "Bullex platform on desktop and mobile",
+    "imageAlt": "Bullex trading platform on desktop with a candlestick chart and on mobile with Up and Down buttons"
+  },
+  "highlights": {
+    "aria": "Platform highlights",
+    "items": {
+      "execution": {
+        "title": "Institutional execution",
+        "text": "Fast, stable orders even in high-volatility windows."
+      },
+      "security": {
+        "title": "Security and compliance",
+        "text": "Protected infrastructure and standards built for confident trading."
+      },
+      "access": {
+        "title": "Global access 24/7",
+        "text": "Stocks, crypto and FX in one experience, at any hour."
+      }
+    }
+  },
+  "mobileApp": {
+    "titleBefore": "Not just on desktop. Bullex is also on ",
+    "titleHighlight": "mobile.",
+    "subtitle": "Trade from anywhere with the app on Google Play.",
+    "storeEyebrow": "Get it on",
+    "storeName": "Google Play",
+    "storeAria": "Download the Bullex app on Google Play",
+    "photoAlt": "Hand holding a phone with the Bullex app"
+  },
+  "prizes": {
+    "eyebrow": "Premium rewards",
+    "title": "Prizes",
+    "leadBefore": "Exclusive ",
+    "leadHighlight": "rewards",
+    "leadAfter": " for those who trade with us.",
+    "body": "Earn points on every trade and redeem them for real prizes.",
+    "cta": "I want to win prizes",
+    "featuredBadge": "Grand prize",
+    "points": {
+      "points": "Earn points on every trade.",
+      "redeem": "Redeem exclusive prizes.",
+      "safe": "100% secure and transparent."
+    },
+    "barNote": "Transparency at every step. You stay in control.",
+    "barSocial": "+25,000 clients have already been rewarded.",
+    "cards": {
+      "car": {
+        "title": "Brand-new car",
+        "titleHighlight": "",
+        "text": "The most coveted prize for those who trade at the top.",
+        "imageAlt": "Brand-new car from the Bullex rewards program"
+      },
+      "box": {
+        "title": "Trader top Box",
+        "titleHighlight": "",
+        "text": "More than a kit: a Bullex experience delivered to your home.",
+        "imageAlt": "Bullex Trader top Box"
+      },
+      "tech": {
+        "title": "Trader top",
+        "titleHighlight": "",
+        "text": "A collectible piece worthy of those who trade at the top.",
+        "imageAlt": "Bullex Trader top statue"
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "About Bullex",
+    "items": {
+      "unique": {
+        "q": "What makes Bullex unique?",
+        "a": "Bullex stands out with an intuitive platform and advanced tools for financial trading. The focus is a simple experience, with features built for fast decisions on desktop and mobile."
+      },
+      "trust": {
+        "q": "Why should I trust Bullex?",
+        "a": "Trust comes first. Bullex follows high ethical standards and uses secure technology to protect client information. The team is committed to a reliable, transparent trading experience."
+      },
+      "start": {
+        "q": "How to start?",
+        "a": "Register, open the demo account with US$ 10,000, and explore the platform. When you are ready to trade live, deposit funds and use support at every step."
+      },
+      "instruments": {
+        "q": "What financial instruments can I trade?",
+        "a": "Bullex offers currency pairs, commodities, indices, and cryptocurrencies. There are more than 200 assets to explore and trade in a few clicks."
+      },
+      "security": {
+        "q": "How do you protect the security of my personal data?",
+        "a": "Your data security is a priority. We use encryption and security measures to keep client information confidential and intact."
+      },
+      "education": {
+        "q": "Does Bullex offer educational resources for beginners?",
+        "a": "Yes. Bullex provides tutorials, webinars, and learning materials so beginners can understand the basics and practice on the demo before risking capital."
+      }
+    }
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "pt-BR": "Português",
+    "en": "English",
+    "es": "Español",
+    "ru": "Русский",
+    "th": "ไทย",
+    "vi": "Tiếng Việt"
+  }
 }

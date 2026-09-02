@@ -1,11 +1,12 @@
 .dock {
+  --dock-ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: fixed;
   right: 1.35rem;
   bottom: 1.35rem;
   z-index: 41;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0;
 }
 
 .install {
@@ -23,7 +24,11 @@
   letter-spacing: -0.02em;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.45s var(--dock-ease);
+  will-change: transform;
 }
 
 .install:hover {
@@ -35,25 +40,75 @@
   flex-shrink: 0;
 }
 
+.buttonSlot {
+  display: grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.45s var(--dock-ease);
+}
+
+.dockOpen .buttonSlot {
+  grid-template-columns: 1fr;
+}
+
+.buttonSlotInner {
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .button {
   width: 44px;
   height: 44px;
+  margin-left: 0.55rem;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   border: 0;
   border-radius: 999px;
   background: #7cff3a;
   color: #0a140c;
   cursor: pointer;
+  opacity: 0;
+  transform: translateX(120%);
+  transition:
+    transform 0.45s var(--dock-ease),
+    opacity 0.28s ease,
+    background 0.2s ease;
+  will-change: transform, opacity;
+}
+
+.dockOpen .button {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.04s, 0.02s, 0s;
 }
 
 .button:hover {
   background: #b8ff6a;
 }
 
+.motionStatic .install,
+.motionStatic .buttonSlot,
+.motionStatic .button {
+  transition: none;
+  will-change: auto;
+}
+
+.motionStatic .button {
+  transition: background 0.2s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .install {
+  .install,
+  .buttonSlot,
+  .button {
     transition: none;
+    will-change: auto;
+  }
+
+  .button {
+    transition: background 0.2s ease;
   }
 }
 
@@ -72,5 +127,6 @@
   .button {
     width: 40px;
     height: 40px;
+    margin-left: 0.45rem;
   }
 }

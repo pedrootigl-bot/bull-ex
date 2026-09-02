@@ -81,6 +81,21 @@
   color: #fff;
 }
 
+.notices {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.5rem 0 1.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notices p {
+  margin: 0;
+  color: #7a7a7a;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  max-width: 72rem;
+}
+
 .bottom {
   display: flex;
   flex-wrap: wrap;

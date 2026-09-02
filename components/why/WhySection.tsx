@@ -1,17 +1,59 @@
-import { useTranslations } from "next-intl";
+"use client";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
 
 export function WhySection() {
   const t = useTranslations("why");
+  const reducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        setVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.22 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  const motionClass = reducedMotion ? styles.motionStatic : "";
+  const textClass = `${styles.fromLeft} ${visible ? styles.in : ""} ${motionClass}`;
+  const imageClass = `${styles.fromRight} ${visible ? styles.in : ""} ${motionClass}`;
 
   return (
-    <section className={styles.section} id={WHY_COPY.id} aria-labelledby="why-title">
+    <section
+      className={styles.section}
+      ref={sectionRef}
+      id={WHY_COPY.id}
+      aria-labelledby="why-title"
+    >
       <div className={styles.inner}>
         <div className={styles.layout}>
-          <div className={styles.intro}>
+          <div className={`${styles.intro} ${textClass}`}>
             <p className={styles.eyebrow}>{t("eyebrow")}</p>
             <h2 className={styles.title} id="why-title">
               {t("titleBefore")}
@@ -21,7 +63,7 @@ export function WhySection() {
           </div>
 
           <div className={styles.aside}>
-            <div className={styles.visual}>
+            <div className={`${styles.visual} ${imageClass}`}>
               <Image
                 className={styles.photo}
                 src="/images/bullex-why-bull.webp"
@@ -33,7 +75,7 @@ export function WhySection() {
               />
             </div>
 
-            <div className={styles.bar}>
+            <div className={`${styles.bar} ${textClass} ${styles.delayBar}`}>
               {WHY_COPY.bars.map((icon) => (
                 <article className={styles.barItem} key={icon}>
                   <div className={styles.iconWrap}>
@@ -50,7 +92,10 @@ export function WhySection() {
 
           <div className={styles.features}>
             {WHY_COPY.features.map((icon) => (
-              <article className={styles.feature} key={icon}>
+              <article
+                className={`${styles.feature} ${styles.fromDown} ${visible ? styles.in : ""} ${motionClass}`}
+                key={icon}
+              >
                 <div className={styles.iconWrap}>
                   <WhyIcon name={icon} />
                 </div>
@@ -62,7 +107,7 @@ export function WhySection() {
             ))}
           </div>
 
-          <p className={styles.callout}>
+          <p className={`${styles.callout} ${textClass} ${styles.delayCallout}`}>
             <WhyIcon name="bull" />
             <span>
               {t.rich("callout", {

@@ -1,15 +1,50 @@
+"use client";
+
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 import { PLAY_STORE_HREF } from "./mobileAppConfig";
 import styles from "./mobileApp.module.css";
 
 export function MobileAppSection() {
   const t = useTranslations("mobileApp");
+  const reducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        setVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.28 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
 
   return (
-    <section className={styles.section} aria-labelledby="mobile-app-title">
+    <section className={styles.section} ref={sectionRef} aria-labelledby="mobile-app-title">
       <div className={styles.inner}>
-        <div className={styles.visual}>
+        <div
+          className={`${styles.visual} ${visible ? styles.visualIn : ""} ${reducedMotion ? styles.motionStatic : ""}`}
+        >
           <Image
             className={styles.photo}
             src="/images/bullex-mobile-app.webp"
@@ -22,7 +57,9 @@ export function MobileAppSection() {
           />
         </div>
 
-        <div className={styles.copy}>
+        <div
+          className={`${styles.copy} ${visible ? styles.copyIn : ""} ${reducedMotion ? styles.motionStatic : ""}`}
+        >
           <h2 className={styles.title} id="mobile-app-title">
             {t("titleBefore")}
             <span className={styles.highlight}>{t("titleHighlight")}</span>

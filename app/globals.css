@@ -44,7 +44,7 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {

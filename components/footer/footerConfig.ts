@@ -1,3 +1,5 @@
+export const SUPPORT_EMAIL = "support@bull-ex.com";
+
 export const FOOTER_COPY = {
   brand: "Bullex",
   tagline: "Onde tecnologia e mercado se encontram.",
@@ -18,6 +20,7 @@ export const FOOTER_COPY = {
       title: "Suporte",
       links: [
         { href: "#faq", label: "FAQ" },
+        { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL },
         { href: "https://trade.bull-ex.com/pt/register", label: "Abrir conta" },
         { href: "https://trade.bull-ex.com/pt/register", label: "Entrar" },
       ],

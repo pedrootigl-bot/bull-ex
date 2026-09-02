@@ -2,6 +2,7 @@ import { HERO_COPY } from "@/components/hero/heroConfig";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { SUPPORT_EMAIL } from "./footerConfig";
 import styles from "./footer.module.css";
 
 export function SiteFooter() {
@@ -22,6 +23,7 @@ export function SiteFooter() {
       title: t("support"),
       links: [
         { href: "#faq", label: t("faq") },
+        { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL },
         { href: HERO_COPY.ctaHref, label: t("openAccount") },
         { href: HERO_COPY.ctaHref, label: t("login") },
       ],
@@ -75,6 +77,12 @@ export function SiteFooter() {
               </ul>
             </nav>
           ))}
+        </div>
+
+        <div className={styles.notices}>
+          <p>{t("riskAlert")}</p>
+          <p>{t("companyLegal")}</p>
+          <p>{t("paymentsLegal")}</p>
         </div>
 
         <div className={styles.bottom}>

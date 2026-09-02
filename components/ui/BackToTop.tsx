@@ -29,7 +29,7 @@ export function BackToTop() {
   }
 
   return (
-    <div className={styles.dock}>
+    <div className={`${styles.dock} ${visible ? styles.dockOpen : ""} ${reducedMotion ? styles.motionStatic : ""}`}>
       <a
         className={styles.install}
         href={PLAY_STORE_HREF}
@@ -45,20 +45,29 @@ export function BackToTop() {
         </svg>
         <span>{t("installApp")}</span>
       </a>
-      {visible ? (
-        <button className={styles.button} type="button" onClick={goTop} aria-label={t("backToTop")}>
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <path
-              d="M8 13V4M4.2 7.2 8 3.5l3.8 3.7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      ) : null}
+
+      <div className={styles.buttonSlot} aria-hidden={!visible}>
+        <div className={styles.buttonSlotInner}>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={goTop}
+            tabIndex={visible ? 0 : -1}
+            aria-label={t("backToTop")}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 13V4M4.2 7.2 8 3.5l3.8 3.7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

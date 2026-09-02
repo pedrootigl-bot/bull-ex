@@ -1,11 +1,18 @@
 .hero {
   position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 128vh;
   background: #000;
   color: #fff;
+}
+
+.heroStage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .background {
@@ -31,6 +38,44 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
+}
+
+.heroVisuals {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.visualZoom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform-origin: center 38%;
+  will-change: transform, opacity, filter;
+}
+
+.zoomItem {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroVisuals {
+    opacity: 1;
+    will-change: auto;
+  }
+
+  .visualZoom,
+  .zoomItem {
+    will-change: auto;
+  }
 }
 
 .glowOrb,
@@ -116,43 +161,72 @@
 .nav {
   --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
   position: fixed;
-  top: 0;
+  top: 0.85rem;
   left: 0;
   right: 0;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.42);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: center;
+  padding: 0 max(0.85rem, 3vw);
+  pointer-events: none;
+}
+
+.navShell {
+  pointer-events: auto;
+  width: min(1120px, 100%);
+  border-radius: 999px;
+  background: rgba(5, 5, 5, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.22);
+  transition:
+    background-color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    border-radius 0.28s var(--nav-ease);
+}
+
+.navScrolled .navShell {
+  background: rgba(5, 5, 5, 0.82);
+  border-color: rgba(124, 255, 58, 0.14);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.38);
+}
+
+.navMenuOpen .navShell {
+  border-radius: 24px;
+  background: rgba(5, 5, 5, 0.92);
+  border-color: rgba(124, 255, 58, 0.18);
 }
 
 .navInner {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  padding: 0.85rem 4.5vw;
+  gap: 0.75rem 1rem;
+  padding: 0.45rem 0.5rem 0.45rem 0.85rem;
 }
 
 .navEnd {
-  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  justify-content: flex-end;
+  gap: 0.55rem;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  justify-self: start;
   line-height: 0;
   text-decoration: none;
+  padding-left: 0.15rem;
 }
 
 .brandLogo {
   display: block;
-  height: 32px;
+  height: 28px;
   width: auto;
-  max-width: 148px;
+  max-width: 132px;
   object-fit: contain;
 }
 
@@ -160,88 +234,181 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 0.15rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 44px;
+  min-width: 0;
 }
 
 .navLinks a {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  flex: 0 0 auto;
-  min-width: 44px;
-  max-width: 44px;
-  height: 44px;
-  padding: 0 13px;
-  gap: 0;
-  overflow: hidden;
+  gap: 0.42rem;
+  height: 40px;
+  padding: 0 0.78rem;
   border-radius: 999px;
-  color: #b7beb8;
+  color: #c2c8c3;
   text-decoration: none;
   white-space: nowrap;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   transition:
-    max-width 0.32s var(--nav-ease),
-    padding 0.32s var(--nav-ease),
-    gap 0.28s var(--nav-ease),
-    background-color 0.22s ease,
     color 0.2s ease,
-    box-shadow 0.22s ease;
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .navLinks a svg {
   flex-shrink: 0;
+  opacity: 0.72;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .navLinks a span {
   display: inline-block;
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  font-size: 0.82rem;
-  font-weight: 600;
-  pointer-events: none;
-  transition:
-    max-width 0.32s var(--nav-ease),
-    opacity 0.2s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .navLinks a:hover,
-  .navLinks a:focus-visible {
-    max-width: 176px;
-    padding: 0 16px 0 14px;
-    gap: 8px;
-    color: #7cff3a;
-    background: rgba(124, 255, 58, 0.1);
-    box-shadow: inset 0 0 0 1px rgba(124, 255, 58, 0.18);
-  }
+.navLinks a:hover,
+.navLinks a:focus-visible {
+  color: #7cff3a;
+  background: rgba(124, 255, 58, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(124, 255, 58, 0.16);
+}
 
-  .navLinks a:hover span,
-  .navLinks a:focus-visible span {
-    max-width: 128px;
-    opacity: 1;
-  }
+.navLinks a:hover svg,
+.navLinks a:focus-visible svg {
+  opacity: 1;
+}
 
-  .navLinks:hover a:not(:hover):not(:focus-visible) {
-    color: rgba(183, 190, 184, 0.62);
-  }
+.navLinks a:focus-visible {
+  outline: none;
+}
+
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  cursor: pointer;
+}
+
+.menuToggleBars {
+  display: grid;
+  gap: 4px;
+  width: 16px;
+}
+
+.menuToggleBars i {
+  display: block;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.28s var(--nav-ease), opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.navMenuOpen .menuToggleBars i:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+
+.navMenuOpen .menuToggleBars i:nth-child(2) {
+  opacity: 0;
+}
+
+.navMenuOpen .menuToggleBars i:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.mobilePanel {
+  display: none;
+  padding: 0.15rem 0.75rem 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobileLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0 0;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.mobileLinks a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 0.75rem;
+  border-radius: 14px;
+  color: #d7d7d7;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobileLinks a:hover,
+.mobileLinks a:focus-visible {
+  color: #7cff3a;
+  background: rgba(124, 255, 58, 0.08);
+  outline: none;
 }
 
 .navCta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1.5px;
+  border-radius: 999px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  isolation: isolate;
+}
+
+.beam {
+  position: absolute;
+  inset: -1000%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    var(--hero-accent, #7cff3a) 0%,
+    var(--hero-accent, #7cff3a) 28%,
+    transparent 32%,
+    transparent 100%
+  );
+  animation: beamSpin 3s linear infinite;
+  pointer-events: none;
+}
+
+.navCtaInner {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
   padding: 0.38rem 0.4rem 0.38rem 1rem;
   border-radius: 999px;
-  background: #1a1a1a;
-  color: #fff;
-  text-decoration: none;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.88rem;
   font-weight: 500;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.navCta:hover .navCtaInner {
+  border-color: transparent;
+  background: #0a0a0a;
 }
 
 .navCtaIcon {
@@ -253,6 +420,32 @@
   place-items: center;
 }
 
+@keyframes beamSpin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam {
+    animation: none;
+    background: linear-gradient(
+      135deg,
+      rgba(124, 255, 58, 0.55),
+      rgba(124, 255, 58, 0.12) 40%,
+      transparent 70%
+    );
+    inset: 0;
+  }
+
+  .navShell,
+  .navLinks a,
+  .menuToggleBars i,
+  .mobileLinks a {
+    transition: none;
+  }
+}
+
 .content {
   position: relative;
   z-index: 10;
@@ -260,8 +453,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 26vh 1.25rem 5.5rem;
+  padding: 7.5rem 1.25rem 5.5rem;
+}
+
+.content [data-hero-rise] {
+  opacity: 0;
+  transform: translateY(56px);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content [data-hero-rise] {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
 }
 
 .headline {
@@ -282,24 +490,78 @@
   color: #b8b8b8;
   font-size: 1.02rem;
   line-height: 1.55;
-  margin: 0 0 3.4rem;
+  margin: 0 0 1.35rem;
+}
+
+.menuCard {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 1.55rem;
+  padding: 1.5px;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+}
+
+.menuCardInner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 0.95rem 0.42rem 0.42rem;
+  border-radius: 999px;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.menuCardIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(124, 255, 58, 0.12);
+  color: #7cff3a;
+  display: grid;
+  place-items: center;
 }
 
 .cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1.5px;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+  text-decoration: none;
+  color: #fff;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 1.1rem;
   padding: 0.42rem 0.42rem 0.42rem 1.35rem;
   border-radius: 999px;
-  background: #fff;
-  color: #111;
-  text-decoration: none;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.18s ease;
 }
 
-.cta:hover {
+.cta:hover .ctaInner {
+  border-color: transparent;
+  background: #0a0a0a;
   transform: translateY(-1px);
 }
 
@@ -307,7 +569,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #111;
+  background: #2a2a2a;
   display: grid;
   place-items: center;
 }
@@ -375,11 +637,27 @@
   }
 
   .content {
-    padding-top: 22vh;
+    padding-top: 6.5rem;
   }
 
   .orbitLayer {
     height: 42vh;
+  }
+}
+
+@media (max-width: 1100px) {
+  .navLinks a span {
+    display: none;
+  }
+
+  .navLinks a {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .navLinks a svg {
+    opacity: 0.9;
   }
 }
 
@@ -391,9 +669,21 @@
   .navLinks {
     display: none;
   }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .navMenuOpen .mobilePanel {
+    display: block;
+  }
 }
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: 118vh;
+  }
+
   .brandLogo {
     height: 28px;
     max-width: 128px;
@@ -406,7 +696,7 @@
   }
 
   .content {
-    padding: 20vh 1.15rem 4.5rem;
+    padding: 5.8rem 1.15rem 4.2rem;
   }
 
   .stats {
@@ -422,9 +712,13 @@
     padding: 0;
   }
 
-  .cta {
+  .ctaInner {
     letter-spacing: 0.03em;
     font-size: 0.72rem;
+  }
+
+  .menuCardInner {
+    font-size: 0.76rem;
   }
 
   .orbitLayer {
@@ -440,7 +734,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .glowPulse,
-  .cta:hover {
+  .cta:hover .ctaInner {
     animation: none;
     transform: none;
   }

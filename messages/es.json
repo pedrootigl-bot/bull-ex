@@ -1,261 +1,267 @@
 {
-    "meta":  {
-                 "title":  "Bull-ex — Opera acciones, cripto y divisas",
-                 "description":  "Regístrate y recibe US$ 10.000 en tu cuenta demo para aprender a invertir."
-             },
-    "navigation":  {
-                       "aria":  "Principal",
-                       "brand":  "Bull-ex",
-                       "about":  "Sobre",
-                       "markets":  "Mercados",
-                       "pricing":  "Precios",
-                       "faq":  "FAQ",
-                       "login":  "Entrar",
-                       "why":  "Por qué Bullex",
-                       "prizes":  "Premios"
-                   },
-    "hero":  {
-                 "headline":  "Opera acciones, criptomonedas y productos de divisas de forma sencilla.",
-                 "subheadline":  "Regístrate y recibe US$ 10.000 en tu cuenta demo para aprender a invertir.",
-                 "cta":  "ABRE TU CUENTA GRATIS",
-                 "stats":  {
-                               "demoValue":  "US$ 10.000",
-                               "demoLabel":  "Saldo inicial en demo",
-                               "feesValue":  "0 comisiones",
-                               "feesLabel":  "Para abrir tu cuenta",
-                               "hoursValue":  "24/7",
-                               "hoursLabel":  "Mercados globales"
-                           }
-             },
-    "footer":  {
-                   "brand":  "Bullex",
-                   "tagline":  "Donde la tecnología y el mercado se encuentran.",
-                   "cta":  "Abre tu cuenta gratis",
-                   "platform":  "Plataforma",
-                   "markets":  "Mercados",
-                   "why":  "Por qué Bullex",
-                   "about":  "Quiénes somos",
-                   "pricing":  "Precios",
-                   "support":  "Soporte",
-                   "faq":  "FAQ",
-                   "openAccount":  "Abrir cuenta",
-                   "login":  "Entrar",
-                   "legal":  "Legal",
-                   "terms":  "Términos de uso",
-                   "privacy":  "Privacidad",
-                   "risk":  "Avisos de riesgo",
-                   "disclaimer":  "Operar activos implica riesgo. Opera solo con capital que puedas perder. Contenido educativo, no es recomendación de inversión.",
-                   "copyright":  "© 2026 Bullex. Todos los derechos reservados.",
-                   "prizes":  "Premios"
-               },
-    "legalNotice":  {
-                        "text":  "Bullex no está autorizada por el regulador brasileño (CNMV) para ofrecer o intermediar valores de forma pública en Brasil. Al acceder al sitio de Bullex, declaras conocer y aceptar estas restricciones. Para más información, consulta el Contrato del Cliente.",
-                        "close":  "Cerrar aviso"
-                    },
-    "common":  {
-                   "backToTop":  "Volver arriba",
-                   "installApp":  "Instalar app"
-               },
-    "markets":  {
-                    "badge":  "+ 250 opciones",
-                    "title":  "Más de 200 activos para invertir de forma simple.",
-                    "subtitle":  "Elige un activo y empieza a invertir en unos pocos clics."
-                },
-    "why":  {
-                "eyebrow":  "¿Por qué Bullex?",
-                "titleBefore":  "¿Por qué Bullex es el bróker ideal para ",
-                "titleHighlight":  "inversores exigentes?",
-                "subtitle":  "En Bullex unimos tecnología, seguridad y condiciones exclusivas para quien opera a alto nivel.",
-                "callout":  "Más que un bróker, un socio estratégico para que puedas \u003chighlight\u003eoperar sin límites\u003c/highlight\u003e y \u003chighlight\u003ellegar más lejos\u003c/highlight\u003e.",
-                "photoAlt":  "Figura con máscara de toro verde, representando la identidad de Bullex",
-                "features":  {
-                                 "liquidity":  {
-                                                   "title":  "Liquidez de alto nivel",
-                                                   "text":  "Ejecución rápida y estable incluso en grandes volúmenes."
-                                               },
-                                 "security":  {
-                                                  "title":  "Seguridad y confianza",
-                                                  "text":  "Infraestructura sólida y cumplimiento de altos estándares."
-                                              },
-                                 "exclusive":  {
-                                                   "title":  "Condiciones exclusivas",
-                                                   "text":  "Spreads competitivos, apalancamiento flexible y costos más bajos."
-                                               },
-                                 "support":  {
-                                                 "title":  "Soporte premium",
-                                                 "text":  "Atención dedicada cuando más lo necesitas, las 24 horas."
-                                             },
-                                 "platform":  {
-                                                  "title":  "Plataforma avanzada",
-                                                  "text":  "Herramientas profesionales y tecnología de punta para tus operaciones."
-                                              },
-                                 "diversify":  {
-                                                   "title":  "Diversificación inteligente",
-                                                   "text":  "Accede a distintos mercados y oportunidades en un solo lugar."
-                                               }
-                             },
-                "bars":  {
-                             "speed":  {
-                                           "title":  "Ejecución rápida",
-                                           "text":  "Órdenes ejecutadas en milisegundos."
-                                       },
-                             "lock":  {
-                                          "title":  "Protección avanzada",
-                                          "text":  "Tus recursos y datos siempre protegidos."
-                                      },
-                             "manage":  {
-                                            "title":  "Gestión profesional",
-                                            "text":  "Herramientas e informes para mejores decisiones."
-                                        },
-                             "premium":  {
-                                             "title":  "Experiencia premium",
-                                             "text":  "Un entorno pensado para alto rendimiento."
-                                         }
-                         }
-            },
-    "about":  {
-                  "title":  "Quiénes somos",
-                  "lead":  "En Bullex, el mercado está en movimiento — y nosotros también.",
-                  "body":  "Somos una plataforma de trading creada para entregar velocidad, tecnología y una experiencia de operación más simple y directa. Creamos un entorno donde los traders pueden acceder al mercado, explorar oportunidades y contar con una estructura pensada para acompañar cada etapa del camino.",
-                  "tagline":  "Bullex. Donde la tecnología y el mercado se encuentran.",
-                  "imageAlt":  "Toro en posición de ataque frente a una ciudad iluminada en verde, símbolo de mercado al alza"
-              },
-    "testimonials":  {
-                         "eyebrow":  "Quien ya lo probó",
-                         "title":  "Lo que se está comentando",
-                         "subtitle":  "No pedimos un texto bonito. Copiamos lo que llegó a soporte y al grupo.",
-                         "stars":  "{count} de 5 estrellas",
-                         "items":  {
-                                       "camila":  {
-                                                      "photoAlt":  "Foto de Camila",
-                                                      "quote":  "Abrí la demo un sábado por la tarde porque llevaba meses dándole vueltas. Los 10 mil dólares de mentira ayudan a no tener ese miedo de hacer clic mal. Todavía no puse dinero de verdad — mi marido me mataría. Pero al menos ya entendí la orden a mercado. La app se congeló unos 20 segundos una vez y casi cierro la cuenta. Volvió. Me quedé."
-                                                  },
-                                       "rogerio":  {
-                                                       "photoAlt":  "Foto de Rogério",
-                                                       "quote":  "Mi hermano opera en XP y se reía de que yo no iba a entender nada. Abrí la demo aquí y en una tarde ya estaba haciendo órdenes. La pantalla es más limpia, no hay 40 botones. Mandé una duda el domingo por la noche y respondieron el lunes por la mañana — para mí está bien. Cuatro estrellas porque sigo en demo, pero ya me gustó lo suficiente para recomendárselo a mi cuñado."
-                                                   },
-                                       "thiago":  {
-                                                      "photoAlt":  "Foto de Thiago",
-                                                      "quote":  "Mi primo me mandó el enlace y juré que era una estafa jaja. Probé la demo, hice unas 15 operaciones en cripto solo para ver si desaparecía el saldo. No desapareció. Me gusta que no empuja el apalancamiento todo el rato, porque yo caería. Me registré de verdad esta semana. Si sale mal, vuelvo aquí a quejarme."
-                                                  },
-                                       "juliana":  {
-                                                       "photoAlt":  "Foto de Juliana",
-                                                       "quote":  "Ya había perdido un poco en otro bróker (no digo el nombre, vergüenza). Aquí al menos la interfaz no me pierde. Falta un gráfico más completo, el volumen más claro, esas cosas. Pero para lo que hago — comprar unas acciones y olvidarme — está bien. Tardé en encontrar el historial. Eran dos clics. El problema era yo."
-                                                   },
-                                       "eduardo":  {
-                                                       "photoAlt":  "Foto de Eduardo",
-                                                       "quote":  "Tardé 2 días en verificar la cuenta y casi lo dejo. Luego pasó. Ayer operé divisas por primera vez en la vida, 50 dólares solo para sentir. La orden salió rápido. No soy trader, trabajo en obra, así que si yo pude abrir y hacer clic, cualquiera puede. Mi hija me ayudó con el registro, para ser honesto."
-                                                   },
-                                       "fernanda":  {
-                                                        "photoAlt":  "Foto de Fernanda",
-                                                        "quote":  "Quité una estrella porque el registro se abrió lento con el 4G de TIM, me quedé un minuto mirando la pantalla. Fuera de eso el saldo demo apareció al momento. Mi hermana también abrió. Ella no encontraba el historial, yo sí. Comparamos capturas del app por WhatsApp. Nada revolucionario, solo que no me sentí tonta usándolo."
-                                                    }
-                                   }
-                     },
-    "platform":  {
-                     "aria":  "Plataforma Bullex en computadora y móvil",
-                     "imageAlt":  "Interfaz de Bullex en escritorio con gráfico de velas y en el móvil con botones Arriba y Abajo"
-                 },
-    "highlights":  {
-                       "aria":  "Diferenciales de la plataforma",
-                       "items":  {
-                                     "execution":  {
-                                                       "title":  "Ejecución institucional",
-                                                       "text":  "Órdenes rápidas y estables, incluso en ventanas de alta volatilidad."
-                                                   },
-                                     "security":  {
-                                                      "title":  "Seguridad y cumplimiento",
-                                                      "text":  "Infraestructura protegida y estándares pensados para operar con confianza."
-                                                  },
-                                     "access":  {
-                                                    "title":  "Acceso global 24/7",
-                                                    "text":  "Acciones, cripto y divisas en una sola experiencia, a cualquier hora."
-                                                }
-                                 }
-                   },
-    "mobileApp":  {
-                      "titleBefore":  "No es solo en escritorio. Bullex también está en ",
-                      "titleHighlight":  "el móvil.",
-                      "subtitle":  "Opera desde cualquier lugar con la app en Google Play.",
-                      "storeEyebrow":  "Disponible en",
-                      "storeName":  "Google Play",
-                      "storeAria":  "Descargar la app Bullex en Google Play",
-                      "photoAlt":  "Móvil con la app Bullex en la mano"
-                  },
-    "prizes":  {
-                   "eyebrow":  "Recompensas premium",
-                   "title":  "Premios",
-                   "leadBefore":  "Recompensas ",
-                   "leadHighlight":  "exclusivas",
-                   "leadAfter":  " para quien opera con nosotros.",
-                   "body":  "En cada operación acumulas puntos y los canjeas por premios reales.",
-                   "cta":  "Quiero ganar premios",
-                   "featuredBadge":  "Gran premio",
-                   "points":  {
-                                  "points":  "Acumula puntos en cada operación.",
-                                  "redeem":  "Canjea premios exclusivos.",
-                                  "safe":  "100% seguro y transparente."
-                              },
-                   "barNote":  "Transparencia en cada etapa. Tú siempre en control.",
-                   "barSocial":  "+25.000 clientes ya fueron premiados.",
-                   "cards":  {
-                                 "car":  {
-                                             "title":  "Coche ",
-                                             "titleHighlight":  "0 km",
-                                             "text":  "El premio más deseado para quien opera al más alto nivel.",
-                                             "imageAlt":  "Coche 0 km del programa de premios Bullex"
-                                         },
-                                 "box":  {
-                                             "title":  "Trader top Box",
-                                             "titleHighlight":  "",
-                                             "text":  "Tu oportunidad de recibir este regalo en casa",
-                                             "imageAlt":  "Trader top Box de Bullex"
-                                         },
-                                 "tech":  {
-                                              "title":  "Trader top",
-                                              "titleHighlight":  "",
-                                              "text":  "Tu oportunidad de recibir este regalo en casa",
-                                              "imageAlt":  "Estatua Trader top de Bullex"
-                                          }
-                             }
-               },
-    "faq":  {
-                "eyebrow":  "Preguntas frecuentes",
-                "title":  "Sobre Bullex",
-                "items":  {
-                              "unique":  {
-                                             "q":  "¿Qué hace única a Bullex?",
-                                             "a":  "Bullex destaca por una plataforma intuitiva y herramientas avanzadas para el trading. El foco es una experiencia simple, con recursos pensados para decidir rápido en escritorio y en el móvil."
-                                         },
-                              "trust":  {
-                                            "q":  "¿Por qué debería confiar en Bullex?",
-                                            "a":  "La confianza es fundamental. Bullex sigue altos estándares éticos y usa tecnología segura para proteger la información de los clientes. El equipo está comprometido con una experiencia de operación fiable y transparente."
-                                        },
-                              "start":  {
-                                            "q":  "¿Cómo empezar?",
-                                            "a":  "Regístrate, abre la cuenta demo con US$ 10.000 y explora la plataforma. Cuando quieras operar de verdad, deposita fondos y usa el soporte en cada paso."
-                                        },
-                              "instruments":  {
-                                                  "q":  "¿Qué instrumentos financieros puedo negociar?",
-                                                  "a":  "Bullex ofrece pares de divisas, materias primas, índices y criptomonedas. Hay más de 200 activos para explorar y operar en pocos clics."
-                                              },
-                              "security":  {
-                                               "q":  "¿Cómo protegen mis datos personales?",
-                                               "a":  "La seguridad de tus datos es prioridad. Usamos cifrado y medidas de protección para garantizar la confidencialidad e integridad de la información."
-                                           },
-                              "education":  {
-                                                "q":  "¿Bullex ofrece recursos educativos para principiantes?",
-                                                "a":  "Sí. Hay tutoriales, webinars y materiales para quien empieza a entender el mercado y quiere practicar en la demo antes de arriesgar capital."
-                                            }
-                          }
-            },
-    "languageSwitcher":  {
-                             "label":  "Idioma",
-                             "pt-BR":  "Português",
-                             "en":  "English",
-                             "es":  "Español",
-                             "ru":  "Русский",
-                             "th":  "ไทย",
-                             "vi":  "Tiếng Việt"
-                         }
+  "meta": {
+    "title": "Bull-ex — Opera acciones, cripto y divisas",
+    "description": "Regístrate y recibe US$ 10.000 en tu cuenta demo para aprender a invertir."
+  },
+  "navigation": {
+    "aria": "Principal",
+    "brand": "Bull-ex",
+    "about": "Sobre",
+    "markets": "Mercados",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "login": "Entrar",
+    "why": "Por qué Bullex",
+    "prizes": "Premios",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú"
+  },
+  "hero": {
+    "headline": "Opera acciones, criptomonedas y productos de divisas de forma sencilla.",
+    "subheadline": "Regístrate y recibe US$ 10.000 en tu cuenta demo para aprender a invertir.",
+    "cta": "ABRE TU CUENTA GRATIS",
+    "stats": {
+      "demoValue": "US$ 10.000",
+      "demoLabel": "Saldo inicial en demo",
+      "feesValue": "0 comisiones",
+      "feesLabel": "Para abrir tu cuenta",
+      "hoursValue": "24/7",
+      "hoursLabel": "Mercados globales"
+    },
+    "investorsCard": "+200 mil inversores"
+  },
+  "footer": {
+    "brand": "Bullex",
+    "tagline": "Donde la tecnología y el mercado se encuentran.",
+    "cta": "Abre tu cuenta gratis",
+    "platform": "Plataforma",
+    "markets": "Mercados",
+    "why": "Por qué Bullex",
+    "about": "Quiénes somos",
+    "pricing": "Precios",
+    "support": "Soporte",
+    "faq": "FAQ",
+    "openAccount": "Abrir cuenta",
+    "login": "Entrar",
+    "legal": "Legal",
+    "terms": "Términos de uso",
+    "privacy": "Privacidad",
+    "risk": "Avisos de riesgo",
+    "disclaimer": "Operar activos implica riesgo. Opera solo con capital que puedas perder. Contenido educativo, no es recomendación de inversión.",
+    "copyright": "© 2026 Bullex. Todos los derechos reservados.",
+    "prizes": "Premios",
+    "riskAlert": "Alerta de riesgo: Los productos financieros ofrecidos por la empresa conllevan un alto nivel de riesgo y pueden resultar en pérdidas. Nunca debe invertir dinero que no pueda permitirse perder.",
+    "companyLegal": "Digital Smart LLC Dirección: Lighthouse Trust Nevis Ltd, Suite 1, A.L. Evelyn Ltd Building, Main Street, Charlestown, Nevis, Registration Number L 22205",
+    "paymentsLegal": "Transacciones de pago gestionadas por: DIGITAL SMART CY LIMITED Dirección: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
+  },
+  "legalNotice": {
+    "text": "Bullex no está autorizada por el regulador brasileño (CNMV) para ofrecer o intermediar valores de forma pública en Brasil. Al acceder al sitio de Bullex, declaras conocer y aceptar estas restricciones. Para más información, consulta el Contrato del Cliente.",
+    "close": "Cerrar aviso"
+  },
+  "common": {
+    "backToTop": "Volver arriba",
+    "installApp": "Instalar app"
+  },
+  "markets": {
+    "badge": "+ 250 opciones",
+    "title": "Más de 200 activos para invertir de forma simple.",
+    "subtitle": "Elige un activo y empieza a invertir en unos pocos clics."
+  },
+  "why": {
+    "eyebrow": "¿Por qué Bullex?",
+    "titleBefore": "¿Por qué Bullex es el bróker ideal para ",
+    "titleHighlight": "inversores exigentes?",
+    "subtitle": "En Bullex unimos tecnología, seguridad y condiciones exclusivas para quien opera a alto nivel.",
+    "callout": "Más que un bróker, un socio estratégico para que puedas <highlight>operar sin límites</highlight> y <highlight>llegar más lejos</highlight>.",
+    "photoAlt": "Figura con máscara de toro verde, representando la identidad de Bullex",
+    "features": {
+      "liquidity": {
+        "title": "Liquidez de alto nivel",
+        "text": "Ejecución rápida y estable incluso en grandes volúmenes."
+      },
+      "security": {
+        "title": "Seguridad y confianza",
+        "text": "Infraestructura sólida y cumplimiento de altos estándares."
+      },
+      "exclusive": {
+        "title": "Condiciones exclusivas",
+        "text": "Spreads competitivos, apalancamiento flexible y costos más bajos."
+      },
+      "support": {
+        "title": "Soporte premium",
+        "text": "Atención dedicada cuando más lo necesitas, las 24 horas."
+      },
+      "platform": {
+        "title": "Plataforma avanzada",
+        "text": "Herramientas profesionales y tecnología de punta para tus operaciones."
+      },
+      "diversify": {
+        "title": "Diversificación inteligente",
+        "text": "Accede a distintos mercados y oportunidades en un solo lugar."
+      }
+    },
+    "bars": {
+      "speed": {
+        "title": "Ejecución rápida",
+        "text": "Órdenes ejecutadas en milisegundos."
+      },
+      "lock": {
+        "title": "Protección avanzada",
+        "text": "Tus recursos y datos siempre protegidos."
+      },
+      "manage": {
+        "title": "Gestión profesional",
+        "text": "Herramientas e informes para mejores decisiones."
+      },
+      "premium": {
+        "title": "Experiencia premium",
+        "text": "Un entorno pensado para alto rendimiento."
+      }
+    }
+  },
+  "about": {
+    "title": "Quiénes somos",
+    "lead": "En Bullex, el mercado está en movimiento — y nosotros también.",
+    "body": "Somos una plataforma de trading creada para entregar velocidad, tecnología y una experiencia de operación más simple y directa. Creamos un entorno donde los traders pueden acceder al mercado, explorar oportunidades y contar con una estructura pensada para acompañar cada etapa del camino.",
+    "tagline": "Bullex. Donde la tecnología y el mercado se encuentran.",
+    "imageAlt": "Toro en posición de ataque frente a una ciudad iluminada en verde, símbolo de mercado al alza"
+  },
+  "testimonials": {
+    "eyebrow": "Quien ya lo probó",
+    "title": "Lo que se está comentando",
+    "subtitle": "No pedimos un texto bonito. Copiamos lo que llegó a soporte y al grupo.",
+    "stars": "{count} de 5 estrellas",
+    "items": {
+      "camila": {
+        "photoAlt": "Foto de Camila",
+        "quote": "Abrí la demo un sábado por la tarde porque llevaba meses dándole vueltas. Los 10 mil dólares de mentira ayudan a no tener ese miedo de hacer clic mal. Todavía no puse dinero de verdad — mi marido me mataría. Pero al menos ya entendí la orden a mercado. La app se congeló unos 20 segundos una vez y casi cierro la cuenta. Volvió. Me quedé."
+      },
+      "rogerio": {
+        "photoAlt": "Foto de Rogério",
+        "quote": "Mi hermano opera en XP y se reía de que yo no iba a entender nada. Abrí la demo aquí y en una tarde ya estaba haciendo órdenes. La pantalla es más limpia, no hay 40 botones. Mandé una duda el domingo por la noche y respondieron el lunes por la mañana — para mí está bien. Cuatro estrellas porque sigo en demo, pero ya me gustó lo suficiente para recomendárselo a mi cuñado."
+      },
+      "thiago": {
+        "photoAlt": "Foto de Thiago",
+        "quote": "Mi primo me mandó el enlace y juré que era una estafa jaja. Probé la demo, hice unas 15 operaciones en cripto solo para ver si desaparecía el saldo. No desapareció. Me gusta que no empuja el apalancamiento todo el rato, porque yo caería. Me registré de verdad esta semana. Si sale mal, vuelvo aquí a quejarme."
+      },
+      "juliana": {
+        "photoAlt": "Foto de Juliana",
+        "quote": "Ya había perdido un poco en otro bróker (no digo el nombre, vergüenza). Aquí al menos la interfaz no me pierde. Falta un gráfico más completo, el volumen más claro, esas cosas. Pero para lo que hago — comprar unas acciones y olvidarme — está bien. Tardé en encontrar el historial. Eran dos clics. El problema era yo."
+      },
+      "eduardo": {
+        "photoAlt": "Foto de Eduardo",
+        "quote": "Tardé 2 días en verificar la cuenta y casi lo dejo. Luego pasó. Ayer operé divisas por primera vez en la vida, 50 dólares solo para sentir. La orden salió rápido. No soy trader, trabajo en obra, así que si yo pude abrir y hacer clic, cualquiera puede. Mi hija me ayudó con el registro, para ser honesto."
+      },
+      "fernanda": {
+        "photoAlt": "Foto de Fernanda",
+        "quote": "Quité una estrella porque el registro se abrió lento con el 4G de TIM, me quedé un minuto mirando la pantalla. Fuera de eso el saldo demo apareció al momento. Mi hermana también abrió. Ella no encontraba el historial, yo sí. Comparamos capturas del app por WhatsApp. Nada revolucionario, solo que no me sentí tonta usándolo."
+      }
+    }
+  },
+  "platform": {
+    "aria": "Plataforma Bullex en computadora y móvil",
+    "imageAlt": "Interfaz de Bullex en escritorio con gráfico de velas y en el móvil con botones Arriba y Abajo"
+  },
+  "highlights": {
+    "aria": "Diferenciales de la plataforma",
+    "items": {
+      "execution": {
+        "title": "Ejecución institucional",
+        "text": "Órdenes rápidas y estables, incluso en ventanas de alta volatilidad."
+      },
+      "security": {
+        "title": "Seguridad y cumplimiento",
+        "text": "Infraestructura protegida y estándares pensados para operar con confianza."
+      },
+      "access": {
+        "title": "Acceso global 24/7",
+        "text": "Acciones, cripto y divisas en una sola experiencia, a cualquier hora."
+      }
+    }
+  },
+  "mobileApp": {
+    "titleBefore": "No es solo en escritorio. Bullex también está en ",
+    "titleHighlight": "el móvil.",
+    "subtitle": "Opera desde cualquier lugar con la app en Google Play.",
+    "storeEyebrow": "Disponible en",
+    "storeName": "Google Play",
+    "storeAria": "Descargar la app Bullex en Google Play",
+    "photoAlt": "Móvil con la app Bullex en la mano"
+  },
+  "prizes": {
+    "eyebrow": "Recompensas premium",
+    "title": "Premios",
+    "leadBefore": "Recompensas ",
+    "leadHighlight": "exclusivas",
+    "leadAfter": " para quien opera con nosotros.",
+    "body": "En cada operación acumulas puntos y los canjeas por premios reales.",
+    "cta": "Quiero ganar premios",
+    "featuredBadge": "Gran premio",
+    "points": {
+      "points": "Acumula puntos en cada operación.",
+      "redeem": "Canjea premios exclusivos.",
+      "safe": "100% seguro y transparente."
+    },
+    "barNote": "Transparencia en cada etapa. Tú siempre en control.",
+    "barSocial": "+25.000 clientes ya fueron premiados.",
+    "cards": {
+      "car": {
+        "title": "Auto 0 km",
+        "titleHighlight": "",
+        "text": "El premio más codiciado por quien opera en la cima.",
+        "imageAlt": "Coche 0 km del programa de premios Bullex"
+      },
+      "box": {
+        "title": "Trader top Box",
+        "titleHighlight": "",
+        "text": "Más que un kit: una experiencia Bullex entregada en tu casa.",
+        "imageAlt": "Trader top Box de Bullex"
+      },
+      "tech": {
+        "title": "Trader top",
+        "titleHighlight": "",
+        "text": "Una pieza de colección a la altura de quien opera en la cima.",
+        "imageAlt": "Estatua Trader top de Bullex"
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Preguntas frecuentes",
+    "title": "Sobre Bullex",
+    "items": {
+      "unique": {
+        "q": "¿Qué hace única a Bullex?",
+        "a": "Bullex destaca por una plataforma intuitiva y herramientas avanzadas para el trading. El foco es una experiencia simple, con recursos pensados para decidir rápido en escritorio y en el móvil."
+      },
+      "trust": {
+        "q": "¿Por qué debería confiar en Bullex?",
+        "a": "La confianza es fundamental. Bullex sigue altos estándares éticos y usa tecnología segura para proteger la información de los clientes. El equipo está comprometido con una experiencia de operación fiable y transparente."
+      },
+      "start": {
+        "q": "¿Cómo empezar?",
+        "a": "Regístrate, abre la cuenta demo con US$ 10.000 y explora la plataforma. Cuando quieras operar de verdad, deposita fondos y usa el soporte en cada paso."
+      },
+      "instruments": {
+        "q": "¿Qué instrumentos financieros puedo negociar?",
+        "a": "Bullex ofrece pares de divisas, materias primas, índices y criptomonedas. Hay más de 200 activos para explorar y operar en pocos clics."
+      },
+      "security": {
+        "q": "¿Cómo protegen mis datos personales?",
+        "a": "La seguridad de tus datos es prioridad. Usamos cifrado y medidas de protección para garantizar la confidencialidad e integridad de la información."
+      },
+      "education": {
+        "q": "¿Bullex ofrece recursos educativos para principiantes?",
+        "a": "Sí. Hay tutoriales, webinars y materiales para quien empieza a entender el mercado y quiere practicar en la demo antes de arriesgar capital."
+      }
+    }
+  },
+  "languageSwitcher": {
+    "label": "Idioma",
+    "pt-BR": "Português",
+    "en": "English",
+    "es": "Español",
+    "ru": "Русский",
+    "th": "ไทย",
+    "vi": "Tiếng Việt"
+  }
 }
