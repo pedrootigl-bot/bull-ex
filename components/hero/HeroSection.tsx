@@ -6,11 +6,12 @@ import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { MONEY_AMOUNTS } from "@/i18n/moneyAmounts";
 import { useViewportTier } from "@/hooks/useViewportTier";
 import gsap from "gsap";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { HERO_COPY, HERO_THEME, NAV_COPY } from "./heroConfig";
+import { type Locale } from "@/i18n/config";
+import { HERO_COPY, HERO_THEME, NAV_COPY, bullexRegisterHref } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import { OrbitalLines } from "./OrbitalLines";
 import styles from "./hero.module.css";
@@ -70,6 +71,8 @@ export function HeroSection() {
   const rgb = HERO_THEME.accentRgb;
   const tNav = useTranslations("navigation");
   const tHero = useTranslations("hero");
+  const locale = useLocale() as Locale;
+  const registerHref = bullexRegisterHref(locale);
   const { formatMoney, moneyParams } = useFormatMoney();
   const contentRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
@@ -214,6 +217,14 @@ export function HeroSection() {
 
             <div className={styles.navEnd}>
               <LanguageSwitcher />
+              <a
+                className={styles.navRegister}
+                href={registerHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {tNav("register")}
+              </a>
               <a className={styles.navCta} href={HERO_COPY.ctaHref} target="_blank" rel="noopener noreferrer">
                 <span className={styles.beam} aria-hidden="true" />
                 <span className={styles.navCtaInner}>
@@ -249,6 +260,15 @@ export function HeroSection() {
           </div>
 
           <div className={styles.mobilePanel} id="hero-mobile-nav" hidden={!menuOpen}>
+            <a
+              className={styles.mobileRegister}
+              href={registerHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              {tNav("register")}
+            </a>
             <ul className={styles.mobileLinks}>
               {NAV_COPY.links.map((link) => (
                 <li key={link.href}>
