@@ -39,7 +39,9 @@ export function AboutSection() {
     return () => observer.disconnect();
   }, [reducedMotion]);
 
-  const fadeClass = `${styles.fade} ${visible ? styles.fadeIn : ""} ${reducedMotion ? styles.motionStatic : ""}`;
+  const motionClass = reducedMotion ? styles.motionStatic : "";
+  const mediaClass = `${styles.media} ${styles.fromRight} ${visible ? styles.in : ""} ${motionClass}`;
+  const copyClass = `${styles.copy} ${styles.fromLeft} ${visible ? styles.in : ""} ${motionClass}`;
 
   return (
     <section
@@ -49,7 +51,7 @@ export function AboutSection() {
       aria-labelledby="about-title"
     >
       <div className={styles.grid}>
-        <div className={`${styles.media} ${fadeClass} ${styles.fadeMedia}`}>
+        <div className={mediaClass}>
           <Image
             className={styles.image}
             src="/images/bull-quem-somos.webp"
@@ -61,7 +63,7 @@ export function AboutSection() {
           <div className={styles.mediaFade} aria-hidden="true" />
         </div>
 
-        <div className={`${styles.copy} ${fadeClass} ${styles.fadeCopy}`}>
+        <div className={copyClass}>
           <h2 className={styles.title} id="about-title">
             {t("title")}
           </h2>

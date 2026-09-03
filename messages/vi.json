@@ -74,6 +74,9 @@
     "subtitle": "Tại Bullex, chúng tôi kết hợp công nghệ, an toàn và điều kiện riêng cho người giao dịch ở mức cao.",
     "callout": "Hơn cả một môi giới: đối tác chiến lược để bạn <highlight>giao dịch không giới hạn</highlight> và <highlight>đi xa hơn</highlight>.",
     "photoAlt": "Nhân vật đeo mặt nạ bò đực màu xanh lá, đại diện cho bản sắc Bullex",
+    "carouselLabel": "Điểm nổi bật của Bullex dành cho nhà đầu tư lớn",
+    "carouselPrev": "Thẻ trước",
+    "carouselNext": "Thẻ tiếp theo",
     "features": {
       "liquidity": {
         "title": "Thanh khoản cao",

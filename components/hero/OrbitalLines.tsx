@@ -71,14 +71,14 @@ export function OrbitalLines({ reducedMotion, dense }: OrbitalLinesProps) {
             id={`path-${uid}-${index}`}
             d={d}
             fill="none"
-            stroke={`rgba(${rgb}, ${0.18 - index * 0.04})`}
+            stroke={`rgba(${rgb}, ${0.12 - index * 0.03})`}
             strokeWidth={index === 0 ? 1.1 : 0.7}
           />
           <circle
             id={`dot-${uid}-${index}`}
             r={index === 0 ? 2.4 : 1.7}
-            fill={`rgba(${rgb}, 0.9)`}
-            style={{ filter: `drop-shadow(0 0 6px rgba(${rgb}, 0.8))` }}
+            fill={`rgba(${rgb}, 0.72)`}
+            style={{ filter: `drop-shadow(0 0 4px rgba(${rgb}, 0.35))` }}
           />
         </g>
       ))}

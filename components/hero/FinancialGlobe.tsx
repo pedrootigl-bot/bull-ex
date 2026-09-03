@@ -66,7 +66,7 @@ const fresnelFragment = /* glsl */ `
 
   void main() {
     float fresnel = pow(1.0 - abs(dot(normalize(vNormal), normalize(vViewDir))), 2.6);
-    gl_FragColor = vec4(uColor, fresnel * 0.62);
+    gl_FragColor = vec4(uColor, fresnel * 0.45);
   }
 `;
 
@@ -130,7 +130,7 @@ function GlobeScene({
           color={accent}
           wireframe
           transparent
-          opacity={0.14}
+          opacity={0.1}
           depthWrite={false}
         />
       </mesh>
@@ -154,7 +154,7 @@ function GlobeScene({
           size={tier === "mobile" ? 0.018 : 0.022}
           sizeAttenuation
           transparent
-          opacity={0.72}
+          opacity={0.58}
           depthWrite={false}
           toneMapped={false}
         />
@@ -192,8 +192,10 @@ export function FinancialGlobe({
           stencil: false,
           depth: true,
         }}
-        onCreated={() => {
+        onCreated={({ gl, scene, camera }) => {
+          gl.render(scene, camera);
           requestAnimationFrame(() => {
+            gl.render(scene, camera);
             requestAnimationFrame(() => {
               onReadyChangeRef.current?.(true);
             });

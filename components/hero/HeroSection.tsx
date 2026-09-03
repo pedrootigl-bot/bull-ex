@@ -3,7 +3,6 @@
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useViewportTier } from "@/hooks/useViewportTier";
-import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -82,6 +81,7 @@ export function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
   const entrancePlayedRef = useRef(false);
+  const introStartedRef = useRef(false);
   const stats = [
     { value: tHero("stats.demoValue"), label: tHero("stats.demoLabel") },
     { value: tHero("stats.feesValue"), label: tHero("stats.feesLabel") },
@@ -117,90 +117,97 @@ export function HeroSection() {
       return;
     }
 
-    const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
-    const items = content.querySelectorAll<HTMLElement>("[data-hero-rise]");
-
     if (reducedMotion) {
-      visuals.forEach((node) => {
-        node.style.opacity = "1";
-        node.style.transform = "none";
-      });
-      items.forEach((node) => {
-        node.style.opacity = "1";
-        node.style.transform = "none";
-      });
+      hero.classList.add(styles.heroEntered);
       return;
     }
 
-    // Mantém textos ocultos até o WebGL estar pintado — evita FOUC / ordem invertida.
+    if (entrancePlayedRef.current) {
+      hero.classList.add(styles.heroEntered);
+      return;
+    }
+
+    if (!globeReady || introStartedRef.current) {
+      return;
+    }
+
+    introStartedRef.current = true;
+
+    const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
+    const nav = hero.querySelector<HTMLElement>(`.${styles.nav}`);
+    const headline = content.querySelector<HTMLElement>("[data-hero-headline]");
+    const items = content.querySelectorAll<HTMLElement>("[data-hero-rise]");
+
     const ctx = gsap.context(() => {
-      gsap.set(visuals, {
-        opacity: 0,
-        scale: 0.92,
-        transformOrigin: "50% 38%",
-      });
-      gsap.set(items, {
-        opacity: 0,
-        y: 88,
-      });
-
-      if (!globeReady) {
-        return;
+      if (headline) {
+        gsap.set(headline, { opacity: 0, visibility: "hidden" });
       }
-
-      if (entrancePlayedRef.current) {
-        gsap.set(items, { opacity: 0, y: 40 });
-        gsap
-          .timeline()
-          .to(visuals, { opacity: 1, scale: 1, duration: 0.55, ease: "power2.out" })
-          .to(
-            items,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.55,
-              stagger: 0.08,
-              clearProps: "transform",
-            },
-            "+=0.2",
-          );
-        return;
-      }
+      gsap.set(items, { opacity: 0, visibility: "hidden" });
 
       const timeline = gsap.timeline({
-        defaults: { ease: "power3.out" },
+        defaults: { ease: "power2.out" },
         onComplete: () => {
           entrancePlayedRef.current = true;
+          hero.classList.add(styles.heroEntered);
+          gsap.set([...visuals, ...items, ...(nav ? [nav] : [])], { clearProps: "all" });
+          if (headline) {
+            gsap.set(headline, { clearProps: "all" });
+          }
         },
       });
 
-      timeline
-        .to(visuals, {
-          opacity: 1,
-          scale: 1,
-          duration: 1.45,
-          ease: "power2.out",
-        })
-        .to(
-          items,
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            stagger: 0.13,
-            ease: "power3.out",
-            clearProps: "transform",
-          },
-          "+=0.55",
+      if (nav) {
+        timeline.fromTo(
+          nav,
+          { opacity: 0, y: -10 },
+          { opacity: 1, y: 0, duration: 0.65 },
+          0,
         );
+      }
+
+      timeline.fromTo(
+        visuals,
+        { opacity: 0, scale: 0.97, transformOrigin: "50% 38%" },
+        { opacity: 1, scale: 1, duration: 1.2, ease: "power1.out" },
+        nav ? 0.08 : 0,
+      );
+
+      if (headline) {
+        timeline.fromTo(
+          headline,
+          { opacity: 0, visibility: "hidden", y: 20 },
+          { opacity: 1, visibility: "visible", y: 0, duration: 0.8, ease: "power2.out" },
+          ">+=0.5",
+        );
+      }
+
+      timeline.fromTo(
+        items,
+        { opacity: 0, visibility: "hidden", y: 24 },
+        {
+          opacity: 1,
+          visibility: "visible",
+          y: 0,
+          duration: 0.8,
+          stagger: 0.07,
+          ease: "power2.out",
+        },
+        ">+=0.12",
+      );
     }, hero);
 
-    return () => ctx.revert();
+    return () => {
+      if (!entrancePlayedRef.current) {
+        ctx.revert();
+        introStartedRef.current = false;
+      }
+    };
   }, [reducedMotion, globeReady]);
 
   return (
     <header
       ref={heroRef}
+      id={HERO_COPY.id}
       className={styles.hero}
       style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
     >
@@ -237,7 +244,7 @@ export function HeroSection() {
         >
           <div className={styles.navShell}>
             <div className={styles.navInner}>
-              <Link className={styles.brand} href="/" onClick={() => setMenuOpen(false)}>
+              <a className={styles.brand} href={`#${HERO_COPY.id}`} onClick={() => setMenuOpen(false)}>
                 <Image
                   src="/images/bullex-logo.webp"
                   alt={tNav("brand")}
@@ -246,7 +253,7 @@ export function HeroSection() {
                   className={styles.brandLogo}
                   priority
                 />
-              </Link>
+              </a>
 
               <ul className={styles.navLinks}>
                 {NAV_COPY.links.map((link) => (
@@ -311,9 +318,11 @@ export function HeroSection() {
         </nav>
 
         <section className={styles.content} ref={contentRef}>
-          <h1 className={styles.headline} data-hero-rise>
-            {tHero("headline")}
-          </h1>
+          <div className={styles.headlineWrap}>
+            <h1 className={styles.headline} data-hero-headline>
+              {tHero("headline")}
+            </h1>
+          </div>
           <p className={styles.subheadline} data-hero-rise>
             {tHero("subheadline")}
           </p>

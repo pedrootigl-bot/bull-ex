@@ -74,6 +74,9 @@
     "subtitle": "At Bullex we combine technology, security and exclusive conditions for people who trade at a high level.",
     "callout": "More than a broker: a strategic partner so you can <highlight>trade without limits</highlight> and <highlight>go further</highlight>.",
     "photoAlt": "Figure wearing a green bull mask, representing the Bullex identity",
+    "carouselLabel": "Bullex highlights for large investors",
+    "carouselPrev": "Previous card",
+    "carouselNext": "Next card",
     "features": {
       "liquidity": {
         "title": "Top-tier liquidity",

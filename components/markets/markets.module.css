@@ -146,6 +146,48 @@
   }
 }
 
+@media (max-width: 640px) {
+  .section {
+    padding: 1.35rem 0 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .miniCard {
+    min-height: 30px;
+    margin-bottom: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.72rem;
+  }
+
+  .title {
+    margin-bottom: 0.55rem;
+    font-size: clamp(1.45rem, 5.4vw, 1.85rem);
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.48;
+  }
+
+  .trackReverse {
+    margin-top: 0.65rem;
+  }
+
+  .set {
+    gap: 0.7rem;
+    padding-right: 0.7rem;
+  }
+
+  .card {
+    flex-basis: 210px;
+    padding: 0.85rem 0.9rem 0.75rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .track,
   .trackReverse {

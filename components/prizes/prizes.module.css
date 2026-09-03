@@ -13,7 +13,7 @@
   top: -14%;
   width: 48%;
   height: 44%;
-  background: radial-gradient(ellipse, rgba(124, 255, 58, 0.11), transparent 68%);
+  background: radial-gradient(ellipse, rgba(124, 255, 58, 0.06), transparent 68%);
   pointer-events: none;
 }
 
@@ -95,8 +95,8 @@
   background: conic-gradient(
     from 0deg,
     #7cff3a 0%,
-    #7cff3a 28%,
-    transparent 32%,
+    #7cff3a 18%,
+    transparent 22%,
     transparent 100%
   );
   animation: prizeBeamSpin 3s linear infinite;
@@ -257,7 +257,7 @@
   border-radius: 22px;
   border: 1px solid rgba(124, 255, 58, 0.16);
   background:
-    radial-gradient(ellipse at 50% 70%, rgba(124, 255, 58, 0.08), transparent 55%),
+    radial-gradient(ellipse at 50% 70%, rgba(124, 255, 58, 0.04), transparent 55%),
     #0a0a0a;
   will-change: clip-path;
 }
@@ -320,8 +320,8 @@
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(124, 255, 58, 0.55),
-      rgba(124, 255, 58, 0.12) 40%,
+      rgba(124, 255, 58, 0.32),
+      rgba(124, 255, 58, 0.08) 40%,
       transparent 70%
     );
   }

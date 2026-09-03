@@ -9,7 +9,7 @@ export const HERO_THEME = {
   particleCountTablet: 160,
   particleCountMobile: 80,
   /** Intensidade do glow CSS (0–1). */
-  glowIntensity: 0.55,
+  glowIntensity: 0.32,
   /** Rotação em radianos por segundo. 0 desliga a rotação 3D. */
   rotationSpeed: 0.035,
   /** false desliga glow pulse, pontos orbitais e rotação (além de reduced-motion). */
@@ -17,6 +17,7 @@ export const HERO_THEME = {
 } as const;
 
 export const HERO_COPY = {
+  id: "inicio",
   ctaHref: "https://trade.bull-ex.com/pt/register",
 } as const;
 

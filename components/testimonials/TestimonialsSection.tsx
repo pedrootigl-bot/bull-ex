@@ -33,7 +33,18 @@ export function TestimonialsSection() {
   const t = useTranslations("testimonials");
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLUListElement>(null);
   const [visibleCount, setVisibleCount] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -51,7 +62,13 @@ export function TestimonialsSection() {
         if (!entry.isIntersecting) {
           return;
         }
-        setVisibleCount((count) => (count === 0 ? 1 : count));
+
+        if (window.matchMedia("(max-width: 640px)").matches) {
+          setVisibleCount(TESTIMONIALS.length);
+        } else {
+          setVisibleCount((count) => (count === 0 ? 1 : count));
+        }
+
         observer.disconnect();
       },
       { threshold: 0.22 },
@@ -61,8 +78,49 @@ export function TestimonialsSection() {
     return () => observer.disconnect();
   }, [reducedMotion]);
 
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
+
+    const carousel = carouselRef.current;
+    if (!carousel) {
+      return;
+    }
+
+    const updateActive = () => {
+      const slides = carousel.querySelectorAll<HTMLElement>("[data-testimonial-slide]");
+      if (!slides.length) {
+        return;
+      }
+
+      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
+      let closest = 0;
+      let closestDist = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        const center = slide.offsetLeft + slide.offsetWidth / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = index;
+        }
+      });
+
+      setActiveSlide(closest);
+    };
+
+    updateActive();
+    carousel.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      carousel.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
+  }, [isMobile, visibleCount]);
+
   function handlePopEnd(index: number) {
-    if (reducedMotion) {
+    if (reducedMotion || isMobile) {
       return;
     }
     if (index !== visibleCount - 1) {
@@ -90,21 +148,30 @@ export function TestimonialsSection() {
           <p className={styles.subtitle}>{t("subtitle")}</p>
         </header>
 
-        <ul className={styles.grid}>
-          {TESTIMONIALS.map((item, index) => {
-            const isVisible = index < visibleCount;
+        <div className={styles.carouselShell}>
+          <ul
+            className={styles.grid}
+            ref={carouselRef}
+            aria-label={t("title")}
+            aria-roledescription={isMobile ? "carousel" : undefined}
+          >
+            {TESTIMONIALS.map((item, index) => {
+              const isVisible = index < visibleCount;
+              const isActive = isMobile && index === activeSlide;
 
-            return (
-              <li
-                key={item.id}
-                className={`${styles.card} ${isVisible ? styles.cardPop : styles.cardHidden} ${reducedMotion ? styles.motionStatic : ""}`}
-                onAnimationEnd={(event) => {
-                  if (event.target !== event.currentTarget) {
-                    return;
-                  }
-                  handlePopEnd(index);
-                }}
-              >
+              return (
+                <li
+                  key={item.id}
+                  className={`${styles.card} ${isVisible ? styles.cardPop : styles.cardHidden} ${isActive ? styles.cardActive : ""} ${reducedMotion ? styles.motionStatic : ""}`}
+                  data-testimonial-slide={isMobile ? true : undefined}
+                  aria-hidden={isMobile ? !isActive : undefined}
+                  onAnimationEnd={(event) => {
+                    if (event.target !== event.currentTarget) {
+                      return;
+                    }
+                    handlePopEnd(index);
+                  }}
+                >
                 <div className={styles.cardTop}>
                   <Image
                     className={styles.photo}
@@ -124,7 +191,8 @@ export function TestimonialsSection() {
               </li>
             );
           })}
-        </ul>
+          </ul>
+        </div>
       </div>
     </section>
   );

@@ -74,6 +74,9 @@
     "subtitle": "Na Bullex, unimos tecnologia, segurança e condições exclusivas para oferecer uma experiência completa para quem opera em alto nível.",
     "callout": "Mais que uma corretora, um parceiro estratégico para você <highlight>operar sem limites</highlight> e <highlight>alcançar mais</highlight>.",
     "photoAlt": "Figura com máscara de touro verde, representando a identidade da Bullex",
+    "carouselLabel": "Destaques da Bullex para grandes investidores",
+    "carouselPrev": "Card anterior",
+    "carouselNext": "Próximo card",
     "features": {
       "liquidity": {
         "title": "Liquidez de alto nível",
