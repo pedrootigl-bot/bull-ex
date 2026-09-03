@@ -8,11 +8,20 @@ import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
 
+type CardIcon = (typeof WHY_COPY.features)[number] | (typeof WHY_COPY.bars)[number];
+
+const CAROUSEL_CARDS: { icon: CardIcon; group: "features" | "bars" }[] = [
+  ...WHY_COPY.features.map((icon) => ({ icon, group: "features" as const })),
+  ...WHY_COPY.bars.map((icon) => ({ icon, group: "bars" as const })),
+];
+
 export function WhySection() {
   const t = useTranslations("why");
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -40,6 +49,39 @@ export function WhySection() {
     return () => observer.disconnect();
   }, [reducedMotion]);
 
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) {
+      return;
+    }
+
+    const updateActive = () => {
+      const slides = carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]");
+      if (!slides.length) {
+        return;
+      }
+
+      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
+      let closest = 0;
+      let closestDist = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        const center = slide.offsetLeft + slide.offsetWidth / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = index;
+        }
+      });
+
+      setActiveSlide(closest);
+    };
+
+    updateActive();
+    carousel.addEventListener("scroll", updateActive, { passive: true });
+    return () => carousel.removeEventListener("scroll", updateActive);
+  }, []);
+
   const motionClass = reducedMotion ? styles.motionStatic : "";
   const textClass = `${styles.fromLeft} ${visible ? styles.in : ""} ${motionClass}`;
   const imageClass = `${styles.fromRight} ${visible ? styles.in : ""} ${motionClass}`;
@@ -53,58 +95,91 @@ export function WhySection() {
     >
       <div className={styles.inner}>
         <div className={styles.layout}>
-          <div className={`${styles.intro} ${textClass}`}>
-            <p className={styles.eyebrow}>{t("eyebrow")}</p>
-            <h2 className={styles.title} id="why-title">
-              {t("titleBefore")}
-              <span className={styles.highlight}>{t("titleHighlight")}</span>
-            </h2>
-            <p className={styles.subtitle}>{t("subtitle")}</p>
-          </div>
-
-          <div className={styles.aside}>
-            <div className={`${styles.visual} ${imageClass}`}>
-              <Image
-                className={styles.photo}
-                src="/images/bullex-why-bull.webp"
-                alt={t("photoAlt")}
-                width={682}
-                height={1024}
-                sizes="(max-width: 980px) 70vw, 360px"
-                quality={90}
-              />
+          <div className={styles.leftCol}>
+            <div className={`${styles.intro} ${textClass}`}>
+              <p className={styles.eyebrow}>{t("eyebrow")}</p>
+              <h2 className={styles.title} id="why-title">
+                {t("titleBefore")}
+                <span className={styles.highlight}>{t("titleHighlight")}</span>
+              </h2>
+              <p className={styles.subtitle}>{t("subtitle")}</p>
             </div>
 
-            <div className={`${styles.bar} ${textClass} ${styles.delayBar}`}>
-              {WHY_COPY.bars.map((icon) => (
-                <article className={styles.barItem} key={icon}>
+            <div className={styles.features}>
+              {WHY_COPY.features.map((icon) => (
+                <article
+                  className={`${styles.feature} ${styles.fromDown} ${visible ? styles.in : ""} ${motionClass}`}
+                  key={icon}
+                >
                   <div className={styles.iconWrap}>
                     <WhyIcon name={icon} />
                   </div>
                   <div>
-                    <h3>{t(`bars.${icon}.title`)}</h3>
-                    <p>{t(`bars.${icon}.text`)}</p>
+                    <h3>{t(`features.${icon}.title`)}</h3>
+                    <p>{t(`features.${icon}.text`)}</p>
                   </div>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className={styles.features}>
-            {WHY_COPY.features.map((icon) => (
-              <article
-                className={`${styles.feature} ${styles.fromDown} ${visible ? styles.in : ""} ${motionClass}`}
-                key={icon}
-              >
+          <div className={`${styles.visual} ${imageClass}`}>
+            <Image
+              className={styles.photo}
+              src="/images/bullex-why-trader.webp"
+              alt={t("photoAlt")}
+              width={682}
+              height={1024}
+              sizes="(max-width: 980px) 70vw, 360px"
+              quality={90}
+            />
+          </div>
+
+          <div className={`${styles.bar} ${textClass} ${styles.delayBar}`}>
+            {WHY_COPY.bars.map((icon) => (
+              <article className={styles.barItem} key={icon}>
                 <div className={styles.iconWrap}>
                   <WhyIcon name={icon} />
                 </div>
                 <div>
-                  <h3>{t(`features.${icon}.title`)}</h3>
-                  <p>{t(`features.${icon}.text`)}</p>
+                  <h3>{t(`bars.${icon}.title`)}</h3>
+                  <p>{t(`bars.${icon}.text`)}</p>
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className={styles.carouselBlock}>
+            <div
+              className={styles.carousel}
+              ref={carouselRef}
+              tabIndex={0}
+              aria-label={t("titleBefore") + t("titleHighlight")}
+            >
+              {CAROUSEL_CARDS.map(({ icon, group }) => (
+                <article
+                  className={group === "features" ? styles.feature : styles.barItem}
+                  data-carousel-slide
+                  key={`carousel-${group}-${icon}`}
+                >
+                  <div className={styles.iconWrap}>
+                    <WhyIcon name={icon} />
+                  </div>
+                  <div>
+                    <h3>{t(`${group}.${icon}.title`)}</h3>
+                    <p>{t(`${group}.${icon}.text`)}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className={styles.carouselDots} aria-hidden="true">
+              {CAROUSEL_CARDS.map(({ icon, group }, index) => (
+                <span
+                  key={`dot-${group}-${icon}`}
+                  className={`${styles.carouselDot} ${index === activeSlide ? styles.carouselDotActive : ""}`}
+                />
+              ))}
+            </div>
           </div>
 
           <p className={`${styles.callout} ${textClass} ${styles.delayCallout}`}>

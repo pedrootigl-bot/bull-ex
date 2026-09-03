@@ -10,11 +10,11 @@ export function PlatformSection() {
   const t = useTranslations("platform");
   const reducedMotion = useReducedMotion();
   const stageRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (reducedMotion) {
-      setOpen(true);
+      setVisible(true);
       return;
     }
 
@@ -26,11 +26,11 @@ export function PlatformSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setOpen(true);
+          setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.28 },
     );
 
     observer.observe(node);
@@ -40,28 +40,19 @@ export function PlatformSection() {
   return (
     <section className={styles.section} aria-label={t("aria")}>
       <div className={styles.inner}>
-        <div className={styles.stage} ref={stageRef}>
-          <div className={styles.laptop}>
-            <div className={`${styles.lid} ${open ? styles.lidOpen : ""} ${reducedMotion ? styles.lidStatic : ""}`}>
-              <div className={styles.lidBack} aria-hidden="true" />
-              <div className={styles.bezel}>
-                <span className={styles.camera} aria-hidden="true" />
-                <Image
-                  className={styles.image}
-                  src="/images/bullex-platform.webp"
-                  alt={t("imageAlt")}
-                  width={1600}
-                  height={1000}
-                  sizes="(max-width: 900px) 100vw, min(1180px, 91vw)"
-                  quality={85}
-                />
-              </div>
-            </div>
-            <div className={styles.base} aria-hidden="true">
-              <span className={styles.hinge} />
-              <span className={styles.deck} />
-            </div>
-          </div>
+        <div
+          className={`${styles.stage} ${visible ? styles.stageVisible : ""} ${reducedMotion ? styles.stageStatic : ""}`}
+          ref={stageRef}
+        >
+          <Image
+            className={styles.image}
+            src="/images/bullex-platform-devices.webp"
+            alt={t("imageAlt")}
+            width={1024}
+            height={682}
+            sizes="(max-width: 900px) 100vw, min(1180px, 91vw)"
+            quality={90}
+          />
         </div>
       </div>
     </section>

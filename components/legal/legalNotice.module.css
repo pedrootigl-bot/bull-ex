@@ -43,14 +43,14 @@
 
 @media (max-width: 900px) {
   .bar {
-    width: min(640px, calc(100vw - 22rem));
+    width: min(640px, calc(100vw - 12rem));
   }
 }
 
 @media (max-width: 640px) {
   .bar {
     left: 50%;
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 1.5rem);
     bottom: 4.6rem;
     padding: 0.65rem 0.75rem 0.7rem;
   }
