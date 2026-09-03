@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
@@ -8,6 +9,7 @@ import styles from "./faq.module.css";
 
 export function FaqSection() {
   const t = useTranslations("faq");
+  const { moneyParams } = useFormatMoney();
   const baseId = useId();
   const reducedMotion = useReducedMotion();
   const [openItems, setOpenItems] = useState<Partial<Record<FaqItemId, boolean>>>({});
@@ -75,7 +77,7 @@ export function FaqSection() {
                   aria-hidden={!isOpen}
                 >
                   <div className={styles.panelInner}>
-                    <p className={styles.answer}>{t(`items.${item}.a`)}</p>
+                    <p className={styles.answer}>{t(`items.${item}.a`, moneyParams)}</p>
                   </div>
                 </div>
               </div>

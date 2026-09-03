@@ -12,7 +12,6 @@ export const FOOTER_COPY = {
         { href: "#mercados", label: "Mercados" },
         { href: "#por-que-bullex", label: "Por que Bullex" },
         { href: "#premios", label: "Prêmios" },
-        { href: "#sobre", label: "Quem somos" },
         { href: "#faq", label: "FAQ" },
       ],
     },

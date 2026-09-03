@@ -1,0 +1,325 @@
+.section {
+  position: relative;
+  background: #f7f7f7;
+  color: #0a0a0a;
+  padding: clamp(3.5rem, 8vh, 5rem) 0;
+  overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+.decorTop,
+.decorBottom {
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+}
+
+.decorTop {
+  top: -7rem;
+  left: -4rem;
+  width: 18rem;
+  height: 18rem;
+  transform: rotate(-18deg);
+}
+
+.decorBottom {
+  right: -5rem;
+  bottom: -8rem;
+  width: 22rem;
+  height: 22rem;
+  transform: rotate(24deg);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vh, 2.75rem);
+}
+
+.title {
+  font-size: clamp(1.55rem, 3.8vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  white-space: pre-line;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 40rem;
+  color: #6a6a6a;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.5;
+}
+
+.cardsRow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+}
+
+.cardsRowItem {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.connector {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  width: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 1.55rem;
+  flex-shrink: 0;
+}
+
+.connectorLine {
+  flex: 1;
+  height: 2px;
+  background: #d4d4d4;
+}
+
+.connectorDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  border: 2px solid #c8c8c8;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.connectorDotActive {
+  border-color: #7cff3a;
+  background: #7cff3a;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100%;
+  padding: 1.15rem 1.1rem 1.25rem;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.card:focus-visible {
+  outline: 2px solid #7cff3a;
+  outline-offset: 3px;
+}
+
+.cardActive {
+  border-color: #7cff3a;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(124, 255, 58, 0.12);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: #ececec;
+  color: #6a6a6a;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cardActive .stepNumber {
+  background: #7cff3a;
+  color: #061408;
+}
+
+.cardCompleted .stepNumber {
+  background: #7cff3a;
+  color: #061408;
+}
+
+.stepPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #f0f0f0;
+  color: #6a6a6a;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cardActive .stepPill {
+  background: rgba(124, 255, 58, 0.18);
+  color: #1f5f12;
+}
+
+.cardCompleted .stepPill {
+  background: rgba(124, 255, 58, 0.14);
+  color: #1f5f12;
+}
+
+.cardIcon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 0.95rem;
+  border-radius: 12px;
+  background: #f2f2f2;
+  color: #5a5a5a;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cardActive .cardIcon {
+  background: rgba(124, 255, 58, 0.16);
+  color: #1f5f12;
+}
+
+.cardCompleted .cardIcon {
+  background: rgba(124, 255, 58, 0.12);
+  color: #1f5f12;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardText {
+  margin: 0;
+  color: #6a6a6a;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 4vh, 2.25rem);
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: min(100%, 16rem);
+  padding: 0.82rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8dff4a 0%, #6fe832 48%, #5fd82f 100%);
+  box-shadow: 0 8px 22px rgba(95, 216, 47, 0.28);
+  color: #061408;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.22s ease,
+    transform 0.18s ease,
+    box-shadow 0.22s ease;
+}
+
+.primaryButton:hover {
+  background: linear-gradient(180deg, #95ff52 0%, #74ee38 48%, #62df34 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(95, 216, 47, 0.34);
+}
+
+.buttonArrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@media (max-width: 860px) {
+  .cardsRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .cardsRowItem {
+    max-width: none;
+    flex-direction: column;
+  }
+
+  .connector {
+    align-self: center;
+    width: 2px;
+    height: 1.35rem;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .connectorLine {
+    width: 2px;
+    height: auto;
+    flex: 1;
+  }
+
+  .card {
+    padding: 1.2rem 1.15rem 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .primaryButton:hover {
+    transform: none;
+  }
+
+  .card {
+    transition: none;
+  }
+}

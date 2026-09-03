@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Bull-ex — Giao dịch cổ phiếu, crypto và ngoại hối",
-    "description": "Đăng ký và nhận 10.000 USD trong tài khoản demo để học cách đầu tư."
+    "description": "Đăng ký và nhận {demoBalance} trong tài khoản demo để học cách đầu tư."
   },
   "navigation": {
     "aria": "Menu chính",
@@ -18,10 +18,9 @@
   },
   "hero": {
     "headline": "Giao dịch cổ phiếu, tiền mã hóa và sản phẩm ngoại hối một cách đơn giản hơn.",
-    "subheadline": "Đăng ký và nhận 10.000 USD trong tài khoản demo để học cách đầu tư.",
+    "subheadline": "Đăng ký và nhận {demoBalance} trong tài khoản demo để học cách đầu tư.",
     "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
     "stats": {
-      "demoValue": "US$ 10.000",
       "demoLabel": "Số dư ban đầu trên demo",
       "feesValue": "0 phí",
       "feesLabel": "Để mở tài khoản",
@@ -73,7 +72,7 @@
     "titleHighlight": "nhà đầu tư nghiêm túc?",
     "subtitle": "Tại Bullex, chúng tôi kết hợp công nghệ, an toàn và điều kiện riêng cho người giao dịch ở mức cao.",
     "callout": "Hơn cả một môi giới: đối tác chiến lược để bạn <highlight>giao dịch không giới hạn</highlight> và <highlight>đi xa hơn</highlight>.",
-    "photoAlt": "Nhân vật đeo mặt nạ bò đực màu xanh lá, đại diện cho bản sắc Bullex",
+    "photoAlt": "Nhân vật đầu bò xanh cầm app Bullex với bảng lợi nhuận và hiệu suất",
     "carouselLabel": "Điểm nổi bật của Bullex dành cho nhà đầu tư lớn",
     "carouselPrev": "Thẻ trước",
     "carouselNext": "Thẻ tiếp theo",
@@ -102,24 +101,6 @@
         "title": "Đa dạng hóa thông minh",
         "text": "Tiếp cận nhiều thị trường và cơ hội trong một chỗ."
       }
-    },
-    "bars": {
-      "speed": {
-        "title": "Khớp lệnh nhanh",
-        "text": "Lệnh được thực hiện trong mili giây."
-      },
-      "lock": {
-        "title": "Bảo vệ nâng cao",
-        "text": "Vốn và dữ liệu của bạn được bảo vệ."
-      },
-      "manage": {
-        "title": "Quản lý chuyên nghiệp",
-        "text": "Công cụ và báo cáo để quyết định tốt hơn."
-      },
-      "premium": {
-        "title": "Trải nghiệm cao cấp",
-        "text": "Môi trường thiết kế cho hiệu suất cao."
-      }
     }
   },
   "about": {
@@ -130,38 +111,87 @@
     "imageAlt": "Bò tót tư thế tấn công trước thành phố ánh sáng xanh lá, biểu tượng thị trường tăng"
   },
   "testimonials": {
-    "eyebrow": "Người đã thử",
-    "title": "Họ đang nói gì",
-    "subtitle": "Chúng tôi không xin câu chữ đẹp. Lấy từ hỗ trợ và nhóm chat.",
-    "stars": "{count} trên 5 sao",
+    "eyebrow": "Đánh giá",
+    "title": "Đánh giá từ khách hàng của chúng tôi",
+    "subtitle": "Bullex trân trọng phản hồi của từng khách hàng để cải tiến liên tục và đảm bảo sự hài lòng.",
+    "starsLabel": "{count} · Sao",
+    "playVideo": "Phát video",
+    "moreReviews": "Thêm đánh giá",
+    "lessReviews": "Ít đánh giá hơn",
     "items": {
-      "camila": {
-        "photoAlt": "Ảnh của Camila",
-        "quote": "Mở demo chiều thứ Bảy vì trì hoãn mấy tháng. 10 nghìn USD giả giúp bớt sợ bấm nhầm. Chưa bỏ tiền thật — chồng tôi sẽ nổi đóa. Nhưng ít ra đã hiểu lệnh thị trường. App đứng khoảng 20 giây một lần, suýt đóng tài khoản. Nó sống lại. Tôi ở lại."
+      "felipe": {
+        "name": "Felipe Costa",
+        "meta": "Trader • 2 năm với Bullex",
+        "posterAlt": "Ảnh bìa video của Felipe Costa"
       },
-      "rogerio": {
-        "photoAlt": "Ảnh của Rogério",
-        "quote": "Anh trai giao dịch ở XP và trêu là tôi chẳng hiểu gì. Mở demo ở đây, một buổi chiều đã đặt lệnh. Màn hình gọn, không 40 nút. Gửi câu hỏi tối Chủ nhật, họ trả lời sáng Thứ Hai — với tôi ổn. Bốn sao vì vẫn đang demo, nhưng đủ thích để giới thiệu với em rể."
+      "ana": {
+        "name": "Ana B.",
+        "meta": "São Paulo, Brazil",
+        "title": "Trải nghiệm thật sự tuyệt vời",
+        "quote": "Từ giao diện trực quan đến tốc độ giao dịch và rút tiền nhanh, Bullex là môi giới tốt nhất tôi từng dùng.",
+        "photoAlt": "Ảnh của Ana B."
       },
-      "thiago": {
-        "photoAlt": "Ảnh của Thiago",
-        "quote": "Anh họ gửi link, tôi thề là lừa đảo. Thử demo, làm khoảng 15 lệnh crypto xem số dư có biến không. Không biến. Thích chỗ không thúc đòn bẩy suốt, vì tôi sẽ sập bẫy. Đăng ký thật tuần này. Nếu hỏng sẽ quay lại đây chửi."
+      "marcos": {
+        "name": "Marcos W.",
+        "meta": "Rio de Janeiro, Brazil",
+        "title": "Tốt nhất trong số tôi đã thử",
+        "quote": "Trong tất cả nền tảng quyền chọn nhị phân tôi đã thử, Bullex là tốt nhất. Tiền rút của tôi về trong vài phút, khác với nhiều nơi khác.",
+        "photoAlt": "Ảnh của Marcos W."
       },
-      "juliana": {
-        "photoAlt": "Ảnh của Juliana",
-        "quote": "Đã lỗ một ít ở môi giới khác (không nêu tên, xấu hổ). Ở đây giao diện ít làm tôi lạc. Biểu đồ nên đầy đủ hơn, khối lượng rõ hơn. Nhưng việc tôi làm — mua cổ phiếu rồi quên — thì ổn. Mất công tìm lịch sử. Chỉ hai cú nhấp. Tại tôi chậm."
+      "rafael": {
+        "name": "Rafael Mendes",
+        "meta": "Trader chuyên nghiệp",
+        "posterAlt": "Ảnh bìa video của Rafael Mendes"
       },
-      "eduardo": {
-        "photoAlt": "Ảnh của Eduardo",
-        "quote": "Xác minh mất 2 ngày, suýt bỏ. Rồi xong. Hôm qua lần đầu đời giao dịch ngoại hối, 50 đô chỉ để cảm. Lệnh khớp nhanh. Tôi không phải trader, làm xây dựng, nên nếu tôi mở được và bấm được thì ai cũng làm được. Con gái giúp đăng ký, nói thật."
+      "carlos": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brazil",
+        "title": "Hỗ trợ tốt nhất thị trường",
+        "quote": "Mỗi khi gặp vấn đề, hỗ trợ Bullex phản hồi ngay lập tức. Tôi chưa từng thấy dịch vụ nhanh như vậy.",
+        "photoAlt": "Ảnh của Carlos W."
       },
-      "fernanda": {
-        "photoAlt": "Ảnh của Fernanda",
-        "quote": "Bớt một sao vì đăng ký chậm trên 4G TIM, nhìn màn hình cả phút. Còn lại số dư demo hiện ngay. Em gái cũng mở. Nó không thấy lịch sử, tôi thấy. So ảnh app trên WhatsApp. Chẳng cách mạng gì, chỉ là không cảm thấy ngốc khi dùng."
+      "joao": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brazil",
+        "title": "Nhanh, không delay hay gap",
+        "quote": "Môi giới xuất sắc, nhanh, không delay và không có những gap kinh khủng như nhiều nơi khác.",
+        "photoAlt": "Ảnh của João A."
+      },
+      "brandPlatform": {
+        "name": "Bullex",
+        "meta": "Nền tảng #1 về tốc độ",
+        "imageAlt": "Bullex"
+      },
+      "brandCommunity": {
+        "name": "Cộng đồng Bullex",
+        "meta": "Hàng nghìn trader mỗi ngày",
+        "imageAlt": "Cộng đồng Bullex"
+      },
+      "carlosVideo": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brazil",
+        "posterAlt": "Ảnh bìa video của Carlos W."
+      },
+      "joaoVideo": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brazil",
+        "posterAlt": "Ảnh bìa video của João A."
+      },
+      "tradingCommunity": {
+        "name": "Trader đang giao dịch",
+        "meta": "Giao dịch trên Bullex mỗi ngày",
+        "imageAlt": "Trader trên Bullex"
+      },
+      "activeTraders": {
+        "name": "Bullex hàng ngày",
+        "meta": "Hàng nghìn lệnh mỗi ngày",
+        "imageAlt": "Trader tích cực trên Bullex"
       }
     }
   },
   "platform": {
+    "title": "Hơn 200 tài sản để đầu tư, không phức tạp.",
+    "subtitle": "Chọn một tài sản và bắt đầu chỉ với vài cú nhấp.",
     "aria": "Nền tảng Bullex trên máy tính và điện thoại",
     "imageAlt": "Giao diện Bullex trên máy tính với biểu đồ nến và trên điện thoại với nút Lên và Xuống"
   },
@@ -179,6 +209,23 @@
       "access": {
         "title": "Truy cập toàn cầu 24/7",
         "text": "Cổ phiếu, crypto và ngoại hối trong một trải nghiệm, mọi lúc."
+      }
+    }
+  },
+  "teamGrid": {
+    "aria": "Bullex trong hành động",
+    "titleStrong": "Hơn 200 tài sản",
+    "titleLight": "để đầu tư một cách đơn giản",
+    "subtitle": "Chọn một tài sản và bắt đầu đầu tư chỉ với vài cú nhấp.",
+    "imageAlt": "Đội ngũ Bullex phân tích thị trường trong môi trường giao dịch",
+    "cards": {
+      "deposit": {
+        "eyebrow": "Nạp tối thiểu",
+        "lead": "Bắt đầu với"
+      },
+      "investment": {
+        "eyebrow": "Đầu tư tối thiểu",
+        "lead": "Chỉ"
       }
     }
   },
@@ -228,6 +275,55 @@
       }
     }
   },
+  "kindness": {
+    "title": "Một chút tử tế tạo nên sự khác biệt",
+    "subtitle": "Trong những năm gần đây, chúng tôi:",
+    "closing": "Hãy cùng đền đáp cộng đồng và xây dựng một ngày mai mới",
+    "readMore": "Đọc trên blog",
+    "cards": {
+      "community": {
+        "title": "Hỗ trợ cộng đồng địa phương",
+        "text": "Quyên góp, đối tác và hoạt động xã hội để giúp những người cần nhất.",
+        "imageAlt": "Tình nguyện viên trao quà cho cộng đồng địa phương"
+      },
+      "education": {
+        "title": "Thúc đẩy giáo dục tài chính",
+        "text": "Nội dung và sáng kiến miễn phí để mở rộng quyền tiếp cận thị trường.",
+        "imageAlt": "Mọi người tham gia hội thảo giáo dục tài chính"
+      },
+      "sustainability": {
+        "title": "Đầu tư vào phát triển bền vững",
+        "text": "Các dự án kết hợp tăng trưởng, trách nhiệm và tương lai tốt đẹp hơn cho mọi người.",
+        "imageAlt": "Tấm pin mặt trời trên cảnh quan xanh thể hiện năng lượng bền vững"
+      }
+    }
+  },
+  "accountSteps": {
+    "title": "Cách tạo tài khoản Bullex trong 3 bước",
+    "subtitle": "Làm theo các bước bên dưới để bắt đầu đầu tư nhanh chóng và an toàn.",
+    "progressLabel": "Tiến trình mở tài khoản",
+    "stepLabel": "Bước {step}",
+    "previous": "Quay lại",
+    "next": "Bước tiếp theo",
+    "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
+    "steps": {
+      "register": {
+        "checkpoint": "Đăng ký",
+        "title": "Tạo hồ sơ đăng ký",
+        "text": "Nhập tên, email và mật khẩu chỉ trong vài phút trên website hoặc ứng dụng Bullex."
+      },
+      "verify": {
+        "checkpoint": "Xác minh",
+        "title": "Xác nhận danh tính",
+        "text": "Xác thực thông tin để tăng bảo mật và mở khóa tài khoản để giao dịch."
+      },
+      "start": {
+        "checkpoint": "Bắt đầu",
+        "title": "Đăng nhập lần đầu",
+        "text": "Vào nền tảng, khám phá tài sản và bắt đầu đầu tư một cách thuận tiện."
+      }
+    }
+  },
   "faq": {
     "eyebrow": "Câu hỏi thường gặp",
     "title": "Về Bullex",
@@ -242,7 +338,7 @@
       },
       "start": {
         "q": "Bắt đầu như thế nào?",
-        "a": "Đăng ký, mở tài khoản demo với 10.000 USD và khám phá nền tảng. Khi sẵn sàng giao dịch thật, nạp tiền và dùng hỗ trợ ở từng bước."
+        "a": "Đăng ký, mở tài khoản demo với {demoBalance} và khám phá nền tảng. Khi sẵn sàng giao dịch thật, nạp tiền và dùng hỗ trợ ở từng bước."
       },
       "instruments": {
         "q": "Tôi có thể giao dịch những công cụ nào?",
@@ -255,6 +351,46 @@
       "education": {
         "q": "Bullex có tài liệu học cho người mới không?",
         "a": "Có. Có hướng dẫn, webinar và tài liệu để người mới hiểu thị trường và luyện trên demo trước khi dùng vốn thật."
+      }
+    }
+  },
+  "blog": {
+    "eyebrow": "Blog Bullex",
+    "backSection": "Xem thêm câu chuyện",
+    "publishedAt": "Đăng ngày {date}",
+    "readTime": "{minutes} phút đọc",
+    "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
+    "relatedTitle": "Đọc thêm",
+    "posts": {
+      "community": {
+        "title": "Hỗ trợ cộng đồng địa phương",
+        "excerpt": "Quyên góp, đối tác và hoạt động xã hội để giúp những người cần nhất.",
+        "date": "3 tháng 9, 2026",
+        "minutes": "4",
+        "imageAlt": "Tình nguyện viên trao quà cho cộng đồng địa phương",
+        "p1": "Tại Bullex, chúng tôi tin rằng tăng trưởng cũng đồng nghĩa với đóng góp lại cho xã hội. Vì vậy, chúng tôi hỗ trợ các sáng kiến mang nguồn lực và cơ hội đến những cộng đồng cần giúp đỡ nhất.",
+        "p2": "Các hoạt động của chúng tôi gồm quyên góp, hợp tác với tổ chức địa phương và dự án hòa nhập xã hội nhằm tạo tác động thực sự và bền vững.",
+        "p3": "Chúng tôi tiếp tục mở rộng cam kết này một cách minh bạch, vì niềm tin trên thị trường bắt đầu từ việc quan tâm con người xung quanh."
+      },
+      "education": {
+        "title": "Thúc đẩy giáo dục tài chính",
+        "excerpt": "Nội dung và sáng kiến miễn phí để mở rộng quyền tiếp cận thị trường.",
+        "date": "28 tháng 8, 2026",
+        "minutes": "5",
+        "imageAlt": "Mọi người tham gia hội thảo giáo dục tài chính",
+        "p1": "Giao dịch có trách nhiệm đòi hỏi kiến thức. Bullex đầu tư vào giáo dục tài chính dễ tiếp cận cho người mới bắt đầu.",
+        "p2": "Chúng tôi cung cấp tài liệu, buổi chia sẻ và nội dung thực hành giải thích các khái niệm cốt lõi một cách rõ ràng, từ đọc biểu đồ đến quản lý rủi ro.",
+        "p3": "Chúng tôi muốn nhiều người đưa ra quyết định sáng suốt, bắt đầu với tài khoản demo và tiến lên khi sẵn sàng giao dịch thật."
+      },
+      "sustainability": {
+        "title": "Đầu tư vào phát triển bền vững",
+        "excerpt": "Các dự án kết hợp tăng trưởng, trách nhiệm và tương lai tốt đẹp hơn cho mọi người.",
+        "date": "15 tháng 8, 2026",
+        "minutes": "4",
+        "imageAlt": "Tấm pin mặt trời trên cảnh quan xanh",
+        "p1": "Với Bullex, bền vững là cân bằng giữa hiệu quả và trách nhiệm. Chúng tôi giảm tác động và hỗ trợ thực hành bảo tồn tài nguyên.",
+        "p2": "Chúng tôi hỗ trợ các sáng kiến về hiệu quả năng lượng, nhận thức môi trường và quyết định vận hành có trách nhiệm hơn.",
+        "p3": "Đây là hành trình liên tục. Chúng tôi chia sẻ tiến độ với cộng đồng vì minh bạch củng cố mọi dự án dài hạn."
       }
     }
   },

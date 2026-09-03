@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Bull-ex — Negocie ações, cripto e câmbio",
-    "description": "Cadastre-se e ganhe US$ 10.000 em sua conta demo para aprender a investir."
+    "description": "Cadastre-se e ganhe {demoBalance} em sua conta demo para aprender a investir."
   },
   "navigation": {
     "aria": "Principal",
@@ -18,10 +18,9 @@
   },
   "hero": {
     "headline": "Negocie ações, criptomoedas e produtos de câmbio de forma simplificada!",
-    "subheadline": "Cadastre-se e ganhe US$ 10.000 em sua conta demo para aprender a investir.",
+    "subheadline": "Cadastre-se e ganhe {demoBalance} em sua conta demo para aprender a investir.",
     "cta": "ABRA SUA CONTA GRATUITA",
     "stats": {
-      "demoValue": "US$ 10.000",
       "demoLabel": "Saldo inicial na demo",
       "feesValue": "0 taxas",
       "feesLabel": "Para abrir sua conta",
@@ -69,11 +68,11 @@
   },
   "why": {
     "eyebrow": "Por que Bullex?",
-    "titleBefore": "Por que a Bullex é a corretora ideal para ",
-    "titleHighlight": "grandes investidores?",
+    "titleBefore": "Por que a Bullex \né a corretora ideal\n",
+    "titleHighlight": " para grandes investidores?",
     "subtitle": "Na Bullex, unimos tecnologia, segurança e condições exclusivas para oferecer uma experiência completa para quem opera em alto nível.",
     "callout": "Mais que uma corretora, um parceiro estratégico para você <highlight>operar sem limites</highlight> e <highlight>alcançar mais</highlight>.",
-    "photoAlt": "Figura com máscara de touro verde, representando a identidade da Bullex",
+    "photoAlt": "Executivo com cabeça de touro verde segurando o app Bullex com painéis de lucro e performance",
     "carouselLabel": "Destaques da Bullex para grandes investidores",
     "carouselPrev": "Card anterior",
     "carouselNext": "Próximo card",
@@ -102,24 +101,6 @@
         "title": "Diversificação inteligente",
         "text": "Acesse diferentes mercados e oportunidades em um só lugar."
       }
-    },
-    "bars": {
-      "speed": {
-        "title": "Execução Rápida",
-        "text": "Ordens executadas em milissegundos."
-      },
-      "lock": {
-        "title": "Proteção Avançada",
-        "text": "Seus recursos e dados sempre protegidos."
-      },
-      "manage": {
-        "title": "Gestão Profissional",
-        "text": "Ferramentas e relatórios para decisões melhores."
-      },
-      "premium": {
-        "title": "Experiência Premium",
-        "text": "Ambiente desenvolvido para alta performance."
-      }
     }
   },
   "about": {
@@ -130,38 +111,87 @@
     "imageAlt": "Touro em posição de ataque diante de uma cidade iluminada em verde, símbolo de mercado em alta"
   },
   "testimonials": {
-    "eyebrow": "Quem já testou",
-    "title": "O que andam falando por aí",
-    "subtitle": "Não pedimos texto bonito. Copiamos o que chegou no suporte e no grupo.",
-    "stars": "{count} de 5 estrelas",
+    "eyebrow": "Depoimentos",
+    "title": "Depoimentos dos Nossos Clientes",
+    "subtitle": "A Bullex valoriza o feedback de cada cliente para promover melhorias contínuas e garantir a satisfação.",
+    "starsLabel": "{count} · Estrelas",
+    "playVideo": "Reproduzir vídeo",
+    "moreReviews": "Mais depoimentos",
+    "lessReviews": "Menos depoimentos",
     "items": {
-      "camila": {
-        "photoAlt": "Foto de Camila",
-        "quote": "Abri a demo num sábado de tarde porque tava enrolando isso há meses. Os US$ 10 mil fake ajudam a não ter aquele medo de clicar errado. Ainda não coloquei dinheiro de verdade — meu marido ia me matar. Mas pelo menos já entendi ordem a mercado. O app travou uma vez por uns 20 segundos e eu quase fechei a conta. Voltou. Ficou."
+      "felipe": {
+        "name": "Felipe Costa",
+        "meta": "Trader • 2 anos na Bullex",
+        "posterAlt": "Capa do vídeo de Felipe Costa"
       },
-      "rogerio": {
-        "photoAlt": "Foto de Rogério",
-        "quote": "Meu irmão opera na XP e ficava me zoando que eu não ia entender nada. Abri a demo aqui e em uma tarde já tava fazendo ordem. A tela é mais limpa, não tem 40 botão. Mandei uma dúvida no domingo à noite e responderam segunda de manhã — pra mim tá ok. Quatro estrela porque ainda tô só na demo, mas já gostei o suficiente pra indicar pro meu cunhado."
+      "ana": {
+        "name": "Ana B.",
+        "meta": "São Paulo, Brasil",
+        "title": "Experiência simplesmente incrível",
+        "quote": "Da interface intuitiva à rapidez nas transações e nos saques, a Bullex foi a melhor corretora que já usei.",
+        "photoAlt": "Foto de Ana B."
       },
-      "thiago": {
-        "photoAlt": "Foto de Thiago",
-        "quote": "Meu primo me mandou o link e eu jurei que era golpe kkkk. Testei a demo, fiz umas 15 operações em cripto só pra ver se sumia o saldo. Não sumiu. Gostei que não fica empurrando alavancagem o tempo todo, porque eu ia cair. Cadastrei de verdade essa semana. Se der merda eu venho aqui reclamar."
+      "marcos": {
+        "name": "Marcos W.",
+        "meta": "Rio de Janeiro, Brasil",
+        "title": "A melhor de todas que testei",
+        "quote": "De todas as plataformas de opções binárias que testei, a Bullex foi a melhor. Meus saques chegam em minutos, diferente de muitas outras.",
+        "photoAlt": "Foto de Marcos W."
       },
-      "juliana": {
-        "photoAlt": "Foto de Juliana",
-        "quote": "Eu já tinha perdido um pouco em outra corretora (não vou falar o nome, vergonha). Aqui o visual pelo menos não me deixa perdida. Falta um gráfico mais completo, volume mais óbvio, essas coisas. Mas pra o que eu faço — comprar umas ações e esquecer — tá ok. Demorei pra achar o histórico. Tava em dois cliques. Eu que sou lenta."
+      "rafael": {
+        "name": "Rafael Mendes",
+        "meta": "Trader profissional",
+        "posterAlt": "Capa do vídeo de Rafael Mendes"
       },
-      "eduardo": {
-        "photoAlt": "Foto de Eduardo",
-        "quote": "Demorei 2 dias pra verificar a conta e quase desisti. Depois passou. Ontem operei câmbio pela primeira vez na vida, 50 dólares só pra sentir. A ordem saiu rápido. Não sou trader, trabalho em obra, então se eu consegui abrir e clicar, qualquer um consegue. Minha filha que me ajudou no cadastro, pra ser honesto."
+      "carlos": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brasil",
+        "title": "O melhor suporte do mercado",
+        "quote": "Sempre que tenho um problema, o suporte da Bullex responde na hora. Nunca vi um atendimento tão ágil.",
+        "photoAlt": "Foto de Carlos W."
       },
-      "fernanda": {
-        "photoAlt": "Foto de Fernanda",
-        "quote": "Tirei uma estrela porque o cadastro abriu lento no 4G da TIM, fiquei 1 minuto olhando pra tela. Fora isso o saldo demo apareceu na hora. Minha irmã também abriu. Ela não achava o histórico, eu achei. A gente compara print do app no WhatsApp. Nada revolucionário, só não me senti burra usando."
+      "joao": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brasil",
+        "title": "Rápida, sem delay nem gaps",
+        "quote": "Corretora excelente, rápida, sem delay e sem aqueles gaps horríveis que acontecem em muitas outras kkk.",
+        "photoAlt": "Foto de João A."
+      },
+      "carlosVideo": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brasil",
+        "posterAlt": "Capa do vídeo de Carlos W."
+      },
+      "joaoVideo": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brasil",
+        "posterAlt": "Capa do vídeo de João A."
+      },
+      "brandPlatform": {
+        "name": "Bullex",
+        "meta": "Plataforma #1 em velocidade",
+        "imageAlt": "Bullex"
+      },
+      "brandCommunity": {
+        "name": "Comunidade Bullex",
+        "meta": "Milhares de traders todos os dias",
+        "imageAlt": "Comunidade Bullex"
+      },
+      "tradingCommunity": {
+        "name": "Traders em ação",
+        "meta": "Operando todos os dias na Bullex",
+        "imageAlt": "Traders operando na Bullex"
+      },
+      "activeTraders": {
+        "name": "Bullex no dia a dia",
+        "meta": "Milhares de operações diárias",
+        "imageAlt": "Traders ativos na Bullex"
       }
     }
   },
   "platform": {
+    "title": "Mais de 200 ativos para investir de forma descomplicada.",
+    "subtitle": "Escolha um dos ativos e comece a investir com apenas alguns cliques.",
     "aria": "Plataforma Bullex no computador e no celular",
     "imageAlt": "Interface da plataforma Bullex no desktop com gráfico de velas e no celular com botões Acima e Abaixo"
   },
@@ -182,9 +212,26 @@
       }
     }
   },
+  "teamGrid": {
+    "aria": "Bullex em ação",
+    "titleStrong": "Mais de 200 ativos",
+    "titleLight": "para investir de forma descomplicada",
+    "subtitle": "Escolha um dos ativos e comece a investir com apenas alguns cliques.",
+    "imageAlt": "Equipe Bullex analisando o mercado em ambiente de trading",
+    "cards": {
+      "deposit": {
+        "eyebrow": "Depósito mínimo",
+        "lead": "Comece com"
+      },
+      "investment": {
+        "eyebrow": "Investimento mínimo",
+        "lead": "Apenas"
+      }
+    }
+  },
   "mobileApp": {
-    "titleBefore": "Não é só no desktop. A Bullex também está ",
-    "titleHighlight": "no celular.",
+    "titleBefore": "Não é só no desktop.\n A Bullex também está\n ",
+    "titleHighlight": " no celular.",
     "subtitle": "Opere de qualquer lugar com o app na Google Play.",
     "storeEyebrow": "Disponível na",
     "storeName": "Google Play",
@@ -217,7 +264,7 @@
       "box": {
         "title": "Trader top Box",
         "titleHighlight": "",
-        "text": "Mais que um kit: uma experiência Bullex entregue na sua casa.",
+        "text": "Mais que um kit: \numa experiência Bullex\n entregue na sua casa.",
         "imageAlt": "Trader top Box da Bullex"
       },
       "tech": {
@@ -225,6 +272,55 @@
         "titleHighlight": "",
         "text": "Uma peça colecionável à altura de quem opera no topo.",
         "imageAlt": "Estátua Trader top da Bullex"
+      }
+    }
+  },
+  "kindness": {
+    "title": "Um pouco de gentileza \nfaz toda a diferença",
+    "subtitle": "Nos últimos anos nós:",
+    "closing": "Vamos retribuir à comunidade e construir um novo amanhã juntos",
+    "readMore": "Ler no blog",
+    "cards": {
+      "community": {
+        "title": "Apoiamos comunidades locais",
+        "text": "Doações, parcerias e ações sociais para impactar quem mais precisa.",
+        "imageAlt": "Voluntários entregando doações para a comunidade local"
+      },
+      "education": {
+        "title": "Promovemos educação financeira",
+        "text": "Conteúdos e iniciativas gratuitas para democratizar o acesso ao mercado.",
+        "imageAlt": "Pessoas participando de uma oficina de educação financeira"
+      },
+      "sustainability": {
+        "title": "Investimos em sustentabilidade",
+        "text": "Projetos que unem crescimento, responsabilidade e futuro melhor para todos.",
+        "imageAlt": "Painéis solares em paisagem verde representando energia sustentável"
+      }
+    }
+  },
+  "accountSteps": {
+    "title": "Como criar sua conta na Bullex em 3 passos",
+    "subtitle": "Siga o caminho abaixo e comece a investir com rapidez e segurança.",
+    "progressLabel": "Progresso da abertura de conta",
+    "stepLabel": "Passo {step}",
+    "previous": "Voltar",
+    "next": "Próximo passo",
+    "cta": "ABRA SUA CONTA GRATUITA",
+    "steps": {
+      "register": {
+        "checkpoint": "Cadastro",
+        "title": "Crie seu cadastro",
+        "text": "Informe nome, e-mail e senha em poucos minutos pelo site ou aplicativo Bullex."
+      },
+      "verify": {
+        "checkpoint": "Verificação",
+        "title": "Confirme sua identidade",
+        "text": "Valide seus dados para aumentar a segurança e liberar sua conta para operar."
+      },
+      "start": {
+        "checkpoint": "Começar",
+        "title": "Faça seu primeiro acesso",
+        "text": "Entre na plataforma, explore os ativos e comece a investir com praticidade."
       }
     }
   },
@@ -242,7 +338,7 @@
       },
       "start": {
         "q": "Como começar?",
-        "a": "Basta se cadastrar, abrir a conta demo com US$ 10.000 e explorar a plataforma. Quando quiser operar de verdade, faça um depósito e use o suporte em cada etapa."
+        "a": "Basta se cadastrar, abrir a conta demo com {demoBalance} e explorar a plataforma. Quando quiser operar de verdade, faça um depósito e use o suporte em cada etapa."
       },
       "instruments": {
         "q": "Quais instrumentos financeiros posso negociar?",
@@ -255,6 +351,46 @@
       "education": {
         "q": "A Bullex oferece conteúdo educativo para iniciantes?",
         "a": "Sim. Há tutoriais, webinars e materiais para quem está começando a entender o mercado e quer treinar na demo antes de arriscar capital."
+      }
+    }
+  },
+  "blog": {
+    "eyebrow": "Blog Bullex",
+    "backSection": "Ver mais histórias",
+    "publishedAt": "Publicado em {date}",
+    "readTime": "{minutes} min de leitura",
+    "cta": "ABRA SUA CONTA GRATUITA",
+    "relatedTitle": "Leia também",
+    "posts": {
+      "community": {
+        "title": "Apoiamos comunidades locais",
+        "excerpt": "Doações, parcerias e ações sociais para impactar quem mais precisa.",
+        "date": "3 de setembro de 2026",
+        "minutes": "4",
+        "imageAlt": "Voluntários entregando doações para a comunidade local",
+        "p1": "Na Bullex, acreditamos que crescer também significa retribuir. Por isso, apoiamos iniciativas que levam recursos, orientação e oportunidades para comunidades que mais precisam de apoio.",
+        "p2": "Nossas ações incluem doações, parcerias com organizações locais e projetos que promovem inclusão social. Cada iniciativa é pensada para gerar impacto real e duradouro, não apenas presença de marca.",
+        "p3": "Seguimos ampliando esse compromisso com transparência e proximidade, porque construir confiança no mercado começa pelo cuidado com as pessoas ao nosso redor."
+      },
+      "education": {
+        "title": "Promovemos educação financeira",
+        "excerpt": "Conteúdos e iniciativas gratuitas para democratizar o acesso ao mercado.",
+        "date": "28 de agosto de 2026",
+        "minutes": "5",
+        "imageAlt": "Pessoas participando de uma oficina de educação financeira",
+        "p1": "Operar com responsabilidade exige conhecimento. Por isso, a Bullex investe em educação financeira acessível para quem está dando os primeiros passos no mercado.",
+        "p2": "Oferecemos materiais, encontros e conteúdos práticos que explicam conceitos essenciais de forma clara — da leitura de gráficos à gestão de risco — sempre com linguagem direta e sem jargão desnecessário.",
+        "p3": "Queremos que mais pessoas tomem decisões informadas, começando pela conta demo e evoluindo com segurança quando estiverem prontas para operar de verdade."
+      },
+      "sustainability": {
+        "title": "Investimos em sustentabilidade",
+        "excerpt": "Projetos que unem crescimento, responsabilidade e futuro melhor para todos.",
+        "date": "15 de agosto de 2026",
+        "minutes": "4",
+        "imageAlt": "Painéis solares em paisagem verde representando energia sustentável",
+        "p1": "Sustentabilidade, para a Bullex, é equilibrar performance com responsabilidade. Buscamos reduzir impactos e apoiar práticas que preservem recursos para as próximas gerações.",
+        "p2": "Apoiamos iniciativas ligadas à eficiência energética, conscientização ambiental e escolhas operacionais mais responsáveis em nossa cadeia de atuação.",
+        "p3": "Esse caminho é contínuo. Compartilhamos avanços e desafios com nossa comunidade porque acreditamos que transparência fortalece qualquer projeto de longo prazo."
       }
     }
   },

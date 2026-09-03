@@ -1,17 +1,15 @@
-.heroScrollTrack {
-  position: relative;
-}
-
 .hero {
   position: relative;
   min-height: 100vh;
   background: #000;
   color: #fff;
+  --hero-accent-soft: color-mix(in srgb, var(--hero-accent, #00ff55) 72%, white);
+  --hero-accent-soft-hover: color-mix(in srgb, var(--hero-accent, #00ff55) 64%, white);
 }
 
 /* Estado inicial no HTML — evita flash antes do JS/GSAP */
-.hero.heroPending:not(.heroNavDocked) .nav,
-.hero.heroPending .contentRise > *,
+.hero.heroPending .nav,
+.hero.heroPending [data-hero-rise],
 .hero.heroPending .freq {
   opacity: 0;
   visibility: hidden;
@@ -176,25 +174,11 @@
   will-change: transform, opacity;
 }
 
-.heroAwaitingReveal .nav {
-  pointer-events: none;
-}
-
-.heroNavDocked .nav,
-.heroRevealed .nav {
+.hero.heroEntered .nav {
   opacity: 1;
   visibility: visible;
-  transform: translate3d(0, 0, 0);
+  transform: none;
   pointer-events: none;
-}
-
-.heroRevealed .contentRise > * {
-  pointer-events: auto;
-}
-
-.heroRevealed .freq {
-  opacity: 1;
-  visibility: visible;
 }
 
 .navShell {
@@ -479,6 +463,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   width: 100%;
   max-width: 100%;
   min-height: 0;
@@ -491,22 +478,15 @@
 }
 
 .contentIntro {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   width: 100%;
-  min-height: 0;
 }
 
 .contentRise {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: max(4.5rem, calc(env(safe-area-inset-bottom, 0px) + 3.5rem));
-  z-index: 6;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -516,11 +496,8 @@
   will-change: transform, opacity;
 }
 
-.heroAwaitingReveal .contentRise > * {
-  pointer-events: none;
-}
-
-.heroRevealed .contentRise > * {
+.hero.heroEntered .contentRise > *,
+.hero.heroEntered [data-hero-rise] {
   pointer-events: auto;
 }
 
@@ -581,7 +558,7 @@
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 1.5px;
   border-radius: 999px;
   overflow: hidden;
@@ -638,9 +615,9 @@
   max-width: 100%;
   padding: 0.42rem 0.42rem 0.42rem 1.35rem;
   border-radius: 999px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #0a0a0a;
+  background: var(--hero-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--hero-accent, #00ff55) 28%, transparent);
+  color: #061408;
   font-size: clamp(0.68rem, 0.35vw + 0.62rem, 0.78rem);
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -649,7 +626,7 @@
 
 .cta:hover .ctaInner {
   border-color: transparent;
-  background: #f3f3f3;
+  background: var(--hero-accent-soft-hover);
   transform: translateY(-1px);
 }
 
@@ -667,7 +644,7 @@
   display: grid;
   grid-template-columns: 1fr 1px 1fr 1px 1fr;
   width: min(820px, 100%);
-  margin-top: 0.35rem;
+  margin-top: clamp(1.5rem, 4vh, 2.75rem);
   column-gap: 0.35rem;
 }
 
@@ -913,7 +890,7 @@
 
   .content {
     justify-content: flex-start;
-    gap: 0;
+    gap: clamp(1.15rem, 3vh, 1.65rem);
 
     padding:
       0
@@ -933,7 +910,9 @@
 
   .headlineWrap {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
     position: absolute;
     top: var(--mobile-globe-center-y);
     left: 0;
@@ -941,7 +920,13 @@
     z-index: 5;
     padding: 0 1rem;
     box-sizing: border-box;
+    transform: translateY(-50%);
     pointer-events: none;
+  }
+
+  .headlineWrap .menuCard {
+    margin: 0;
+    pointer-events: auto;
   }
 
   .headline {
@@ -957,14 +942,22 @@
     pointer-events: auto;
   }
 
-  .hero:not(.heroEntered) .headline[data-hero-intro] {
+  .hero:not(.heroEntered) .headlineWrap {
     transform: translateY(calc(-50% + 20px));
+  }
+
+  .hero.heroEntered .headlineWrap {
+    transform: translateY(-50%);
+  }
+
+  .hero:not(.heroEntered) .headline[data-hero-intro] {
+    transform: none;
   }
 
   .hero.heroEntered .headline[data-hero-intro] {
     opacity: 1;
     visibility: visible;
-    transform: translateY(-50%);
+    transform: none;
     will-change: auto;
   }
 
@@ -978,13 +971,11 @@
   }
 
   .contentRise {
-    bottom: max(3.2rem, calc(env(safe-area-inset-bottom, 0px) + 2.4rem));
-    gap: clamp(1rem, 2.8vh, 1.35rem);
+    gap: clamp(1.15rem, 3vh, 1.65rem);
+    margin-top: 0;
   }
 
   .menuCard {
-    margin-top: 0.1rem;
-    margin-bottom: 0;
     position: relative;
     z-index: 4;
   }
@@ -1160,23 +1151,16 @@
 /* —— Reduced motion —— */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero.heroPending:not(.heroNavDocked) .nav,
-  .hero.heroPending .contentRise > *,
+  .hero.heroPending .nav,
+  .hero.heroPending [data-hero-rise],
   .hero.heroPending .freq,
   .content [data-hero-intro],
-  .hero:not(.heroEntered) .content [data-hero-intro],
-  .heroAwaitingReveal .contentRise > * {
+  .hero:not(.heroEntered) .content [data-hero-intro] {
     opacity: 1;
     visibility: visible;
     transform: none;
     will-change: auto;
     pointer-events: auto;
-  }
-
-  .heroNavDocked .nav {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
   }
 
   .heroVisuals,

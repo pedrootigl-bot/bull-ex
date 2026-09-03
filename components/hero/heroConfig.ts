@@ -26,7 +26,6 @@ export const NAV_COPY = {
     { href: "#mercados", labelKey: "markets", icon: "markets" },
     { href: "#por-que-bullex", labelKey: "why", icon: "why" },
     { href: "#premios", labelKey: "prizes", icon: "prizes" },
-    { href: "#sobre", labelKey: "about", icon: "about" },
     { href: "#faq", labelKey: "faq", icon: "faq" },
   ],
 } as const;

@@ -15,7 +15,6 @@ export function SiteFooter() {
         { href: "#mercados", label: t("markets") },
         { href: "#por-que-bullex", label: t("why") },
         { href: "#premios", label: t("prizes") },
-        { href: "#sobre", label: t("about") },
         { href: "#faq", label: t("faq") },
       ],
     },

@@ -1,0 +1,34 @@
+"use client";
+
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import {
+  BLOG_POST_IDS,
+  blogHref,
+  type BlogPostId,
+} from "./blogConfig";
+import styles from "./blog.module.css";
+
+export function BlogRelatedPosts({ currentId }: { currentId: BlogPostId }) {
+  const t = useTranslations("blog");
+  const related = BLOG_POST_IDS.filter((id) => id !== currentId);
+
+  return (
+    <aside className={styles.related} aria-labelledby="blog-related-title">
+      <h2 className={styles.relatedTitle} id="blog-related-title">
+        {t("relatedTitle")}
+      </h2>
+      <ul className={styles.relatedList}>
+        {related.map((id) => (
+          <li key={id}>
+            <Link className={styles.relatedCard} href={blogHref(id)}>
+              <span className={styles.relatedEyebrow}>{t("eyebrow")}</span>
+              <span className={styles.relatedPostTitle}>{t(`posts.${id}.title`)}</span>
+              <span className={styles.relatedExcerpt}>{t(`posts.${id}.excerpt`)}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}

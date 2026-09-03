@@ -1,3 +1,6 @@
+"use client";
+
+import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { useTranslations } from "next-intl";
 import { CompanyLogo } from "./CompanyLogo";
 import { MARKET_ITEMS, MARKETS_COPY } from "./marketsConfig";
@@ -7,9 +10,11 @@ import styles from "./markets.module.css";
 function MarketCard({
   item,
   gradientId,
+  formattedPrice,
 }: {
   item: (typeof MARKET_ITEMS)[number];
   gradientId: string;
+  formattedPrice: string;
 }) {
   const tone = item.direction === "positive" ? styles.positive : styles.negative;
 
@@ -26,12 +31,18 @@ function MarketCard({
       <div className={styles.chart}>
         <Sparkline series={item.series} direction={item.direction} gradientId={gradientId} />
       </div>
-      <span className={styles.price}>{item.price}</span>
+      <span className={styles.price}>{formattedPrice}</span>
     </article>
   );
 }
 
-function MarqueeRow({ reverse }: { reverse?: boolean }) {
+function MarqueeRow({
+  reverse,
+  formatPrice,
+}: {
+  reverse?: boolean;
+  formatPrice: (amount: number) => string;
+}) {
   const prefix = reverse ? "b" : "a";
 
   return (
@@ -44,6 +55,7 @@ function MarqueeRow({ reverse }: { reverse?: boolean }) {
                 key={`${prefix}-${copy}-${item.ticker}`}
                 item={item}
                 gradientId={`${prefix}-${copy}-${item.ticker}`}
+                formattedPrice={formatPrice(item.priceAmount)}
               />
             ))}
           </div>
@@ -55,6 +67,13 @@ function MarqueeRow({ reverse }: { reverse?: boolean }) {
 
 export function MarketsSection() {
   const t = useTranslations("markets");
+  const { formatMoney } = useFormatMoney();
+
+  const formatPrice = (amount: number) =>
+    formatMoney(amount, {
+      minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
+      maximumFractionDigits: Number.isInteger(amount) ? 0 : 2,
+    });
 
   return (
     <section className={styles.section} id={MARKETS_COPY.id} aria-labelledby="markets-title">
@@ -65,8 +84,8 @@ export function MarketsSection() {
         </h2>
         <p className={styles.subtitle}>{t("subtitle")}</p>
       </div>
-      <MarqueeRow />
-      <MarqueeRow reverse />
+      <MarqueeRow formatPrice={formatPrice} />
+      <MarqueeRow reverse formatPrice={formatPrice} />
     </section>
   );
 }

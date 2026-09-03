@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Bull-ex — Trade stocks, crypto and FX",
-    "description": "Sign up and get US$ 10,000 in your demo account to learn how to invest."
+    "description": "Sign up and get {demoBalance} in your demo account to learn how to invest."
   },
   "navigation": {
     "aria": "Main",
@@ -18,10 +18,9 @@
   },
   "hero": {
     "headline": "Trade stocks, cryptocurrencies and FX products the simple way!",
-    "subheadline": "Sign up and get US$ 10,000 in your demo account to learn how to invest.",
+    "subheadline": "Sign up and get {demoBalance} in your demo account to learn how to invest.",
     "cta": "OPEN YOUR FREE ACCOUNT",
     "stats": {
-      "demoValue": "US$ 10,000",
       "demoLabel": "Starting demo balance",
       "feesValue": "0 fees",
       "feesLabel": "To open your account",
@@ -73,7 +72,7 @@
     "titleHighlight": "serious investors?",
     "subtitle": "At Bullex we combine technology, security and exclusive conditions for people who trade at a high level.",
     "callout": "More than a broker: a strategic partner so you can <highlight>trade without limits</highlight> and <highlight>go further</highlight>.",
-    "photoAlt": "Figure wearing a green bull mask, representing the Bullex identity",
+    "photoAlt": "Executive with green bull head holding the Bullex app with profit and performance panels",
     "carouselLabel": "Bullex highlights for large investors",
     "carouselPrev": "Previous card",
     "carouselNext": "Next card",
@@ -102,24 +101,6 @@
         "title": "Smarter diversification",
         "text": "Access different markets and opportunities in one place."
       }
-    },
-    "bars": {
-      "speed": {
-        "title": "Fast execution",
-        "text": "Orders filled in milliseconds."
-      },
-      "lock": {
-        "title": "Advanced protection",
-        "text": "Your funds and data stay protected."
-      },
-      "manage": {
-        "title": "Professional management",
-        "text": "Tools and reports for better decisions."
-      },
-      "premium": {
-        "title": "Premium experience",
-        "text": "An environment built for high performance."
-      }
     }
   },
   "about": {
@@ -130,38 +111,87 @@
     "imageAlt": "A bull in attack stance in front of a city lit in green, a symbol of a rising market"
   },
   "testimonials": {
-    "eyebrow": "People who already tried it",
-    "title": "What folks are saying",
-    "subtitle": "We didn’t ask for pretty copy. We used what landed in support and the group chat.",
-    "stars": "{count} out of 5 stars",
+    "eyebrow": "Testimonials",
+    "title": "Testimonials from Our Clients",
+    "subtitle": "Bullex values feedback from every client to drive continuous improvements and ensure satisfaction.",
+    "starsLabel": "{count} · Stars",
+    "playVideo": "Play video",
+    "moreReviews": "More reviews",
+    "lessReviews": "Fewer reviews",
     "items": {
-      "camila": {
-        "photoAlt": "Photo of Camila",
-        "quote": "I opened the demo on a Saturday afternoon because I’d been putting this off for months. The fake US$ 10k helps with that fear of clicking the wrong thing. I still haven’t put real money in — my husband would kill me. But at least I get market orders now. The app froze for like 20 seconds once and I almost closed the account. It came back. I stayed."
+      "felipe": {
+        "name": "Felipe Costa",
+        "meta": "Trader • 2 years with Bullex",
+        "posterAlt": "Felipe Costa video cover"
       },
-      "rogerio": {
-        "photoAlt": "Photo of Rogério",
-        "quote": "My brother trades at XP and kept teasing me that I wouldn’t get any of it. I opened the demo here and by the afternoon I was placing orders. The screen is cleaner, not 40 buttons. I sent a question Sunday night and they replied Monday morning — that’s fine by me. Four stars because I’m still on demo, but I already liked it enough to tell my brother-in-law."
+      "ana": {
+        "name": "Ana B.",
+        "meta": "São Paulo, Brazil",
+        "title": "Simply incredible experience",
+        "quote": "From the intuitive interface to fast transactions and quick withdrawals, Bullex has been the best broker I've used.",
+        "photoAlt": "Photo of Ana B."
       },
-      "thiago": {
-        "photoAlt": "Photo of Thiago",
-        "quote": "My cousin sent me the link and I swore it was a scam lol. I tested the demo, did like 15 crypto trades just to see if the balance would vanish. It didn’t. I like that it doesn’t push leverage all the time, because I would’ve fallen for it. I signed up for real this week. If it goes wrong I’ll come back here and complain."
+      "marcos": {
+        "name": "Marcos W.",
+        "meta": "Rio de Janeiro, Brazil",
+        "title": "The best of all I tried",
+        "quote": "Of all the binary options platforms I tried, Bullex was the best. My withdrawals arrive in minutes, unlike many others.",
+        "photoAlt": "Photo of Marcos W."
       },
-      "juliana": {
-        "photoAlt": "Photo of Juliana",
-        "quote": "I’d already lost a bit at another broker (not naming them, embarrassing). Here at least the UI doesn’t lose me. I wish the chart was fuller, volume more obvious, that kind of thing. But for what I do — buy some stocks and forget — it’s fine. Took me a while to find history. It was two clicks. That’s on me."
+      "rafael": {
+        "name": "Rafael Mendes",
+        "meta": "Professional trader",
+        "posterAlt": "Rafael Mendes video cover"
       },
-      "eduardo": {
-        "photoAlt": "Photo of Eduardo",
-        "quote": "Verification took 2 days and I almost gave up. Then it went through. Yesterday I traded FX for the first time in my life, 50 dollars just to feel it. The order filled fast. I’m not a trader, I work construction, so if I managed to open it and click, anyone can. My daughter helped with the signup, to be honest."
+      "carlos": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brazil",
+        "title": "The best support in the market",
+        "quote": "Whenever I have an issue, Bullex support responds instantly. I've never seen such agile service.",
+        "photoAlt": "Photo of Carlos W."
       },
-      "fernanda": {
-        "photoAlt": "Photo of Fernanda",
-        "quote": "I took one star off because signup was slow on TIM 4G. I stared at the screen for a minute. Other than that the demo balance showed up right away. My sister opened one too. She couldn’t find history, I found it. We compare app screenshots on WhatsApp. Nothing revolutionary, I just didn’t feel stupid using it."
+      "joao": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brazil",
+        "title": "Fast, no delay or gaps",
+        "quote": "Excellent broker, fast, no delay and none of those awful gaps you get on many others lol.",
+        "photoAlt": "Photo of João A."
+      },
+      "carlosVideo": {
+        "name": "Carlos W.",
+        "meta": "São Paulo, Brazil",
+        "posterAlt": "Carlos W. video cover"
+      },
+      "joaoVideo": {
+        "name": "João A.",
+        "meta": "Fortaleza, Brazil",
+        "posterAlt": "João A. video cover"
+      },
+      "brandPlatform": {
+        "name": "Bullex",
+        "meta": "#1 platform for speed",
+        "imageAlt": "Bullex"
+      },
+      "brandCommunity": {
+        "name": "Bullex Community",
+        "meta": "Thousands of traders every day",
+        "imageAlt": "Bullex Community"
+      },
+      "tradingCommunity": {
+        "name": "Traders in action",
+        "meta": "Trading on Bullex every day",
+        "imageAlt": "Traders on Bullex"
+      },
+      "activeTraders": {
+        "name": "Bullex day to day",
+        "meta": "Thousands of daily trades",
+        "imageAlt": "Active traders on Bullex"
       }
     }
   },
   "platform": {
+    "title": "More than 200 assets to invest in, without the usual hassle.",
+    "subtitle": "Pick an asset and start investing in just a few clicks.",
     "aria": "Bullex platform on desktop and mobile",
     "imageAlt": "Bullex trading platform on desktop with a candlestick chart and on mobile with Up and Down buttons"
   },
@@ -179,6 +209,23 @@
       "access": {
         "title": "Global access 24/7",
         "text": "Stocks, crypto and FX in one experience, at any hour."
+      }
+    }
+  },
+  "teamGrid": {
+    "aria": "Bullex in action",
+    "titleStrong": "More than 200 assets",
+    "titleLight": "to invest in, the uncomplicated way",
+    "subtitle": "Choose an asset and start investing in just a few clicks.",
+    "imageAlt": "Bullex team analyzing the market in a trading environment",
+    "cards": {
+      "deposit": {
+        "eyebrow": "Minimum deposit",
+        "lead": "Start with"
+      },
+      "investment": {
+        "eyebrow": "Minimum investment",
+        "lead": "Only"
       }
     }
   },
@@ -228,6 +275,55 @@
       }
     }
   },
+  "kindness": {
+    "title": "A little kindness makes all the difference",
+    "subtitle": "In recent years we:",
+    "closing": "Let's give back to the community and build a new tomorrow together",
+    "readMore": "Read on the blog",
+    "cards": {
+      "community": {
+        "title": "Supported local communities",
+        "text": "Donations, partnerships, and social actions to help those who need it most.",
+        "imageAlt": "Volunteers delivering donations to the local community"
+      },
+      "education": {
+        "title": "Promoted financial education",
+        "text": "Free content and initiatives to democratize access to the market.",
+        "imageAlt": "People attending a financial education workshop"
+      },
+      "sustainability": {
+        "title": "Invested in sustainability",
+        "text": "Projects that combine growth, responsibility, and a better future for everyone.",
+        "imageAlt": "Solar panels in a green landscape representing sustainable energy"
+      }
+    }
+  },
+  "accountSteps": {
+    "title": "How to create your Bullex account in 3 steps",
+    "subtitle": "Follow the path below and start investing quickly and securely.",
+    "progressLabel": "Account opening progress",
+    "stepLabel": "Step {step}",
+    "previous": "Back",
+    "next": "Next step",
+    "cta": "OPEN YOUR FREE ACCOUNT",
+    "steps": {
+      "register": {
+        "checkpoint": "Sign up",
+        "title": "Create your registration",
+        "text": "Enter your name, email, and password in just a few minutes on the Bullex website or app."
+      },
+      "verify": {
+        "checkpoint": "Verification",
+        "title": "Confirm your identity",
+        "text": "Validate your details to increase security and unlock your account for trading."
+      },
+      "start": {
+        "checkpoint": "Get started",
+        "title": "Make your first login",
+        "text": "Enter the platform, explore the assets, and start investing with ease."
+      }
+    }
+  },
   "faq": {
     "eyebrow": "Frequently asked questions",
     "title": "About Bullex",
@@ -242,7 +338,7 @@
       },
       "start": {
         "q": "How to start?",
-        "a": "Register, open the demo account with US$ 10,000, and explore the platform. When you are ready to trade live, deposit funds and use support at every step."
+        "a": "Register, open the demo account with {demoBalance}, and explore the platform. When you are ready to trade live, deposit funds and use support at every step."
       },
       "instruments": {
         "q": "What financial instruments can I trade?",
@@ -255,6 +351,46 @@
       "education": {
         "q": "Does Bullex offer educational resources for beginners?",
         "a": "Yes. Bullex provides tutorials, webinars, and learning materials so beginners can understand the basics and practice on the demo before risking capital."
+      }
+    }
+  },
+  "blog": {
+    "eyebrow": "Bullex Blog",
+    "backSection": "See more stories",
+    "publishedAt": "Published on {date}",
+    "readTime": "{minutes} min read",
+    "cta": "OPEN YOUR FREE ACCOUNT",
+    "relatedTitle": "Read also",
+    "posts": {
+      "community": {
+        "title": "Supported local communities",
+        "excerpt": "Donations, partnerships, and social actions to help those who need it most.",
+        "date": "September 3, 2026",
+        "minutes": "4",
+        "imageAlt": "Volunteers delivering donations to the local community",
+        "p1": "At Bullex, we believe growth also means giving back. That is why we support initiatives that bring resources, guidance, and opportunity to communities that need it most.",
+        "p2": "Our actions include donations, partnerships with local organizations, and projects that promote social inclusion. Each initiative is designed to create real, lasting impact — not just brand presence.",
+        "p3": "We continue to expand this commitment with transparency and proximity, because building market trust starts with caring for the people around us."
+      },
+      "education": {
+        "title": "Promoted financial education",
+        "excerpt": "Free content and initiatives to democratize access to the market.",
+        "date": "August 28, 2026",
+        "minutes": "5",
+        "imageAlt": "People attending a financial education workshop",
+        "p1": "Trading responsibly requires knowledge. That is why Bullex invests in accessible financial education for people taking their first steps in the market.",
+        "p2": "We offer materials, sessions, and practical content that explain essential concepts clearly — from reading charts to risk management — always in direct language without unnecessary jargon.",
+        "p3": "We want more people to make informed decisions, starting with the demo account and moving forward safely when they are ready to trade live."
+      },
+      "sustainability": {
+        "title": "Invested in sustainability",
+        "excerpt": "Projects that combine growth, responsibility, and a better future for everyone.",
+        "date": "August 15, 2026",
+        "minutes": "4",
+        "imageAlt": "Solar panels in a green landscape representing sustainable energy",
+        "p1": "For Bullex, sustainability means balancing performance with responsibility. We work to reduce impact and support practices that preserve resources for future generations.",
+        "p2": "We support initiatives related to energy efficiency, environmental awareness, and more responsible operational choices across our value chain.",
+        "p3": "This is an ongoing journey. We share progress and challenges with our community because we believe transparency strengthens any long-term project."
       }
     }
   },

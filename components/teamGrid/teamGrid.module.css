@@ -1,0 +1,350 @@
+.section {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: clamp(2.5rem, 6vh, 3.5rem) 0 clamp(3rem, 7vh, 4rem);
+}
+
+.inner {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.15rem, 2.5vw, 1.6rem);
+  min-width: 0;
+}
+
+.leftHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.sectionTitle {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(1.25rem, 2.35vw, 1.95rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.titleStrong {
+  display: block;
+  font-weight: 800;
+  color: #fff;
+}
+
+.titleLight {
+  display: block;
+  margin-top: 0.12em;
+  font-weight: 400;
+  color: #7cff3a;
+  font-size: 0.82em;
+  letter-spacing: -0.02em;
+}
+
+.sectionSubtitle {
+  margin: 0;
+  max-width: 26rem;
+  color: #8d8d8d;
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  font-weight: 400;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  min-height: 7.5rem;
+  padding: 0.95rem 0.85rem;
+  border-radius: 16px;
+  border: 1px solid rgba(124, 255, 58, 0.22);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+}
+
+.statCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #7cff3a;
+  font-size: clamp(0.58rem, 0.9vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+.lead {
+  margin: 0;
+  color: #9a9a9a;
+  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.value {
+  margin: 0.15rem 0 0;
+  color: #fff;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.statIconWrap {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 255, 58, 0.35);
+  background: rgba(124, 255, 58, 0.08);
+  color: #7cff3a;
+}
+
+.mediaPanel {
+  position: relative;
+  width: 100%;
+  min-height: clamp(280px, 34vw, 430px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 255, 58, 0.14);
+  background: #0a0a0a;
+}
+
+.mediaReveal {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(38% 38% 38% 38% round 18px);
+  transition: clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+  will-change: clip-path;
+}
+
+.revealIn .mediaReveal {
+  clip-path: inset(0 0 0 0 round 20px);
+}
+
+.mediaImage {
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scale(1.22);
+  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+  will-change: transform;
+}
+
+.revealIn .mediaImage {
+  transform: scale(1);
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fadeIn.in {
+  opacity: 1;
+  transform: none;
+}
+
+.fadeHeader.in {
+  transition-delay: 0.05s;
+}
+
+.fadeCard.in {
+  transition-delay: 0.18s;
+}
+
+.fadeCardSecond.in {
+  transition-delay: 0.28s;
+}
+
+.fadeButton.in {
+  transition-delay: 0.42s;
+}
+
+.motionStatic {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+.motionStatic .mediaReveal,
+.revealIn.motionStatic .mediaReveal {
+  clip-path: inset(0 0 0 0 round 20px);
+  transition: none;
+}
+
+.motionStatic .mediaImage,
+.revealIn.motionStatic .mediaImage {
+  transform: scale(1);
+  transition: none;
+}
+
+.enterBtn {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-height: 3.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 255, 58, 0.55);
+  background: #050805;
+  text-decoration: none;
+  color: #fff;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.enterBtn:hover {
+  border-color: #7cff3a;
+  background: #0a1208;
+  transform: translateY(-1px);
+}
+
+.enterBtnInner {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.55rem 0.55rem 0.55rem 1.35rem;
+  font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.enterBtnIcon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #7cff3a;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mediaPanel {
+    order: -1;
+    min-height: clamp(220px, 52vw, 360px);
+  }
+
+  .statGrid {
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.05rem, 4.8vw, 1.45rem);
+  }
+
+  .titleLight {
+    font-size: 0.8em;
+  }
+
+  .sectionSubtitle {
+    font-size: 0.84rem;
+  }
+
+  .statCard {
+    min-height: 6.5rem;
+    padding: 0.8rem 0.7rem;
+    border-radius: 14px;
+  }
+
+  .statIconWrap {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .value {
+    font-size: 1.15rem;
+  }
+
+  .enterBtn {
+    min-height: 2.85rem;
+  }
+
+  .enterBtnInner {
+    padding: 0.5rem 0.5rem 0.5rem 1.1rem;
+    font-size: 0.88rem;
+  }
+
+  .enterBtnIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mediaPanel {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mediaReveal {
+    clip-path: inset(0 0 0 0 round 20px);
+    transition: none;
+  }
+
+  .mediaImage {
+    transform: scale(1);
+    transition: none;
+  }
+
+  .enterBtn:hover {
+    transform: none;
+  }
+}

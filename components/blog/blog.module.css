@@ -1,0 +1,231 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.92);
+  border-bottom: 1px solid rgba(124, 255, 58, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(920px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0.85rem 0;
+}
+
+.brand {
+  display: inline-flex;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.brandLogo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+.backLink {
+  color: #9a9a9a;
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: #7cff3a;
+}
+
+.page {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.article {
+  width: min(760px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vh, 3rem) 0 clamp(2.5rem, 6vh, 4rem);
+}
+
+.heroMedia {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 255, 58, 0.16);
+  background: #111;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin: 0 0 0.85rem;
+  padding: 0.34rem 0.78rem;
+  border: 1px solid rgba(124, 255, 58, 0.45);
+  border-radius: 999px;
+  color: #7cff3a;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.65rem, 4vw, 2.45rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1.15rem;
+  color: #8d8d8d;
+  font-size: 0.86rem;
+}
+
+.excerpt {
+  margin: 0 0 1.75rem;
+  color: #b5b5b5;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.body {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.body p {
+  margin: 0;
+  color: #d0d0d0;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 22rem);
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: color-mix(in srgb, #7cff3a 72%, white);
+  color: #061408;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background-color 0.22s ease, transform 0.18s ease;
+}
+
+.cta:hover {
+  background: color-mix(in srgb, #7cff3a 64%, white);
+  transform: translateY(-1px);
+}
+
+.related {
+  width: min(760px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0 0 clamp(2.5rem, 6vh, 3.5rem);
+}
+
+.relatedTitle {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.relatedList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 100%;
+  padding: 1rem 1.05rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.22s ease,
+    transform 0.2s ease;
+}
+
+.relatedCard:hover {
+  border-color: rgba(124, 255, 58, 0.45);
+  transform: translateY(-2px);
+}
+
+.relatedEyebrow {
+  color: #7cff3a;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.relatedPostTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.relatedExcerpt {
+  color: #8d8d8d;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 720px) {
+  .relatedList {
+    grid-template-columns: 1fr;
+  }
+
+  .headerInner {
+    padding: 0.75rem 0;
+  }
+
+  .backLink {
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:hover,
+  .relatedCard:hover {
+    transform: none;
+  }
+}

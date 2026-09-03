@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { WHY_COPY } from "./whyConfig";
 
-type WhyIconName = (typeof WHY_COPY.features)[number] | (typeof WHY_COPY.bars)[number] | "bull";
+type WhyIconName = (typeof WHY_COPY.features)[number] | "bull";
 
 function frame(children: ReactNode) {
   return (
@@ -53,28 +53,6 @@ export function WhyIcon({ name }: { name: WhyIconName }) {
           <circle cx="12" cy="12" r="8.2" stroke="#7CFF3A" strokeWidth="1.5" />
           <path d="M12 3.8v8.2l6.4 3.7" stroke="#7CFF3A" strokeWidth="1.5" strokeLinecap="round" />
         </>,
-      );
-    case "speed":
-      return frame(
-        <path d="M13.2 4.8 7 13.2h4.4L10.8 19.2 17 10.8h-4.4L13.2 4.8Z" stroke="#7CFF3A" strokeWidth="1.5" strokeLinejoin="round" />,
-      );
-    case "lock":
-      return frame(
-        <>
-          <rect x="6.2" y="11" width="11.6" height="8.2" rx="1.6" stroke="#7CFF3A" strokeWidth="1.5" />
-          <path d="M8.6 11V8.6a3.4 3.4 0 0 1 6.8 0V11" stroke="#7CFF3A" strokeWidth="1.5" />
-        </>,
-      );
-    case "manage":
-      return frame(
-        <>
-          <circle cx="12" cy="12" r="8.2" stroke="#7CFF3A" strokeWidth="1.5" />
-          <path d="M12 12 18.2 8.4M12 12v8.2" stroke="#7CFF3A" strokeWidth="1.5" strokeLinecap="round" />
-        </>,
-      );
-    case "premium":
-      return frame(
-        <path d="m12 4.6 1.7 4.4 4.7.3-3.6 3.1 1.2 4.6L12 14.8 7.9 17l1.2-4.6-3.6-3.1 4.7-.3L12 4.6Z" stroke="#7CFF3A" strokeWidth="1.5" strokeLinejoin="round" />,
       );
     case "bull":
       return (

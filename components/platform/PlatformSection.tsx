@@ -3,11 +3,14 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { HighlightMark } from "@/components/highlights/HighlightMark";
+import { PLATFORM_HIGHLIGHT_ITEMS } from "@/components/highlights/highlightsConfig";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import styles from "./platform.module.css";
 
 export function PlatformSection() {
   const t = useTranslations("platform");
+  const tHighlights = useTranslations("highlights");
   const reducedMotion = useReducedMotion();
   const stageRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(reducedMotion);
@@ -42,6 +45,13 @@ export function PlatformSection() {
   return (
     <section className={styles.section} aria-label={t("aria")}>
       <div className={styles.inner}>
+        <header
+          className={`${styles.header} ${visible ? styles.headerVisible : ""} ${motionClass}`}
+        >
+          <h2 className={styles.title}>{t("title")}</h2>
+          <p className={styles.subtitle}>{t("subtitle")}</p>
+        </header>
+
         <div
           className={`${styles.stage} ${visible ? styles.stageVisible : ""} ${motionClass}`}
           ref={stageRef}
@@ -54,7 +64,7 @@ export function PlatformSection() {
                 alt={t("imageAlt")}
                 width={1024}
                 height={682}
-                sizes="(max-width: 900px) 100vw, min(1180px, 91vw)"
+                sizes="(max-width: 640px) 92vw, min(740px, 78vw)"
                 quality={90}
                 priority
               />
@@ -62,6 +72,16 @@ export function PlatformSection() {
 
             <div className={styles.baseGlow} aria-hidden="true" />
           </div>
+        </div>
+
+        <div className={styles.highlightsRow} aria-label={tHighlights("aria")}>
+          {PLATFORM_HIGHLIGHT_ITEMS.map((item) => (
+            <article className={styles.highlightCard} key={item}>
+              <HighlightMark name={item} />
+              <h3 className={styles.highlightTitle}>{tHighlights(`items.${item}.title`)}</h3>
+              <p className={styles.highlightText}>{tHighlights(`items.${item}.text`)}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

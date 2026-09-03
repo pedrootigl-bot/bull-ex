@@ -246,7 +246,7 @@
   letter-spacing: -0.045em;
   line-height: 1.12;
   color: #f3f3f3;
-  text-wrap: balance;
+  white-space: pre-line;
 }
 
 .revealMask {

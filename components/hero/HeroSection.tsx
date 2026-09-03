@@ -2,9 +2,10 @@
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useFormatMoney } from "@/hooks/useFormatMoney";
+import { MONEY_AMOUNTS } from "@/i18n/moneyAmounts";
 import { useViewportTier } from "@/hooks/useViewportTier";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -13,8 +14,6 @@ import { HERO_COPY, HERO_THEME, NAV_COPY } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import { OrbitalLines } from "./OrbitalLines";
 import styles from "./hero.module.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FinancialGlobe = dynamic(
   () => import("./FinancialGlobe").then((mod) => mod.FinancialGlobe),
@@ -50,13 +49,6 @@ function NavLinkIcon({ name }: { name: (typeof NAV_COPY.links)[number]["icon"] }
           <path d="M6.4 13.2h3.2M8 10.2v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
         </svg>
       );
-    case "about":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="5" r="2.2" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M3.4 13c.7-2.1 2.4-3.2 4.6-3.2s3.9 1.1 4.6 3.2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        </svg>
-      );
     case "faq":
       return (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -78,19 +70,19 @@ export function HeroSection() {
   const rgb = HERO_THEME.accentRgb;
   const tNav = useTranslations("navigation");
   const tHero = useTranslations("hero");
+  const { formatMoney, moneyParams } = useFormatMoney();
   const contentRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const scrollTrackRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const navDockedRef = useRef(false);
   const [navScrolled, setNavScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
-  const [introComplete, setIntroComplete] = useState(false);
   const entrancePlayedRef = useRef(false);
   const stats = [
-    { value: tHero("stats.demoValue"), label: tHero("stats.demoLabel") },
+    {
+      value: formatMoney(MONEY_AMOUNTS.demoBalance, { maximumFractionDigits: 0 }),
+      label: tHero("stats.demoLabel"),
+    },
     { value: tHero("stats.feesValue"), label: tHero("stats.feesLabel") },
     { value: tHero("stats.hoursValue"), label: tHero("stats.hoursLabel") },
   ];
@@ -118,43 +110,44 @@ export function HeroSection() {
   }, [menuOpen]);
 
   useEffect(() => {
-    if (!reducedMotion) {
-      return;
-    }
-
-    const hero = heroRef.current;
-    if (hero) {
-      hero.classList.remove(styles.heroPending);
-      hero.classList.add(styles.heroEntered, styles.heroRevealed, styles.heroNavDocked);
-    }
-    setIntroComplete(true);
-  }, [reducedMotion]);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      return;
-    }
-
     const hero = heroRef.current;
     const content = contentRef.current;
-    if (!hero || !content || !globeReady || entrancePlayedRef.current) {
+    if (!hero || !content) {
+      return;
+    }
+
+    if (reducedMotion) {
+      hero.classList.remove(styles.heroPending);
+      hero.classList.add(styles.heroEntered);
+      return;
+    }
+
+    if (!globeReady || entrancePlayedRef.current) {
       return;
     }
 
     const intro = content.querySelectorAll<HTMLElement>("[data-hero-intro]");
     const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
+    const nav = navRef.current;
+    const riseItems = gsap.utils.toArray<HTMLElement>(
+      content.querySelectorAll(`[data-hero-rise]`),
+    );
+    const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
+    const revealItems = [...(nav ? [nav] : []), ...riseItems, ...(freq ? [freq] : [])];
 
     const ctx = gsap.context(() => {
       gsap.set(intro, { autoAlpha: 0, y: 18 });
+      gsap.set(revealItems, { autoAlpha: 0, y: 20 });
 
       const introTimeline = gsap.timeline({
         defaults: { ease: "power2.out" },
         onComplete: () => {
           entrancePlayedRef.current = true;
+          hero.classList.remove(styles.heroPending);
           hero.classList.add(styles.heroEntered);
           gsap.set(visuals, { clearProps: "all" });
           gsap.set(intro, { clearProps: "opacity,visibility,transform" });
-          setIntroComplete(true);
+          gsap.set(revealItems, { clearProps: "all" });
         },
       });
 
@@ -171,256 +164,106 @@ export function HeroSection() {
         { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.08, ease: "power2.out" },
         ">+=0.4",
       );
+
+      introTimeline.fromTo(
+        revealItems,
+        { autoAlpha: 0, y: 20 },
+        { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.07, ease: "power2.out" },
+        ">+=0.15",
+      );
     }, hero);
 
     return () => ctx.revert();
   }, [reducedMotion, globeReady]);
 
-  useEffect(() => {
-    if (reducedMotion || !introComplete) {
-      return;
-    }
-
-    const hero = heroRef.current;
-    const content = contentRef.current;
-    const stage = stageRef.current;
-    const scrollTrack = scrollTrackRef.current;
-    if (!hero || !content || !stage || !scrollTrack) {
-      return;
-    }
-
-    const nav = navRef.current;
-    const riseItems = gsap.utils.toArray<HTMLElement>(
-      content.querySelectorAll(`.${styles.contentRise} > *`),
-    );
-    const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
-
-    hero.classList.add(styles.heroAwaitingReveal);
-    navDockedRef.current = false;
-
-    const ctx = gsap.context(() => {
-      const getNavOffset = () => Math.min(window.innerHeight * 0.42, 360);
-      const getRiseOffset = () => Math.min(window.innerHeight * 0.22, 180);
-      const scrollEnd = window.matchMedia("(max-width: 640px)").matches ? "+=95%" : "+=115%";
-
-      const dockNav = () => {
-        navDockedRef.current = true;
-        hero.classList.add(styles.heroNavDocked);
-        if (nav) {
-          gsap.set(nav, { y: 0, autoAlpha: 1 });
-        }
-      };
-
-      const undockNav = () => {
-        navDockedRef.current = false;
-        hero.classList.remove(styles.heroNavDocked);
-      };
-
-      const updateNavFromProgress = (progress: number) => {
-        if (!nav || navDockedRef.current) {
-          if (nav && navDockedRef.current) {
-            gsap.set(nav, { y: 0, autoAlpha: 1 });
-          }
-          return;
-        }
-
-        const navProgress = gsap.utils.clamp(
-          0,
-          1,
-          gsap.utils.mapRange(0.05, 0.4, 0, 1, progress),
-        );
-
-        gsap.set(nav, {
-          y: getNavOffset() * (1 - navProgress),
-          autoAlpha: navProgress,
-        });
-      };
-
-      if (nav) {
-        gsap.set(nav, { y: getNavOffset(), autoAlpha: 0 });
-      }
-      gsap.set(riseItems, { y: getRiseOffset(), autoAlpha: 0 });
-      if (freq) {
-        gsap.set(freq, { y: 28, autoAlpha: 0 });
-      }
-
-      hero.classList.remove(styles.heroPending);
-
-      const revealTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollTrack,
-          start: "top top",
-          end: scrollEnd,
-          scrub: 0.42,
-          pin: stage,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-
-            if (progress >= 0.96) {
-              dockNav();
-            } else if (
-              navDockedRef.current &&
-              self.direction === -1 &&
-              progress < 0.96
-            ) {
-              undockNav();
-            }
-
-            updateNavFromProgress(progress);
-
-            if (progress >= 0.98) {
-              hero.classList.add(styles.heroRevealed);
-              hero.classList.remove(styles.heroAwaitingReveal);
-            } else if (progress <= 0.02) {
-              hero.classList.remove(styles.heroRevealed);
-              hero.classList.add(styles.heroAwaitingReveal);
-            } else {
-              hero.classList.remove(styles.heroRevealed);
-            }
-          },
-          onLeave: () => {
-            dockNav();
-            hero.classList.add(styles.heroRevealed);
-            hero.classList.remove(styles.heroAwaitingReveal);
-            gsap.set(riseItems, { clearProps: "transform,opacity,visibility" });
-            if (freq) {
-              gsap.set(freq, { clearProps: "transform,opacity,visibility" });
-            }
-          },
-          onEnterBack: () => {
-            dockNav();
-          },
-          onLeaveBack: () => {
-            undockNav();
-            hero.classList.remove(styles.heroRevealed);
-            hero.classList.add(styles.heroAwaitingReveal);
-            updateNavFromProgress(0);
-          },
-        },
-        defaults: { ease: "none" },
-      });
-
-      revealTimeline.to(
-        riseItems,
-        { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.07 },
-        0.14,
-      );
-
-      if (freq) {
-        revealTimeline.to(freq, { y: 0, autoAlpha: 1, duration: 0.32 }, 0.28);
-      }
-    }, hero);
-
-    const onResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-      ctx.revert();
-      navDockedRef.current = false;
-      hero.classList.remove(styles.heroAwaitingReveal, styles.heroRevealed, styles.heroNavDocked);
-    };
-  }, [reducedMotion, introComplete]);
-
-  useEffect(() => {
-    if (!introComplete || reducedMotion) {
-      return;
-    }
-
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-  }, [introComplete, reducedMotion]);
-
   return (
-    <div className={styles.heroScrollTrack} ref={scrollTrackRef}>
-      <header
-        ref={heroRef}
-        id={HERO_COPY.id}
-        className={`${styles.hero} ${styles.heroPending}`}
-        style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
+    <header
+      ref={heroRef}
+      id={HERO_COPY.id}
+      className={`${styles.hero} ${styles.heroPending}`}
+      style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
+    >
+      <nav
+        ref={navRef}
+        className={`${styles.nav} ${navScrolled ? styles.navScrolled : ""} ${menuOpen ? styles.navMenuOpen : ""}`}
+        aria-label={tNav("aria")}
       >
-        <nav
-          ref={navRef}
-          className={`${styles.nav} ${navScrolled ? styles.navScrolled : ""} ${menuOpen ? styles.navMenuOpen : ""}`}
-          aria-label={tNav("aria")}
-        >
-          <div className={styles.navShell}>
-            <div className={styles.navInner}>
-              <a className={styles.brand} href={`#${HERO_COPY.id}`} onClick={() => setMenuOpen(false)}>
-                <Image
-                  src="/images/bullex-logo.webp"
-                  alt={tNav("brand")}
-                  width={755}
-                  height={330}
-                  className={styles.brandLogo}
-                  priority
-                />
+        <div className={styles.navShell}>
+          <div className={styles.navInner}>
+            <a className={styles.brand} href={`#${HERO_COPY.id}`} onClick={() => setMenuOpen(false)}>
+              <Image
+                src="/images/bullex-logo.webp"
+                alt={tNav("brand")}
+                width={755}
+                height={330}
+                className={styles.brandLogo}
+                priority
+              />
+            </a>
+
+            <ul className={styles.navLinks}>
+              {NAV_COPY.links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={() => setMenuOpen(false)}>
+                    <NavLinkIcon name={link.icon} />
+                    <span>{tNav(link.labelKey)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className={styles.navEnd}>
+              <LanguageSwitcher />
+              <a className={styles.navCta} href={HERO_COPY.ctaHref} target="_blank" rel="noopener noreferrer">
+                <span className={styles.beam} aria-hidden="true" />
+                <span className={styles.navCtaInner}>
+                  {tNav("login")}
+                  <span className={styles.navCtaIcon} aria-hidden="true">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path
+                        d="M1.5 5h7M5.5 2l3 3-3 3"
+                        stroke="#fff"
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </span>
               </a>
-
-              <ul className={styles.navLinks}>
-                {NAV_COPY.links.map((link) => (
-                  <li key={link.href}>
-                    <a href={link.href} onClick={() => setMenuOpen(false)}>
-                      <NavLinkIcon name={link.icon} />
-                      <span>{tNav(link.labelKey)}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-
-              <div className={styles.navEnd}>
-                <LanguageSwitcher />
-                <a className={styles.navCta} href={HERO_COPY.ctaHref} target="_blank" rel="noopener noreferrer">
-                  <span className={styles.beam} aria-hidden="true" />
-                  <span className={styles.navCtaInner}>
-                    {tNav("login")}
-                    <span className={styles.navCtaIcon} aria-hidden="true">
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                        <path
-                          d="M1.5 5h7M5.5 2l3 3-3 3"
-                          stroke="#fff"
-                          strokeWidth="1.3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </a>
-                <button
-                  className={styles.menuToggle}
-                  type="button"
-                  aria-expanded={menuOpen}
-                  aria-controls="hero-mobile-nav"
-                  aria-label={menuOpen ? tNav("menuClose") : tNav("menuOpen")}
-                  onClick={() => setMenuOpen((open) => !open)}
-                >
-                  <span className={styles.menuToggleBars} aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.mobilePanel} id="hero-mobile-nav" hidden={!menuOpen}>
-              <ul className={styles.mobileLinks}>
-                {NAV_COPY.links.map((link) => (
-                  <li key={link.href}>
-                    <a href={link.href} onClick={() => setMenuOpen(false)}>
-                      <NavLinkIcon name={link.icon} />
-                      <span>{tNav(link.labelKey)}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <button
+                className={styles.menuToggle}
+                type="button"
+                aria-expanded={menuOpen}
+                aria-controls="hero-mobile-nav"
+                aria-label={menuOpen ? tNav("menuClose") : tNav("menuOpen")}
+                onClick={() => setMenuOpen((open) => !open)}
+              >
+                <span className={styles.menuToggleBars} aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+              </button>
             </div>
           </div>
-        </nav>
 
-      <div className={styles.heroStage} ref={stageRef}>
+          <div className={styles.mobilePanel} id="hero-mobile-nav" hidden={!menuOpen}>
+            <ul className={styles.mobileLinks}>
+              {NAV_COPY.links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={() => setMenuOpen(false)}>
+                    <NavLinkIcon name={link.icon} />
+                    <span>{tNav(link.labelKey)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div className={styles.heroStage}>
         <div className={styles.background} />
         <svg className={styles.marketMarks} viewBox="0 0 1440 900" aria-hidden="true">
           <path
@@ -450,39 +293,40 @@ export function HeroSection() {
         <section className={styles.content} ref={contentRef}>
           <div className={styles.contentIntro}>
             <div className={styles.headlineWrap}>
+              <div className={styles.menuCard} data-hero-rise>
+                <span className={styles.beam} aria-hidden="true" />
+                <span className={styles.menuCardInner}>
+                  <span className={styles.menuCardIcon} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
+                      <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
+                      <path
+                        d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
+                        stroke="currentColor"
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </span>
+                  {tHero("investorsCard")}
+                </span>
+              </div>
               <h1 className={styles.headline} data-hero-intro>
                 {tHero("headline")}
               </h1>
             </div>
             <p className={styles.subheadline} data-hero-intro>
-              {tHero("subheadline")}
+              {tHero("subheadline", moneyParams)}
             </p>
           </div>
 
           <div className={styles.contentRise}>
-            <div className={styles.menuCard}>
-              <span className={styles.beam} aria-hidden="true" />
-              <span className={styles.menuCardInner}>
-                <span className={styles.menuCardIcon} aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
-                    <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
-                    <path
-                      d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
-                      stroke="currentColor"
-                      strokeWidth="1.3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
-                {tHero("investorsCard")}
-              </span>
-            </div>
             <a
               className={styles.cta}
               href={HERO_COPY.ctaHref}
               target="_blank"
               rel="noopener noreferrer"
+              data-hero-rise
             >
               <span className={styles.beam} aria-hidden="true" />
               <span className={styles.ctaInner}>
@@ -500,7 +344,7 @@ export function HeroSection() {
                 </span>
               </span>
             </a>
-            <div className={styles.stats}>
+            <div className={styles.stats} data-hero-rise>
               {stats.map((stat, index) => (
                 <div key={stat.label} style={{ display: "contents" }}>
                   {index > 0 ? <div className={styles.divider} aria-hidden="true" /> : null}
@@ -521,6 +365,5 @@ export function HeroSection() {
         </div>
       </div>
     </header>
-    </div>
   );
 }

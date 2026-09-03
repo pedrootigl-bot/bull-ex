@@ -1,7 +1,7 @@
 import { SiteFooter } from "@/components/footer/Footer";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { HighlightsSection } from "@/components/highlights/HighlightsSection";
 import { PlatformSection } from "@/components/platform/PlatformSection";
+import { TeamGridSection } from "@/components/teamGrid/TeamGridSection";
 import { AppToMarketsScrollStack } from "@/components/scrollStack/AppToMarketsScrollStack";
 import dynamic from "next/dynamic";
 
@@ -11,8 +11,11 @@ const WhySection = dynamic(() =>
 const PrizesSection = dynamic(() =>
   import("@/components/prizes/PrizesSection").then((mod) => mod.PrizesSection),
 );
-const AboutSection = dynamic(() =>
-  import("@/components/about/AboutSection").then((mod) => mod.AboutSection),
+const KindnessSection = dynamic(() =>
+  import("@/components/kindness/KindnessSection").then((mod) => mod.KindnessSection),
+);
+const AccountStepsSection = dynamic(() =>
+  import("@/components/accountSteps/AccountStepsSection").then((mod) => mod.AccountStepsSection),
 );
 const TestimonialsSection = dynamic(() =>
   import("@/components/testimonials/TestimonialsSection").then((mod) => mod.TestimonialsSection),
@@ -27,12 +30,13 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <PlatformSection />
-        <HighlightsSection />
+        <TeamGridSection />
         <AppToMarketsScrollStack />
+        <TestimonialsSection />
         <WhySection />
         <PrizesSection />
-        <AboutSection />
-        <TestimonialsSection />
+        <KindnessSection />
+        <AccountStepsSection />
         <FaqSection />
       </main>
       <SiteFooter />

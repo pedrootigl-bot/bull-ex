@@ -1,5 +1,6 @@
 "use client";
 
+import { HERO_COPY } from "@/components/hero/heroConfig";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -8,15 +9,13 @@ import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
 
-type CardIcon = (typeof WHY_COPY.features)[number] | (typeof WHY_COPY.bars)[number];
+type CardIcon = (typeof WHY_COPY.features)[number];
 
-const CAROUSEL_CARDS: { icon: CardIcon; group: "features" | "bars" }[] = [
-  ...WHY_COPY.features.map((icon) => ({ icon, group: "features" as const })),
-  ...WHY_COPY.bars.map((icon) => ({ icon, group: "bars" as const })),
-];
+const CAROUSEL_CARDS: CardIcon[] = [...WHY_COPY.features];
 
 export function WhySection() {
   const t = useTranslations("why");
+  const tHero = useTranslations("hero");
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -152,32 +151,43 @@ export function WhySection() {
                 </article>
               ))}
             </div>
+
+            <div className={`${styles.ctaWrap} ${textClass} ${styles.delayCta}`}>
+              <a
+                className={styles.cta}
+                href={HERO_COPY.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className={styles.ctaBeam} aria-hidden="true" />
+                <span className={styles.ctaInner}>
+                  {tHero("cta")}
+                  <span className={styles.ctaIcon} aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path
+                        d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
+                        stroke="#fff"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </div>
           </div>
 
           <div className={`${styles.visual} ${imageClass}`}>
             <Image
               className={styles.photo}
-              src="/images/bullex-why-trader.webp"
+              src="/images/bullex-why-investor.jpg"
               alt={t("photoAlt")}
-              width={682}
-              height={1024}
-              sizes="(max-width: 980px) 70vw, 360px"
+              width={1024}
+              height={921}
+              sizes="(max-width: 820px) 90vw, (max-width: 980px) 70vw, 55vw"
               quality={90}
             />
-          </div>
-
-          <div className={`${styles.bar} ${textClass} ${styles.delayBar}`}>
-            {WHY_COPY.bars.map((icon) => (
-              <article className={styles.barItem} key={icon}>
-                <div className={styles.iconWrap}>
-                  <WhyIcon name={icon} />
-                </div>
-                <div>
-                  <h3>{t(`bars.${icon}.title`)}</h3>
-                  <p>{t(`bars.${icon}.text`)}</p>
-                </div>
-              </article>
-            ))}
           </div>
 
           <div className={styles.carouselBlock}>
@@ -207,19 +217,19 @@ export function WhySection() {
                 aria-label={t("carouselLabel")}
                 aria-roledescription="carousel"
               >
-                {CAROUSEL_CARDS.map(({ icon, group }, index) => (
+                {CAROUSEL_CARDS.map((icon, index) => (
                   <article
-                    className={group === "features" ? styles.feature : styles.barItem}
+                    className={styles.feature}
                     data-carousel-slide
                     aria-hidden={index !== activeSlide}
-                    key={`carousel-${group}-${icon}`}
+                    key={`carousel-${icon}`}
                   >
                     <div className={styles.iconWrap}>
                       <WhyIcon name={icon} />
                     </div>
                     <div>
-                      <h3>{t(`${group}.${icon}.title`)}</h3>
-                      <p>{t(`${group}.${icon}.text`)}</p>
+                      <h3>{t(`features.${icon}.title`)}</h3>
+                      <p>{t(`features.${icon}.text`)}</p>
                     </div>
                   </article>
                 ))}
@@ -244,9 +254,9 @@ export function WhySection() {
               </button>
             </div>
             <div className={styles.carouselDots} aria-hidden="true">
-              {CAROUSEL_CARDS.map(({ icon, group }, index) => (
+              {CAROUSEL_CARDS.map((icon, index) => (
                 <span
-                  key={`dot-${group}-${icon}`}
+                  key={`dot-${icon}`}
                   className={`${styles.carouselDot} ${index === activeSlide ? styles.carouselDotActive : ""}`}
                 />
               ))}

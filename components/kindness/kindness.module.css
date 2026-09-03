@@ -1,0 +1,238 @@
+.section {
+  position: relative;
+  color: #0a0a0a;
+  overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #000;
+  transform: translateX(0);
+  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.revealIn.slideOverlay {
+  transform: translateX(100%);
+}
+
+.slidePanel {
+  position: relative;
+  z-index: 1;
+  background: #ededed;
+  padding: clamp(3.5rem, 8vh, 5rem) 0;
+  transform: translateX(-102%);
+  transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+  will-change: transform;
+}
+
+.revealIn.slidePanel {
+  transform: translateX(0);
+}
+
+.motionStatic.slideOverlay {
+  display: none;
+}
+
+.motionStatic.slidePanel {
+  transform: none;
+  transition: none;
+}
+
+.inner {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vh, 2.75rem);
+}
+
+.title {
+  font-size: clamp(1.55rem, 3.8vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.85rem;
+  white-space: pre-line;
+}
+
+.subtitle {
+  margin: 0;
+  color: #3a3a3a;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    transform 0.22s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  border-color: rgba(124, 255, 58, 0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.04);
+}
+
+.card:focus-visible {
+  outline: 2px solid #7cff3a;
+  outline-offset: 3px;
+}
+
+.cardMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #d8d8d8;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.2rem 1.25rem 1.15rem;
+}
+
+.cardIndex {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f5f12;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.cardTitle {
+  margin: 0 0 0.55rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardText {
+  margin: 0;
+  flex: 1;
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.15rem;
+  color: #1f5f12;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.closingWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.25rem, 5vh, 3rem);
+}
+
+.closing {
+  margin: 0;
+  max-width: 36rem;
+  padding: 1rem 1.35rem;
+  border: 1.5px solid #7cff3a;
+  border-radius: 14px;
+  background: rgba(124, 255, 58, 0.08);
+  color: #0a0a0a;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .closing {
+    width: 100%;
+    padding: 0.95rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideOverlay {
+    display: none;
+  }
+
+  .slidePanel {
+    transform: none;
+    transition: none;
+  }
+
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .cardImage {
+    transition: none;
+  }
+
+  .card:hover .cardImage {
+    transform: none;
+  }
+}
