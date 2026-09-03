@@ -54,12 +54,139 @@
   margin: 0;
 }
 
-.stack {
-  display: flex;
+.desktopStack {
+  display: none;
   flex-direction: column;
   gap: 0.75rem;
   max-width: 1040px;
   margin-inline: auto;
+}
+
+.mobileCarouselBlock {
+  display: block;
+}
+
+.mobileCarouselShell {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.35rem;
+  margin-inline: -0.35rem;
+}
+
+.mobileCarousel {
+  display: flex;
+  gap: 0;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding-block: 0.15rem 0.35rem;
+  touch-action: pan-y;
+}
+
+.mobileCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileSlide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  min-width: 0;
+}
+
+.mobileSlide .card {
+  aspect-ratio: 4 / 5;
+  min-height: 19.5rem;
+}
+
+.mobileSlide .textCard {
+  aspect-ratio: auto;
+  min-height: 21rem;
+}
+
+.mobileCarouselArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mobileCarouselArrow:first-of-type svg {
+  transform: rotate(90deg);
+}
+
+.mobileCarouselArrowNext svg {
+  transform: rotate(-90deg);
+}
+
+.mobileCarouselArrow:hover:not(:disabled),
+.mobileCarouselArrow:focus-visible {
+  border-color: rgba(124, 255, 58, 0.35);
+  background: rgba(124, 255, 58, 0.08);
+  outline: none;
+}
+
+.mobileCarouselArrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.mobileCarouselMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.mobileDots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 16rem;
+}
+
+.mobileDot {
+  width: 0.42rem;
+  height: 0.42rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.mobileDotActive {
+  background: #7cff3a;
+  transform: scale(1.2);
+}
+
+.mobileSwipeHint {
+  margin: 0;
+  color: #6f6f6f;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+.mobileCounter {
+  margin: 0;
+  color: #9a9a9a;
+  font-size: 0.78rem;
+  font-weight: 500;
 }
 
 .row {
@@ -288,6 +415,10 @@
   margin-top: 1.35rem;
 }
 
+.moreWrapDesktop {
+  display: none;
+}
+
 .moreButton {
   display: inline-flex;
   align-items: center;
@@ -333,6 +464,18 @@
     margin-bottom: 1.85rem;
   }
 
+  .mobileCarouselBlock {
+    display: none;
+  }
+
+  .desktopStack {
+    display: flex;
+  }
+
+  .moreWrapDesktop {
+    display: flex;
+  }
+
   .row {
     gap: 0.85rem;
   }
@@ -346,29 +489,25 @@
   }
 }
 
-@media (max-width: 520px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    aspect-ratio: 16 / 11;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .expandable,
   .playButton,
   .card,
   .chevron,
   .chevronExpanded,
-  .moreButton {
+  .moreButton,
+  .mobileCarouselArrow,
+  .mobileDot {
     transition: none;
   }
 
   .expandableOpen .rowAnimated {
     animation: none;
     opacity: 1;
+    transform: none;
+  }
+
+  .mobileDotActive {
     transform: none;
   }
 }

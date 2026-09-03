@@ -1,8 +1,9 @@
 "use client";
 
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
   TESTIMONIAL_TRIPLETS,
   TESTIMONIALS_COPY,
@@ -64,7 +65,7 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
           src={item.poster}
           alt={t(`items.${item.id}.posterAlt`)}
           fill
-          sizes="(max-width: 640px) 33vw, 320px"
+          sizes="(max-width: 640px) 86vw, 320px"
           quality={85}
         />
       )}
@@ -136,7 +137,7 @@ function PhotoTestimonialCard({ item }: { item: PhotoTestimonial }) {
         src={item.image}
         alt={t(`items.${item.id}.imageAlt`)}
         fill
-        sizes="(max-width: 640px) 33vw, 320px"
+        sizes="(max-width: 640px) 86vw, 320px"
         quality={85}
       />
       <div className={styles.photoOverlay}>
@@ -166,6 +167,38 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
       <path d="m6 9 6 6 6-6" />
     </svg>
   );
+}
+
+type TestimonialSlide =
+  | { key: string; kind: "video"; item: VideoTestimonial }
+  | { key: string; kind: "text"; item: TextTestimonial }
+  | { key: string; kind: "photo"; item: PhotoTestimonial };
+
+function tripletToSlides(triplet: TestimonialTriplet): TestimonialSlide[] {
+  return [
+    { key: `${triplet.id}-video`, kind: "video", item: triplet.video },
+    { key: `${triplet.id}-text`, kind: "text", item: triplet.text },
+    { key: `${triplet.id}-photo`, kind: "photo", item: triplet.photo },
+  ];
+}
+
+function slidesFromTriplets(triplets: readonly TestimonialTriplet[]) {
+  return triplets.flatMap(tripletToSlides);
+}
+
+function TestimonialSlideCard({ slide }: { slide: TestimonialSlide }) {
+  switch (slide.kind) {
+    case "video":
+      return <VideoTestimonialCard item={slide.item} />;
+    case "text":
+      return <TextTestimonialCard item={slide.item} />;
+    case "photo":
+      return <PhotoTestimonialCard item={slide.item} />;
+    default: {
+      const exhaustive: never = slide;
+      return exhaustive;
+    }
+  }
 }
 
 function TestimonialRow({
@@ -200,8 +233,108 @@ function TestimonialRow({
   );
 }
 
+function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) {
+  const t = useTranslations("testimonials");
+  const reducedMotion = useReducedMotion();
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) {
+      return;
+    }
+
+    scrollToSlideIndex(carousel, activeSlide, reducedMotion);
+  }, [activeSlide, reducedMotion, slides.length]);
+
+  function scrollToSlideIndex(
+    carousel: HTMLDivElement,
+    index: number,
+    prefersReducedMotion: boolean,
+  ) {
+    const slideElements = carousel.querySelectorAll<HTMLElement>("[data-testimonial-slide]");
+    const targetIndex = Math.max(0, Math.min(index, slideElements.length - 1));
+    const target = slideElements[targetIndex];
+    if (!target) {
+      return;
+    }
+
+    const left = target.offsetLeft - (carousel.clientWidth - target.offsetWidth) / 2;
+    carousel.scrollTo({
+      left,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  }
+
+  function goToPrev() {
+    setActiveSlide((current) => Math.max(0, current - 1));
+  }
+
+  function goToNext() {
+    setActiveSlide((current) => Math.min(slides.length - 1, current + 1));
+  }
+
+  const canGoPrev = activeSlide > 0;
+  const canGoNext = activeSlide < slides.length - 1;
+
+  return (
+    <div className={styles.mobileCarouselBlock}>
+      <div className={styles.mobileCarouselShell}>
+        <button
+          type="button"
+          className={styles.mobileCarouselArrow}
+          aria-label={t("carouselPrev")}
+          disabled={!canGoPrev}
+          onClick={goToPrev}
+        >
+          <ChevronIcon expanded={false} />
+        </button>
+
+        <div
+          className={styles.mobileCarousel}
+          ref={carouselRef}
+          role="region"
+          aria-label={t("carouselLabel")}
+          aria-roledescription="carousel"
+          aria-live="polite"
+        >
+          {slides.map((slide, index) => (
+            <div
+              className={styles.mobileSlide}
+              data-testimonial-slide
+              key={slide.key}
+              aria-hidden={index !== activeSlide}
+            >
+              <TestimonialSlideCard slide={slide} />
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={`${styles.mobileCarouselArrow} ${styles.mobileCarouselArrowNext}`}
+          aria-label={t("carouselNext")}
+          disabled={!canGoNext}
+          onClick={goToNext}
+        >
+          <ChevronIcon expanded={false} />
+        </button>
+      </div>
+
+      <div className={styles.mobileCarouselMeta}>
+        <p className={styles.mobileCounter}>
+          {t("carouselCounter", { current: activeSlide + 1, total: slides.length })}
+        </p>
+        <p className={styles.mobileSwipeHint}>{t("arrowHint")}</p>
+      </div>
+    </div>
+  );
+}
+
 const VISIBLE_TRIPLET = TESTIMONIAL_TRIPLETS[0];
 const HIDDEN_TRIPLETS = TESTIMONIAL_TRIPLETS.slice(1);
+const ALL_MOBILE_SLIDES = slidesFromTriplets(TESTIMONIAL_TRIPLETS);
 
 export function TestimonialsSection() {
   const t = useTranslations("testimonials");
@@ -222,7 +355,9 @@ export function TestimonialsSection() {
           <p className={styles.subtitle}>{t("subtitle")}</p>
         </header>
 
-        <div className={styles.stack}>
+        <TestimonialsMobileCarousel slides={ALL_MOBILE_SLIDES} />
+
+        <div className={styles.desktopStack}>
           <TestimonialRow triplet={VISIBLE_TRIPLET} />
 
           <div
@@ -242,7 +377,7 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        <div className={styles.moreWrap}>
+        <div className={`${styles.moreWrap} ${styles.moreWrapDesktop}`}>
           <button
             type="button"
             className={styles.moreButton}

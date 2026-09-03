@@ -116,6 +116,13 @@
     "subtitle": "Bullex valora los comentarios de cada cliente para promover mejoras continuas y garantizar la satisfacción.",
     "starsLabel": "{count} · Estrellas",
     "playVideo": "Reproducir video",
+    "carouselLabel": "Testimonios destacados",
+    "carouselPrev": "Testimonio anterior",
+    "carouselNext": "Siguiente testimonio",
+    "carouselGoTo": "Ir al testimonio {index}",
+    "carouselCounter": "{current} de {total}",
+    "swipeHint": "Desliza para ver más testimonios",
+    "arrowHint": "Usa las flechas para navegar entre testimonios",
     "moreReviews": "Más reseñas",
     "lessReviews": "Menos reseñas",
     "items": {

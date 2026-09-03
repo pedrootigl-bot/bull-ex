@@ -116,6 +116,13 @@
     "subtitle": "Bullex values feedback from every client to drive continuous improvements and ensure satisfaction.",
     "starsLabel": "{count} · Stars",
     "playVideo": "Play video",
+    "carouselLabel": "Featured testimonials",
+    "carouselPrev": "Previous testimonial",
+    "carouselNext": "Next testimonial",
+    "carouselGoTo": "Go to testimonial {index}",
+    "carouselCounter": "{current} of {total}",
+    "swipeHint": "Swipe to see more testimonials",
+    "arrowHint": "Use the arrows to browse testimonials",
     "moreReviews": "More reviews",
     "lessReviews": "Fewer reviews",
     "items": {

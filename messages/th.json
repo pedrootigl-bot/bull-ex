@@ -116,6 +116,13 @@
     "subtitle": "Bullex ให้ความสำคัญกับความคิดเห็นของลูกค้าทุกคนเพื่อพัฒนาอย่างต่อเนื่องและรับประกันความพึงพอใจ",
     "starsLabel": "{count} · ดาว",
     "playVideo": "เล่นวิดีโอ",
+    "carouselLabel": "รีวิวเด่น",
+    "carouselPrev": "รีวิวก่อนหน้า",
+    "carouselNext": "รีวิวถัดไป",
+    "carouselGoTo": "ไปที่รีวิว {index}",
+    "carouselCounter": "{current} จาก {total}",
+    "swipeHint": "ปัดเพื่อดูรีวิวเพิ่มเติม",
+    "arrowHint": "ใช้ลูกศรเพื่อดูรีวิวถัดไป",
     "moreReviews": "รีวิวเพิ่มเติม",
     "lessReviews": "รีวิวน้อยลง",
     "items": {

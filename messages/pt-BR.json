@@ -116,6 +116,13 @@
     "subtitle": "A Bullex valoriza o feedback de cada cliente para promover melhorias contínuas e garantir a satisfação.",
     "starsLabel": "{count} · Estrelas",
     "playVideo": "Reproduzir vídeo",
+    "carouselLabel": "Depoimentos em destaque",
+    "carouselPrev": "Depoimento anterior",
+    "carouselNext": "Próximo depoimento",
+    "carouselGoTo": "Ir para o depoimento {index}",
+    "carouselCounter": "{current} de {total}",
+    "swipeHint": "Deslize para ver mais depoimentos",
+    "arrowHint": "Use as setas para navegar entre os depoimentos",
     "moreReviews": "Mais depoimentos",
     "lessReviews": "Menos depoimentos",
     "items": {

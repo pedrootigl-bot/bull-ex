@@ -116,6 +116,13 @@
     "subtitle": "Bullex trân trọng phản hồi của từng khách hàng để cải tiến liên tục và đảm bảo sự hài lòng.",
     "starsLabel": "{count} · Sao",
     "playVideo": "Phát video",
+    "carouselLabel": "Đánh giá nổi bật",
+    "carouselPrev": "Đánh giá trước",
+    "carouselNext": "Đánh giá tiếp theo",
+    "carouselGoTo": "Đi tới đánh giá {index}",
+    "carouselCounter": "{current} / {total}",
+    "swipeHint": "Vuốt để xem thêm đánh giá",
+    "arrowHint": "Dùng mũi tên để xem đánh giá khác",
     "moreReviews": "Thêm đánh giá",
     "lessReviews": "Ít đánh giá hơn",
     "items": {
