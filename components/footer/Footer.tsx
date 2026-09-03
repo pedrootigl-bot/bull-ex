@@ -28,14 +28,6 @@ export function SiteFooter() {
         { href: HERO_COPY.ctaHref, label: t("login") },
       ],
     },
-    {
-      title: t("legal"),
-      links: [
-        { href: "#", label: t("terms") },
-        { href: "#", label: t("privacy") },
-        { href: "#", label: t("risk") },
-      ],
-    },
   ];
 
   return (

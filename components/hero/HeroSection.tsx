@@ -4,6 +4,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useViewportTier } from "@/hooks/useViewportTier";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -12,6 +13,8 @@ import { HERO_COPY, HERO_THEME, NAV_COPY } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import { OrbitalLines } from "./OrbitalLines";
 import styles from "./hero.module.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FinancialGlobe = dynamic(
   () => import("./FinancialGlobe").then((mod) => mod.FinancialGlobe),
@@ -77,11 +80,15 @@ export function HeroSection() {
   const tHero = useTranslations("hero");
   const contentRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const scrollTrackRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const navDockedRef = useRef(false);
   const [navScrolled, setNavScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
   const entrancePlayedRef = useRef(false);
-  const introStartedRef = useRef(false);
   const stats = [
     { value: tHero("stats.demoValue"), label: tHero("stats.demoLabel") },
     { value: tHero("stats.feesValue"), label: tHero("stats.feesLabel") },
@@ -111,134 +118,230 @@ export function HeroSection() {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!reducedMotion) {
+      return;
+    }
+
+    const hero = heroRef.current;
+    if (hero) {
+      hero.classList.remove(styles.heroPending);
+      hero.classList.add(styles.heroEntered, styles.heroRevealed, styles.heroNavDocked);
+    }
+    setIntroComplete(true);
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      return;
+    }
+
     const hero = heroRef.current;
     const content = contentRef.current;
-    if (!hero || !content) {
+    if (!hero || !content || !globeReady || entrancePlayedRef.current) {
       return;
     }
 
-    if (reducedMotion) {
-      hero.classList.add(styles.heroEntered);
-      return;
-    }
-
-    if (entrancePlayedRef.current) {
-      hero.classList.add(styles.heroEntered);
-      return;
-    }
-
-    if (!globeReady || introStartedRef.current) {
-      return;
-    }
-
-    introStartedRef.current = true;
-
+    const intro = content.querySelectorAll<HTMLElement>("[data-hero-intro]");
     const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
-    const nav = hero.querySelector<HTMLElement>(`.${styles.nav}`);
-    const headline = content.querySelector<HTMLElement>("[data-hero-headline]");
-    const items = content.querySelectorAll<HTMLElement>("[data-hero-rise]");
 
     const ctx = gsap.context(() => {
-      if (headline) {
-        gsap.set(headline, { opacity: 0, visibility: "hidden" });
-      }
-      gsap.set(items, { opacity: 0, visibility: "hidden" });
+      gsap.set(intro, { autoAlpha: 0, y: 18 });
 
-      const timeline = gsap.timeline({
+      const introTimeline = gsap.timeline({
         defaults: { ease: "power2.out" },
         onComplete: () => {
           entrancePlayedRef.current = true;
           hero.classList.add(styles.heroEntered);
-          gsap.set([...visuals, ...items, ...(nav ? [nav] : [])], { clearProps: "all" });
-          if (headline) {
-            gsap.set(headline, { clearProps: "all" });
-          }
+          gsap.set(visuals, { clearProps: "all" });
+          gsap.set(intro, { clearProps: "opacity,visibility,transform" });
+          setIntroComplete(true);
         },
       });
 
-      if (nav) {
-        timeline.fromTo(
-          nav,
-          { opacity: 0, y: -10 },
-          { opacity: 1, y: 0, duration: 0.65 },
-          0,
-        );
-      }
-
-      timeline.fromTo(
+      introTimeline.fromTo(
         visuals,
-        { opacity: 0, scale: 0.97, transformOrigin: "50% 38%" },
-        { opacity: 1, scale: 1, duration: 1.2, ease: "power1.out" },
-        nav ? 0.08 : 0,
+        { autoAlpha: 0, scale: 0.98, transformOrigin: "50% 38%" },
+        { autoAlpha: 1, scale: 1, duration: 1.05, ease: "power1.out" },
+        0,
       );
 
-      if (headline) {
-        timeline.fromTo(
-          headline,
-          { opacity: 0, visibility: "hidden", y: 20 },
-          { opacity: 1, visibility: "visible", y: 0, duration: 0.8, ease: "power2.out" },
-          ">+=0.5",
-        );
-      }
-
-      timeline.fromTo(
-        items,
-        { opacity: 0, visibility: "hidden", y: 24 },
-        {
-          opacity: 1,
-          visibility: "visible",
-          y: 0,
-          duration: 0.8,
-          stagger: 0.07,
-          ease: "power2.out",
-        },
-        ">+=0.12",
+      introTimeline.fromTo(
+        intro,
+        { autoAlpha: 0, y: 18 },
+        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.08, ease: "power2.out" },
+        ">+=0.4",
       );
     }, hero);
 
-    return () => {
-      if (!entrancePlayedRef.current) {
-        ctx.revert();
-        introStartedRef.current = false;
-      }
-    };
+    return () => ctx.revert();
   }, [reducedMotion, globeReady]);
 
+  useEffect(() => {
+    if (reducedMotion || !introComplete) {
+      return;
+    }
+
+    const hero = heroRef.current;
+    const content = contentRef.current;
+    const stage = stageRef.current;
+    const scrollTrack = scrollTrackRef.current;
+    if (!hero || !content || !stage || !scrollTrack) {
+      return;
+    }
+
+    const nav = navRef.current;
+    const riseItems = gsap.utils.toArray<HTMLElement>(
+      content.querySelectorAll(`.${styles.contentRise} > *`),
+    );
+    const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
+
+    hero.classList.add(styles.heroAwaitingReveal);
+    navDockedRef.current = false;
+
+    const ctx = gsap.context(() => {
+      const getNavOffset = () => Math.min(window.innerHeight * 0.42, 360);
+      const getRiseOffset = () => Math.min(window.innerHeight * 0.22, 180);
+      const scrollEnd = window.matchMedia("(max-width: 640px)").matches ? "+=95%" : "+=115%";
+
+      const dockNav = () => {
+        navDockedRef.current = true;
+        hero.classList.add(styles.heroNavDocked);
+        if (nav) {
+          gsap.set(nav, { y: 0, autoAlpha: 1 });
+        }
+      };
+
+      const undockNav = () => {
+        navDockedRef.current = false;
+        hero.classList.remove(styles.heroNavDocked);
+      };
+
+      const updateNavFromProgress = (progress: number) => {
+        if (!nav || navDockedRef.current) {
+          if (nav && navDockedRef.current) {
+            gsap.set(nav, { y: 0, autoAlpha: 1 });
+          }
+          return;
+        }
+
+        const navProgress = gsap.utils.clamp(
+          0,
+          1,
+          gsap.utils.mapRange(0.05, 0.4, 0, 1, progress),
+        );
+
+        gsap.set(nav, {
+          y: getNavOffset() * (1 - navProgress),
+          autoAlpha: navProgress,
+        });
+      };
+
+      if (nav) {
+        gsap.set(nav, { y: getNavOffset(), autoAlpha: 0 });
+      }
+      gsap.set(riseItems, { y: getRiseOffset(), autoAlpha: 0 });
+      if (freq) {
+        gsap.set(freq, { y: 28, autoAlpha: 0 });
+      }
+
+      hero.classList.remove(styles.heroPending);
+
+      const revealTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: scrollTrack,
+          start: "top top",
+          end: scrollEnd,
+          scrub: 0.42,
+          pin: stage,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const progress = self.progress;
+
+            if (progress >= 0.96) {
+              dockNav();
+            } else if (
+              navDockedRef.current &&
+              self.direction === -1 &&
+              progress < 0.96
+            ) {
+              undockNav();
+            }
+
+            updateNavFromProgress(progress);
+
+            if (progress >= 0.98) {
+              hero.classList.add(styles.heroRevealed);
+              hero.classList.remove(styles.heroAwaitingReveal);
+            } else if (progress <= 0.02) {
+              hero.classList.remove(styles.heroRevealed);
+              hero.classList.add(styles.heroAwaitingReveal);
+            } else {
+              hero.classList.remove(styles.heroRevealed);
+            }
+          },
+          onLeave: () => {
+            dockNav();
+            hero.classList.add(styles.heroRevealed);
+            hero.classList.remove(styles.heroAwaitingReveal);
+            gsap.set(riseItems, { clearProps: "transform,opacity,visibility" });
+            if (freq) {
+              gsap.set(freq, { clearProps: "transform,opacity,visibility" });
+            }
+          },
+          onEnterBack: () => {
+            dockNav();
+          },
+          onLeaveBack: () => {
+            undockNav();
+            hero.classList.remove(styles.heroRevealed);
+            hero.classList.add(styles.heroAwaitingReveal);
+            updateNavFromProgress(0);
+          },
+        },
+        defaults: { ease: "none" },
+      });
+
+      revealTimeline.to(
+        riseItems,
+        { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.07 },
+        0.14,
+      );
+
+      if (freq) {
+        revealTimeline.to(freq, { y: 0, autoAlpha: 1, duration: 0.32 }, 0.28);
+      }
+    }, hero);
+
+    const onResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
+      navDockedRef.current = false;
+      hero.classList.remove(styles.heroAwaitingReveal, styles.heroRevealed, styles.heroNavDocked);
+    };
+  }, [reducedMotion, introComplete]);
+
+  useEffect(() => {
+    if (!introComplete || reducedMotion) {
+      return;
+    }
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  }, [introComplete, reducedMotion]);
+
   return (
-    <header
-      ref={heroRef}
-      id={HERO_COPY.id}
-      className={styles.hero}
-      style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
-    >
-      <div className={styles.heroStage}>
-        <div className={styles.background} />
-        <svg className={styles.marketMarks} viewBox="0 0 1440 900" aria-hidden="true">
-          <path
-            d="M80 720 l18 -22 14 10 22 -28 12 8 26 -34"
-            fill="none"
-            stroke={`rgba(${rgb}, 0.9)`}
-            strokeWidth="1.2"
-          />
-          <path
-            d="M1180 640 l12 16 20 -24 10 8 28 -20"
-            fill="none"
-            stroke={`rgba(${rgb}, 0.9)`}
-            strokeWidth="1.2"
-          />
-        </svg>
-
-        <div className={styles.heroVisuals} data-hero-visual>
-          <HeroGlow reducedMotion={reducedMotion} />
-          <FinancialGlobe
-            reducedMotion={reducedMotion}
-            tier={tier}
-            onReadyChange={setGlobeReady}
-          />
-          <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
-        </div>
-
+    <div className={styles.heroScrollTrack} ref={scrollTrackRef}>
+      <header
+        ref={heroRef}
+        id={HERO_COPY.id}
+        className={`${styles.hero} ${styles.heroPending}`}
+        style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
+      >
         <nav
+          ref={navRef}
           className={`${styles.nav} ${navScrolled ? styles.navScrolled : ""} ${menuOpen ? styles.navMenuOpen : ""}`}
           aria-label={tNav("aria")}
         >
@@ -317,66 +420,97 @@ export function HeroSection() {
           </div>
         </nav>
 
+      <div className={styles.heroStage} ref={stageRef}>
+        <div className={styles.background} />
+        <svg className={styles.marketMarks} viewBox="0 0 1440 900" aria-hidden="true">
+          <path
+            d="M80 720 l18 -22 14 10 22 -28 12 8 26 -34"
+            fill="none"
+            stroke={`rgba(${rgb}, 0.9)`}
+            strokeWidth="1.2"
+          />
+          <path
+            d="M1180 640 l12 16 20 -24 10 8 28 -20"
+            fill="none"
+            stroke={`rgba(${rgb}, 0.9)`}
+            strokeWidth="1.2"
+          />
+        </svg>
+
+        <div className={styles.heroVisuals} data-hero-visual>
+          <HeroGlow reducedMotion={reducedMotion} />
+          <FinancialGlobe
+            reducedMotion={reducedMotion}
+            tier={tier}
+            onReadyChange={setGlobeReady}
+          />
+          <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
+        </div>
+
         <section className={styles.content} ref={contentRef}>
-          <div className={styles.headlineWrap}>
-            <h1 className={styles.headline} data-hero-headline>
-              {tHero("headline")}
-            </h1>
+          <div className={styles.contentIntro}>
+            <div className={styles.headlineWrap}>
+              <h1 className={styles.headline} data-hero-intro>
+                {tHero("headline")}
+              </h1>
+            </div>
+            <p className={styles.subheadline} data-hero-intro>
+              {tHero("subheadline")}
+            </p>
           </div>
-          <p className={styles.subheadline} data-hero-rise>
-            {tHero("subheadline")}
-          </p>
-          <div className={styles.menuCard} data-hero-rise>
-            <span className={styles.beam} aria-hidden="true" />
-            <span className={styles.menuCardInner}>
-              <span className={styles.menuCardIcon} aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
-                  <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
-                  <path
-                    d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
-                    stroke="currentColor"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+
+          <div className={styles.contentRise}>
+            <div className={styles.menuCard}>
+              <span className={styles.beam} aria-hidden="true" />
+              <span className={styles.menuCardInner}>
+                <span className={styles.menuCardIcon} aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="5" cy="4.2" r="2" stroke="currentColor" strokeWidth="1.3" />
+                    <circle cx="9.4" cy="4.8" r="1.6" stroke="currentColor" strokeWidth="1.3" />
+                    <path
+                      d="M1.8 11.2c.5-1.7 1.9-2.6 3.2-2.6s2.7.9 3.2 2.6M8.2 8.8c.9-.2 1.9.2 2.5 1.4"
+                      stroke="currentColor"
+                      strokeWidth="1.3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+                {tHero("investorsCard")}
               </span>
-              {tHero("investorsCard")}
-            </span>
-          </div>
-          <a
-            className={styles.cta}
-            href={HERO_COPY.ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-hero-rise
-          >
-            <span className={styles.beam} aria-hidden="true" />
-            <span className={styles.ctaInner}>
-              {tHero("cta")}
-              <span className={styles.ctaIcon} aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
-                    stroke="#fff"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            </div>
+            <a
+              className={styles.cta}
+              href={HERO_COPY.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className={styles.beam} aria-hidden="true" />
+              <span className={styles.ctaInner}>
+                {tHero("cta")}
+                <span className={styles.ctaIcon} aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M2 7h10M8.2 3.5 12 7l-3.8 3.5"
+                      stroke="#fff"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </span>
-            </span>
-          </a>
-          <div className={styles.stats} data-hero-rise>
-            {stats.map((stat, index) => (
-              <div key={stat.label} style={{ display: "contents" }}>
-                {index > 0 ? <div className={styles.divider} aria-hidden="true" /> : null}
-                <div className={styles.stat}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
+            </a>
+            <div className={styles.stats}>
+              {stats.map((stat, index) => (
+                <div key={stat.label} style={{ display: "contents" }}>
+                  {index > 0 ? <div className={styles.divider} aria-hidden="true" /> : null}
+                  <div className={styles.stat}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -387,5 +521,6 @@ export function HeroSection() {
         </div>
       </div>
     </header>
+    </div>
   );
 }

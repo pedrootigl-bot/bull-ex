@@ -1,8 +1,21 @@
+.heroScrollTrack {
+  position: relative;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
   background: #000;
   color: #fff;
+}
+
+/* Estado inicial no HTML — evita flash antes do JS/GSAP */
+.hero.heroPending:not(.heroNavDocked) .nav,
+.hero.heroPending .contentRise > *,
+.hero.heroPending .freq {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .heroStage {
@@ -11,7 +24,8 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .background {
@@ -162,15 +176,25 @@
   will-change: transform, opacity;
 }
 
-.hero:not(.heroEntered) .nav {
-  opacity: 0;
-  transform: translateY(-10px);
+.heroAwaitingReveal .nav {
+  pointer-events: none;
 }
 
-.hero.heroEntered .nav {
+.heroNavDocked .nav,
+.heroRevealed .nav {
   opacity: 1;
-  transform: none;
-  will-change: auto;
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+.heroRevealed .contentRise > * {
+  pointer-events: auto;
+}
+
+.heroRevealed .freq {
+  opacity: 1;
+  visibility: visible;
 }
 
 .navShell {
@@ -455,11 +479,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   width: 100%;
   max-width: 100%;
+  min-height: 0;
   padding:
     max(6.5rem, calc(env(safe-area-inset-top, 0px) + 5.5rem))
     max(1.1rem, env(safe-area-inset-right, 0px))
@@ -468,36 +490,56 @@
   box-sizing: border-box;
 }
 
-.content [data-hero-rise],
-.headline[data-hero-headline] {
+.contentIntro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.contentRise {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(4.5rem, calc(env(safe-area-inset-bottom, 0px) + 3.5rem));
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 1.35rem;
+  will-change: transform, opacity;
+}
+
+.heroAwaitingReveal .contentRise > * {
+  pointer-events: none;
+}
+
+.heroRevealed .contentRise > * {
+  pointer-events: auto;
+}
+
+.content [data-hero-intro] {
   will-change: transform, opacity;
   max-width: 100%;
 }
 
-.hero:not(.heroEntered) .content [data-hero-rise],
-.hero:not(.heroEntered) .headline[data-hero-headline] {
+.hero:not(.heroEntered) .content [data-hero-intro] {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(24px);
+  transform: translateY(18px);
 }
 
-.hero.heroEntered .content [data-hero-rise] {
+.hero.heroEntered .content [data-hero-intro] {
   opacity: 1;
   visibility: visible;
   transform: none;
   will-change: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .content [data-hero-rise],
-  .headline[data-hero-headline],
-  .hero:not(.heroEntered) .content [data-hero-rise],
-  .hero:not(.heroEntered) .headline[data-hero-headline] {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    will-change: auto;
-  }
 }
 
 .headlineWrap {
@@ -518,7 +560,7 @@
   text-wrap: balance;
 }
 
-.hero.heroEntered .headline[data-hero-headline] {
+.hero.heroEntered .headline[data-hero-intro] {
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -539,7 +581,7 @@
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  margin: 0 0 1.55rem;
+  margin: 0;
   padding: 1.5px;
   border-radius: 999px;
   overflow: hidden;
@@ -625,7 +667,7 @@
   display: grid;
   grid-template-columns: 1fr 1px 1fr 1px 1fr;
   width: min(820px, 100%);
-  margin-top: clamp(2rem, 5vh, 4.15rem);
+  margin-top: 0.35rem;
   column-gap: 0.35rem;
 }
 
@@ -871,7 +913,7 @@
 
   .content {
     justify-content: flex-start;
-    gap: clamp(1.15rem, 3vh, 1.65rem);
+    gap: 0;
 
     padding:
       0
@@ -882,6 +924,11 @@
     z-index: 3;
     min-height: 100svh;
     box-sizing: border-box;
+  }
+
+  .contentIntro {
+    flex: 0 0 auto;
+    width: 100%;
   }
 
   .headlineWrap {
@@ -910,11 +957,11 @@
     pointer-events: auto;
   }
 
-  .hero:not(.heroEntered) .headline[data-hero-headline] {
-    transform: translateY(calc(-50% + 24px));
+  .hero:not(.heroEntered) .headline[data-hero-intro] {
+    transform: translateY(calc(-50% + 20px));
   }
 
-  .hero.heroEntered .headline[data-hero-headline] {
+  .hero.heroEntered .headline[data-hero-intro] {
     opacity: 1;
     visibility: visible;
     transform: translateY(-50%);
@@ -923,11 +970,16 @@
 
   .subheadline {
     margin-top: var(--mobile-body-start);
-    margin-bottom: 0.15rem;
+    margin-bottom: 0;
     line-height: 1.5;
     position: relative;
     z-index: 4;
     text-align: center;
+  }
+
+  .contentRise {
+    bottom: max(3.2rem, calc(env(safe-area-inset-bottom, 0px) + 2.4rem));
+    gap: clamp(1rem, 2.8vh, 1.35rem);
   }
 
   .menuCard {
@@ -1108,16 +1160,36 @@
 /* —— Reduced motion —— */
 
 @media (prefers-reduced-motion: reduce) {
+  .hero.heroPending:not(.heroNavDocked) .nav,
+  .hero.heroPending .contentRise > *,
+  .hero.heroPending .freq,
+  .content [data-hero-intro],
+  .hero:not(.heroEntered) .content [data-hero-intro],
+  .heroAwaitingReveal .contentRise > * {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    will-change: auto;
+    pointer-events: auto;
+  }
+
+  .heroNavDocked .nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .heroVisuals,
+  .hero:not(.heroEntered) .heroVisuals {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
   .glowPulse,
   .cta:hover .ctaInner {
     animation: none;
     transform: none;
-  }
-
-  .hero:not(.heroEntered) .nav {
-    opacity: 1;
-    transform: none;
-    will-change: auto;
   }
 
   .navLinks a,

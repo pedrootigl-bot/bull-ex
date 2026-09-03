@@ -25,14 +25,6 @@ export const FOOTER_COPY = {
         { href: "https://trade.bull-ex.com/pt/register", label: "Entrar" },
       ],
     },
-    {
-      title: "Legal",
-      links: [
-        { href: "#", label: "Termos de uso" },
-        { href: "#", label: "Privacidade" },
-        { href: "#", label: "Avisos de risco" },
-      ],
-    },
   ],
   legal:
     "Negociação de ativos envolve risco. Operar com capital que você pode perder. Conteúdo educacional, sem recomendação de investimento.",
