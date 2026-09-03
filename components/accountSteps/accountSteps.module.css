@@ -65,10 +65,55 @@
 }
 
 .cardsRow {
-  display: flex;
+  display: none;
   align-items: stretch;
   justify-content: center;
   gap: 0;
+}
+
+.mobileCarousel {
+  display: block;
+  overflow: hidden;
+  margin-inline: auto;
+  max-width: 22rem;
+}
+
+.mobileTrack {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.mobileTrackStatic {
+  transition: none;
+}
+
+.mobileSlide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-inline: 0.15rem;
+}
+
+.mobileDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.mobileDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #d4d4d4;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.mobileDotActive {
+  background: #7cff3a;
+  transform: scale(1.15);
 }
 
 .cardsRowItem {
@@ -282,34 +327,13 @@
   line-height: 1;
 }
 
-@media (max-width: 860px) {
+@media (min-width: 860px) {
+  .mobileCarousel {
+    display: none;
+  }
+
   .cardsRow {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-  }
-
-  .cardsRowItem {
-    max-width: none;
-    flex-direction: column;
-  }
-
-  .connector {
-    align-self: center;
-    width: 2px;
-    height: 1.35rem;
-    margin: 0 auto;
-    flex-direction: column;
-  }
-
-  .connectorLine {
-    width: 2px;
-    height: auto;
-    flex: 1;
-  }
-
-  .card {
-    padding: 1.2rem 1.15rem 1.3rem;
+    display: flex;
   }
 }
 
@@ -319,7 +343,13 @@
     transform: none;
   }
 
-  .card {
+  .card,
+  .mobileTrack,
+  .mobileDot {
     transition: none;
+  }
+
+  .mobileDotActive {
+    transform: none;
   }
 }

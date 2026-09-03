@@ -1,6 +1,7 @@
 "use client";
 
 import { HERO_COPY } from "@/components/hero/heroConfig";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import {
@@ -80,8 +81,68 @@ function StepConnector({ active }: { active: boolean }) {
   );
 }
 
+type AccountStepCardProps = {
+  step: AccountStepId;
+  index: number;
+  isActive: boolean;
+  isCompleted: boolean;
+  id?: string;
+  interactive?: boolean;
+  onSelect?: () => void;
+};
+
+function AccountStepCard({
+  step,
+  index,
+  isActive,
+  isCompleted,
+  id,
+  interactive = false,
+  onSelect,
+}: AccountStepCardProps) {
+  const t = useTranslations("accountSteps");
+  const className = `${styles.card} ${isActive ? styles.cardActive : ""} ${isCompleted ? styles.cardCompleted : ""}`;
+
+  const content = (
+    <>
+      <div className={styles.cardHead}>
+        <span className={styles.stepNumber}>{index + 1}</span>
+        <span className={styles.stepPill}>{t(`steps.${step}.checkpoint`)}</span>
+      </div>
+
+      <div className={styles.cardIcon}>
+        <StepIcon step={step} />
+      </div>
+
+      <h3 className={styles.cardTitle}>{t(`steps.${step}.title`)}</h3>
+      <p className={styles.cardText}>{t(`steps.${step}.text`)}</p>
+    </>
+  );
+
+  if (interactive) {
+    return (
+      <button
+        type="button"
+        id={id}
+        className={className}
+        aria-current={isActive ? "step" : undefined}
+        onClick={onSelect}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <article id={id} className={className} aria-current={isActive ? "step" : undefined}>
+      {content}
+    </article>
+  );
+}
+
 export function AccountStepsSection() {
   const t = useTranslations("accountSteps");
+  const reducedMotion = useReducedMotion();
   const baseId = useId();
   const [activeStep, setActiveStep] = useState<AccountStepIndex>(0);
 
@@ -117,6 +178,43 @@ export function AccountStepsSection() {
           <p className={styles.subtitle}>{t("subtitle")}</p>
         </header>
 
+        <div
+          className={styles.mobileCarousel}
+          role="region"
+          aria-label={t("progressLabel")}
+          aria-live="polite"
+        >
+          <div
+            className={`${styles.mobileTrack} ${reducedMotion ? styles.mobileTrackStatic : ""}`}
+            style={{ transform: `translateX(-${activeStep * 100}%)` }}
+          >
+            {ACCOUNT_STEPS.map((step, index) => {
+              const stepIndex = index as AccountStepIndex;
+
+              return (
+                <div className={styles.mobileSlide} key={step}>
+                  <AccountStepCard
+                    step={step}
+                    index={index}
+                    isActive
+                    isCompleted={stepIndex < activeStep}
+                    id={`${baseId}-mobile-step-${step}`}
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          <div className={styles.mobileDots} aria-hidden="true">
+            {ACCOUNT_STEPS.map((step, index) => (
+              <span
+                key={step}
+                className={`${styles.mobileDot} ${index === activeStep ? styles.mobileDotActive : ""}`}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className={styles.cardsRow} role="list" aria-label={t("progressLabel")}>
           {ACCOUNT_STEPS.map((step, index) => {
             const stepIndex = index as AccountStepIndex;
@@ -126,25 +224,15 @@ export function AccountStepsSection() {
             return (
               <div className={styles.cardsRowItem} key={step} role="listitem">
                 {index > 0 ? <StepConnector active={isCompleted || isActive} /> : null}
-                <button
-                  type="button"
+                <AccountStepCard
+                  step={step}
+                  index={index}
+                  isActive={isActive}
+                  isCompleted={isCompleted}
                   id={`${baseId}-step-${step}`}
-                  className={`${styles.card} ${isActive ? styles.cardActive : ""} ${isCompleted ? styles.cardCompleted : ""}`}
-                  aria-current={isActive ? "step" : undefined}
-                  onClick={() => handleCardClick(index)}
-                >
-                  <div className={styles.cardHead}>
-                    <span className={styles.stepNumber}>{index + 1}</span>
-                    <span className={styles.stepPill}>{t(`steps.${step}.checkpoint`)}</span>
-                  </div>
-
-                  <div className={styles.cardIcon}>
-                    <StepIcon step={step} />
-                  </div>
-
-                  <h3 className={styles.cardTitle}>{t(`steps.${step}.title`)}</h3>
-                  <p className={styles.cardText}>{t(`steps.${step}.text`)}</p>
-                </button>
+                  interactive
+                  onSelect={() => handleCardClick(index)}
+                />
               </div>
             );
           })}
