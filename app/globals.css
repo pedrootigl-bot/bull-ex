@@ -9,6 +9,14 @@ html {
   scrollbar-color: #167a32 #050805;
   scroll-behavior: smooth;
   scroll-padding-top: 4.75rem;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 4.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -45,6 +53,13 @@ html::-webkit-scrollbar-thumb:hover {
 
 body {
   overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 a {

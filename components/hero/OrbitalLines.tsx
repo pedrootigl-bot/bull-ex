@@ -53,7 +53,7 @@ export function OrbitalLines({ reducedMotion, dense }: OrbitalLinesProps) {
     }, rootRef);
 
     return () => ctx.revert();
-  }, [animate, uid, visiblePaths]);
+  }, [animate, uid, dense]);
 
   const rgb = HERO_THEME.accentRgb;
 

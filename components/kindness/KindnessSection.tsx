@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -33,7 +33,7 @@ function KindnessCard({ id }: { id: KindnessCardId }) {
   const index = String(KINDNESS_CARDS.indexOf(id) + 1).padStart(2, "0");
 
   return (
-    <Link className={styles.card} href={KINDNESS_BLOG_HREFS[id]}>
+    <BlogNavLink className={styles.card} href={KINDNESS_BLOG_HREFS[id]}>
       <div className={styles.cardMedia}>
         <Image
           className={styles.cardImage}
@@ -56,7 +56,7 @@ function KindnessCard({ id }: { id: KindnessCardId }) {
           <CardArrow />
         </span>
       </div>
-    </Link>
+    </BlogNavLink>
   );
 }
 

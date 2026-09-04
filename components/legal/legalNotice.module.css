@@ -25,8 +25,8 @@
 
 .close {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border: 0;
@@ -51,11 +51,12 @@
   .bar {
     left: 50%;
     width: calc(100vw - 1.5rem);
-    bottom: 4.6rem;
+    bottom: max(4.6rem, calc(env(safe-area-inset-bottom, 0px) + 4rem));
     padding: 0.65rem 0.75rem 0.7rem;
   }
 
   .text {
-    font-size: 0.62rem;
+    font-size: 0.68rem;
+    line-height: 1.5;
   }
 }

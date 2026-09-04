@@ -302,8 +302,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
@@ -897,7 +897,7 @@
   }
 
   .globeStage {
-    width: 185vw;
+    width: min(168vw, 620px);
     height: var(--mobile-globe-height);
     top: -1%;
 
@@ -1114,14 +1114,14 @@
   }
 
   .ctaInner {
-    font-size: 0.64rem;
+    font-size: clamp(0.72rem, 3.1vw, 0.8rem);
     letter-spacing: 0.02em;
     gap: 0.55rem;
     padding-left: 0.9rem;
   }
 
   .globeStage {
-    width: 188vw;
+    width: min(165vw, 580px);
     height: var(--mobile-globe-height);
   }
 
@@ -1196,6 +1196,18 @@
 
   .freq {
     display: none;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 640px) {
+  .heroStage {
+    min-height: auto;
+    padding-bottom: 1.5rem;
+  }
+
+  .content {
+    position: relative;
+    padding-bottom: 1rem;
   }
 }
 

@@ -369,6 +369,8 @@
     "readTime": "{minutes} min de lectura",
     "cta": "ABRE TU CUENTA GRATUITA",
     "relatedTitle": "Lee también",
+    "loadingTitle": "Cargando artículo",
+    "loadingSubtitle": "Espera mientras preparamos la lectura para ti.",
     "posts": {
       "community": {
         "title": "Apoyamos comunidades locales",

@@ -46,6 +46,9 @@
 
 @media (max-width: 640px) {
   .pin {
+    position: relative;
+    top: auto;
+    z-index: auto;
     min-height: auto;
     padding-top: 0.5rem;
   }

@@ -369,6 +369,8 @@
     "readTime": "{minutes} min read",
     "cta": "OPEN YOUR FREE ACCOUNT",
     "relatedTitle": "Read also",
+    "loadingTitle": "Loading article",
+    "loadingSubtitle": "Please wait while we prepare the page for you.",
     "posts": {
       "community": {
         "title": "Supported local communities",

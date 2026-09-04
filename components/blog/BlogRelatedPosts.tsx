@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { useTranslations } from "next-intl";
 import {
   BLOG_POST_IDS,
@@ -21,11 +21,11 @@ export function BlogRelatedPosts({ currentId }: { currentId: BlogPostId }) {
       <ul className={styles.relatedList}>
         {related.map((id) => (
           <li key={id}>
-            <Link className={styles.relatedCard} href={blogHref(id)}>
+            <BlogNavLink className={styles.relatedCard} href={blogHref(id)}>
               <span className={styles.relatedEyebrow}>{t("eyebrow")}</span>
               <span className={styles.relatedPostTitle}>{t(`posts.${id}.title`)}</span>
               <span className={styles.relatedExcerpt}>{t(`posts.${id}.excerpt`)}</span>
-            </Link>
+            </BlogNavLink>
           </li>
         ))}
       </ul>

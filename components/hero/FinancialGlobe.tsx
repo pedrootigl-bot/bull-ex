@@ -183,12 +183,12 @@ export function FinancialGlobe({
     <div className={styles.globeStage} aria-hidden="true">
       <Canvas
         className={styles.globeCanvas}
-        dpr={[1, 1.5]}
+        dpr={tier === "mobile" ? 1 : [1, 1.5]}
         frameloop={frameloop}
         gl={{
-          antialias: true,
+          antialias: tier !== "mobile",
           alpha: true,
-          powerPreference: "high-performance",
+          powerPreference: tier === "mobile" ? "low-power" : "high-performance",
           stencil: false,
           depth: true,
         }}

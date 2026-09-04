@@ -9,7 +9,7 @@ export const HERO_THEME = {
   /** Quantidade de partículas na superfície. */
   particleCountDesktop: 240,
   particleCountTablet: 160,
-  particleCountMobile: 80,
+  particleCountMobile: 56,
   /** Intensidade do glow CSS (0–1). */
   glowIntensity: 0.32,
   /** Rotação em radianos por segundo. 0 desliga a rotação 3D. */

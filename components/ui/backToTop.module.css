@@ -114,19 +114,19 @@
 
 @media (max-width: 640px) {
   .dock {
-    right: 1rem;
-    bottom: 1rem;
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
   .install {
-    min-height: 40px;
-    padding: 0.35rem 0.8rem 0.35rem 0.6rem;
+    min-height: 44px;
+    padding: 0.4rem 0.85rem 0.4rem 0.65rem;
     font-size: 0.75rem;
   }
 
   .button {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     margin-left: 0.45rem;
   }
 }

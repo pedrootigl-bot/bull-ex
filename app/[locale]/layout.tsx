@@ -5,7 +5,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
 
 const LegalNotice = dynamic(() =>
   import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
@@ -17,6 +18,13 @@ const BackToTop = dynamic(() =>
 type LocaleLayoutProps = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
 };
 
 export function generateStaticParams() {
@@ -60,9 +68,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <NextIntlClientProvider messages={messages}>
-      {children}
-      <LegalNotice />
-      <BackToTop />
+      <BlogNavigationProvider>
+        {children}
+        <LegalNotice />
+        <BackToTop />
+      </BlogNavigationProvider>
     </NextIntlClientProvider>
   );
 }

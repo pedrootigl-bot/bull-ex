@@ -369,6 +369,8 @@
     "readTime": "{minutes} phút đọc",
     "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
     "relatedTitle": "Đọc thêm",
+    "loadingTitle": "Đang tải bài viết",
+    "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị trang cho bạn.",
     "posts": {
       "community": {
         "title": "Hỗ trợ cộng đồng địa phương",
