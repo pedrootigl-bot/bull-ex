@@ -248,6 +248,32 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
     scrollToSlideIndex(carousel, activeSlide, reducedMotion);
   }, [activeSlide, reducedMotion, slides.length]);
 
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) {
+      return;
+    }
+
+    const syncHeight = () => {
+      const slideElements = carousel.querySelectorAll<HTMLElement>("[data-testimonial-slide]");
+      const active = slideElements[activeSlide];
+      if (!active) {
+        return;
+      }
+
+      carousel.style.height = `${active.offsetHeight}px`;
+    };
+
+    syncHeight();
+
+    const frame = window.requestAnimationFrame(syncHeight);
+    window.addEventListener("resize", syncHeight);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", syncHeight);
+    };
+  }, [activeSlide, slides.length, reducedMotion]);
+
   function scrollToSlideIndex(
     carousel: HTMLDivElement,
     index: number,
