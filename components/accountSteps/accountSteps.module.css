@@ -1,11 +1,48 @@
 .section {
   position: relative;
-  background: #f7f7f7;
   color: #0a0a0a;
-  padding: clamp(3.5rem, 8vh, 5rem) 0;
   overflow: hidden;
   content-visibility: auto;
   contain-intrinsic-size: 1px 720px;
+}
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #000;
+  transform: translateX(0);
+  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.revealIn.slideOverlay {
+  transform: translateX(-100%);
+}
+
+.slidePanel {
+  position: relative;
+  z-index: 1;
+  background: #f7f7f7;
+  padding: clamp(3.5rem, 8vh, 5rem) 0;
+  transform: translateX(102%);
+  transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.revealIn.slidePanel {
+  transform: translateX(0);
+}
+
+.motionStatic.slideOverlay {
+  display: none;
+}
+
+.motionStatic.slidePanel {
+  transform: none;
+  transition: none;
 }
 
 .decorTop,
@@ -345,8 +382,18 @@
 
   .card,
   .mobileTrack,
-  .mobileDot {
+  .mobileDot,
+  .slideOverlay,
+  .slidePanel {
     transition: none;
+  }
+
+  .slideOverlay {
+    display: none;
+  }
+
+  .slidePanel {
+    transform: none;
   }
 
   .mobileDotActive {

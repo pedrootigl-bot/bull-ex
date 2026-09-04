@@ -284,25 +284,25 @@
     }
   },
   "kindness": {
-    "title": "Un poco de amabilidad marca toda la diferencia",
-    "subtitle": "En los últimos años nosotros:",
-    "closing": "Vamos a retribuir a la comunidad y construir un nuevo mañana juntos",
+    "title": "Respuestas claras\npara quien quiere operar con tranquilidad",
+    "subtitle": "Guías prácticas sobre Bullex, brókers y el mercado:",
+    "closing": "Lee, aclara tus dudas y avanza a tu ritmo — sin presión.",
     "readMore": "Leer en el blog",
     "cards": {
-      "community": {
-        "title": "Apoyamos comunidades locales",
-        "text": "Donaciones, alianzas y acciones sociales para impactar a quienes más lo necesitan.",
-        "imageAlt": "Voluntarios entregando donaciones a la comunidad local"
+      "whyBullex": {
+        "title": "Por qué Bullex es un buen bróker",
+        "text": "Entiende qué diferencia a Bullex y cómo decidir con más claridad y confianza.",
+        "imageAlt": "Trader analizando gráficos en la plataforma Bullex"
       },
-      "education": {
-        "title": "Promovemos educación financiera",
-        "text": "Contenidos e iniciativas gratuitas para democratizar el acceso al mercado.",
-        "imageAlt": "Personas en un taller de educación financiera"
+      "chooseBroker": {
+        "title": "Cómo elegir un bróker",
+        "text": "Los criterios que más importan al comparar plataformas con seguridad.",
+        "imageAlt": "Plataforma de trading Bullex en varios dispositivos"
       },
-      "sustainability": {
-        "title": "Invertimos en sostenibilidad",
-        "text": "Proyectos que unen crecimiento, responsabilidad y un futuro mejor para todos.",
-        "imageAlt": "Paneles solares en un paisaje verde que representan energía sostenible"
+      "binaryOptions": {
+        "title": "Opciones binarias para principiantes",
+        "text": "Cómo funcionan, cuáles son los riesgos y cómo prepararte antes de empezar.",
+        "imageAlt": "Aplicación Bullex en smartphone y portátil"
       }
     }
   },
@@ -365,6 +365,10 @@
   "blog": {
     "eyebrow": "Blog Bullex",
     "backSection": "Ver más historias",
+    "backToBlog": "Todos los artículos",
+    "indexTitle": "Blog Bullex",
+    "indexSubtitle": "Guías claras, respuestas honestas y contenidos para quien busca operar con más tranquilidad.",
+    "guidesSection": "Guías y educación",
     "publishedAt": "Publicado el {date}",
     "readTime": "{minutes} min de lectura",
     "cta": "ABRE TU CUENTA GRATUITA",
@@ -372,37 +376,68 @@
     "loadingTitle": "Cargando artículo",
     "loadingSubtitle": "Espera mientras preparamos la lectura para ti.",
     "posts": {
-      "community": {
-        "title": "Apoyamos comunidades locales",
-        "excerpt": "Donaciones, alianzas y acciones sociales para impactar a quienes más lo necesitan.",
-        "date": "3 de septiembre de 2026",
-        "minutes": "4",
-        "imageAlt": "Voluntarios entregando donaciones a la comunidad local",
-        "p1": "En Bullex creemos que crecer también significa retribuir. Por eso apoyamos iniciativas que llevan recursos, orientación y oportunidades a comunidades que más lo necesitan.",
-        "p2": "Nuestras acciones incluyen donaciones, alianzas con organizaciones locales y proyectos de inclusión social. Cada iniciativa busca generar un impacto real y duradero.",
-        "p3": "Seguimos ampliando este compromiso con transparencia, porque la confianza en el mercado empieza por el cuidado con las personas a nuestro alrededor."
+      "whyBullex": {
+        "title": "Por qué Bullex es un bróker en el que puedes confiar",
+        "excerpt": "Entiende qué diferencia a Bullex y cómo tomar tu decisión con más claridad y tranquilidad.",
+        "date": "1 de septiembre de 2026",
+        "minutes": "6",
+        "imageAlt": "Trader analizando gráficos en la plataforma Bullex",
+        "p1": "Elegir un bróker genera dudas — y eso es completamente normal. Quieres saber si la plataforma funciona bien, si el soporte responde y si tu información está protegida. En Bullex, esas preguntas vienen antes de cualquier operación, porque la confianza se construye con transparencia, no con promesas vacías.",
+        "p2": "Ofrecemos una plataforma estable, interfaz clara y herramientas pensadas para quienes empiezan y para traders con más experiencia. Depósitos y retiros siguen flujos definidos, y nuestro equipo está disponible para orientarte en cada etapa.",
+        "p3": "La cuenta demo es parte central de esta experiencia. Puedes probar la plataforma, conocer los activos disponibles y entrenar estrategias sin arriesgar dinero real. Es el camino más tranquilo para ganar familiaridad antes de operar con capital.",
+        "p4": "Valoramos la educación financiera y la comunicación honesta sobre los riesgos. Operar en el mercado implica volatilidad y posibilidad de pérdidas — nunca prometemos resultados garantizados. Nuestro compromiso es ofrecer un entorno profesional para que decidas con información y a tu ritmo.",
+        "p5": "Si aún estás investigando, compara plataformas, lee sobre gestión de riesgo y usa la demo sin prisa. Cuando te sientas preparado, estaremos aquí para apoyar tu camino con claridad y respeto."
       },
-      "education": {
-        "title": "Promovemos educación financiera",
-        "excerpt": "Contenidos e iniciativas gratuitas para democratizar el acceso al mercado.",
-        "date": "28 de agosto de 2026",
+      "chooseBroker": {
+        "title": "Cómo elegir un bróker con seguridad",
+        "excerpt": "Los criterios que más importan al comparar brókers y tomar una decisión tranquila.",
+        "date": "29 de agosto de 2026",
+        "minutes": "7",
+        "imageAlt": "Plataforma de trading Bullex en varios dispositivos",
+        "p1": "Investigar brókers antes de abrir una cuenta es señal de madurez, no de desconfianza excesiva. El mercado ofrece muchas opciones, y saber qué observar ayuda a filtrar lo que realmente importa para tu perfil.",
+        "p2": "Empieza por la experiencia en la plataforma: ¿es intuitiva? ¿Funciona bien en el móvil? ¿Ofrece cuenta demo gratuita? Estos puntos reducen la ansiedad de los primeros pasos y permiten probar sin compromiso financiero.",
+        "p3": "Luego, evalúa el soporte y la comunicación. Un bróker serio responde dudas con claridad, no evita hablar de riesgos y explica cómo funcionan depósitos, retiros y verificación de cuenta.",
+        "p4": "Observa también los materiales educativos disponibles: tutoriales, guías y contenidos que te ayuden a entender el mercado. Los brókers que invierten en educación suelen valorar clientes informados.",
+        "p5": "Por último, desconfía de promesas de ganancias fáciles o garantizadas. Ningún bróker responsable promete retornos seguros. Elige quien ofrezca herramientas, información y un entorno estable."
+      },
+      "binaryOptions": {
+        "title": "Opciones binarias: lo que debes saber antes de empezar",
+        "excerpt": "Una guía clara sobre cómo funcionan las opciones binarias, los riesgos y cómo prepararte.",
+        "date": "25 de agosto de 2026",
+        "minutes": "8",
+        "imageAlt": "Aplicación Bullex en smartphone y portátil",
+        "p1": "Las opciones binarias son instrumentos en los que predices la dirección del precio de un activo dentro de un plazo definido. El resultado puede ser favorable o no — no hay término medio. Por eso, entender bien su funcionamiento antes de operar es esencial.",
+        "p2": "En la práctica, eliges un activo, defines el monto de la operación e indicas si crees que el precio subirá o bajará hasta el vencimiento. Si tu predicción es correcta, recibes el retorno previsto; si no, pierdes el monto invertido en esa operación.",
+        "p3": "Este formato atrae a quienes buscan operaciones de corto plazo con reglas aparentemente simples. Pero simplicidad no significa facilidad: el mercado es impredecible. Trata cada operación como una decisión consciente, nunca como una apuesta impulsiva.",
+        "p4": "Antes de usar dinero real, practica en la cuenta demo. Prueba diferentes activos, horarios y estrategias sin riesgo. Observa cómo reaccionas emocionalmente a ganancias y pérdidas simuladas.",
+        "p5": "Define un valor máximo por operación y un límite diario de pérdidas. Nunca inviertas dinero que no puedas perder. En Bullex, ofrecemos herramientas y contenidos para apoyar este camino con responsabilidad."
+      },
+      "demoAccount": {
+        "title": "Cuenta demo: tus primeros pasos sin presión",
+        "excerpt": "Cómo usar la cuenta de demostración para aprender, probar y ganar confianza antes de operar en real.",
+        "date": "22 de agosto de 2026",
         "minutes": "5",
-        "imageAlt": "Personas en un taller de educación financiera",
-        "p1": "Operar con responsabilidad exige conocimiento. Por eso Bullex invierte en educación financiera accesible para quienes dan sus primeros pasos en el mercado.",
-        "p2": "Ofrecemos materiales, encuentros y contenidos prácticos que explican conceptos esenciales con claridad, desde la lectura de gráficos hasta la gestión del riesgo.",
-        "p3": "Queremos que más personas tomen decisiones informadas, empezando por la cuenta demo y avanzando con seguridad cuando estén listas para operar en vivo."
+        "imageAlt": "Aplicación móvil Bullex en la pantalla de un smartphone",
+        "p1": "La cuenta demo existe para una razón simple: permitirte conocer la plataforma y el mercado sin poner tu dinero en riesgo. Es el entorno ideal para quienes empiezan o quieren probar una nueva estrategia con tranquilidad.",
+        "p2": "Al abrir la demo, recibes un saldo virtual para simular operaciones reales. Los gráficos, activos y plazos funcionan como en la cuenta real — la diferencia es que ganancias y pérdidas no afectan tu bolsillo.",
+        "p3": "Nuestro consejo: trata la demo como un entrenamiento serio. Define metas de aprendizaje en lugar de enfocarte solo en acumular ganancias virtuales. El objetivo es construir hábitos saludables.",
+        "p4": "Cuando te sientas cómodo con la interfaz y entiendas los riesgos, evalúa la transición a la cuenta real con un monto que estés dispuesto a perder. No hay prisa.",
+        "p5": "Bullex mantiene la demo disponible para que vuelvas cuando lo necesites. Aprender a tu ritmo, sin presión, es la forma más tranquila de evolucionar en el mercado."
       },
-      "sustainability": {
-        "title": "Invertimos en sostenibilidad",
-        "excerpt": "Proyectos que unen crecimiento, responsabilidad y un futuro mejor para todos.",
-        "date": "15 de agosto de 2026",
-        "minutes": "4",
-        "imageAlt": "Paneles solares en un paisaje verde",
-        "p1": "Para Bullex, la sostenibilidad es equilibrar rendimiento y responsabilidad. Trabajamos para reducir impactos y apoyar prácticas que preserven recursos.",
-        "p2": "Apoyamos iniciativas de eficiencia energética, conciencia ambiental y decisiones operativas más responsables.",
-        "p3": "Es un camino continuo. Compartimos avances con nuestra comunidad porque la transparencia fortalece cualquier proyecto a largo plazo."
+      "riskBasics": {
+        "title": "Gestión de riesgo: operar con más calma y control",
+        "excerpt": "Principios prácticos para proteger tu capital y mantener la tranquilidad en las operaciones.",
+        "date": "18 de agosto de 2026",
+        "minutes": "6",
+        "imageAlt": "Equipo de traders analizando el mercado",
+        "p1": "La gestión de riesgo no es un tema solo para especialistas — es la base de quien quiera operar con más serenidad. Sin ella, una racha de pérdidas puede comprometer no solo el capital, sino también la confianza para seguir aprendiendo.",
+        "p2": "La regla más importante: nunca operes con dinero que necesitas para gastos esenciales. Separa un monto que, si se pierde por completo, no afecte tu vida financiera.",
+        "p3": "Define un tamaño fijo para cada operación — muchos traders limitan cada entrada a un pequeño porcentaje del saldo total. Así, una pérdida aislada no derrumba tu cuenta.",
+        "p4": "Establece también un límite diario de pérdidas. Al alcanzarlo, detente — incluso si sientes ganas de recuperar el prejuicio en la misma sesión.",
+        "p5": "Por último, registra tus operaciones: qué funcionó, qué no y cómo te sentiste. Con el tiempo, estos registros revelan patrones y ayudan a tomar decisiones más conscientes."
       }
-    }
+    },
+    "backToSite": "Volver al sitio"
   },
   "languageSwitcher": {
     "label": "Idioma",

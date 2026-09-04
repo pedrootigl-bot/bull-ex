@@ -284,25 +284,25 @@
     }
   },
   "kindness": {
-    "title": "Um pouco de gentileza \nfaz toda a diferença",
-    "subtitle": "Nos últimos anos nós:",
-    "closing": "Vamos retribuir à comunidade e construir um novo amanhã juntos",
+    "title": "Respostas claras\npara quem quer operar com tranquilidade",
+    "subtitle": "Guias práticos sobre a Bullex, corretoras e o mercado:",
+    "closing": "Leia, tire suas dúvidas e avance no seu ritmo — sem pressão.",
     "readMore": "Ler no blog",
     "cards": {
-      "community": {
-        "title": "Apoiamos comunidades locais",
-        "text": "Doações, parcerias e ações sociais para impactar quem mais precisa.",
-        "imageAlt": "Voluntários entregando doações para a comunidade local"
+      "whyBullex": {
+        "title": "Por que a Bullex é uma boa corretora",
+        "text": "Entenda o que diferencia a Bullex e como decidir com mais clareza e confiança.",
+        "imageAlt": "Trader analisando gráficos na plataforma Bullex"
       },
-      "education": {
-        "title": "Promovemos educação financeira",
-        "text": "Conteúdos e iniciativas gratuitas para democratizar o acesso ao mercado.",
-        "imageAlt": "Pessoas participando de uma oficina de educação financeira"
+      "chooseBroker": {
+        "title": "Como escolher uma corretora",
+        "text": "Os critérios que mais importam na hora de comparar plataformas com segurança.",
+        "imageAlt": "Plataforma de trading Bullex em múltiplos dispositivos"
       },
-      "sustainability": {
-        "title": "Investimos em sustentabilidade",
-        "text": "Projetos que unem crescimento, responsabilidade e futuro melhor para todos.",
-        "imageAlt": "Painéis solares em paisagem verde representando energia sustentável"
+      "binaryOptions": {
+        "title": "Opções binárias para iniciantes",
+        "text": "Como funcionam, quais os riscos e como se preparar antes de começar.",
+        "imageAlt": "Aplicativo Bullex em smartphone e notebook"
       }
     }
   },
@@ -365,6 +365,10 @@
   "blog": {
     "eyebrow": "Blog Bullex",
     "backSection": "Ver mais histórias",
+    "backToBlog": "Todos os artigos",
+    "indexTitle": "Blog Bullex",
+    "indexSubtitle": "Guias claros, respostas honestas e conteúdos para quem quer operar com mais tranquilidade.",
+    "guidesSection": "Guias e educação",
     "publishedAt": "Publicado em {date}",
     "readTime": "{minutes} min de leitura",
     "cta": "ABRA SUA CONTA GRATUITA",
@@ -372,37 +376,68 @@
     "loadingTitle": "Carregando artigo",
     "loadingSubtitle": "Aguarde enquanto preparamos a leitura para você.",
     "posts": {
-      "community": {
-        "title": "Apoiamos comunidades locais",
-        "excerpt": "Doações, parcerias e ações sociais para impactar quem mais precisa.",
-        "date": "3 de setembro de 2026",
-        "minutes": "4",
-        "imageAlt": "Voluntários entregando doações para a comunidade local",
-        "p1": "Na Bullex, acreditamos que crescer também significa retribuir. Por isso, apoiamos iniciativas que levam recursos, orientação e oportunidades para comunidades que mais precisam de apoio.",
-        "p2": "Nossas ações incluem doações, parcerias com organizações locais e projetos que promovem inclusão social. Cada iniciativa é pensada para gerar impacto real e duradouro, não apenas presença de marca.",
-        "p3": "Seguimos ampliando esse compromisso com transparência e proximidade, porque construir confiança no mercado começa pelo cuidado com as pessoas ao nosso redor."
+      "whyBullex": {
+        "title": "Por que a Bullex é uma corretora em que você pode confiar",
+        "excerpt": "Entenda o que diferencia a Bullex e como tomar sua decisão com mais clareza e tranquilidade.",
+        "date": "1 de setembro de 2026",
+        "minutes": "6",
+        "imageAlt": "Trader analisando gráficos na plataforma Bullex",
+        "p1": "Escolher uma corretora gera dúvidas — e isso é completamente normal. Você quer saber se a plataforma funciona bem, se o suporte responde e se suas informações estão protegidas. Na Bullex, essas perguntas vêm antes de qualquer operação, porque confiança se constrói com transparência, não com promessas vazias.",
+        "p2": "Oferecemos uma plataforma estável, interface clara e ferramentas pensadas para quem está começando e para quem já opera com mais experiência. Depósitos e saques seguem fluxos definidos, e nossa equipe está disponível para orientar em cada etapa — da abertura da conta ao uso dos recursos disponíveis.",
+        "p3": "A conta demo é parte central dessa experiência. Você pode testar a plataforma, conhecer os ativos disponíveis e treinar estratégias sem arriscar dinheiro real. É o caminho mais tranquilo para ganhar familiaridade antes de decidir operar com capital.",
+        "p4": "Valorizamos educação financeira e comunicação honesta sobre riscos. Operar no mercado envolve volatilidade e a possibilidade de perdas — nunca prometemos resultados garantidos. Nosso compromisso é oferecer um ambiente profissional para que você decida com informação e no seu próprio ritmo.",
+        "p5": "Se ainda está pesquisando, compare plataformas, leia sobre gestão de risco e use a demo sem pressa. Quando se sentir preparado, estaremos aqui para apoiar sua jornada com clareza e respeito."
       },
-      "education": {
-        "title": "Promovemos educação financeira",
-        "excerpt": "Conteúdos e iniciativas gratuitas para democratizar o acesso ao mercado.",
-        "date": "28 de agosto de 2026",
+      "chooseBroker": {
+        "title": "Como escolher uma corretora com segurança",
+        "excerpt": "Os critérios que mais importam na hora de comparar corretoras e tomar uma decisão tranquila.",
+        "date": "29 de agosto de 2026",
+        "minutes": "7",
+        "imageAlt": "Plataforma de trading Bullex em múltiplos dispositivos",
+        "p1": "Pesquisar sobre corretoras antes de abrir conta é um sinal de maturidade, não de desconfiança excessiva. O mercado oferece muitas opções, e saber o que observar ajuda a filtrar o que realmente importa para o seu perfil.",
+        "p2": "Comece pela experiência na plataforma: ela é intuitiva? Funciona bem no celular? Oferece conta demo gratuita? Esses pontos reduzem a ansiedade dos primeiros passos e permitem testar sem compromisso financeiro.",
+        "p3": "Depois, avalie suporte e comunicação. Uma corretora séria responde dúvidas com clareza, não evita falar sobre riscos e explica como funcionam depósitos, saques e verificação de conta. Transparência nesses processos é um dos maiores indicadores de confiança.",
+        "p4": "Observe também os materiais educativos disponíveis: tutoriais, guias e conteúdos que ajudam você a entender o mercado, e não apenas a clicar em botões. Corretoras que investem em educação tendem a valorizar clientes informados.",
+        "p5": "Por fim, desconfie de promessas de lucro fácil ou garantido. Nenhuma corretora responsável promete retornos certos. Escolha quem oferece ferramentas, informação e um ambiente estável — e opere sempre dentro do que seu bolso e sua experiência permitem."
+      },
+      "binaryOptions": {
+        "title": "Opções binárias: o que você precisa saber antes de começar",
+        "excerpt": "Um guia claro sobre como funcionam as opções binárias, os riscos envolvidos e como se preparar.",
+        "date": "25 de agosto de 2026",
+        "minutes": "8",
+        "imageAlt": "Aplicativo Bullex em smartphone e notebook",
+        "p1": "Opções binárias são instrumentos em que você prevê a direção do preço de um ativo dentro de um prazo definido. O resultado pode ser favorável ou não — não existe meio-termo. Por isso, entender bem o funcionamento antes de operar é essencial para evitar surpresas desagradáveis.",
+        "p2": "Na prática, você escolhe um ativo (como um par de moedas ou uma commodity), define o valor da operação e indica se acredita que o preço subirá ou cairá até o vencimento. Se sua previsão estiver correta, recebe o retorno previsto; se não, perde o valor investido naquela operação.",
+        "p3": "Esse formato atrai quem busca operações com prazo curto e regras aparentemente simples. Mas simplicidade não significa facilidade: o mercado é imprevisível, e sequências de perdas podem acontecer mesmo com estudo. Trate cada operação como uma decisão consciente, nunca como aposta impulsiva.",
+        "p4": "Antes de usar dinheiro real, pratique na conta demo. Teste diferentes ativos, horários e estratégias sem risco. Observe como você reage emocionalmente a ganhos e perdas simulados — isso revela muito sobre sua preparação para operar de verdade.",
+        "p5": "Defina um valor máximo por operação e um limite diário de perdas. Nunca invista dinheiro que você não pode perder. Na Bullex, oferecemos ferramentas e conteúdos para apoiar essa jornada com responsabilidade — mas a decisão final, e o controle do risco, sempre será seu."
+      },
+      "demoAccount": {
+        "title": "Conta demo: seus primeiros passos sem pressão",
+        "excerpt": "Como usar a conta demonstração para aprender, testar e ganhar confiança antes de operar de verdade.",
+        "date": "22 de agosto de 2026",
         "minutes": "5",
-        "imageAlt": "Pessoas participando de uma oficina de educação financeira",
-        "p1": "Operar com responsabilidade exige conhecimento. Por isso, a Bullex investe em educação financeira acessível para quem está dando os primeiros passos no mercado.",
-        "p2": "Oferecemos materiais, encontros e conteúdos práticos que explicam conceitos essenciais de forma clara — da leitura de gráficos à gestão de risco — sempre com linguagem direta e sem jargão desnecessário.",
-        "p3": "Queremos que mais pessoas tomem decisões informadas, começando pela conta demo e evoluindo com segurança quando estiverem prontas para operar de verdade."
+        "imageAlt": "Aplicativo mobile Bullex na tela de um smartphone",
+        "p1": "A conta demo existe para uma razão simples: permitir que você conheça a plataforma e o mercado sem colocar seu dinheiro em risco. É o ambiente ideal para quem está começando ou para quem quer testar uma nova estratégia com tranquilidade.",
+        "p2": "Ao abrir a demo, você recebe um saldo virtual para simular operações reais. Os gráficos, os ativos e os prazos funcionam como na conta real — a diferença é que ganhos e perdas não afetam seu bolso. Use esse espaço para explorar sem medo de errar.",
+        "p3": "Nosso conselho: trate a demo como um treino sério. Defina metas de aprendizado (entender um indicador, testar um horário de mercado, praticar gestão de risco) em vez de focar apenas em acumular ganhos virtuais. O objetivo é construir hábitos saudáveis.",
+        "p4": "Quando se sentir confortável com a interface e entender os riscos de cada tipo de operação, avalie a transição para a conta real com um valor que você esteja disposto a perder. Não há pressa — muitos traders experientes voltam à demo para testar ideias novas.",
+        "p5": "A Bullex mantém a demo disponível para você retornar sempre que precisar. Aprender no seu ritmo, sem cobrança e sem pressão, é a forma mais tranquila de evoluir no mercado."
       },
-      "sustainability": {
-        "title": "Investimos em sustentabilidade",
-        "excerpt": "Projetos que unem crescimento, responsabilidade e futuro melhor para todos.",
-        "date": "15 de agosto de 2026",
-        "minutes": "4",
-        "imageAlt": "Painéis solares em paisagem verde representando energia sustentável",
-        "p1": "Sustentabilidade, para a Bullex, é equilibrar performance com responsabilidade. Buscamos reduzir impactos e apoiar práticas que preservem recursos para as próximas gerações.",
-        "p2": "Apoiamos iniciativas ligadas à eficiência energética, conscientização ambiental e escolhas operacionais mais responsáveis em nossa cadeia de atuação.",
-        "p3": "Esse caminho é contínuo. Compartilhamos avanços e desafios com nossa comunidade porque acreditamos que transparência fortalece qualquer projeto de longo prazo."
+      "riskBasics": {
+        "title": "Gestão de risco: operar com mais calma e controle",
+        "excerpt": "Princípios práticos para proteger seu capital e manter a tranquilidade nas operações.",
+        "date": "18 de agosto de 2026",
+        "minutes": "6",
+        "imageAlt": "Equipe de traders analisando o mercado",
+        "p1": "Gestão de risco não é um tema para especialistas — é a base de qualquer pessoa que queira operar no mercado com mais serenidade. Sem ela, uma sequência de perdas pode comprometer não só o capital, mas também a confiança para continuar aprendendo.",
+        "p2": "A regra mais importante: nunca opere com dinheiro que você precisa para despesas essenciais. Separe um valor que, se perdido por completo, não afetará sua vida financeira. Esse é o único capital que deve entrar na plataforma.",
+        "p3": "Defina um tamanho fixo para cada operação — muitos traders experientes limitam cada entrada a uma pequena porcentagem do saldo total. Assim, uma perda isolada não derruba sua conta e você mantém capacidade de continuar operando e aprendendo.",
+        "p4": "Estabeleça também um limite diário de perdas. Ao atingi-lo, pare — mesmo que sinta vontade de recuperar o prejuízo na mesma sessão. Tentar recuperar perdas rapidamente (o chamado revenge trading) é uma das principais causas de prejuízos maiores.",
+        "p5": "Por fim, registre suas operações: o que funcionou, o que não funcionou e como você se sentiu. Com o tempo, esses registros revelam padrões e ajudam a tomar decisões mais conscientes. Na Bullex, queremos que você opere informado — e que durma tranquilo depois de fechar a plataforma."
       }
-    }
+    },
+    "backToSite": "Voltar para o site"
   },
   "languageSwitcher": {
     "label": "Idioma",

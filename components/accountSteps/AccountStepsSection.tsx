@@ -3,7 +3,7 @@
 import { HERO_COPY } from "@/components/hero/heroConfig";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useTranslations } from "next-intl";
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import {
   ACCOUNT_STEPS,
   ACCOUNT_STEPS_COPY,
@@ -144,7 +144,34 @@ export function AccountStepsSection() {
   const t = useTranslations("accountSteps");
   const reducedMotion = useReducedMotion();
   const baseId = useId();
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState<AccountStepIndex>(0);
+  const [visible, setVisible] = useState(reducedMotion);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      return;
+    }
+
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        setVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.18 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
 
   function handleCardClick(index: number) {
     if (!isAccountStepIndex(index)) {
@@ -160,105 +187,111 @@ export function AccountStepsSection() {
   }
 
   const isLastStep = activeStep === 2;
+  const motionClass = reducedMotion ? styles.motionStatic : "";
+  const revealClass = visible ? styles.revealIn : "";
 
   return (
     <section
       className={styles.section}
+      ref={sectionRef}
       id={ACCOUNT_STEPS_COPY.id}
       aria-labelledby={`${baseId}-title`}
     >
-      <div className={styles.decorTop} aria-hidden="true" />
-      <div className={styles.decorBottom} aria-hidden="true" />
+      <div className={`${styles.slideOverlay} ${revealClass} ${motionClass}`} aria-hidden="true" />
+      <div className={`${styles.slidePanel} ${revealClass} ${motionClass}`}>
+        <div className={styles.decorTop} aria-hidden="true" />
+        <div className={styles.decorBottom} aria-hidden="true" />
 
-      <div className={styles.inner}>
-        <header className={styles.header}>
-          <h2 className={styles.title} id={`${baseId}-title`}>
-            {t("title")}
-          </h2>
-          <p className={styles.subtitle}>{t("subtitle")}</p>
-        </header>
+        <div className={styles.inner}>
+          <header className={styles.header}>
+            <h2 className={styles.title} id={`${baseId}-title`}>
+              {t("title")}
+            </h2>
+            <p className={styles.subtitle}>{t("subtitle")}</p>
+          </header>
 
-        <div
-          className={styles.mobileCarousel}
-          role="region"
-          aria-label={t("progressLabel")}
-          aria-live="polite"
-        >
           <div
-            className={`${styles.mobileTrack} ${reducedMotion ? styles.mobileTrackStatic : ""}`}
-            style={{ transform: `translateX(-${activeStep * 100}%)` }}
+            className={styles.mobileCarousel}
+            role="region"
+            aria-label={t("progressLabel")}
+            aria-live="polite"
           >
+            <div
+              className={`${styles.mobileTrack} ${reducedMotion ? styles.mobileTrackStatic : ""}`}
+              style={{ transform: `translateX(-${activeStep * 100}%)` }}
+            >
+              {ACCOUNT_STEPS.map((step, index) => {
+                const stepIndex = index as AccountStepIndex;
+
+                return (
+                  <div className={styles.mobileSlide} key={step}>
+                    <AccountStepCard
+                      step={step}
+                      index={index}
+                      isActive
+                      isCompleted={stepIndex < activeStep}
+                      id={`${baseId}-mobile-step-${step}`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className={styles.mobileDots} aria-hidden="true">
+              {ACCOUNT_STEPS.map((step, index) => (
+                <span
+                  key={step}
+                  className={`${styles.mobileDot} ${index === activeStep ? styles.mobileDotActive : ""}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.cardsRow} role="list" aria-label={t("progressLabel")}>
             {ACCOUNT_STEPS.map((step, index) => {
               const stepIndex = index as AccountStepIndex;
+              const isActive = stepIndex === activeStep;
+              const isCompleted = stepIndex < activeStep;
 
               return (
-                <div className={styles.mobileSlide} key={step}>
+                <div className={styles.cardsRowItem} key={step} role="listitem">
+                  {index > 0 ? <StepConnector active={isCompleted || isActive} /> : null}
                   <AccountStepCard
                     step={step}
                     index={index}
-                    isActive
-                    isCompleted={stepIndex < activeStep}
-                    id={`${baseId}-mobile-step-${step}`}
+                    isActive={isActive}
+                    isCompleted={isCompleted}
+                    id={`${baseId}-step-${step}`}
+                    interactive
+                    onSelect={() => handleCardClick(index)}
                   />
                 </div>
               );
             })}
           </div>
 
-          <div className={styles.mobileDots} aria-hidden="true">
-            {ACCOUNT_STEPS.map((step, index) => (
-              <span
-                key={step}
-                className={`${styles.mobileDot} ${index === activeStep ? styles.mobileDotActive : ""}`}
-              />
-            ))}
+          <div className={styles.actions}>
+            {isLastStep ? (
+              <a
+                className={styles.primaryButton}
+                href={HERO_COPY.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{t("cta")}</span>
+                <span className={styles.buttonArrow} aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ) : (
+              <button type="button" className={styles.primaryButton} onClick={handleNext}>
+                <span>{t("next")}</span>
+                <span className={styles.buttonArrow} aria-hidden="true">
+                  →
+                </span>
+              </button>
+            )}
           </div>
-        </div>
-
-        <div className={styles.cardsRow} role="list" aria-label={t("progressLabel")}>
-          {ACCOUNT_STEPS.map((step, index) => {
-            const stepIndex = index as AccountStepIndex;
-            const isActive = stepIndex === activeStep;
-            const isCompleted = stepIndex < activeStep;
-
-            return (
-              <div className={styles.cardsRowItem} key={step} role="listitem">
-                {index > 0 ? <StepConnector active={isCompleted || isActive} /> : null}
-                <AccountStepCard
-                  step={step}
-                  index={index}
-                  isActive={isActive}
-                  isCompleted={isCompleted}
-                  id={`${baseId}-step-${step}`}
-                  interactive
-                  onSelect={() => handleCardClick(index)}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        <div className={styles.actions}>
-          {isLastStep ? (
-            <a
-              className={styles.primaryButton}
-              href={HERO_COPY.ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>{t("cta")}</span>
-              <span className={styles.buttonArrow} aria-hidden="true">
-                →
-              </span>
-            </a>
-          ) : (
-            <button type="button" className={styles.primaryButton} onClick={handleNext}>
-              <span>{t("next")}</span>
-              <span className={styles.buttonArrow} aria-hidden="true">
-                →
-              </span>
-            </button>
-          )}
         </div>
       </div>
     </section>

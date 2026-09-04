@@ -1,18 +1,26 @@
-import { blogHref, BLOG_POST_IMAGES, type BlogPostId } from "@/components/blog/blogConfig";
+import {
+  blogHref,
+  BLOG_POST_IMAGES,
+} from "@/components/blog/blogConfig";
 
 export const KINDNESS_COPY = {
   id: "gentileza",
 } as const;
 
-export const KINDNESS_CARDS = ["community", "education", "sustainability"] as const;
+/** Cards da home: guias educativos do blog. */
+export const KINDNESS_CARDS = ["whyBullex", "chooseBroker", "binaryOptions"] as const;
 
-export type KindnessCardId = BlogPostId;
+export type KindnessCardId = (typeof KINDNESS_CARDS)[number];
 
 /** Rotas do blog. */
 export const KINDNESS_BLOG_HREFS: Record<KindnessCardId, string> = {
-  community: blogHref("community"),
-  education: blogHref("education"),
-  sustainability: blogHref("sustainability"),
+  whyBullex: blogHref("whyBullex"),
+  chooseBroker: blogHref("chooseBroker"),
+  binaryOptions: blogHref("binaryOptions"),
 };
 
-export const KINDNESS_CARD_IMAGES: Record<KindnessCardId, string> = BLOG_POST_IMAGES;
+export const KINDNESS_CARD_IMAGES: Record<KindnessCardId, string> = {
+  whyBullex: BLOG_POST_IMAGES.whyBullex,
+  chooseBroker: BLOG_POST_IMAGES.chooseBroker,
+  binaryOptions: BLOG_POST_IMAGES.binaryOptions,
+};

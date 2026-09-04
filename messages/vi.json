@@ -284,25 +284,25 @@
     }
   },
   "kindness": {
-    "title": "Một chút tử tế tạo nên sự khác biệt",
-    "subtitle": "Trong những năm gần đây, chúng tôi:",
-    "closing": "Hãy cùng đền đáp cộng đồng và xây dựng một ngày mai mới",
+    "title": "Câu trả lời rõ ràng\ncho người muốn giao dịch an tâm",
+    "subtitle": "Hướng dẫn thực tế về Bullex, sàn môi giới và thị trường:",
+    "closing": "Đọc, giải đáp thắc mắc và tiến bước theo nhịp của bạn — không áp lực.",
     "readMore": "Đọc trên blog",
     "cards": {
-      "community": {
-        "title": "Hỗ trợ cộng đồng địa phương",
-        "text": "Quyên góp, đối tác và hoạt động xã hội để giúp những người cần nhất.",
-        "imageAlt": "Tình nguyện viên trao quà cho cộng đồng địa phương"
+      "whyBullex": {
+        "title": "Vì sao Bullex là sàn tốt",
+        "text": "Hiểu điều gì làm Bullex khác biệt và cách quyết định rõ ràng, tự tin hơn.",
+        "imageAlt": "Nhà giao dịch phân tích biểu đồ trên nền tảng Bullex"
       },
-      "education": {
-        "title": "Thúc đẩy giáo dục tài chính",
-        "text": "Nội dung và sáng kiến miễn phí để mở rộng quyền tiếp cận thị trường.",
-        "imageAlt": "Mọi người tham gia hội thảo giáo dục tài chính"
+      "chooseBroker": {
+        "title": "Cách chọn sàn môi giới",
+        "text": "Tiêu chí quan trọng nhất khi so sánh nền tảng một cách an toàn.",
+        "imageAlt": "Nền tảng giao dịch Bullex trên nhiều thiết bị"
       },
-      "sustainability": {
-        "title": "Đầu tư vào phát triển bền vững",
-        "text": "Các dự án kết hợp tăng trưởng, trách nhiệm và tương lai tốt đẹp hơn cho mọi người.",
-        "imageAlt": "Tấm pin mặt trời trên cảnh quan xanh thể hiện năng lượng bền vững"
+      "binaryOptions": {
+        "title": "Quyền chọn nhị phân cho người mới",
+        "text": "Cách hoạt động, rủi ro và cách chuẩn bị trước khi bắt đầu.",
+        "imageAlt": "Ứng dụng Bullex trên điện thoại và laptop"
       }
     }
   },
@@ -365,6 +365,10 @@
   "blog": {
     "eyebrow": "Blog Bullex",
     "backSection": "Xem thêm câu chuyện",
+    "backToBlog": "Tất cả bài viết",
+    "indexTitle": "Blog Bullex",
+    "indexSubtitle": "Hướng dẫn rõ ràng, câu trả lời trung thực và nội dung cho người muốn giao dịch với sự an tâm hơn.",
+    "guidesSection": "Hướng dẫn và giáo dục",
     "publishedAt": "Đăng ngày {date}",
     "readTime": "{minutes} phút đọc",
     "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
@@ -372,37 +376,68 @@
     "loadingTitle": "Đang tải bài viết",
     "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị trang cho bạn.",
     "posts": {
-      "community": {
-        "title": "Hỗ trợ cộng đồng địa phương",
-        "excerpt": "Quyên góp, đối tác và hoạt động xã hội để giúp những người cần nhất.",
-        "date": "3 tháng 9, 2026",
-        "minutes": "4",
-        "imageAlt": "Tình nguyện viên trao quà cho cộng đồng địa phương",
-        "p1": "Tại Bullex, chúng tôi tin rằng tăng trưởng cũng đồng nghĩa với đóng góp lại cho xã hội. Vì vậy, chúng tôi hỗ trợ các sáng kiến mang nguồn lực và cơ hội đến những cộng đồng cần giúp đỡ nhất.",
-        "p2": "Các hoạt động của chúng tôi gồm quyên góp, hợp tác với tổ chức địa phương và dự án hòa nhập xã hội nhằm tạo tác động thực sự và bền vững.",
-        "p3": "Chúng tôi tiếp tục mở rộng cam kết này một cách minh bạch, vì niềm tin trên thị trường bắt đầu từ việc quan tâm con người xung quanh."
+      "whyBullex": {
+        "title": "Vì sao Bullex là sàn môi giới đáng tin cậy",
+        "excerpt": "Hiểu điều gì làm Bullex khác biệt và cách quyết định với sự rõ ràng và an tâm hơn.",
+        "date": "1 tháng 9, 2026",
+        "minutes": "6",
+        "imageAlt": "Nhà giao dịch phân tích biểu đồ trên nền tảng Bullex",
+        "p1": "Chọn sàn môi giới luôn đặt ra câu hỏi — và điều đó hoàn toàn bình thường. Bạn muốn biết nền tảng có hoạt động tốt không, hỗ trợ có phản hồi không và thông tin của bạn có được bảo vệ không. Tại Bullex, những câu hỏi này đến trước mọi giao dịch, vì niềm tin được xây dựng bằng minh bạch, không phải lời hứa rỗng.",
+        "p2": "Chúng tôi cung cấp nền tảng ổn định, giao diện rõ ràng và công cụ cho người mới lẫn trader có kinh nghiệm. Nạp và rút tuân theo quy trình xác định, và đội ngũ sẵn sàng hướng dẫn ở mỗi bước.",
+        "p3": "Tài khoản demo là phần trung tâm của trải nghiệm này. Bạn có thể thử nền tảng, làm quen tài sản và luyện chiến lược mà không rủi ro tiền thật.",
+        "p4": "Chúng tôi coi trọng giáo dục tài chính và giao tiếp trung thực về rủi ro. Giao dịch có biến động và khả năng thua lỗ — chúng tôi không bao giờ hứa kết quả đảm bảo.",
+        "p5": "Nếu bạn vẫn đang tìm hiểu, hãy so sánh nền tảng, đọc về quản lý rủi ro và dùng demo không vội. Khi sẵn sàng, chúng tôi sẽ đồng hành với sự rõ ràng và tôn trọng."
       },
-      "education": {
-        "title": "Thúc đẩy giáo dục tài chính",
-        "excerpt": "Nội dung và sáng kiến miễn phí để mở rộng quyền tiếp cận thị trường.",
-        "date": "28 tháng 8, 2026",
+      "chooseBroker": {
+        "title": "Cách chọn sàn môi giới an toàn",
+        "excerpt": "Tiêu chí quan trọng nhất khi so sánh sàn và đưa ra quyết định an tâm.",
+        "date": "29 tháng 8, 2026",
+        "minutes": "7",
+        "imageAlt": "Nền tảng giao dịch Bullex trên nhiều thiết bị",
+        "p1": "Tìm hiểu sàn trước khi mở tài khoản là dấu hiệu chín chắn, không phải nghi ngờ quá mức. Thị trường có nhiều lựa chọn, và biết cần xem gì giúp lọc điều thực sự quan trọng.",
+        "p2": "Bắt đầu từ trải nghiệm nền tảng: có trực quan không? Hoạt động tốt trên di động không? Có tài khoản demo miễn phí không?",
+        "p3": "Tiếp theo, đánh giá hỗ trợ và giao tiếp. Sàn nghiêm túc trả lời rõ ràng, không né tránh rủi ro và giải thích nạp, rút và xác minh tài khoản.",
+        "p4": "Xem tài liệu giáo dục: hướng dẫn và nội dung giúp hiểu thị trường, không chỉ bấm nút.",
+        "p5": "Cuối cùng, cảnh giác lời hứa lợi nhuận dễ dàng hoặc đảm bảo. Sàn có trách nhiệm không hứa lợi nhuận chắc chắn."
+      },
+      "binaryOptions": {
+        "title": "Quyền chọn nhị phân: điều cần biết trước khi bắt đầu",
+        "excerpt": "Hướng dẫn rõ về cách hoạt động, rủi ro và cách chuẩn bị.",
+        "date": "25 tháng 8, 2026",
+        "minutes": "8",
+        "imageAlt": "Ứng dụng Bullex trên điện thoại và laptop",
+        "p1": "Quyền chọn nhị phân là công cụ bạn dự đoán hướng giá tài sản trong khung thời gian nhất định. Kết quả có lợi hoặc không — không có trung gian.",
+        "p2": "Thực tế, bạn chọn tài sản, đặt số tiền và cho biết giá sẽ tăng hay giảm khi hết hạn. Dự đoán đúng nhận lợi nhuận dự kiến; sai mất số tiền đã đặt vào lệnh đó.",
+        "p3": "Định dạng này thu hút người muốn giao dịch ngắn hạn với quy tắc tưởng chừng đơn giản. Nhưng đơn giản không có nghĩa dễ: thị trường khó đoán. Coi mỗi lệnh là quyết định có ý thức.",
+        "p4": "Trước khi dùng tiền thật, hãy luyện trên demo. Thử tài sản, thời gian và chiến lược không rủi ro.",
+        "p5": "Đặt mức tối đa mỗi lệnh và giới hạn thua lỗ hàng ngày. Không bao giờ đầu tư tiền bạn không thể mất."
+      },
+      "demoAccount": {
+        "title": "Tài khoản demo: bước đầu không áp lực",
+        "excerpt": "Cách dùng tài khoản mô phỏng để học, thử và tự tin trước khi giao dịch thật.",
+        "date": "22 tháng 8, 2026",
         "minutes": "5",
-        "imageAlt": "Mọi người tham gia hội thảo giáo dục tài chính",
-        "p1": "Giao dịch có trách nhiệm đòi hỏi kiến thức. Bullex đầu tư vào giáo dục tài chính dễ tiếp cận cho người mới bắt đầu.",
-        "p2": "Chúng tôi cung cấp tài liệu, buổi chia sẻ và nội dung thực hành giải thích các khái niệm cốt lõi một cách rõ ràng, từ đọc biểu đồ đến quản lý rủi ro.",
-        "p3": "Chúng tôi muốn nhiều người đưa ra quyết định sáng suốt, bắt đầu với tài khoản demo và tiến lên khi sẵn sàng giao dịch thật."
+        "imageAlt": "Ứng dụng di động Bullex trên màn hình điện thoại",
+        "p1": "Tài khoản demo tồn tại để bạn làm quen nền tảng và thị trường mà không đặt tiền của mình vào rủi ro.",
+        "p2": "Khi mở demo, bạn nhận số dư ảo để mô phỏng giao dịch thật. Biểu đồ, tài sản và khung thời gian hoạt động như tài khoản thật — khác biệt là lãi lỗ không ảnh hưởng ví của bạn.",
+        "p3": "Lời khuyên: coi demo như luyện tập nghiêm túc. Đặt mục tiêu học tập thay vì chỉ tích lũy lợi nhuận ảo.",
+        "p4": "Khi quen giao diện và hiểu rủi ro, cân nhắc chuyển sang tài khoản thật với số tiền bạn chấp nhận mất. Không cần vội.",
+        "p5": "Bullex giữ demo sẵn sàng khi bạn cần. Học theo nhịp của mình là cách bình an nhất."
       },
-      "sustainability": {
-        "title": "Đầu tư vào phát triển bền vững",
-        "excerpt": "Các dự án kết hợp tăng trưởng, trách nhiệm và tương lai tốt đẹp hơn cho mọi người.",
-        "date": "15 tháng 8, 2026",
-        "minutes": "4",
-        "imageAlt": "Tấm pin mặt trời trên cảnh quan xanh",
-        "p1": "Với Bullex, bền vững là cân bằng giữa hiệu quả và trách nhiệm. Chúng tôi giảm tác động và hỗ trợ thực hành bảo tồn tài nguyên.",
-        "p2": "Chúng tôi hỗ trợ các sáng kiến về hiệu quả năng lượng, nhận thức môi trường và quyết định vận hành có trách nhiệm hơn.",
-        "p3": "Đây là hành trình liên tục. Chúng tôi chia sẻ tiến độ với cộng đồng vì minh bạch củng cố mọi dự án dài hạn."
+      "riskBasics": {
+        "title": "Quản lý rủi ro: giao dịch bình tĩnh và kiểm soát",
+        "excerpt": "Nguyên tắc thực tế để bảo vệ vốn và giữ sự an tâm khi giao dịch.",
+        "date": "18 tháng 8, 2026",
+        "minutes": "6",
+        "imageAlt": "Đội trader phân tích thị trường",
+        "p1": "Quản lý rủi ro không chỉ dành cho chuyên gia — đó là nền tảng cho ai muốn giao dịch an tâm hơn. Không có nó, chuỗi thua có thể làm mất cả vốn lẫn tự tin.",
+        "p2": "Quy tắc quan trọng nhất: không giao dịch bằng tiền cần cho chi phí thiết yếu.",
+        "p3": "Đặt kích thước cố định mỗi lệnh — nhiều trader giới hạn mỗi lần vào một phần nhỏ tổng số dư.",
+        "p4": "Đặt giới hạn thua lỗ hàng ngày. Đạt mức đó thì dừng — dù muốn gỡ trong cùng phiên.",
+        "p5": "Ghi chép lệnh: điều gì hiệu quả, không hiệu quả và cảm xúc của bạn. Theo thời gian, điều này giúp quyết định có ý thức hơn."
       }
-    }
+    },
+    "backToSite": "Về trang chủ"
   },
   "languageSwitcher": {
     "label": "Ngôn ngữ",

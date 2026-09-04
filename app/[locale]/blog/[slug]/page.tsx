@@ -5,6 +5,7 @@ import styles from "@/components/blog/blog.module.css";
 import {
   BLOG_POST_IDS,
   BLOG_POST_IMAGES,
+  BLOG_POST_PARAGRAPH_KEYS,
   BLOG_POST_SLUGS,
   blogIdFromSlug,
 } from "@/components/blog/blogConfig";
@@ -87,8 +88,8 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
         <p className={styles.excerpt}>{t(`posts.${postId}.excerpt`)}</p>
 
         <div className={styles.body}>
-          {(["p1", "p2", "p3"] as const).map((key) => (
-            <p key={key}>{t(`posts.${postId}.${key}`)}</p>
+          {BLOG_POST_PARAGRAPH_KEYS[postId].map((key) => (
+            <p key={key}>{t(`posts.${postId}.${key}` as `posts.${typeof postId}.p1`)}</p>
           ))}
         </div>
 

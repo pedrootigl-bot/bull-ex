@@ -284,25 +284,25 @@
     }
   },
   "kindness": {
-    "title": "A little kindness makes all the difference",
-    "subtitle": "In recent years we:",
-    "closing": "Let's give back to the community and build a new tomorrow together",
+    "title": "Clear answers\nfor those who want to trade with peace of mind",
+    "subtitle": "Practical guides about Bullex, brokers, and the market:",
+    "closing": "Read, clear your doubts, and move at your own pace — no pressure.",
     "readMore": "Read on the blog",
     "cards": {
-      "community": {
-        "title": "Supported local communities",
-        "text": "Donations, partnerships, and social actions to help those who need it most.",
-        "imageAlt": "Volunteers delivering donations to the local community"
+      "whyBullex": {
+        "title": "Why Bullex is a good broker",
+        "text": "Understand what sets Bullex apart and how to decide with more clarity and confidence.",
+        "imageAlt": "Trader analyzing charts on the Bullex platform"
       },
-      "education": {
-        "title": "Promoted financial education",
-        "text": "Free content and initiatives to democratize access to the market.",
-        "imageAlt": "People attending a financial education workshop"
+      "chooseBroker": {
+        "title": "How to choose a broker",
+        "text": "The criteria that matter most when comparing platforms safely.",
+        "imageAlt": "Bullex trading platform on multiple devices"
       },
-      "sustainability": {
-        "title": "Invested in sustainability",
-        "text": "Projects that combine growth, responsibility, and a better future for everyone.",
-        "imageAlt": "Solar panels in a green landscape representing sustainable energy"
+      "binaryOptions": {
+        "title": "Binary options for beginners",
+        "text": "How they work, what the risks are, and how to prepare before you start.",
+        "imageAlt": "Bullex app on smartphone and laptop"
       }
     }
   },
@@ -365,6 +365,10 @@
   "blog": {
     "eyebrow": "Bullex Blog",
     "backSection": "See more stories",
+    "backToBlog": "All articles",
+    "indexTitle": "Bullex Blog",
+    "indexSubtitle": "Clear guides, honest answers, and content for those who want to trade with more peace of mind.",
+    "guidesSection": "Guides and education",
     "publishedAt": "Published on {date}",
     "readTime": "{minutes} min read",
     "cta": "OPEN YOUR FREE ACCOUNT",
@@ -372,37 +376,68 @@
     "loadingTitle": "Loading article",
     "loadingSubtitle": "Please wait while we prepare the page for you.",
     "posts": {
-      "community": {
-        "title": "Supported local communities",
-        "excerpt": "Donations, partnerships, and social actions to help those who need it most.",
-        "date": "September 3, 2026",
-        "minutes": "4",
-        "imageAlt": "Volunteers delivering donations to the local community",
-        "p1": "At Bullex, we believe growth also means giving back. That is why we support initiatives that bring resources, guidance, and opportunity to communities that need it most.",
-        "p2": "Our actions include donations, partnerships with local organizations, and projects that promote social inclusion. Each initiative is designed to create real, lasting impact — not just brand presence.",
-        "p3": "We continue to expand this commitment with transparency and proximity, because building market trust starts with caring for the people around us."
+      "whyBullex": {
+        "title": "Why Bullex is a broker you can trust",
+        "excerpt": "Understand what sets Bullex apart and how to make your decision with more clarity and confidence.",
+        "date": "September 1, 2026",
+        "minutes": "6",
+        "imageAlt": "Trader analyzing charts on the Bullex platform",
+        "p1": "Choosing a broker raises questions — and that is completely normal. You want to know whether the platform works well, whether support responds, and whether your information is protected. At Bullex, those questions come before any trade, because trust is built through transparency, not empty promises.",
+        "p2": "We offer a stable platform, a clear interface, and tools designed for beginners and experienced traders alike. Deposits and withdrawals follow defined flows, and our team is available to guide you at every step — from opening your account to using the available features.",
+        "p3": "The demo account is central to this experience. You can test the platform, explore available assets, and practice strategies without risking real money. It is the calmest way to gain familiarity before deciding to trade with capital.",
+        "p4": "We value financial education and honest communication about risk. Trading involves volatility and the possibility of losses — we never promise guaranteed results. Our commitment is to provide a professional environment so you can decide with information and at your own pace.",
+        "p5": "If you are still researching, compare platforms, read about risk management, and use the demo without rushing. When you feel ready, we will be here to support your journey with clarity and respect."
       },
-      "education": {
-        "title": "Promoted financial education",
-        "excerpt": "Free content and initiatives to democratize access to the market.",
-        "date": "August 28, 2026",
+      "chooseBroker": {
+        "title": "How to choose a broker safely",
+        "excerpt": "The criteria that matter most when comparing brokers and making a confident decision.",
+        "date": "August 29, 2026",
+        "minutes": "7",
+        "imageAlt": "Bullex trading platform on multiple devices",
+        "p1": "Researching brokers before opening an account is a sign of maturity, not excessive distrust. The market offers many options, and knowing what to look for helps you filter what truly matters for your profile.",
+        "p2": "Start with the platform experience: Is it intuitive? Does it work well on mobile? Does it offer a free demo account? These points reduce the anxiety of first steps and let you test without financial commitment.",
+        "p3": "Next, evaluate support and communication. A serious broker answers questions clearly, does not avoid talking about risk, and explains how deposits, withdrawals, and account verification work. Transparency in these processes is one of the strongest trust indicators.",
+        "p4": "Also look at available educational materials: tutorials, guides, and content that help you understand the market — not just click buttons. Brokers that invest in education tend to value informed clients.",
+        "p5": "Finally, be wary of easy or guaranteed profit promises. No responsible broker promises certain returns. Choose one that offers tools, information, and a stable environment — and always trade within what your budget and experience allow."
+      },
+      "binaryOptions": {
+        "title": "Binary options: what you need to know before you start",
+        "excerpt": "A clear guide on how binary options work, the risks involved, and how to prepare.",
+        "date": "August 25, 2026",
+        "minutes": "8",
+        "imageAlt": "Bullex app on smartphone and laptop",
+        "p1": "Binary options are instruments where you predict the direction of an asset's price within a set time frame. The outcome is either favorable or not — there is no middle ground. That is why understanding how they work before trading is essential to avoid unpleasant surprises.",
+        "p2": "In practice, you choose an asset (such as a currency pair or commodity), set the trade amount, and indicate whether you believe the price will rise or fall by expiration. If your prediction is correct, you receive the expected return; if not, you lose the amount invested in that trade.",
+        "p3": "This format attracts those looking for short-term trades with seemingly simple rules. But simplicity does not mean ease: the market is unpredictable, and losing streaks can happen even with study. Treat each trade as a conscious decision, never as an impulsive bet.",
+        "p4": "Before using real money, practice on the demo account. Test different assets, times, and strategies without risk. Notice how you react emotionally to simulated gains and losses — that reveals a lot about your readiness to trade live.",
+        "p5": "Set a maximum amount per trade and a daily loss limit. Never invest money you cannot afford to lose. At Bullex, we offer tools and content to support this journey responsibly — but the final decision and risk control are always yours."
+      },
+      "demoAccount": {
+        "title": "Demo account: your first steps without pressure",
+        "excerpt": "How to use the demo account to learn, test, and build confidence before trading live.",
+        "date": "August 22, 2026",
         "minutes": "5",
-        "imageAlt": "People attending a financial education workshop",
-        "p1": "Trading responsibly requires knowledge. That is why Bullex invests in accessible financial education for people taking their first steps in the market.",
-        "p2": "We offer materials, sessions, and practical content that explain essential concepts clearly — from reading charts to risk management — always in direct language without unnecessary jargon.",
-        "p3": "We want more people to make informed decisions, starting with the demo account and moving forward safely when they are ready to trade live."
+        "imageAlt": "Bullex mobile app on a smartphone screen",
+        "p1": "The demo account exists for a simple reason: to let you explore the platform and the market without putting your money at risk. It is the ideal environment for beginners or anyone who wants to test a new strategy with peace of mind.",
+        "p2": "When you open the demo, you receive a virtual balance to simulate real trades. Charts, assets, and time frames work like the live account — the difference is that gains and losses do not affect your wallet. Use this space to explore without fear of making mistakes.",
+        "p3": "Our advice: treat the demo as serious training. Set learning goals (understand an indicator, test a market session, practice risk management) instead of focusing only on accumulating virtual profits. The goal is to build healthy habits.",
+        "p4": "When you feel comfortable with the interface and understand the risks of each type of trade, consider moving to a live account with an amount you are willing to lose. There is no rush — many experienced traders return to the demo to test new ideas.",
+        "p5": "Bullex keeps the demo available whenever you need it. Learning at your own pace, without pressure, is the calmest way to grow in the market."
       },
-      "sustainability": {
-        "title": "Invested in sustainability",
-        "excerpt": "Projects that combine growth, responsibility, and a better future for everyone.",
-        "date": "August 15, 2026",
-        "minutes": "4",
-        "imageAlt": "Solar panels in a green landscape representing sustainable energy",
-        "p1": "For Bullex, sustainability means balancing performance with responsibility. We work to reduce impact and support practices that preserve resources for future generations.",
-        "p2": "We support initiatives related to energy efficiency, environmental awareness, and more responsible operational choices across our value chain.",
-        "p3": "This is an ongoing journey. We share progress and challenges with our community because we believe transparency strengthens any long-term project."
+      "riskBasics": {
+        "title": "Risk management: trading with more calm and control",
+        "excerpt": "Practical principles to protect your capital and stay calm while trading.",
+        "date": "August 18, 2026",
+        "minutes": "6",
+        "imageAlt": "Team of traders analyzing the market",
+        "p1": "Risk management is not a topic for specialists — it is the foundation for anyone who wants to trade with more serenity. Without it, a losing streak can compromise not only capital but also the confidence to keep learning.",
+        "p2": "The most important rule: never trade with money you need for essential expenses. Set aside an amount that, if lost entirely, would not affect your financial life. That is the only capital that should go into the platform.",
+        "p3": "Define a fixed size for each trade — many experienced traders limit each entry to a small percentage of total balance. That way, a single loss does not wipe out your account and you keep the ability to continue trading and learning.",
+        "p4": "Also set a daily loss limit. When you reach it, stop — even if you feel like recovering losses in the same session. Trying to recover quickly (revenge trading) is one of the main causes of larger losses.",
+        "p5": "Finally, log your trades: what worked, what did not, and how you felt. Over time, these records reveal patterns and help you make more conscious decisions. At Bullex, we want you to trade informed — and sleep peacefully after closing the platform."
       }
-    }
+    },
+    "backToSite": "Back to site"
   },
   "languageSwitcher": {
     "label": "Language",

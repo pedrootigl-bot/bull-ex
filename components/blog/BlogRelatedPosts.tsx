@@ -3,15 +3,15 @@
 import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { useTranslations } from "next-intl";
 import {
-  BLOG_POST_IDS,
   blogHref,
+  getRelatedPostIds,
   type BlogPostId,
 } from "./blogConfig";
 import styles from "./blog.module.css";
 
 export function BlogRelatedPosts({ currentId }: { currentId: BlogPostId }) {
   const t = useTranslations("blog");
-  const related = BLOG_POST_IDS.filter((id) => id !== currentId);
+  const related = getRelatedPostIds(currentId);
 
   return (
     <aside className={styles.related} aria-labelledby="blog-related-title">

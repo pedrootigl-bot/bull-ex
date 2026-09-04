@@ -21,8 +21,17 @@ export function BlogHeader() {
             priority
           />
         </Link>
-        <Link className={styles.backLink} href="/#gentileza">
-          {t("backSection")}
+        <Link className={styles.backHomeBtn} href="/">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M10.2 3.5 5.7 8l4.5 4.5"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          {t("backToSite")}
         </Link>
       </div>
     </header>

@@ -15,7 +15,7 @@ export type PrizeId = (typeof PRIZE_CARDS)[number];
 
 /** Caminho em /public quando a imagem do card chegar. */
 export const PRIZE_IMAGES: Record<PrizeId, string | null> = {
-  car: "/images/prizes/car.jpg",
+  car: "/images/prizes/haval-h6.webp",
   box: "/images/prizes/trader-top-box.jpg",
   tech: "/images/prizes/trader-top.jpg",
 };
