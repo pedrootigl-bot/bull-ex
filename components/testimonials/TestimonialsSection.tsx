@@ -294,15 +294,12 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
   }
 
   function goToPrev() {
-    setActiveSlide((current) => Math.max(0, current - 1));
+    setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
   }
 
   function goToNext() {
-    setActiveSlide((current) => Math.min(slides.length - 1, current + 1));
+    setActiveSlide((current) => (current + 1) % slides.length);
   }
-
-  const canGoPrev = activeSlide > 0;
-  const canGoNext = activeSlide < slides.length - 1;
 
   return (
     <div className={styles.mobileCarouselBlock}>
@@ -311,7 +308,6 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
           type="button"
           className={styles.mobileCarouselArrow}
           aria-label={t("carouselPrev")}
-          disabled={!canGoPrev}
           onClick={goToPrev}
         >
           <ChevronIcon expanded={false} />
@@ -341,7 +337,6 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
           type="button"
           className={`${styles.mobileCarouselArrow} ${styles.mobileCarouselArrowNext}`}
           aria-label={t("carouselNext")}
-          disabled={!canGoNext}
           onClick={goToNext}
         >
           <ChevronIcon expanded={false} />

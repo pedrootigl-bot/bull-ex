@@ -167,10 +167,84 @@
   font-weight: 400;
 }
 
+.highlightsMarquee {
+  display: none;
+}
+
 @media (max-width: 820px) {
   .highlightsRow {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: none;
+  }
+
+  .highlightsMarquee {
+    display: block;
+    margin-top: 2rem;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow: hidden;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  .highlightsTrack {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .highlightsMarqueeActive .highlightsTrack {
+    animation: highlightsMarquee 28s linear infinite;
+  }
+
+  .highlightsMarquee:hover .highlightsTrack,
+  .highlightsMarquee:focus-within .highlightsTrack {
+    animation-play-state: paused;
+  }
+
+  .highlightsGroup {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.85rem;
+    padding-inline: 0.425rem;
+  }
+
+  .highlightsMarqueeStatic .highlightsTrack {
+    animation: none;
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .highlightsMarqueeStatic .highlightsGroup {
+    flex-direction: column;
+    gap: 1.75rem;
+    padding-inline: 1rem;
+  }
+
+  .highlightsMarqueeStatic .highlightsGroup[aria-hidden="true"] {
+    display: none;
+  }
+
+  .highlightSlide {
+    flex: 0 0 min(78vw, 280px);
+  }
+
+  .highlightsMarquee .highlightText {
+    max-width: none;
   }
 }
 
@@ -192,14 +266,26 @@
     clip-path: inset(20% 0 0 0);
   }
 
-  .highlightsRow {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .highlightsMarquee {
     margin-top: 1.8rem;
+  }
+
+  .highlightSlide {
+    flex-basis: min(82vw, 300px);
   }
 
   .highlightText {
     max-width: 22rem;
+  }
+}
+
+@keyframes highlightsMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -229,5 +315,9 @@
   .baseGlow {
     opacity: 1;
     transition: none;
+  }
+
+  .highlightsTrack {
+    animation: none !important;
   }
 }

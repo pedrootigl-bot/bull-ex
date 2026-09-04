@@ -890,11 +890,15 @@
 /* —— Phones —— */
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: 0;
+  }
+
   .heroStage {
     --mobile-globe-height: min(42vh, 340px);
     --mobile-globe-center-y: calc(var(--mobile-globe-height) * 0.58 + max(1.25rem, calc(env(safe-area-inset-top, 0px) + 0.35rem)));
     --mobile-body-start: calc(var(--mobile-globe-height) * 0.9 + max(4.9rem, calc(env(safe-area-inset-top, 0px) + 4.1rem)));
-    min-height: 100svh;
+    min-height: 0;
   }
 
   .globeStage {
@@ -943,16 +947,16 @@
 
   .content {
     justify-content: flex-start;
-    gap: clamp(1.15rem, 3vh, 1.65rem);
+    gap: clamp(1rem, 2.5vh, 1.35rem);
 
     padding:
       0
       1rem
-      max(4rem, calc(env(safe-area-inset-bottom, 0px) + 3.2rem));
+      max(3.25rem, calc(env(safe-area-inset-bottom, 0px) + 2.4rem));
 
     position: relative;
     z-index: 3;
-    min-height: 100svh;
+    min-height: 0;
     box-sizing: border-box;
   }
 
@@ -1024,7 +1028,7 @@
   }
 
   .contentRise {
-    gap: clamp(1.15rem, 3vh, 1.65rem);
+    gap: clamp(0.95rem, 2.4vh, 1.35rem);
     margin-top: 0;
   }
 
@@ -1061,10 +1065,12 @@
   }
 
   .stats {
-    grid-template-columns: 1fr;
-    width: min(420px, 100%);
-    margin-top: clamp(1.85rem, 4.5vh, 2.75rem);
-    gap: clamp(1.15rem, 2.8vh, 1.5rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    margin-top: clamp(1.1rem, 2.8vh, 1.6rem);
+    margin-bottom: 0;
+    column-gap: 0.45rem;
+    row-gap: 0;
     position: relative;
     z-index: 4;
   }
@@ -1074,17 +1080,27 @@
   }
 
   .stat {
-    padding: 0;
+    padding: 0 0.2rem;
+    text-align: center;
   }
 
   .stat strong {
-    margin-bottom: 0.18rem;
+    margin-bottom: 0.2rem;
+    font-size: clamp(0.95rem, 4.2vw, 1.2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .stat span {
+    display: block;
+    font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+    line-height: 1.3;
   }
 
   .freq {
-    height: 48px;
+    height: 40px;
     gap: 5px;
     opacity: 0.65;
+    padding-bottom: 6px;
   }
 
   .freq i:nth-child(n + 28) {
@@ -1128,7 +1144,6 @@
 
   .stats {
     margin-top: 1.35rem;
-    gap: 0.95rem;
   }
 }
 
@@ -1192,7 +1207,6 @@
 
   .stats {
     margin-top: 0.9rem;
-    gap: 0.6rem;
   }
 
   .freq {
@@ -1202,13 +1216,11 @@
 
 @media (max-height: 700px) and (max-width: 640px) {
   .heroStage {
-    min-height: auto;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
   }
 
   .content {
-    position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: max(2.75rem, calc(env(safe-area-inset-bottom, 0px) + 1.75rem));
   }
 }
 

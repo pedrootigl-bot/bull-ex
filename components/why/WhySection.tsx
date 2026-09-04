@@ -85,17 +85,15 @@ export function WhySection() {
   const textClass = `${styles.fromLeft} ${visible ? styles.in : ""} ${motionClass}`;
   const imageClass = `${styles.fromRight} ${visible ? styles.in : ""} ${motionClass}`;
   const slideCount = CAROUSEL_CARDS.length;
-  const canGoPrev = activeSlide > 0;
-  const canGoNext = activeSlide < slideCount - 1;
 
   function scrollToSlide(index: number) {
     const carousel = carouselRef.current;
-    if (!carousel) {
+    if (!carousel || slideCount === 0) {
       return;
     }
 
     const slides = carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]");
-    const targetIndex = Math.max(0, Math.min(index, slides.length - 1));
+    const targetIndex = ((index % slideCount) + slideCount) % slideCount;
     const target = slides[targetIndex];
     if (!target) {
       return;
@@ -196,7 +194,6 @@ export function WhySection() {
                 className={styles.carouselArrow}
                 type="button"
                 onClick={goToPrevSlide}
-                disabled={!canGoPrev}
                 aria-label={t("carouselPrev")}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -239,7 +236,6 @@ export function WhySection() {
                 className={styles.carouselArrow}
                 type="button"
                 onClick={goToNextSlide}
-                disabled={!canGoNext}
                 aria-label={t("carouselNext")}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
