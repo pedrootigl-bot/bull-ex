@@ -10,22 +10,40 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+  grid-template-areas:
+    "header media"
+    "actions media";
   gap: clamp(1.25rem, 3vw, 2rem);
-  align-items: center;
-}
-
-.leftSide {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.15rem, 2.5vw, 1.6rem);
-  min-width: 0;
+  align-items: start;
 }
 
 .leftHeader {
+  grid-area: header;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   text-align: left;
+}
+
+.actionsCol {
+  grid-area: actions;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.15rem, 2.5vw, 1.6rem);
+  min-width: 0;
+  margin-top: 0.15rem;
+}
+
+.mediaPanel {
+  grid-area: media;
+  position: relative;
+  align-self: center;
+  width: 100%;
+  min-height: clamp(280px, 34vw, 430px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 255, 58, 0.14);
+  background: #0a0a0a;
 }
 
 .sectionTitle {
@@ -123,16 +141,6 @@
   border: 1px solid rgba(124, 255, 58, 0.35);
   background: rgba(124, 255, 58, 0.08);
   color: #7cff3a;
-}
-
-.mediaPanel {
-  position: relative;
-  width: 100%;
-  min-height: clamp(280px, 34vw, 430px);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(124, 255, 58, 0.14);
-  background: #0a0a0a;
 }
 
 .mediaReveal {
@@ -257,11 +265,15 @@
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "media"
+      "actions";
     gap: 1.5rem;
+    align-items: stretch;
   }
 
   .mediaPanel {
-    order: -1;
     min-height: clamp(220px, 52vw, 360px);
   }
 

@@ -117,15 +117,28 @@ export function TeamGridSection() {
   return (
     <section className={styles.section} ref={sectionRef} aria-label={t("aria")}>
       <div className={styles.inner}>
-        <div className={styles.leftSide}>
-          <header className={`${styles.leftHeader} ${fadeClass} ${styles.fadeHeader}`}>
-            <h2 className={styles.sectionTitle}>
-              <span className={styles.titleStrong}>{t("titleStrong")}</span>
-              <span className={styles.titleLight}>{t("titleLight")}</span>
-            </h2>
-            <p className={styles.sectionSubtitle}>{t("subtitle")}</p>
-          </header>
+        <header className={`${styles.leftHeader} ${fadeClass} ${styles.fadeHeader}`}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.titleStrong}>{t("titleStrong")}</span>
+            <span className={styles.titleLight}>{t("titleLight")}</span>
+          </h2>
+          <p className={styles.sectionSubtitle}>{t("subtitle")}</p>
+        </header>
 
+        <div className={`${styles.mediaPanel} ${revealClass} ${motionClass}`}>
+          <div className={styles.mediaReveal}>
+            <Image
+              className={styles.mediaImage}
+              src={TEAM_GRID_IMAGE}
+              alt={t("imageAlt")}
+              fill
+              sizes="(max-width: 900px) 100vw, 640px"
+              quality={90}
+            />
+          </div>
+        </div>
+
+        <div className={styles.actionsCol}>
           <div className={styles.statGrid}>
             {TEAM_GRID_STATS.map((id, index) => (
               <div
@@ -163,19 +176,6 @@ export function TeamGridSection() {
               </span>
             </span>
           </a>
-        </div>
-
-        <div className={`${styles.mediaPanel} ${revealClass} ${motionClass}`}>
-          <div className={styles.mediaReveal}>
-            <Image
-              className={styles.mediaImage}
-              src={TEAM_GRID_IMAGE}
-              alt={t("imageAlt")}
-              fill
-              sizes="(max-width: 900px) 56vw, 640px"
-              quality={90}
-            />
-          </div>
         </div>
       </div>
     </section>
