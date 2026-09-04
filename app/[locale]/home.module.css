@@ -1,0 +1,64 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.stackGroup {
+  display: block;
+}
+
+.slotMobileApp,
+.slotMarkets,
+.slotAccount {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .stackGroup {
+    display: contents;
+  }
+
+  .slotHero {
+    order: 1;
+  }
+
+  .slotPlatform {
+    order: 2;
+  }
+
+  .slotTeam {
+    order: 3;
+  }
+
+  .slotAccount {
+    order: 4;
+  }
+
+  .slotMarkets {
+    order: 5;
+  }
+
+  .slotTestimonials {
+    order: 6;
+  }
+
+  .slotWhy {
+    order: 7;
+  }
+
+  .slotPrizes {
+    order: 8;
+  }
+
+  .slotKindness {
+    order: 9;
+  }
+
+  .slotMobileApp {
+    order: 10;
+  }
+
+  .slotFaq {
+    order: 11;
+  }
+}
