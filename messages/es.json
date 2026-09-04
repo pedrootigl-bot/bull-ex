@@ -437,7 +437,10 @@
         "p5": "Por último, registra tus operaciones: qué funcionó, qué no y cómo te sentiste. Con el tiempo, estos registros revelan patrones y ayudan a tomar decisiones más conscientes."
       }
     },
-    "backToSite": "Volver al sitio"
+    "backToSite": "Volver al sitio",
+    "readArticle": "Leer artículo",
+    "featuredLabel": "Destacado",
+    "ctaHint": "¿Listo para empezar con más tranquilidad?"
   },
   "languageSwitcher": {
     "label": "Idioma",

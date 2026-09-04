@@ -437,7 +437,10 @@
         "p5": "Finally, log your trades: what worked, what did not, and how you felt. Over time, these records reveal patterns and help you make more conscious decisions. At Bullex, we want you to trade informed — and sleep peacefully after closing the platform."
       }
     },
-    "backToSite": "Back to site"
+    "backToSite": "Back to site",
+    "readArticle": "Read article",
+    "featuredLabel": "Featured",
+    "ctaHint": "Ready to start with more peace of mind?"
   },
   "languageSwitcher": {
     "label": "Language",

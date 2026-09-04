@@ -11,6 +11,7 @@ import {
 } from "@/components/blog/blogConfig";
 import { SiteFooter } from "@/components/footer/Footer";
 import { HERO_COPY } from "@/components/hero/heroConfig";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -64,44 +65,59 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     <div className={styles.page}>
       <BlogPageReady />
       <BlogHeader />
+
       <article className={styles.article}>
-        <div className={styles.heroMedia}>
+        <div className={styles.articleHero}>
           <Image
-            className={styles.heroImage}
+            className={styles.articleHeroImage}
             src={BLOG_POST_IMAGES[postId]}
             alt={t(`posts.${postId}.imageAlt`)}
             fill
-            sizes="(max-width: 760px) 100vw, 760px"
+            sizes="100vw"
             priority
             quality={90}
           />
+          <div className={styles.articleHeroShade} aria-hidden="true" />
+          <div className={styles.articleHeroContent}>
+            <p className={styles.eyebrow}>{t("eyebrow")}</p>
+            <h1 className={styles.title}>{t(`posts.${postId}.title`)}</h1>
+            <div className={styles.meta}>
+              <span className={styles.metaItem}>
+                {t("publishedAt", { date: t(`posts.${postId}.date`) })}
+              </span>
+              <span className={styles.metaDot} aria-hidden="true" />
+              <span className={styles.metaItem}>
+                {t("readTime", { minutes: t(`posts.${postId}.minutes`) })}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <p className={styles.eyebrow}>{t("eyebrow")}</p>
-        <h1 className={styles.title}>{t(`posts.${postId}.title`)}</h1>
+        <div className={styles.articleBody}>
+          <p className={styles.excerpt}>{t(`posts.${postId}.excerpt`)}</p>
 
-        <div className={styles.meta}>
-          <span>{t("publishedAt", { date: t(`posts.${postId}.date`) })}</span>
-          <span>{t("readTime", { minutes: t(`posts.${postId}.minutes`) })}</span>
-        </div>
+          <div className={styles.body}>
+            {BLOG_POST_PARAGRAPH_KEYS[postId].map((key) => (
+              <p key={key}>{t(`posts.${postId}.${key}` as `posts.${typeof postId}.p1`)}</p>
+            ))}
+          </div>
 
-        <p className={styles.excerpt}>{t(`posts.${postId}.excerpt`)}</p>
-
-        <div className={styles.body}>
-          {BLOG_POST_PARAGRAPH_KEYS[postId].map((key) => (
-            <p key={key}>{t(`posts.${postId}.${key}` as `posts.${typeof postId}.p1`)}</p>
-          ))}
-        </div>
-
-        <div className={styles.ctaWrap}>
-          <a
-            className={styles.cta}
-            href={HERO_COPY.ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("cta")}
-          </a>
+          <div className={styles.ctaBand}>
+            <p className={styles.ctaHint}>{t("ctaHint")}</p>
+            <div className={styles.ctaActions}>
+              <a
+                className={styles.cta}
+                href={HERO_COPY.ctaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("cta")}
+              </a>
+              <Link className={styles.ctaSecondary} href="/blog">
+                {t("backToBlog")}
+              </Link>
+            </div>
+          </div>
         </div>
       </article>
 

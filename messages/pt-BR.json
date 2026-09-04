@@ -437,7 +437,10 @@
         "p5": "Por fim, registre suas operações: o que funcionou, o que não funcionou e como você se sentiu. Com o tempo, esses registros revelam padrões e ajudam a tomar decisões mais conscientes. Na Bullex, queremos que você opere informado — e que durma tranquilo depois de fechar a plataforma."
       }
     },
-    "backToSite": "Voltar para o site"
+    "backToSite": "Voltar para o site",
+    "readArticle": "Ler artigo",
+    "featuredLabel": "Em destaque",
+    "ctaHint": "Pronto para começar com mais tranquilidade?"
   },
   "languageSwitcher": {
     "label": "Idioma",

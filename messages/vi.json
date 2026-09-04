@@ -437,7 +437,10 @@
         "p5": "Ghi chép lệnh: điều gì hiệu quả, không hiệu quả và cảm xúc của bạn. Theo thời gian, điều này giúp quyết định có ý thức hơn."
       }
     },
-    "backToSite": "Về trang chủ"
+    "backToSite": "Về trang chủ",
+    "readArticle": "Đọc bài",
+    "featuredLabel": "Nổi bật",
+    "ctaHint": "Sẵn sàng bắt đầu với sự an tâm hơn?"
   },
   "languageSwitcher": {
     "label": "Ngôn ngữ",
