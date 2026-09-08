@@ -18,6 +18,27 @@ function currentCanonical(pathLocale: string): Locale {
   return isPathLocale(pathLocale) ? pathLocaleToLocale(pathLocale) : "en";
 }
 
+function localeTriggerLabel(locale: Locale): string {
+  switch (locale) {
+    case "pt-BR":
+      return "PT";
+    case "en":
+      return "EN";
+    case "es":
+      return "ES";
+    case "ru":
+      return "RU";
+    case "th":
+      return "TH";
+    case "vi":
+      return "VI";
+    default: {
+      const exhaustive: never = locale;
+      return exhaustive;
+    }
+  }
+}
+
 export function LanguageSwitcher() {
   const t = useTranslations("languageSwitcher");
   const router = useRouter();
@@ -61,7 +82,7 @@ export function LanguageSwitcher() {
         onClick={() => setOpen((value) => !value)}
       >
         <span aria-hidden="true">🌐</span>
-        <span>{current.toUpperCase()}</span>
+        <span>{localeTriggerLabel(current)}</span>
       </button>
       {open ? (
         <ul className={styles.menu} role="listbox">

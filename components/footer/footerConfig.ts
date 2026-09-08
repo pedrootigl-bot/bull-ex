@@ -1,31 +1,42 @@
 export const SUPPORT_EMAIL = "support@bull-ex.com";
 
-export const FOOTER_COPY = {
-  brand: "Bullex",
-  tagline: "Onde tecnologia e mercado se encontram.",
-  cta: "Abra sua conta gratuita",
-  ctaHref: "https://trade.bull-ex.com/pt/register",
-  columns: [
-    {
-      title: "Plataforma",
-      links: [
-        { href: "#mercados", label: "Mercados" },
-        { href: "#por-que-bullex", label: "Por que Bullex" },
-        { href: "#premios", label: "Prêmios" },
-        { href: "#faq", label: "FAQ" },
-      ],
-    },
-    {
-      title: "Suporte",
-      links: [
-        { href: "#faq", label: "FAQ" },
-        { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL },
-        { href: "https://trade.bull-ex.com/pt/register", label: "Abrir conta" },
-        { href: "https://trade.bull-ex.com/pt/register", label: "Entrar" },
-      ],
-    },
-  ],
-  legal:
-    "Negociação de ativos envolve risco. Operar com capital que você pode perder. Conteúdo educacional, sem recomendação de investimento.",
-  copyright: "© 2026 Bullex. Todos os direitos reservados.",
-} as const;
+export const FOOTER_LEGAL_DOCS = [
+  {
+    href: "/legal/general-fees-policy.pdf",
+    labelKey: "feesPolicy",
+  },
+  {
+    href: "/legal/withdrawal-policy.pdf",
+    labelKey: "withdrawalPolicy",
+  },
+  {
+    href: "/legal/aml-kyc-policy.pdf",
+    labelKey: "amlKycPolicy",
+  },
+  {
+    href: "/legal/promo-code-policy.pdf",
+    labelKey: "promoCodePolicy",
+  },
+  {
+    href: "/legal/refund-policy.pdf",
+    labelKey: "refundPolicy",
+  },
+  {
+    href: "/legal/demo-tournament-accounts.pdf",
+    labelKey: "demoTournamentAccounts",
+  },
+  {
+    href: "/legal/risk-disclosure.pdf",
+    labelKey: "riskDisclosure",
+  },
+  {
+    href: "/legal/order-execution-policy.pdf",
+    labelKey: "orderExecutionPolicy",
+  },
+  {
+    href: "/legal/cookies-policy.pdf",
+    labelKey: "cookiesPolicy",
+  },
+] as const;
+
+export type FooterLegalDocLabelKey = (typeof FOOTER_LEGAL_DOCS)[number]["labelKey"];

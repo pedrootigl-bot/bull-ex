@@ -2,7 +2,7 @@ import { HERO_COPY } from "@/components/hero/heroConfig";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { SUPPORT_EMAIL } from "./footerConfig";
+import { FOOTER_LEGAL_DOCS, SUPPORT_EMAIL } from "./footerConfig";
 import styles from "./footer.module.css";
 
 export function SiteFooter() {
@@ -12,20 +12,28 @@ export function SiteFooter() {
     {
       title: t("platform"),
       links: [
-        { href: "#mercados", label: t("markets") },
-        { href: "#por-que-bullex", label: t("why") },
-        { href: "#premios", label: t("prizes") },
-        { href: "#faq", label: t("faq") },
+        { href: "#mercados", label: t("markets"), external: false },
+        { href: "#por-que-bullex", label: t("why"), external: false },
+        { href: "#premios", label: t("prizes"), external: false },
+        { href: "#faq", label: t("faq"), external: false },
       ],
     },
     {
       title: t("support"),
       links: [
-        { href: "#faq", label: t("faq") },
-        { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL },
-        { href: HERO_COPY.ctaHref, label: t("openAccount") },
-        { href: HERO_COPY.ctaHref, label: t("login") },
+        { href: "#faq", label: t("faq"), external: false },
+        { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL, external: false },
+        { href: HERO_COPY.ctaHref, label: t("openAccount"), external: true },
+        { href: HERO_COPY.ctaHref, label: t("login"), external: true },
       ],
+    },
+    {
+      title: t("legal"),
+      links: FOOTER_LEGAL_DOCS.map((doc) => ({
+        href: doc.href,
+        label: t(doc.labelKey),
+        external: true,
+      })),
     },
   ];
 
@@ -57,9 +65,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.label}`}>
                     <a
                       href={link.href}
-                      {...(link.href.startsWith("http")
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
+                      {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     >
                       {link.label}
                     </a>

@@ -287,8 +287,14 @@
     padding: 2rem 0 2.5rem;
   }
 
+  .leftHeader {
+    text-align: center;
+    align-items: center;
+  }
+
   .sectionTitle {
     font-size: clamp(1.05rem, 4.8vw, 1.45rem);
+    text-wrap: balance;
   }
 
   .titleLight {
@@ -297,6 +303,9 @@
 
   .sectionSubtitle {
     font-size: 0.84rem;
+    max-width: 22rem;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .statCard {

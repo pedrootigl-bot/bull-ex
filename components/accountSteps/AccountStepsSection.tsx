@@ -71,23 +71,12 @@ function StepIcon({ step }: { step: AccountStepId }) {
   }
 }
 
-function StepConnector({ active }: { active: boolean }) {
-  return (
-    <div className={styles.connector} aria-hidden="true">
-      <span className={styles.connectorLine} />
-      <span className={`${styles.connectorDot} ${active ? styles.connectorDotActive : ""}`} />
-      <span className={styles.connectorLine} />
-    </div>
-  );
-}
-
 type AccountStepCardProps = {
   step: AccountStepId;
   index: number;
   isActive: boolean;
   isCompleted: boolean;
   id?: string;
-  interactive?: boolean;
   onSelect?: () => void;
 };
 
@@ -97,14 +86,19 @@ function AccountStepCard({
   isActive,
   isCompleted,
   id,
-  interactive = false,
   onSelect,
 }: AccountStepCardProps) {
   const t = useTranslations("accountSteps");
   const className = `${styles.card} ${isActive ? styles.cardActive : ""} ${isCompleted ? styles.cardCompleted : ""}`;
 
-  const content = (
-    <>
+  return (
+    <button
+      type="button"
+      id={id}
+      className={className}
+      aria-current={isActive ? "step" : undefined}
+      onClick={onSelect}
+    >
       <div className={styles.cardHead}>
         <span className={styles.stepNumber}>{index + 1}</span>
         <span className={styles.stepPill}>{t(`steps.${step}.checkpoint`)}</span>
@@ -116,27 +110,7 @@ function AccountStepCard({
 
       <h3 className={styles.cardTitle}>{t(`steps.${step}.title`)}</h3>
       <p className={styles.cardText}>{t(`steps.${step}.text`)}</p>
-    </>
-  );
-
-  if (interactive) {
-    return (
-      <button
-        type="button"
-        id={id}
-        className={className}
-        aria-current={isActive ? "step" : undefined}
-        onClick={onSelect}
-      >
-        {content}
-      </button>
-    );
-  }
-
-  return (
-    <article id={id} className={className} aria-current={isActive ? "step" : undefined}>
-      {content}
-    </article>
+    </button>
   );
 }
 
@@ -186,6 +160,7 @@ export function AccountStepsSection() {
     }
   }
 
+  const stepCount = ACCOUNT_STEPS.length;
   const isLastStep = activeStep === 2;
   const motionClass = reducedMotion ? styles.motionStatic : "";
   const revealClass = visible ? styles.revealIn : "";
@@ -210,78 +185,67 @@ export function AccountStepsSection() {
             <p className={styles.subtitle}>{t("subtitle")}</p>
           </header>
 
-          <div
-            className={styles.mobileCarousel}
-            role="region"
-            aria-label={t("progressLabel")}
-            aria-live="polite"
-          >
+          <div className={styles.stepsMain} role="group" aria-label={t("progressLabel")}>
+            <div className={styles.progressMeta}>
+              <span>{t("stepLabel", { step: activeStep + 1 })}</span>
+              <span aria-hidden="true">
+                {activeStep + 1}/{stepCount}
+              </span>
+            </div>
+
             <div
-              className={`${styles.mobileTrack} ${reducedMotion ? styles.mobileTrackStatic : ""}`}
-              style={{ transform: `translateX(-${activeStep * 100}%)` }}
-            >
+              className={styles.progressTrackSr}
+              role="progressbar"
+              aria-valuemin={1}
+              aria-valuemax={stepCount}
+              aria-valuenow={activeStep + 1}
+              aria-label={t("progressLabel")}
+            />
+
+            <div className={styles.cardsStack} role="list">
               {ACCOUNT_STEPS.map((step, index) => {
                 const stepIndex = index as AccountStepIndex;
+                const isActive = stepIndex === activeStep;
+                const isCompleted = stepIndex < activeStep;
+                const segmentFilled = index < activeStep;
+                const isLast = index === stepCount - 1;
 
                 return (
-                  <div className={styles.mobileSlide} key={step}>
+                  <div className={styles.stepRow} key={step} role="listitem">
+                    <div className={styles.progressRail} aria-hidden="true">
+                      <span
+                        className={`${styles.progressMark} ${isActive || isCompleted ? styles.progressMarkActive : ""}`}
+                      />
+                      {isLast ? null : (
+                        <span
+                          className={`${styles.progressSegment} ${segmentFilled ? styles.progressSegmentFilled : ""} ${reducedMotion ? styles.progressSegmentStatic : ""}`}
+                        />
+                      )}
+                    </div>
+
                     <AccountStepCard
                       step={step}
                       index={index}
-                      isActive
-                      isCompleted={stepIndex < activeStep}
-                      id={`${baseId}-mobile-step-${step}`}
+                      isActive={isActive}
+                      isCompleted={isCompleted}
+                      id={`${baseId}-step-${step}`}
+                      onSelect={() => handleCardClick(index)}
                     />
                   </div>
                 );
               })}
             </div>
-
-            <div className={styles.mobileDots} aria-hidden="true">
-              {ACCOUNT_STEPS.map((step, index) => (
-                <span
-                  key={step}
-                  className={`${styles.mobileDot} ${index === activeStep ? styles.mobileDotActive : ""}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.cardsRow} role="list" aria-label={t("progressLabel")}>
-            {ACCOUNT_STEPS.map((step, index) => {
-              const stepIndex = index as AccountStepIndex;
-              const isActive = stepIndex === activeStep;
-              const isCompleted = stepIndex < activeStep;
-
-              return (
-                <div className={styles.cardsRowItem} key={step} role="listitem">
-                  {index > 0 ? <StepConnector active={isCompleted || isActive} /> : null}
-                  <AccountStepCard
-                    step={step}
-                    index={index}
-                    isActive={isActive}
-                    isCompleted={isCompleted}
-                    id={`${baseId}-step-${step}`}
-                    interactive
-                    onSelect={() => handleCardClick(index)}
-                  />
-                </div>
-              );
-            })}
           </div>
 
           <div className={styles.actions}>
             {isLastStep ? (
               <a
-                className={styles.primaryButton}
+                className={`${styles.primaryButton} ${styles.ctaBlink}`}
                 href={HERO_COPY.ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <span>{t("cta")}</span>
-                <span className={styles.buttonArrow} aria-hidden="true">
-                  →
-                </span>
               </a>
             ) : (
               <button type="button" className={styles.primaryButton} onClick={handleNext}>

@@ -632,12 +632,10 @@
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  padding: 1.5px;
   border-radius: 999px;
-  overflow: hidden;
-  isolation: isolate;
   text-decoration: none;
   color: #0a0a0a;
+  animation: ctaGlow 1.8s ease-in-out infinite;
 }
 
 .ctaInner {
@@ -650,18 +648,35 @@
   padding: 0.42rem 0.42rem 0.42rem 1.35rem;
   border-radius: 999px;
   background: var(--hero-accent-soft);
-  border: 1px solid color-mix(in srgb, var(--hero-accent, #00ff55) 28%, transparent);
+  border: 0;
   color: #061408;
   font-size: clamp(0.68rem, 0.35vw + 0.62rem, 0.78rem);
   font-weight: 700;
   letter-spacing: 0.06em;
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.18s ease;
+  transition: background-color 0.25s ease, transform 0.18s ease;
+}
+
+.cta:hover {
+  animation-play-state: paused;
 }
 
 .cta:hover .ctaInner {
-  border-color: transparent;
   background: var(--hero-accent-soft-hover);
   transform: translateY(-1px);
+}
+
+@keyframes ctaGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(124, 255, 58, 0.32),
+      0 8px 22px rgba(95, 216, 47, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(124, 255, 58, 0.55),
+      0 10px 26px rgba(95, 216, 47, 0.34);
+  }
 }
 
 .ctaIcon {
@@ -817,7 +832,6 @@
     opacity: 0.85;
   }
 }
-
 
 /* —— Compact nav / mobile menu —— */
 
@@ -1248,9 +1262,16 @@
   }
 
   .glowPulse,
+  .cta,
   .cta:hover .ctaInner {
     animation: none;
     transform: none;
+  }
+
+  .cta {
+    box-shadow:
+      0 0 14px rgba(124, 255, 58, 0.4),
+      0 8px 22px rgba(95, 216, 47, 0.24);
   }
 
   .navLinks a,

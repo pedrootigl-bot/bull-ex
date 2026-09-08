@@ -12,8 +12,8 @@
 
 .top {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 0.7fr));
-  gap: 2.4rem 2rem;
+  grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 0.75fr));
+  gap: 2.4rem 1.6rem;
   padding-bottom: 2.4rem;
 }
 
@@ -114,6 +114,12 @@
 
 .legal {
   max-width: 38rem;
+}
+
+@media (max-width: 1100px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 860px) {

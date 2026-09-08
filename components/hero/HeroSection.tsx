@@ -354,7 +354,6 @@ export function HeroSection() {
               rel="noopener noreferrer"
               data-hero-rise
             >
-              <span className={styles.beam} aria-hidden="true" />
               <span className={styles.ctaInner}>
                 {tHero("cta")}
                 <span className={styles.ctaIcon} aria-hidden="true">
