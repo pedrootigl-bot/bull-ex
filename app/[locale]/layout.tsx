@@ -11,6 +11,9 @@ import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext"
 const LegalNotice = dynamic(() =>
   import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
 );
+const PromoPopup = dynamic(() =>
+  import("@/components/promo/PromoPopup").then((mod) => mod.PromoPopup),
+);
 const BackToTop = dynamic(() =>
   import("@/components/ui/BackToTop").then((mod) => mod.BackToTop),
 );
@@ -70,6 +73,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <NextIntlClientProvider messages={messages}>
       <BlogNavigationProvider>
         {children}
+        <PromoPopup />
         <LegalNotice />
         <BackToTop />
       </BlogNavigationProvider>

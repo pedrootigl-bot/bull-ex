@@ -67,6 +67,11 @@
     "text": "A Bullex não está autorizada pela Comissão Nacional do Mercado de Valores Mobiliários (CNMV) a oferecer publicamente ou intermediar valores mobiliários no Brasil. Ao acessar o site da Bullex, o usuário declara estar ciente e concordar com as restrições aqui indicadas. Para mais informações, consulte o Contrato do Cliente.",
     "close": "Fechar aviso"
   },
+  "promoPopup": {
+    "title": "MegaHaval — bônus e prêmio extra",
+    "close": "Fechar promoção",
+    "imageAlt": "Promoção MegaHaval H6 GT com bônus de 200% e prêmio extra de R$ 25 mil"
+  },
   "common": {
     "backToTop": "Voltar ao topo",
     "installApp": "Instalar app"

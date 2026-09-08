@@ -67,6 +67,11 @@
     "text": "Bullex is not authorized by Brazil’s securities regulator (CNMV) to publicly offer or intermediate securities in Brazil. By accessing the Bullex website, you acknowledge and agree to these restrictions. For more information, see the Client Agreement.",
     "close": "Close notice"
   },
+  "promoPopup": {
+    "title": "MegaHaval — bonus and extra prize",
+    "close": "Close promotion",
+    "imageAlt": "MegaHaval H6 GT promotion with 200% bonus and R$25,000 extra prize"
+  },
   "common": {
     "backToTop": "Back to top",
     "installApp": "Install app"

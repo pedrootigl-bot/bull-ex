@@ -47,6 +47,11 @@ export function bullexRegisterHref(locale: Locale): string {
   return `${TRADE_SITE_ORIGIN}/${path}/register`;
 }
 
+export function bullexLoginHref(locale: Locale): string {
+  const path = TRADE_REGISTER_PATH_BY_LOCALE[locale];
+  return `${TRADE_SITE_ORIGIN}/${path}/login`;
+}
+
 export const NAV_COPY = {
   links: [
     { href: "#mercados", labelKey: "markets", icon: "markets" },

@@ -67,6 +67,11 @@
     "text": "Bullex no está autorizada por el regulador brasileño (CNMV) para ofrecer o intermediar valores de forma pública en Brasil. Al acceder al sitio de Bullex, declaras conocer y aceptar estas restricciones. Para más información, consulta el Contrato del Cliente.",
     "close": "Cerrar aviso"
   },
+  "promoPopup": {
+    "title": "MegaHaval — bono y premio extra",
+    "close": "Cerrar promoción",
+    "imageAlt": "Promoción MegaHaval H6 GT con bono del 200% y premio extra de R$ 25 mil"
+  },
   "common": {
     "backToTop": "Volver arriba",
     "installApp": "Instalar app"
