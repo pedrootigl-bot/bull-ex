@@ -1,16 +1,14 @@
 "use client";
 
-import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
-import { type Locale } from "@/i18n/config";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useState } from "react";
 import styles from "./promoPopup.module.css";
 
+const PROMO_REGISTER_HREF = "https://trade.bull-ex.com/pt/register";
+
 export function PromoPopup() {
   const t = useTranslations("promoPopup");
-  const tNav = useTranslations("navigation");
-  const locale = useLocale() as Locale;
   const titleId = useId();
   const [open, setOpen] = useState(true);
   const [entered, setEntered] = useState(false);
@@ -44,9 +42,6 @@ export function PromoPopup() {
   if (!open) {
     return null;
   }
-
-  const registerHref = bullexRegisterHref(locale);
-  const loginHref = bullexLoginHref(locale);
 
   return (
     <div
@@ -82,7 +77,7 @@ export function PromoPopup() {
 
         <a
           className={styles.link}
-          href={registerHref}
+          href={PROMO_REGISTER_HREF}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setOpen(false)}
@@ -97,18 +92,6 @@ export function PromoPopup() {
             priority
           />
         </a>
-
-        <div className={`${styles.actions} ${entered ? styles.actionsEntered : ""}`}>
-          <a
-            className={styles.loginButton}
-            href={loginHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-          >
-            {tNav("login")}
-          </a>
-        </div>
       </div>
     </div>
   );

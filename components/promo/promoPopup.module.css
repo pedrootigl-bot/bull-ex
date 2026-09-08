@@ -54,19 +54,23 @@
   place-items: center;
   width: 2.35rem;
   height: 2.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1.5px solid #7cff3a;
   border-radius: 999px;
   background: rgba(8, 8, 8, 0.92);
-  color: #fff;
+  color: #7cff3a;
   cursor: pointer;
   opacity: 0;
   transform: scale(0.7);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(124, 255, 58, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.35);
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
+    color 0.2s ease,
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease;
+    opacity 0.35s ease,
+    box-shadow 0.2s ease;
   transition-delay: 0s;
 }
 
@@ -78,11 +82,14 @@
 
 .close:hover,
 .close:focus-visible {
-  background: #111;
-  border-color: rgba(124, 255, 58, 0.45);
-  color: #7cff3a;
+  background: rgba(124, 255, 58, 0.12);
+  border-color: #9dff5c;
+  color: #b8ff6a;
   outline: none;
   transform: scale(1.04);
+  box-shadow:
+    0 0 0 1px rgba(124, 255, 58, 0.22),
+    0 8px 24px rgba(95, 216, 47, 0.22);
   transition-delay: 0s;
 }
 
@@ -108,57 +115,6 @@
   object-fit: contain;
   object-position: center top;
   background: #050505;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.75rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: 0s;
-}
-
-.actionsEntered {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.32s;
-}
-
-.loginButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: min(100%, 10.5rem);
-  min-height: 2.55rem;
-  padding: 0.55rem 1.25rem;
-  border: 1px solid rgba(124, 255, 58, 0.45);
-  border-radius: 999px;
-  background: rgba(8, 12, 8, 0.88);
-  color: #7cff3a;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  text-transform: uppercase;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.18s ease;
-}
-
-.loginButton:hover,
-.loginButton:focus-visible {
-  background: rgba(124, 255, 58, 0.12);
-  border-color: #7cff3a;
-  color: #b8ff6a;
-  outline: none;
-  transform: translateY(-1px);
 }
 
 .srOnly {
@@ -201,8 +157,7 @@
 @media (prefers-reduced-motion: reduce) {
   .overlay,
   .dialog,
-  .close,
-  .actions {
+  .close {
     transition: none;
   }
 
@@ -212,8 +167,7 @@
     -webkit-backdrop-filter: blur(14px) saturate(1.05);
   }
 
-  .dialog,
-  .actions {
+  .dialog {
     opacity: 1;
     transform: none;
     filter: none;
@@ -225,9 +179,7 @@
   }
 
   .close:hover,
-  .close:focus-visible,
-  .loginButton:hover,
-  .loginButton:focus-visible {
+  .close:focus-visible {
     transform: none;
   }
 }
