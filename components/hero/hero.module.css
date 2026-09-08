@@ -905,14 +905,16 @@
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 0;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
 
   .heroStage {
     --mobile-globe-height: min(42vh, 340px);
     --mobile-globe-center-y: calc(var(--mobile-globe-height) * 0.58 + max(1.25rem, calc(env(safe-area-inset-top, 0px) + 0.35rem)));
     --mobile-body-start: calc(var(--mobile-globe-height) * 0.9 + max(4.9rem, calc(env(safe-area-inset-top, 0px) + 4.1rem)));
-    min-height: 0;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
 
   .globeStage {
@@ -961,7 +963,7 @@
 
   .content {
     justify-content: flex-start;
-    gap: clamp(1rem, 2.5vh, 1.35rem);
+    gap: clamp(1.45rem, 3.8vh, 2rem);
 
     padding:
       0
@@ -970,7 +972,8 @@
 
     position: relative;
     z-index: 3;
-    min-height: 0;
+    min-height: 100svh;
+    min-height: 100dvh;
     box-sizing: border-box;
   }
 
@@ -983,7 +986,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.85rem;
     position: absolute;
     top: var(--mobile-globe-center-y);
     left: 0;
@@ -1042,8 +1045,8 @@
   }
 
   .contentRise {
-    gap: clamp(0.95rem, 2.4vh, 1.35rem);
-    margin-top: 0;
+    gap: clamp(1.35rem, 3.6vh, 1.85rem);
+    margin-top: 0.35rem;
   }
 
   .menuCard {
@@ -1079,12 +1082,13 @@
   }
 
   .stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: 100%;
-    margin-top: clamp(1.1rem, 2.8vh, 1.6rem);
+    grid-template-columns: 1fr;
+    width: min(18rem, 100%);
+    margin-top: clamp(1.75rem, 4.5vh, 2.5rem);
+    margin-inline: auto;
     margin-bottom: 0;
-    column-gap: 0.45rem;
-    row-gap: 0;
+    column-gap: 0;
+    row-gap: 1.35rem;
     position: relative;
     z-index: 4;
   }
@@ -1094,20 +1098,28 @@
   }
 
   .stat {
-    padding: 0 0.2rem;
+    padding: 0.15rem 0;
     text-align: center;
   }
 
   .stat strong {
-    margin-bottom: 0.2rem;
-    font-size: clamp(0.95rem, 4.2vw, 1.2rem);
-    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    font-size: clamp(1.28rem, 5.4vw, 1.55rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
 
   .stat span {
     display: block;
-    font-size: clamp(0.62rem, 2.6vw, 0.72rem);
-    line-height: 1.3;
+    max-width: 14rem;
+    margin-inline: auto;
+    color: #a3a3a3;
+    font-size: clamp(0.84rem, 3.4vw, 0.95rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    text-wrap: balance;
   }
 
   .freq {
@@ -1157,7 +1169,7 @@
   }
 
   .stats {
-    margin-top: 1.35rem;
+    margin-top: 1.65rem;
   }
 }
 
@@ -1180,7 +1192,7 @@
   }
 
   .stats {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
   }
 
   .freq {
@@ -1220,7 +1232,7 @@
   }
 
   .stats {
-    margin-top: 0.9rem;
+    margin-top: 1.15rem;
   }
 
   .freq {

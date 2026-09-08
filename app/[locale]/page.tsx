@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/footer/Footer";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { MobileScrollGate } from "@/components/MobileScrollGate";
 import { PlatformSection } from "@/components/platform/PlatformSection";
 import { TeamGridSection } from "@/components/teamGrid/TeamGridSection";
 import { AppToMarketsScrollStack } from "@/components/scrollStack/AppToMarketsScrollStack";
@@ -32,37 +33,41 @@ export default function HomePage() {
         <div className={styles.slotHero}>
           <HeroSection />
         </div>
-        <div className={styles.slotPlatform}>
-          <PlatformSection />
-        </div>
-        <div className={styles.slotTeam}>
-          <TeamGridSection />
-        </div>
-        <AppToMarketsScrollStack
-          groupClassName={styles.stackGroup}
-          mobileAppClassName={styles.slotMobileApp}
-          marketsClassName={styles.slotMarkets}
-        />
-        <div className={styles.slotTestimonials}>
-          <TestimonialsSection />
-        </div>
-        <div className={styles.slotWhy}>
-          <WhySection />
-        </div>
-        <div className={styles.slotPrizes}>
-          <PrizesSection />
-        </div>
-        <div className={styles.slotKindness}>
-          <KindnessSection />
-        </div>
-        <div className={styles.slotAccount}>
-          <AccountStepsSection />
-        </div>
-        <div className={styles.slotFaq}>
-          <FaqSection />
-        </div>
+        <MobileScrollGate>
+          <div className={styles.slotPlatform}>
+            <PlatformSection />
+          </div>
+          <div className={styles.slotTeam}>
+            <TeamGridSection />
+          </div>
+          <AppToMarketsScrollStack
+            groupClassName={styles.stackGroup}
+            mobileAppClassName={styles.slotMobileApp}
+            marketsClassName={styles.slotMarkets}
+          />
+          <div className={styles.slotTestimonials}>
+            <TestimonialsSection />
+          </div>
+          <div className={styles.slotWhy}>
+            <WhySection />
+          </div>
+          <div className={styles.slotPrizes}>
+            <PrizesSection />
+          </div>
+          <div className={styles.slotKindness}>
+            <KindnessSection />
+          </div>
+          <div className={styles.slotAccount}>
+            <AccountStepsSection />
+          </div>
+          <div className={styles.slotFaq}>
+            <FaqSection />
+          </div>
+          <div className={styles.slotFooter}>
+            <SiteFooter />
+          </div>
+        </MobileScrollGate>
       </main>
-      <SiteFooter />
     </>
   );
 }

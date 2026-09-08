@@ -19,6 +19,14 @@ html {
   }
 }
 
+html.hero-scroll-lock,
+html.hero-scroll-lock body {
+  overflow: hidden;
+  height: 100%;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
