@@ -1,13 +1,19 @@
+/**
+ * REFERÊNCIA — proxy/middleware de locale para hosting com Node (Vercel/VPS).
+ * Não é usado no deploy estático da Hostinger (`output: "export"`).
+ * Para reativar em ambiente Node, renomeie este arquivo para `proxy.ts` na raiz
+ * e remova `output: "export"` / `images.unoptimized` do `next.config.ts`.
+ */
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import { applyLocaleCookie } from "./i18n/cookie";
-import { pathLocaleToLocale, localeToPathLocale } from "./i18n/config";
-import { getBrowserLocaleFromHeaders } from "./i18n/getBrowserLocaleFromHeaders";
-import { getCountryFromRequest } from "./i18n/getCountryFromRequest";
-import { getSavedLocale } from "./i18n/getSavedLocale";
-import { getPathLocaleFromPathname } from "./i18n/pathLocale";
-import { resolveLocale } from "./i18n/resolveLocale";
-import { routing } from "./i18n/routing";
+import { applyLocaleCookie } from "./cookie";
+import { pathLocaleToLocale, localeToPathLocale } from "./config";
+import { getBrowserLocaleFromHeaders } from "./getBrowserLocaleFromHeaders";
+import { getCountryFromRequest } from "./getCountryFromRequest";
+import { getSavedLocale } from "./getSavedLocale";
+import { getPathLocaleFromPathname } from "./pathLocale";
+import { resolveLocale } from "./resolveLocale";
+import { routing } from "./routing";
 
 const handleI18n = createMiddleware(routing);
 

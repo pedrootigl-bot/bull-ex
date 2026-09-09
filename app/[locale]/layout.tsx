@@ -1,12 +1,14 @@
 import { HTML_LANG, isPathLocale, localeToPathLocale, pathLocaleToLocale } from "@/i18n/config";
 import { getMoneyMessageParams } from "@/i18n/formatMoney";
 import { routing } from "@/i18n/routing";
+import { withBasePath } from "@/lib/basePath";
+import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
+import { Inter, Noto_Sans_Thai } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { Metadata, Viewport } from "next";
-import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
 
 const LegalNotice = dynamic(() =>
   import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
@@ -17,6 +19,19 @@ const PromoPopup = dynamic(() =>
 const BackToTop = dynamic(() =>
   import("@/components/ui/BackToTop").then((mod) => mod.BackToTop),
 );
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext", "cyrillic", "vietnamese"],
+  display: "swap",
+});
+
+const notoSansThai = Noto_Sans_Thai({
+  subsets: ["thai"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-thai",
+  adjustFontFallback: true,
+});
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
@@ -43,7 +58,7 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
   const languages = Object.fromEntries(
     routing.locales.map((item) => {
       const canonical = pathLocaleToLocale(item);
-      return [HTML_LANG[canonical], `/${item}`];
+      return [HTML_LANG[canonical], withBasePath(`/${item}/`)];
     }),
   );
 
@@ -51,10 +66,10 @@ export async function generateMetadata({ params }: Pick<LocaleLayoutProps, "para
     title: t("title"),
     description: t("description", moneyParams),
     alternates: {
-      canonical: `/${pathLocale}`,
+      canonical: withBasePath(`/${pathLocale}/`),
       languages: {
         ...languages,
-        "x-default": `/${localeToPathLocale("en")}`,
+        "x-default": withBasePath(`/${localeToPathLocale("en")}/`),
       },
     },
   };
@@ -66,17 +81,23 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
+  // Obrigatório para static export (evita headers() dinâmico)
   setRequestLocale(locale);
   const messages = await getMessages();
+  const htmlLang = HTML_LANG[pathLocaleToLocale(locale)];
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <BlogNavigationProvider>
-        {children}
-        <PromoPopup />
-        <LegalNotice />
-        <BackToTop />
-      </BlogNavigationProvider>
-    </NextIntlClientProvider>
+    <html lang={htmlLang} suppressHydrationWarning>
+      <body className={`${inter.className} ${notoSansThai.variable}`}>
+        <NextIntlClientProvider messages={messages}>
+          <BlogNavigationProvider>
+            {children}
+            <PromoPopup />
+            <LegalNotice />
+            <BackToTop />
+          </BlogNavigationProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

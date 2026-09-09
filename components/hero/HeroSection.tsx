@@ -118,6 +118,15 @@ export function HeroSection() {
     };
   }, [menuOpen]);
 
+  // Se o WebGL/globo falhar ou demorar, libera o hero para não ficar tela preta
+  useEffect(() => {
+    if (globeReady || reducedMotion) {
+      return;
+    }
+    const timer = window.setTimeout(() => setGlobeReady(true), 1600);
+    return () => window.clearTimeout(timer);
+  }, [globeReady, reducedMotion]);
+
   useEffect(() => {
     const hero = heroRef.current;
     const content = contentRef.current;

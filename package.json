@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/prepare-dist.cjs",
+    "build:static": "next build && node scripts/prepare-dist.cjs",
     "start": "next start",
+    "preview:static": "node scripts/preview-static.cjs",
     "test:i18n": "npx --yes tsx --test i18n/resolveLocale.test.ts"
   },
   "dependencies": {
