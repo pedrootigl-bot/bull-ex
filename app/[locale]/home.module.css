@@ -9,7 +9,15 @@
 
 .slotMobileApp,
 .slotMarkets,
-.slotAccount {
+.slotAccount,
+.slotPlatform,
+.slotTeam,
+.slotTestimonials,
+.slotWhy,
+.slotPrizes,
+.slotKindness,
+.slotFaq,
+.slotFooter {
   width: 100%;
 }
 
@@ -19,57 +27,13 @@
     min-height: 100dvh;
   }
 
-  .stackGroup {
-    display: contents;
-  }
-
   .slotHero {
-    order: 1;
     min-height: 100svh;
     min-height: 100dvh;
   }
 
-  .slotPlatform {
-    order: 2;
-  }
-
-  .slotTeam {
-    order: 3;
-  }
-
-  .slotAccount {
-    order: 4;
-  }
-
-  .slotMarkets {
-    order: 5;
-  }
-
-  .slotTestimonials {
-    order: 6;
-  }
-
-  .slotWhy {
-    order: 7;
-  }
-
-  .slotPrizes {
-    order: 8;
-  }
-
-  .slotKindness {
-    order: 9;
-  }
-
-  .slotMobileApp {
-    order: 10;
-  }
-
-  .slotFaq {
-    order: 11;
-  }
-
-  .slotFooter {
-    order: 12;
+  /* Ordem vem do DOM em HomeBelowFold — sem flex order */
+  .stackGroup {
+    display: block;
   }
 }
