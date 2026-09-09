@@ -81,7 +81,7 @@ function DesktopSections() {
   );
 }
 
-/** Ordem mobile explícita no DOM — sem flex order + display:contents. */
+/** Ordem mobile: criar conta logo antes dos depoimentos. */
 function MobileSections() {
   return (
     <>
@@ -91,11 +91,11 @@ function MobileSections() {
       <div className={styles.slotTeam}>
         <TeamGridSection />
       </div>
-      <div className={styles.slotAccount}>
-        <AccountStepsSection />
-      </div>
       <div className={styles.slotMarkets}>
         <MarketsSection />
+      </div>
+      <div className={styles.slotAccount}>
+        <AccountStepsSection />
       </div>
       <div className={styles.slotTestimonials}>
         <TestimonialsSection />
