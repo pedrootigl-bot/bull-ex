@@ -7,7 +7,6 @@ import { useLiteExperience } from "@/hooks/useLiteExperience";
 import styles from "./promoPopup.module.css";
 
 const PROMO_REGISTER_HREF = "https://trade.bull-ex.com/pt/register";
-const STORAGE_KEY = "bullex-promo-dismissed-v1";
 
 export function PromoPopup() {
   const t = useTranslations("promoPopup");
@@ -17,16 +16,8 @@ export function PromoPopup() {
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem(STORAGE_KEY) === "1") {
-        return;
-      }
-    } catch {
-      // ignore
-    }
-
-    // Adia o popup para não competir com LCP/CSS no 3G
-    const delayMs = lite ? 5000 : 2200;
+    // Atraso curto para não competir com o first paint; volta a cada visita/refresh
+    const delayMs = lite ? 3500 : 1500;
     const timer = window.setTimeout(() => setOpen(true), delayMs);
     return () => window.clearTimeout(timer);
   }, [lite]);
@@ -45,7 +36,7 @@ export function PromoPopup() {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        dismiss();
+        setOpen(false);
       }
     };
 
@@ -57,15 +48,6 @@ export function PromoPopup() {
     };
   }, [open]);
 
-  function dismiss() {
-    setOpen(false);
-    try {
-      sessionStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      // ignore
-    }
-  }
-
   if (!open) {
     return null;
   }
@@ -76,7 +58,7 @@ export function PromoPopup() {
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      onClick={dismiss}
+      onClick={() => setOpen(false)}
     >
       <div
         className={`${styles.dialog} ${entered ? styles.dialogEntered : ""}`}
@@ -90,7 +72,7 @@ export function PromoPopup() {
           type="button"
           className={`${styles.close} ${entered ? styles.closeEntered : ""}`}
           aria-label={t("close")}
-          onClick={dismiss}
+          onClick={() => setOpen(false)}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path
@@ -107,7 +89,7 @@ export function PromoPopup() {
           href={PROMO_REGISTER_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={dismiss}
+          onClick={() => setOpen(false)}
         >
           <Image
             className={styles.image}
@@ -116,8 +98,8 @@ export function PromoPopup() {
             width={480}
             height={776}
             sizes="(max-width: 640px) 62vw, 280px"
-            loading="lazy"
-            quality={60}
+            priority
+            quality={70}
           />
         </a>
       </div>
