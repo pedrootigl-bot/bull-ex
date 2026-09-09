@@ -20,8 +20,5 @@ html.lite-experience [class*="HeroGlow"] {
 }
 
 @media (max-width: 1024px) {
-  /* Fallback sem JS: já reduz custo em Android */
-  html:not(.lite-experience) [class*="marketsTrack"] {
-    animation-duration: 80s;
-  }
+  /* Sem forçar corte no mobile: só quando html.lite-experience (rede ruim) */
 }

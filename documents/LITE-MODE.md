@@ -1,20 +1,23 @@
-# Modo leve (Android 3G / mobile)
+# Modo leve (só rede muito ruim)
 
-O site detecta rede lenta, `save-data`, mobile/tablet ou `prefers-reduced-motion` e entra em **modo leve**:
+Animações pesadas são cortadas **apenas** quando a conexão está muito ruim (ou com `prefers-reduced-motion`).
 
-- Sem Three.js / globo 3D
-- Sem GSAP / orbital lines no hero
-- Hero e CTA visíveis na hora
-- Popup promo atrasado (5s) e sem `priority`
-- Seções abaixo do fold só montam após scroll (mobile)
-- Marquees reduzidos / estáticos
-- Imagens WebP menores (~622 KB no total em `public/images`)
+## Quando corta
 
-## Comandos
+- `save-data` ativo
+- `effectiveType` `slow-2g` / `2g`
+- `downlink` &lt; 0.4 Mbps
+- `rtt` ≥ 1500 ms
+- `3g` **e** (`downlink` &lt; 0.7 **ou** `rtt` ≥ 900)
 
-```bash
-npm run optimize:images
-npm run build
-```
+## Quando NÃO corta
 
-No mobile/3G o first paint deve carregar só o essencial do hero + CSS/JS leve.
+- Mobile/tablet com Wi‑Fi, 4G ou 3G razoável
+- Desktop com boa rede
+
+## O que é cortado no modo leve
+
+- Three.js / globo 3D
+- GSAP do hero
+- Marquees reduzidos
+- Animações CSS contínuas via classe `lite-experience`
