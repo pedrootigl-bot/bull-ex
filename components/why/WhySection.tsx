@@ -179,7 +179,7 @@ export function WhySection() {
           <div className={`${styles.visual} ${imageClass}`}>
             <Image
               className={styles.photo}
-              src="/images/bullex-why-investor.jpg"
+              src="/images/bullex-why-investor.webp"
               alt={t("photoAlt")}
               width={1024}
               height={921}

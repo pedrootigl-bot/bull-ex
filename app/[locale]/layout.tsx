@@ -3,12 +3,15 @@ import { getMoneyMessageParams } from "@/i18n/formatMoney";
 import { routing } from "@/i18n/routing";
 import { withBasePath } from "@/lib/basePath";
 import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
+import { LiteModeBoot } from "@/components/LiteModeBoot";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Inter, Noto_Sans_Thai } from "next/font/google";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import type { Metadata, Viewport } from "next";
+import "../lite.css";
 
 const LegalNotice = dynamic(() =>
   import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
@@ -21,16 +24,18 @@ const BackToTop = dynamic(() =>
 );
 
 const inter = Inter({
-  subsets: ["latin", "latin-ext", "cyrillic", "vietnamese"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
+  preload: true,
 });
 
 const notoSansThai = Noto_Sans_Thai({
   subsets: ["thai"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
   display: "swap",
   variable: "--font-thai",
   adjustFontFallback: true,
+  preload: false,
 });
 
 type LocaleLayoutProps = {
@@ -81,7 +86,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
-  // Obrigatório para static export (evita headers() dinâmico)
   setRequestLocale(locale);
   const messages = await getMessages();
   const htmlLang = HTML_LANG[pathLocaleToLocale(locale)];
@@ -89,8 +93,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <body className={`${inter.className} ${notoSansThai.variable}`}>
+        <Script id="lite-boot" strategy="beforeInteractive">
+          {`(function(){try{var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;var slow=c&&(c.saveData||/2g|3g|slow-2g/i.test(c.effectiveType||""));var compact=window.matchMedia("(max-width:1024px)").matches;var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;if(slow||compact||reduce)document.documentElement.classList.add("lite-experience");}catch(e){document.documentElement.classList.add("lite-experience");}})();`}
+        </Script>
         <NextIntlClientProvider messages={messages}>
           <BlogNavigationProvider>
+            <LiteModeBoot />
             {children}
             <PromoPopup />
             <LegalNotice />

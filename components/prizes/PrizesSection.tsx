@@ -1,10 +1,7 @@
 "use client";
 
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
 import {
   PRIZE_CARDS,
   PRIZE_IMAGES,
@@ -61,42 +58,12 @@ function PrizeReveal({
   reverse: boolean;
 }) {
   const t = useTranslations("prizes");
-  const reducedMotion = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
   const src = PRIZE_IMAGES[id];
   const number = String(index + 1).padStart(2, "0");
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const clipPath = useTransform(
-    scrollYProgress,
-    [0, 0.42],
-    ["inset(0% 50% 0% 50%)", "inset(0% 0% 0% 0%)"],
-  );
-  const scale = useTransform(scrollYProgress, [0, 0.42, 1], [1.28, 1, 1.08]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
-  const copyOpacity = useTransform(scrollYProgress, [0.08, 0.36], [0, 1]);
-  const copyY = useTransform(scrollYProgress, [0.08, 0.36], [28, 0]);
-
   return (
-    <article
-      className={`${styles.reveal} ${reverse ? styles.revealReverse : ""}`}
-      ref={ref}
-    >
-      <motion.div
-        className={styles.revealCopy}
-        style={
-          reducedMotion
-            ? undefined
-            : {
-                opacity: copyOpacity,
-                y: copyY,
-              }
-        }
-      >
+    <article className={`${styles.reveal} ${reverse ? styles.revealReverse : ""}`}>
+      <div className={styles.revealCopy}>
         <div className={styles.copyMeta}>
           <span className={styles.index}>{number}</span>
           {id === "car" ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
@@ -104,37 +71,25 @@ function PrizeReveal({
 
         <p className={styles.product}>{t(`cards.${id}.title`)}</p>
         <h3 className={styles.cardStatement}>{t(`cards.${id}.text`)}</h3>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className={styles.revealMask}
-        style={reducedMotion ? undefined : { clipPath }}
-      >
+      <div className={styles.revealMask}>
         {src ? (
-          <motion.div
-            className={styles.revealMedia}
-            style={
-              reducedMotion
-                ? undefined
-                : {
-                    scale,
-                    y: imageY,
-                  }
-            }
-          >
+          <div className={styles.revealMedia}>
             <Image
               className={styles.revealPhoto}
               src={src}
               alt={t(`cards.${id}.imageAlt`)}
               fill
-              sizes="(max-width: 900px) 100vw, min(720px, 52vw)"
-              quality={90}
+              sizes="(max-width: 640px) 92vw, min(560px, 48vw)"
+              quality={65}
+              loading="lazy"
             />
-          </motion.div>
+          </div>
         ) : (
           <div className={styles.placeholder} aria-hidden="true" />
         )}
-      </motion.div>
+      </div>
     </article>
   );
 }

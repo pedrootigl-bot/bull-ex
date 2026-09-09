@@ -1,11 +1,11 @@
 "use client";
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useAllowHeavyVisuals } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { MONEY_AMOUNTS } from "@/i18n/moneyAmounts";
 import { useViewportTier } from "@/hooks/useViewportTier";
-import gsap from "gsap";
 import { useTranslations, useLocale } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -13,11 +13,15 @@ import { useEffect, useRef, useState } from "react";
 import { type Locale } from "@/i18n/config";
 import { HERO_COPY, HERO_THEME, NAV_COPY, bullexRegisterHref } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
-import { OrbitalLines } from "./OrbitalLines";
 import styles from "./hero.module.css";
 
 const FinancialGlobe = dynamic(
   () => import("./FinancialGlobe").then((mod) => mod.FinancialGlobe),
+  { ssr: false },
+);
+
+const OrbitalLines = dynamic(
+  () => import("./OrbitalLines").then((mod) => mod.OrbitalLines),
   { ssr: false },
 );
 
@@ -67,6 +71,8 @@ function NavLinkIcon({ name }: { name: (typeof NAV_COPY.links)[number]["icon"] }
 
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
+  const allowHeavy = useAllowHeavyVisuals();
+  const lite = !allowHeavy;
   const tier = useViewportTier();
   const rgb = HERO_THEME.accentRgb;
   const tNav = useTranslations("navigation");
@@ -118,25 +124,32 @@ export function HeroSection() {
     };
   }, [menuOpen]);
 
-  // Se o WebGL/globo falhar ou demorar, libera o hero para não ficar tela preta
+  // Modo leve: libera o hero na hora (sem esperar WebGL/GSAP)
   useEffect(() => {
-    if (globeReady || reducedMotion) {
+    if (!lite && !reducedMotion) {
       return;
     }
-    const timer = window.setTimeout(() => setGlobeReady(true), 1600);
+    const hero = heroRef.current;
+    if (!hero) {
+      return;
+    }
+    hero.classList.remove(styles.heroPending);
+    hero.classList.add(styles.heroEntered);
+    setGlobeReady(true);
+  }, [lite, reducedMotion]);
+
+  useEffect(() => {
+    if (lite || reducedMotion || globeReady) {
+      return;
+    }
+    const timer = window.setTimeout(() => setGlobeReady(true), 1200);
     return () => window.clearTimeout(timer);
-  }, [globeReady, reducedMotion]);
+  }, [globeReady, reducedMotion, lite]);
 
   useEffect(() => {
     const hero = heroRef.current;
     const content = contentRef.current;
-    if (!hero || !content) {
-      return;
-    }
-
-    if (reducedMotion) {
-      hero.classList.remove(styles.heroPending);
-      hero.classList.add(styles.heroEntered);
+    if (!hero || !content || lite || reducedMotion) {
       return;
     }
 
@@ -144,61 +157,74 @@ export function HeroSection() {
       return;
     }
 
-    const intro = content.querySelectorAll<HTMLElement>("[data-hero-intro]");
-    const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
-    const nav = navRef.current;
-    const riseItems = gsap.utils.toArray<HTMLElement>(
-      content.querySelectorAll(`[data-hero-rise]`),
-    );
-    const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
-    const revealItems = [...(nav ? [nav] : []), ...riseItems, ...(freq ? [freq] : [])];
+    let cancelled = false;
+    let ctx: { revert: () => void } | undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.set(intro, { autoAlpha: 0, y: 18 });
-      gsap.set(revealItems, { autoAlpha: 0, y: 20 });
+    void (async () => {
+      const gsap = (await import("gsap")).default;
+      if (cancelled) {
+        return;
+      }
 
-      const introTimeline = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        onComplete: () => {
-          entrancePlayedRef.current = true;
-          hero.classList.remove(styles.heroPending);
-          hero.classList.add(styles.heroEntered);
-          gsap.set(visuals, { clearProps: "all" });
-          gsap.set(intro, { clearProps: "opacity,visibility,transform" });
-          gsap.set(revealItems, { clearProps: "all" });
-        },
-      });
-
-      introTimeline.fromTo(
-        visuals,
-        { autoAlpha: 0, scale: 0.98, transformOrigin: "50% 38%" },
-        { autoAlpha: 1, scale: 1, duration: 1.05, ease: "power1.out" },
-        0,
+      const intro = content.querySelectorAll<HTMLElement>("[data-hero-intro]");
+      const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
+      const nav = navRef.current;
+      const riseItems = gsap.utils.toArray<HTMLElement>(
+        content.querySelectorAll(`[data-hero-rise]`),
       );
+      const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
+      const revealItems = [...(nav ? [nav] : []), ...riseItems, ...(freq ? [freq] : [])];
 
-      introTimeline.fromTo(
-        intro,
-        { autoAlpha: 0, y: 18 },
-        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.08, ease: "power2.out" },
-        ">+=0.4",
-      );
+      ctx = gsap.context(() => {
+        gsap.set(intro, { autoAlpha: 0, y: 18 });
+        gsap.set(revealItems, { autoAlpha: 0, y: 20 });
 
-      introTimeline.fromTo(
-        revealItems,
-        { autoAlpha: 0, y: 20 },
-        { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.07, ease: "power2.out" },
-        ">+=0.15",
-      );
-    }, hero);
+        const introTimeline = gsap.timeline({
+          defaults: { ease: "power2.out" },
+          onComplete: () => {
+            entrancePlayedRef.current = true;
+            hero.classList.remove(styles.heroPending);
+            hero.classList.add(styles.heroEntered);
+            gsap.set(visuals, { clearProps: "all" });
+            gsap.set(intro, { clearProps: "opacity,visibility,transform" });
+            gsap.set(revealItems, { clearProps: "all" });
+          },
+        });
 
-    return () => ctx.revert();
-  }, [reducedMotion, globeReady]);
+        introTimeline.fromTo(
+          visuals,
+          { autoAlpha: 0, scale: 0.98, transformOrigin: "50% 38%" },
+          { autoAlpha: 1, scale: 1, duration: 0.85, ease: "power1.out" },
+          0,
+        );
+
+        introTimeline.fromTo(
+          intro,
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.06, ease: "power2.out" },
+          ">+=0.2",
+        );
+
+        introTimeline.fromTo(
+          revealItems,
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" },
+          ">+=0.1",
+        );
+      }, hero);
+    })();
+
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
+  }, [reducedMotion, globeReady, lite]);
 
   return (
     <header
       ref={heroRef}
       id={HERO_COPY.id}
-      className={`${styles.hero} ${styles.heroPending}`}
+      className={`${styles.hero} ${lite || reducedMotion ? styles.heroEntered : styles.heroPending}`}
       style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
     >
       <nav
@@ -212,24 +238,23 @@ export function HeroSection() {
               <Image
                 src="/images/bullex-logo.webp"
                 alt={tNav("brand")}
-                width={755}
-                height={330}
+                width={200}
+                height={87}
                 className={styles.brandLogo}
                 priority
+                sizes="120px"
               />
             </a>
-
             <ul className={styles.navLinks}>
               {NAV_COPY.links.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} onClick={() => setMenuOpen(false)}>
+                  <a href={link.href}>
                     <NavLinkIcon name={link.icon} />
                     <span>{tNav(link.labelKey)}</span>
                   </a>
                 </li>
               ))}
             </ul>
-
             <div className={styles.navEnd}>
               <LanguageSwitcher />
               <a
@@ -240,7 +265,12 @@ export function HeroSection() {
               >
                 {tNav("register")}
               </a>
-              <a className={styles.navCta} href={HERO_COPY.ctaHref} target="_blank" rel="noopener noreferrer">
+              <a
+                className={styles.navCta}
+                href={registerHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className={styles.beam} aria-hidden="true" />
                 <span className={styles.navCtaInner}>
                   {tNav("login")}
@@ -263,7 +293,7 @@ export function HeroSection() {
                 aria-expanded={menuOpen}
                 aria-controls="hero-mobile-nav"
                 aria-label={menuOpen ? tNav("menuClose") : tNav("menuOpen")}
-                onClick={() => setMenuOpen((open) => !open)}
+                onClick={() => setMenuOpen((value) => !value)}
               >
                 <span className={styles.menuToggleBars} aria-hidden="true">
                   <i />
@@ -273,7 +303,6 @@ export function HeroSection() {
               </button>
             </div>
           </div>
-
           <div className={styles.mobilePanel} id="hero-mobile-nav" hidden={!menuOpen}>
             <a
               className={styles.mobileRegister}
@@ -300,29 +329,35 @@ export function HeroSection() {
 
       <div className={styles.heroStage}>
         <div className={styles.background} />
-        <svg className={styles.marketMarks} viewBox="0 0 1440 900" aria-hidden="true">
-          <path
-            d="M80 720 l18 -22 14 10 22 -28 12 8 26 -34"
-            fill="none"
-            stroke={`rgba(${rgb}, 0.9)`}
-            strokeWidth="1.2"
-          />
-          <path
-            d="M1180 640 l12 16 20 -24 10 8 28 -20"
-            fill="none"
-            stroke={`rgba(${rgb}, 0.9)`}
-            strokeWidth="1.2"
-          />
-        </svg>
+        {!lite ? (
+          <svg className={styles.marketMarks} viewBox="0 0 1440 900" aria-hidden="true">
+            <path
+              d="M80 720 l18 -22 14 10 22 -28 12 8 26 -34"
+              fill="none"
+              stroke={`rgba(${rgb}, 0.9)`}
+              strokeWidth="1.2"
+            />
+            <path
+              d="M1180 640 l12 16 20 -24 10 8 28 -20"
+              fill="none"
+              stroke={`rgba(${rgb}, 0.9)`}
+              strokeWidth="1.2"
+            />
+          </svg>
+        ) : null}
 
         <div className={styles.heroVisuals} data-hero-visual>
-          <HeroGlow reducedMotion={reducedMotion} />
-          <FinancialGlobe
-            reducedMotion={reducedMotion}
-            tier={tier}
-            onReadyChange={setGlobeReady}
-          />
-          <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
+          <HeroGlow reducedMotion={reducedMotion || lite} />
+          {allowHeavy ? (
+            <>
+              <FinancialGlobe
+                reducedMotion={reducedMotion}
+                tier={tier}
+                onReadyChange={setGlobeReady}
+              />
+              <OrbitalLines reducedMotion={reducedMotion} dense={tier === "desktop"} />
+            </>
+          ) : null}
         </div>
 
         <section className={styles.content} ref={contentRef}>
@@ -392,11 +427,13 @@ export function HeroSection() {
           </div>
         </section>
 
-        <div className={styles.freq} aria-hidden="true">
-          {FREQ_HEIGHTS.map((height, index) => (
-            <i key={`${height}-${index}`} style={{ height }} />
-          ))}
-        </div>
+        {!lite ? (
+          <div className={styles.freq} aria-hidden="true">
+            {FREQ_HEIGHTS.map((height, index) => (
+              <i key={`${height}-${index}`} style={{ height }} />
+            ))}
+          </div>
+        ) : null}
       </div>
     </header>
   );

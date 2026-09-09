@@ -113,7 +113,7 @@ export function PlatformSection() {
                 height={682}
                 sizes="(max-width: 640px) 92vw, min(740px, 78vw)"
                 quality={90}
-                priority
+                loading="lazy"
               />
             </div>
 

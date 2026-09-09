@@ -3,15 +3,33 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useId, useState } from "react";
+import { useLiteExperience } from "@/hooks/useLiteExperience";
 import styles from "./promoPopup.module.css";
 
 const PROMO_REGISTER_HREF = "https://trade.bull-ex.com/pt/register";
+const STORAGE_KEY = "bullex-promo-dismissed-v1";
 
 export function PromoPopup() {
   const t = useTranslations("promoPopup");
   const titleId = useId();
-  const [open, setOpen] = useState(true);
+  const lite = useLiteExperience();
+  const [open, setOpen] = useState(false);
   const [entered, setEntered] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+        return;
+      }
+    } catch {
+      // ignore
+    }
+
+    // Adia o popup para não competir com LCP/CSS no 3G
+    const delayMs = lite ? 5000 : 2200;
+    const timer = window.setTimeout(() => setOpen(true), delayMs);
+    return () => window.clearTimeout(timer);
+  }, [lite]);
 
   useEffect(() => {
     if (!open) {
@@ -27,7 +45,7 @@ export function PromoPopup() {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        dismiss();
       }
     };
 
@@ -39,6 +57,15 @@ export function PromoPopup() {
     };
   }, [open]);
 
+  function dismiss() {
+    setOpen(false);
+    try {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      // ignore
+    }
+  }
+
   if (!open) {
     return null;
   }
@@ -49,7 +76,7 @@ export function PromoPopup() {
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      onClick={() => setOpen(false)}
+      onClick={dismiss}
     >
       <div
         className={`${styles.dialog} ${entered ? styles.dialogEntered : ""}`}
@@ -63,7 +90,7 @@ export function PromoPopup() {
           type="button"
           className={`${styles.close} ${entered ? styles.closeEntered : ""}`}
           aria-label={t("close")}
-          onClick={() => setOpen(false)}
+          onClick={dismiss}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path
@@ -80,16 +107,17 @@ export function PromoPopup() {
           href={PROMO_REGISTER_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => setOpen(false)}
+          onClick={dismiss}
         >
           <Image
             className={styles.image}
-            src="/images/promo-megahaval.jpg"
+            src="/images/promo-megahaval.webp"
             alt={t("imageAlt")}
-            width={633}
-            height={1024}
-            sizes="(max-width: 640px) 68vw, 320px"
-            priority
+            width={480}
+            height={776}
+            sizes="(max-width: 640px) 62vw, 280px"
+            loading="lazy"
+            quality={60}
           />
         </a>
       </div>

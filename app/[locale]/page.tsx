@@ -1,9 +1,6 @@
 import { SiteFooter } from "@/components/footer/Footer";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { MobileScrollGate } from "@/components/MobileScrollGate";
-import { PlatformSection } from "@/components/platform/PlatformSection";
-import { TeamGridSection } from "@/components/teamGrid/TeamGridSection";
-import { AppToMarketsScrollStack } from "@/components/scrollStack/AppToMarketsScrollStack";
 import { isPathLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
@@ -12,6 +9,17 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import styles from "./home.module.css";
 
+const PlatformSection = dynamic(() =>
+  import("@/components/platform/PlatformSection").then((mod) => mod.PlatformSection),
+);
+const TeamGridSection = dynamic(() =>
+  import("@/components/teamGrid/TeamGridSection").then((mod) => mod.TeamGridSection),
+);
+const AppToMarketsScrollStack = dynamic(() =>
+  import("@/components/scrollStack/AppToMarketsScrollStack").then(
+    (mod) => mod.AppToMarketsScrollStack,
+  ),
+);
 const WhySection = dynamic(() =>
   import("@/components/why/WhySection").then((mod) => mod.WhySection),
 );

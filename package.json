@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "optimize:images": "node scripts/optimize-images.cjs",
     "build": "next build && node scripts/prepare-dist.cjs",
     "build:static": "next build && node scripts/prepare-dist.cjs",
     "start": "next start",

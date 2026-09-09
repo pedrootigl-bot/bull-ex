@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormatMoney } from "@/hooks/useFormatMoney";
+import { useLiteExperience } from "@/hooks/useLiteExperience";
 import { useTranslations } from "next-intl";
 import { CompanyLogo } from "./CompanyLogo";
 import { MARKET_ITEMS, MARKETS_COPY } from "./marketsConfig";
@@ -39,18 +40,24 @@ function MarketCard({
 function MarqueeRow({
   reverse,
   formatPrice,
+  lite,
 }: {
   reverse?: boolean;
   formatPrice: (amount: number) => string;
+  lite: boolean;
 }) {
   const prefix = reverse ? "b" : "a";
+  const items = lite ? MARKET_ITEMS.slice(0, 6) : MARKET_ITEMS;
+  const copies = lite ? [0] : [0, 1];
 
   return (
     <div className={styles.viewport}>
-      <div className={`${styles.track} ${reverse ? styles.trackReverse : ""}`}>
-        {[0, 1].map((copy) => (
+      <div
+        className={`${styles.track} ${reverse ? styles.trackReverse : ""} ${lite ? styles.trackStatic : ""}`}
+      >
+        {copies.map((copy) => (
           <div className={styles.set} key={`${prefix}-set-${copy}`} aria-hidden={copy === 1}>
-            {MARKET_ITEMS.map((item) => (
+            {items.map((item) => (
               <MarketCard
                 key={`${prefix}-${copy}-${item.ticker}`}
                 item={item}
@@ -67,6 +74,7 @@ function MarqueeRow({
 
 export function MarketsSection() {
   const t = useTranslations("markets");
+  const lite = useLiteExperience();
   const { formatMoney } = useFormatMoney();
 
   const formatPrice = (amount: number) =>
@@ -84,8 +92,8 @@ export function MarketsSection() {
         </h2>
         <p className={styles.subtitle}>{t("subtitle")}</p>
       </div>
-      <MarqueeRow formatPrice={formatPrice} />
-      <MarqueeRow reverse formatPrice={formatPrice} />
+      <MarqueeRow formatPrice={formatPrice} lite={lite} />
+      {lite ? null : <MarqueeRow reverse formatPrice={formatPrice} lite={lite} />}
     </section>
   );
 }

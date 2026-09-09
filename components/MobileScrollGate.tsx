@@ -10,16 +10,24 @@ type MobileScrollGateProps = {
   children: ReactNode;
 };
 
+/**
+ * No mobile, só monta o resto do site após scroll/idle —
+ * evita baixar JS/imagens pesadas no first paint (3G).
+ */
 export function MobileScrollGate({ children }: MobileScrollGateProps) {
+  const [ready, setReady] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia(MOBILE_QUERY);
+
     if (!media.matches) {
       setUnlocked(true);
+      setReady(true);
       return;
     }
 
+    setReady(true);
     const html = document.documentElement;
     html.classList.add(LOCK_CLASS);
 
@@ -59,7 +67,10 @@ export function MobileScrollGate({ children }: MobileScrollGateProps) {
       }
     };
 
+    const idleTimer = window.setTimeout(unlock, 4500);
+
     function cleanup() {
+      window.clearTimeout(idleTimer);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
@@ -77,12 +88,9 @@ export function MobileScrollGate({ children }: MobileScrollGateProps) {
     };
   }, []);
 
-  return (
-    <div
-      className={`${styles.root} ${unlocked ? styles.unlocked : styles.locked}`}
-      aria-hidden={unlocked ? undefined : true}
-    >
-      {children}
-    </div>
-  );
+  if (!ready || !unlocked) {
+    return null;
+  }
+
+  return <div className={`${styles.root} ${styles.unlocked}`}>{children}</div>;
 }

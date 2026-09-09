@@ -43,7 +43,7 @@ export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
     video: {
       id: "felipe",
       kind: "video",
-      poster: "/images/bullex-team-trading.jpg",
+      poster: "/images/bullex-team-trading.webp",
       videoSrc: null,
     },
     text: {
@@ -55,7 +55,7 @@ export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
     photo: {
       id: "brandPlatform",
       kind: "photo",
-      image: "/images/bullex-team-trading.jpg",
+      image: "/images/bullex-team-trading.webp",
     },
   },
   {
@@ -95,7 +95,7 @@ export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
     photo: {
       id: "tradingCommunity",
       kind: "photo",
-      image: "/images/bullex-team-trading.jpg",
+      image: "/images/bullex-team-trading.webp",
     },
   },
   {

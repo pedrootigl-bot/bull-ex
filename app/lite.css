@@ -1,0 +1,27 @@
+/* Desliga animações contínuas e efeitos caros em 3G / mobile / save-data */
+
+html.lite-experience .hero-module__MJAXFG__freq i,
+html.lite-experience [class*="freq"] i {
+  animation: none !important;
+}
+
+html.lite-experience [class*="marquee"],
+html.lite-experience [class*="Marquee"],
+html.lite-experience [class*="highlightsTrack"],
+html.lite-experience [class*="marketsTrack"] {
+  animation: none !important;
+}
+
+html.lite-experience [class*="beam"],
+html.lite-experience [class*="glowPulse"],
+html.lite-experience [class*="HeroGlow"] {
+  animation: none !important;
+  opacity: 0.55;
+}
+
+@media (max-width: 1024px) {
+  /* Fallback sem JS: já reduz custo em Android */
+  html:not(.lite-experience) [class*="marketsTrack"] {
+    animation-duration: 80s;
+  }
+}
