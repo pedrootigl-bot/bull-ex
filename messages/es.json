@@ -18,7 +18,7 @@
     "menuClose": "Cerrar menú"
   },
   "hero": {
-    "headline": "Opera acciones, criptomonedas y productos de divisas de forma sencilla.",
+    "headline": "Opera acciones, criptomonedas y productos de divisas<br></br>de forma sencilla.",
     "subheadline": "Regístrate y recibe {demoBalance} en tu cuenta demo para aprender a invertir.",
     "cta": "ABRE TU CUENTA GRATIS",
     "stats": {
@@ -64,7 +64,7 @@
     "paymentsLegal": "Transacciones de pago gestionadas por: DIGITAL SMART CY LIMITED Dirección: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
   },
   "legalNotice": {
-    "text": "Bullex no está autorizada por el regulador brasileño (CNMV) para ofrecer o intermediar valores de forma pública en Brasil. Al acceder al sitio de Bullex, declaras conocer y aceptar estas restricciones. Para más información, consulta el Contrato del Cliente.",
+    "text": "Bullex no está autorizada por el regulador brasileño (CVM) para ofrecer o intermediar valores de forma pública en Brasil. Al acceder al sitio de Bullex, declaras conocer y aceptar estas restricciones. Para más información, consulta el Contrato del Cliente.",
     "close": "Cerrar aviso"
   },
   "promoPopup": {

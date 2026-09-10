@@ -389,15 +389,14 @@ export function HeroSection() {
                 </span>
               </div>
               <h1 className={styles.headline} data-hero-intro>
-                {tHero("headline")}
+                {tHero.rich("headline", {
+                  br: () => <br />,
+                })}
               </h1>
             </div>
             <p className={styles.subheadline} data-hero-intro>
               {tHero("subheadline", moneyParams)}
             </p>
-          </div>
-
-          <div className={styles.contentRise}>
             <a
               className={styles.cta}
               href={HERO_COPY.ctaHref}
@@ -420,6 +419,9 @@ export function HeroSection() {
                 </span>
               </span>
             </a>
+          </div>
+
+          <div className={styles.contentRise}>
             <div className={styles.stats} data-hero-rise>
               {stats.map((stat, index) => (
                 <div key={stat.label} style={{ display: "contents" }}>

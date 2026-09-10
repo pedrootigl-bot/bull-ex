@@ -18,7 +18,7 @@
     "menuClose": "Close menu"
   },
   "hero": {
-    "headline": "Trade stocks, cryptocurrencies and FX products the simple way!",
+    "headline": "Trade stocks, cryptocurrencies and FX products<br></br>the simple way!",
     "subheadline": "Sign up and get {demoBalance} in your demo account to learn how to invest.",
     "cta": "OPEN YOUR FREE ACCOUNT",
     "stats": {
@@ -64,7 +64,7 @@
     "paymentsLegal": "Payment transactions managed by: DIGITAL SMART CY LIMITED Address: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
   },
   "legalNotice": {
-    "text": "Bullex is not authorized by Brazil’s securities regulator (CNMV) to publicly offer or intermediate securities in Brazil. By accessing the Bullex website, you acknowledge and agree to these restrictions. For more information, see the Client Agreement.",
+    "text": "Bullex is not authorized by Brazil’s securities regulator (CVM) to publicly offer or intermediate securities in Brazil. By accessing the Bullex website, you acknowledge and agree to these restrictions. For more information, see the Client Agreement.",
     "close": "Close notice"
   },
   "promoPopup": {

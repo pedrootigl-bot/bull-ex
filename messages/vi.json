@@ -18,7 +18,7 @@
     "menuClose": "Đóng menu"
   },
   "hero": {
-    "headline": "Giao dịch cổ phiếu, tiền mã hóa và sản phẩm ngoại hối một cách đơn giản hơn.",
+    "headline": "Giao dịch cổ phiếu, tiền mã hóa và sản phẩm ngoại hối<br></br>một cách đơn giản hơn.",
     "subheadline": "Đăng ký và nhận {demoBalance} trong tài khoản demo để học cách đầu tư.",
     "cta": "MỞ TÀI KHOẢN MIỄN PHÍ",
     "stats": {
@@ -64,7 +64,7 @@
     "paymentsLegal": "Giao dịch thanh toán được quản lý bởi: DIGITAL SMART CY LIMITED Địa chỉ: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
   },
   "legalNotice": {
-    "text": "Bullex không được ủy quyền bởi cơ quan quản lý chứng khoán Brazil (CNMV) để chào bán hoặc trung gian chứng khoán công khai tại Brazil. Khi truy cập trang Bullex, bạn xác nhận đã biết và đồng ý với các hạn chế này. Chi tiết xem trong Hợp đồng khách hàng.",
+    "text": "Bullex không được ủy quyền bởi cơ quan quản lý chứng khoán Brazil () để chào bán hoặc trung gian chứng khoán công khai tại Brazil. Khi truy cập trang Bullex, bạn xác nhận đã biết và đồng ý với các hạn chế này. Chi tiết xem trong Hợp đồng khách hàng.",
     "close": "Đóng thông báo"
   },
   "promoPopup": {

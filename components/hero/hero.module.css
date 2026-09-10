@@ -24,6 +24,12 @@
   flex-direction: column;
   overflow-x: clip;
   overflow-y: visible;
+  /* Mesma âncora do globe e do bloco de texto */
+  --globe-top: -4%;
+  --globe-height: 68vh;
+  --globe-center-y: calc(var(--globe-top) + (var(--globe-height) * 0.52));
+  /* Altura do copy como na referência: um pouco mais baixo no globe */
+  --globe-copy-y: calc(var(--globe-top) + (var(--globe-height) * 0.34));
 }
 
 .background {
@@ -120,11 +126,11 @@
 
 .globeStage {
   position: absolute;
-  top: -4%;
+  top: var(--globe-top);
   left: 50%;
   transform: translateX(-50%);
   width: min(1100px, 148vw);
-  height: 68vh;
+  height: var(--globe-height);
   z-index: 2;
   pointer-events: none;
   mask-image: linear-gradient(180deg,
@@ -548,8 +554,91 @@
   display: contents;
 }
 
+/* Desktop/tablet: bloco na mesma altura da referência (sobre o globe) */
+@media (min-width: 641px) {
+  .content {
+    justify-content: flex-start;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contentIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: var(--globe-copy-y);
+    transform: translateX(-50%);
+    z-index: 5;
+    width: max-content;
+    max-width: calc(100% - 2.5rem);
+    text-align: center;
+    pointer-events: none;
+    gap: 1.35rem;
+  }
+
+  .headlineWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+    transform: none;
+    width: max-content;
+    max-width: 100%;
+    pointer-events: none;
+    gap: 1.25rem;
+  }
+
+  .contentIntro .menuCard,
+  .contentIntro .headline,
+  .contentIntro .subheadline,
+  .contentIntro .cta {
+    pointer-events: auto;
+  }
+
+  .headlineWrap .menuCard {
+    margin: 0;
+  }
+
+  .content .headline[data-hero-intro] {
+    margin: 0;
+  }
+
+  .contentIntro .subheadline {
+    margin: 0;
+    max-width: min(34rem, 100%);
+    font-size: 1rem;
+  }
+
+  .contentIntro .cta {
+    margin: 0.55rem 0 0;
+  }
+
+  .contentIntro .ctaInner {
+    font-size: 0.78rem;
+  }
+
+  .headline {
+    font-size: clamp(1.75rem, 2.85rem, 3.55rem);
+  }
+
+  .contentRise {
+    margin-top: calc(var(--globe-top) + (var(--globe-height) * 0.92));
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .headline {
-  max-width: min(920px, 100%);
+  width: max-content;
+  max-width: min(100%, calc(100vw - 2.5rem));
   font-size: clamp(1.55rem, 4.4vw + 0.4rem, 3.55rem);
   font-weight: 800;
   letter-spacing: -0.045em;
@@ -558,8 +647,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0 0 1.05rem;
-  text-wrap: balance;
+  margin: 0 auto 1.05rem;
+  text-align: center;
+  text-wrap: unset;
 }
 
 .hero.heroEntered .headline[data-hero-intro] {
@@ -576,6 +666,11 @@
   line-height: 1.55;
   margin: 0 0 1.35rem;
   text-wrap: pretty;
+}
+
+/* Quebra fixa via <br>; não forçar 100% que desfaz o centramento */
+.content .headline[data-hero-intro] {
+  max-width: min(100%, calc(100vw - 2.5rem));
 }
 
 .menuCard {
@@ -756,8 +851,13 @@
 
   .globeStage {
     width: min(920px, 155vw);
-    height: 58vh;
-    top: 0%;
+    height: var(--globe-height);
+    top: var(--globe-top);
+  }
+
+  .heroStage {
+    --globe-top: 0%;
+    --globe-height: 58vh;
   }
 
   .content {
@@ -769,10 +869,15 @@
 
 @media (max-width: 900px) {
 
+  .heroStage {
+    --globe-top: 2%;
+    --globe-height: 50vh;
+  }
+
   .globeStage {
     width: min(780px, 165vw);
-    height: 50vh;
-    top: 2%;
+    height: var(--globe-height);
+    top: var(--globe-top);
 
     mask-image: linear-gradient(180deg,
         #000 0%,
@@ -959,6 +1064,10 @@
   .contentIntro {
     flex: 0 0 auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.15rem, 3vh, 1.65rem);
   }
 
   .headlineWrap {
@@ -983,15 +1092,16 @@
   }
 
   .headline {
-    margin: 0;
+    margin: 0 auto;
     letter-spacing: -0.03em;
     line-height: 1.14;
     font-size: clamp(1.42rem, 4.6vw + 0.3rem, 1.85rem);
     position: relative;
     z-index: 4;
-    max-width: min(21rem, 92vw);
+    width: max-content;
+    max-width: min(100%, 94vw);
     text-align: center;
-    text-wrap: pretty;
+    text-wrap: unset;
     pointer-events: auto;
   }
 
@@ -1024,8 +1134,8 @@
   }
 
   .contentRise {
-    gap: clamp(1.35rem, 3.6vh, 1.85rem);
-    margin-top: 0.35rem;
+    gap: 0;
+    margin-top: 0.15rem;
   }
 
   .menuCard {
@@ -1127,7 +1237,8 @@
 
   .headline {
     font-size: clamp(1.35rem, 6.4vw, 1.65rem);
-    max-width: min(19.5rem, 94vw);
+    width: max-content;
+    max-width: min(100%, 94vw);
     line-height: 1.12;
   }
 
