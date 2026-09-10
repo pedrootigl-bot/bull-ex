@@ -1,4 +1,4 @@
-import { HERO_COPY } from "@/components/hero/heroConfig";
+import { HERO_COPY, TRADE_LOGIN_HREF_PT_BR, TRADE_REGISTER_HREF_PT_BR } from "@/components/hero/heroConfig";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -23,8 +23,8 @@ export function SiteFooter() {
       links: [
         { href: "#faq", label: t("faq"), external: false },
         { href: `mailto:${SUPPORT_EMAIL}`, label: SUPPORT_EMAIL, external: false },
-        { href: HERO_COPY.ctaHref, label: t("openAccount"), external: true },
-        { href: HERO_COPY.ctaHref, label: t("login"), external: true },
+        { href: TRADE_REGISTER_HREF_PT_BR, label: t("openAccount"), external: true },
+        { href: TRADE_LOGIN_HREF_PT_BR, label: t("login"), external: true },
       ],
     },
     {

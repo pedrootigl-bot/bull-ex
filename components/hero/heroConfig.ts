@@ -39,6 +39,10 @@ const TRADE_REGISTER_PATH_BY_LOCALE: Record<Locale, string> = {
 export const TRADE_REGISTER_HREF_PT_BR =
   "https://trade.bull-ex.com/pt/register?_gl=1*ipbqt7*_gcl_au*NDY2OTQ1MTAwLjE3ODYzODM5ODYuLS4tLjE3ODgyODcwODkuNjE5ODc1OTA3LjE3ODg0NDcxNDguMTc4ODQ2ODUyMg..*_ga*OTg4ODAwMTY3LjE3ODYzODM5ODY.*_ga_PGJQVPEHRW*czE3ODg0Njg1MTkkbzExJGcwJHQxNzg4NDY4NTIxJGo1OCRsMCRoMTEwMzg4MDM1Ng..*_ga_FG1N23SDHQ*czE3ODg0Njc2MjkkbzEyJGcxJHQxNzg4NDY4NTI0JGo1NSRsMCRoMTg3NjIzMzc4Mg..";
 
+/** URL de login (Entrar) com parâmetros de rastreamento. */
+export const TRADE_LOGIN_HREF_PT_BR =
+  "https://trade.bull-ex.com/pt/login?_gl=1*uhtgem*_gcl_au*NDY2OTQ1MTAwLjE3ODYzODM5ODYuLS4tLjE3ODgyODcwODkuNTQ0ODkwODQzLjE3ODg5ODM5MzkuMTc4OTA2MzAxMA..*_ga*OTg4ODAwMTY3LjE3ODYzODM5ODY.*_ga_PGJQVPEHRW*czE3ODkwNjMwNDAkbzE5JGcwJHQxNzg5MDYzMDQwJGo2MCRsMCRoMTgyNTEwNDAwOQ..*_ga_FG1N23SDHQ*czE3ODkwNjMwMTAkbzI1JGcxJHQxNzg5MDYzMDQxJGoyOSRsMCRoNzgwODUyMjE.";
+
 function toAppLocale(locale: Locale | PathLocale | string): Locale {
   if (isPathLocale(locale)) {
     return pathLocaleToLocale(locale);
@@ -61,6 +65,10 @@ export function bullexRegisterHref(locale: Locale | PathLocale | string): string
 
 export function bullexLoginHref(locale: Locale | PathLocale | string): string {
   const appLocale = toAppLocale(locale);
+  if (appLocale === "pt-BR") {
+    return TRADE_LOGIN_HREF_PT_BR;
+  }
+
   const pathSeg = TRADE_REGISTER_PATH_BY_LOCALE[appLocale];
   return `${TRADE_SITE_ORIGIN}/${pathSeg}/login`;
 }

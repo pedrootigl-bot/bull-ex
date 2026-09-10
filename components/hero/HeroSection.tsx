@@ -11,7 +11,13 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { type Locale } from "@/i18n/config";
-import { HERO_COPY, HERO_THEME, NAV_COPY, bullexRegisterHref } from "./heroConfig";
+import {
+  HERO_COPY,
+  HERO_THEME,
+  NAV_COPY,
+  bullexLoginHref,
+  bullexRegisterHref,
+} from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import styles from "./hero.module.css";
 
@@ -79,6 +85,7 @@ export function HeroSection() {
   const tHero = useTranslations("hero");
   const locale = useLocale() as Locale;
   const registerHref = bullexRegisterHref(locale);
+  const loginHref = bullexLoginHref(locale);
   const { formatMoney, moneyParams } = useFormatMoney();
   const contentRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
@@ -267,7 +274,7 @@ export function HeroSection() {
               </a>
               <a
                 className={styles.navCta}
-                href={registerHref}
+                href={loginHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >

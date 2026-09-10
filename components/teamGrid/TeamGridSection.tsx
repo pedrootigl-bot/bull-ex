@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
-import { HERO_COPY } from "@/components/hero/heroConfig";
+import { bullexLoginHref } from "@/components/hero/heroConfig";
 import { TEAM_GRID_IMAGE } from "@/components/highlights/highlightsConfig";
 import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { TEAM_GRID_STATS, type TeamGridStatId } from "./teamGridConfig";
 import styles from "./teamGrid.module.css";
 
@@ -75,6 +75,8 @@ function StatCard({
 export function TeamGridSection() {
   const t = useTranslations("teamGrid");
   const tNav = useTranslations("navigation");
+  const locale = useLocale();
+  const loginHref = bullexLoginHref(locale);
   const { moneyParams } = useFormatMoney();
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
@@ -157,7 +159,7 @@ export function TeamGridSection() {
 
           <a
             className={`${styles.enterBtn} ${fadeClass} ${styles.fadeButton}`}
-            href={HERO_COPY.ctaHref}
+            href={loginHref}
             target="_blank"
             rel="noopener noreferrer"
           >
