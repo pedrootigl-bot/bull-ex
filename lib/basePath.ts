@@ -1,10 +1,18 @@
-/** Base path de publicação (subpasta Hostinger). Deve bater com next.config.ts */
+/** Base path de publicação — deve bater com next.config.ts */
 export function getBasePath(): string {
-  const raw = process.env.BASE_PATH ?? "/bullex";
-  if (!raw || raw === "/") {
+  if (process.env.BASE_PATH !== undefined) {
+    const raw = process.env.BASE_PATH;
+    if (!raw || raw === "/") {
+      return "";
+    }
+    return raw.replace(/\/$/, "");
+  }
+
+  if (process.env.NODE_ENV === "development") {
     return "";
   }
-  return raw.replace(/\/$/, "");
+
+  return "/bullex";
 }
 
 export function withBasePath(path: string): string {

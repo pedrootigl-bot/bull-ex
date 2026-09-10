@@ -2,12 +2,19 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 /**
- * Site publicado em: https://campanhasbullex.com/bullex/
- * Sem basePath, CSS/JS apontam para /_next (raiz do domínio) e quebram.
+ * Em produção (Hostinger) o site fica em /bullex/.
+ * No `next dev` local, basePath fica vazio para abrir em http://localhost:3000/pt-br/
  *
- * Para publicar na raiz do domínio, defina BASE_PATH= (vazio) no build.
+ * Override: BASE_PATH=/bullex npm run dev
+ * Sem subpasta no build: BASE_PATH= npm run build
  */
-const rawBasePath = process.env.BASE_PATH ?? "/bullex";
+const isDev = process.env.NODE_ENV === "development";
+const rawBasePath =
+  process.env.BASE_PATH !== undefined
+    ? process.env.BASE_PATH
+    : isDev
+      ? ""
+      : "/bullex";
 const basePath = rawBasePath === "/" ? "" : rawBasePath.replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
