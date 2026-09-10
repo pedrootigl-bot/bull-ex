@@ -43,8 +43,8 @@ export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
     video: {
       id: "felipe",
       kind: "video",
-      poster: "/images/bullex-team-trading.webp",
-      videoSrc: null,
+      poster: "/images/testimonials/video-1-poster.webp",
+      videoSrc: "/videos/testimonials/video-1.mp4",
     },
     text: {
       id: "ana",
@@ -63,8 +63,8 @@ export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
     video: {
       id: "rafael",
       kind: "video",
-      poster: "/images/testimonials/thiago.webp",
-      videoSrc: null,
+      poster: "/images/testimonials/video-2-poster.webp",
+      videoSrc: "/videos/testimonials/video-2.mp4",
     },
     text: {
       id: "marcos",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { withBasePath } from "@/lib/basePath";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -34,9 +35,11 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
   const t = useTranslations("testimonials");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const videoSrc = item.videoSrc ? withBasePath(item.videoSrc) : null;
+  const posterSrc = withBasePath(item.poster);
 
   function handlePlay() {
-    if (!item.videoSrc) {
+    if (!videoSrc) {
       return;
     }
 
@@ -46,12 +49,12 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
 
   return (
     <article className={styles.card}>
-      {item.videoSrc ? (
+      {videoSrc ? (
         <video
           ref={videoRef}
           className={styles.videoMedia}
-          src={item.videoSrc}
-          poster={item.poster}
+          src={videoSrc}
+          poster={posterSrc}
           playsInline
           preload="none"
           controls={playing}
@@ -76,7 +79,7 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
           className={styles.videoOverlay}
           aria-label={t("playVideo")}
           onClick={handlePlay}
-          disabled={!item.videoSrc}
+          disabled={!videoSrc}
         >
           <span className={styles.playButton}>
             <PlayIcon />

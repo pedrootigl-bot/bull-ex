@@ -37,15 +37,15 @@ function rewritePublicAssetPaths(filePath) {
   let content = fs.readFileSync(filePath, "utf8");
   const before = content;
   content = content.replace(
-    /(src|href)=(["'])\/(?!bullex\/)(images|legal)\//g,
+    /(src|href)=(["'])\/(?!bullex\/)(images|legal|videos)\//g,
     `$1=$2${BASE_PATH}/$3/`,
   );
   content = content.replace(
-    /url\((["']?)\/(?!bullex\/)(images|legal)\//g,
+    /url\((["']?)\/(?!bullex\/)(images|legal|videos)\//g,
     `url($1${BASE_PATH}/$2/`,
   );
   content = content.replace(
-    /"\/(?!bullex\/)(images|legal)\//g,
+    /"\/(?!bullex\/)(images|legal|videos)\//g,
     `"${BASE_PATH}/$1/`,
   );
   if (content !== before) {
