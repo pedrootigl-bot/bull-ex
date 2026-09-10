@@ -29,6 +29,43 @@ function walkFiles(dir, exts, onFile) {
   }
 }
 
+/**
+ * Next 16 static export grava segmentos RSC em pastas aninhadas
+ * (`__next.$d$locale/__PAGE__.txt`), mas o client pede nomes flat
+ * (`__next.$d$locale.__PAGE__.txt`). Sem esse flatten → 404 no console.
+ * Ref: https://github.com/vercel/next.js/issues/85374
+ */
+function flattenRscSegmentDirs(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (!entry.isDirectory()) {
+      continue;
+    }
+
+    if (entry.name.startsWith("__next.")) {
+      flattenNestedNextDir(full, dir, [entry.name]);
+      fs.rmSync(full, { recursive: true, force: true });
+      continue;
+    }
+
+    flattenRscSegmentDirs(full);
+  }
+}
+
+function flattenNestedNextDir(currentDir, outputDir, nameParts) {
+  for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+    const full = path.join(currentDir, entry.name);
+    if (entry.isDirectory()) {
+      flattenNestedNextDir(full, outputDir, [...nameParts, entry.name]);
+      continue;
+    }
+
+    const flatName = [...nameParts, entry.name].join(".");
+    const dest = path.join(outputDir, flatName);
+    fs.copyFileSync(full, dest);
+  }
+}
+
 /** next/image às vezes não prefixa public/ com basePath no HTML exportado */
 function rewritePublicAssetPaths(filePath) {
   if (!BASE_PATH) {
@@ -66,6 +103,7 @@ if (!fs.existsSync(outDir)) {
 
 fs.rmSync(distDir, { recursive: true, force: true });
 copyDir(outDir, distDir);
+flattenRscSegmentDirs(distDir);
 
 const rootIndex = `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -86,7 +124,14 @@ const rootIndex = `<!DOCTYPE html>
 fs.writeFileSync(path.join(distDir, "index.html"), rootIndex, "utf8");
 walkFiles(distDir, [".html", ".txt", ".js", ".css"], rewritePublicAssetPaths);
 
-const required = ["pt-br/index.html", ".htaccess", "index.php", "_next", "images"];
+const required = [
+  "pt-br/index.html",
+  ".htaccess",
+  "index.php",
+  "_next",
+  "images",
+  "pt-br/__next.$d$locale.__PAGE__.txt",
+];
 for (const rel of required) {
   if (!fs.existsSync(path.join(distDir, rel))) {
     console.error(`Arquivo/pasta obrigatória ausente em dist/: ${rel}`);

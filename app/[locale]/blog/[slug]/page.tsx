@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
               >
                 {t("cta")}
               </a>
-              <Link className={styles.ctaSecondary} href="/blog">
+              <Link className={styles.ctaSecondary} href="/blog" prefetch={false}>
                 {t("backToBlog")}
               </Link>
             </div>

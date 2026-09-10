@@ -42,7 +42,7 @@ export function SiteFooter() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div>
-            <Link className={styles.brand} href="/">
+            <Link className={styles.brand} href="/" prefetch={false}>
               <Image
                 src="/images/bullex-logo.webp"
                 alt={t("brand")}

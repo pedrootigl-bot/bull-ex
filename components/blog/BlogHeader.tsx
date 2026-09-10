@@ -11,7 +11,7 @@ export function BlogHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link className={styles.brand} href="/">
+        <Link className={styles.brand} href="/" prefetch={false}>
           <Image
             src="/images/bullex-logo.webp"
             alt="Bullex"
@@ -21,7 +21,7 @@ export function BlogHeader() {
             priority
           />
         </Link>
-        <Link className={styles.backHomeBtn} href="/">
+        <Link className={styles.backHomeBtn} href="/" prefetch={false}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path
               d="M10.2 3.5 5.7 8l4.5 4.5"

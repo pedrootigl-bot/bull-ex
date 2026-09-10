@@ -38,5 +38,5 @@ export function BlogNavLink({ href, onClick, ...props }: BlogNavLinkProps) {
     router.push(href);
   }
 
-  return <Link href={href} onClick={handleClick} {...props} />;
+  return <Link href={href} prefetch={false} onClick={handleClick} {...props} />;
 }

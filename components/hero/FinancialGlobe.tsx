@@ -171,10 +171,39 @@ export function FinancialGlobe({
   const frameloop =
     HERO_THEME.enableAnimation && !reducedMotion ? "always" : "demand";
   const onReadyChangeRef = useRef(onReadyChange);
+  const glRef = useRef<THREE.WebGLRenderer | null>(null);
   onReadyChangeRef.current = onReadyChange;
 
   useEffect(() => {
+    function handleVisibility() {
+      const gl = glRef.current;
+      if (!gl) {
+        return;
+      }
+      if (document.hidden) {
+        gl.setAnimationLoop(null);
+      }
+    }
+
+    function handleContextLost(event: Event) {
+      event.preventDefault();
+      onReadyChangeRef.current?.(true);
+    }
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    const canvas = glRef.current?.domElement;
+    canvas?.addEventListener("webglcontextlost", handleContextLost);
+
     return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+      canvas?.removeEventListener("webglcontextlost", handleContextLost);
+      const gl = glRef.current;
+      if (gl) {
+        gl.setAnimationLoop(null);
+        gl.dispose();
+        gl.forceContextLoss();
+        glRef.current = null;
+      }
       onReadyChangeRef.current?.(false);
     };
   }, []);
@@ -193,6 +222,7 @@ export function FinancialGlobe({
           depth: true,
         }}
         onCreated={({ gl, scene, camera }) => {
+          glRef.current = gl;
           gl.render(scene, camera);
           requestAnimationFrame(() => {
             gl.render(scene, camera);
