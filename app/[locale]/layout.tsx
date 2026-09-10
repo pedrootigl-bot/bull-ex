@@ -3,15 +3,12 @@ import { getMoneyMessageParams } from "@/i18n/formatMoney";
 import { routing } from "@/i18n/routing";
 import { withBasePath } from "@/lib/basePath";
 import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
-import { LiteModeBoot } from "@/components/LiteModeBoot";
+import { HtmlLang } from "@/components/HtmlLang";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
-import { Inter, Noto_Sans_Thai } from "next/font/google";
-import Script from "next/script";
 import { notFound } from "next/navigation";
-import type { Metadata, Viewport } from "next";
-import "../lite.css";
+import type { Metadata } from "next";
 
 const LegalNotice = dynamic(() =>
   import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
@@ -23,31 +20,9 @@ const BackToTop = dynamic(() =>
   import("@/components/ui/BackToTop").then((mod) => mod.BackToTop),
 );
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  preload: true,
-});
-
-const notoSansThai = Noto_Sans_Thai({
-  subsets: ["thai"],
-  weight: ["400", "700"],
-  display: "swap",
-  variable: "--font-thai",
-  adjustFontFallback: true,
-  preload: false,
-});
-
 type LocaleLayoutProps = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-  themeColor: "#000000",
 };
 
 export function generateStaticParams() {
@@ -91,21 +66,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const htmlLang = HTML_LANG[pathLocaleToLocale(locale)];
 
   return (
-    <html lang={htmlLang} suppressHydrationWarning>
-      <body className={`${inter.className} ${notoSansThai.variable}`}>
-        <Script id="lite-boot" strategy="beforeInteractive">
-          {`(function(){try{var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;var bad=false;if(c){var t=(c.effectiveType||"").toLowerCase();var d=typeof c.downlink==="number"?c.downlink:null;var r=typeof c.rtt==="number"?c.rtt:null;bad=!!c.saveData||t==="slow-2g"||t==="2g"||(d!==null&&d>0&&d<0.4)||(r!==null&&r>=1500)||(t==="3g"&&((d!==null&&d>0&&d<0.7)||(r!==null&&r>=900)));}if(bad||reduce)document.documentElement.classList.add("lite-experience");}catch(e){}})();`}
-        </Script>
-        <NextIntlClientProvider messages={messages}>
-          <BlogNavigationProvider>
-            <LiteModeBoot />
-            {children}
-            <PromoPopup />
-            <LegalNotice />
-            <BackToTop />
-          </BlogNavigationProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <BlogNavigationProvider>
+        <HtmlLang lang={htmlLang} />
+        {children}
+        <PromoPopup />
+        <LegalNotice />
+        <BackToTop />
+      </BlogNavigationProvider>
+    </NextIntlClientProvider>
   );
 }
