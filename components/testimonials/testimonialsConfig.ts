@@ -1,8 +1,8 @@
 export type TestimonialStars = 5;
 
-export type VideoTestimonialId = "felipe" | "rafael" | "carlosVideo" | "joaoVideo";
-export type TextTestimonialId = "ana" | "marcos" | "carlos" | "joao";
-export type PhotoTestimonialId = "brandPlatform" | "brandCommunity" | "tradingCommunity" | "activeTraders";
+export type VideoTestimonialId = "feedbacks" | "felipe" | "arraia";
+export type TextTestimonialId = "ana" | "marcos" | "joao";
+export type PhotoTestimonialId = "brandPlatform" | "brandCommunity" | "activeTraders";
 export type TestimonialId = VideoTestimonialId | TextTestimonialId | PhotoTestimonialId;
 
 type TestimonialBase<TId extends TestimonialId> = {
@@ -26,96 +26,73 @@ export type PhotoTestimonial = TestimonialBase<PhotoTestimonialId> & {
   image: string;
 };
 
-export type TestimonialTriplet = {
-  id: string;
-  video: VideoTestimonial;
-  text: TextTestimonial;
-  photo: PhotoTestimonial;
-};
+export type TestimonialItem = VideoTestimonial | TextTestimonial | PhotoTestimonial;
 
 export const TESTIMONIALS_COPY = {
   id: "depoimentos",
 } as const;
 
-export const TESTIMONIAL_TRIPLETS: readonly TestimonialTriplet[] = [
+/**
+ * Ordem: vídeo, texto, vídeo, texto, vídeo, imagem — resto com o que sobrar.
+ */
+export const TESTIMONIAL_ITEMS: readonly TestimonialItem[] = [
   {
-    id: "triplet-1",
-    video: {
-      id: "felipe",
-      kind: "video",
-      poster: "/images/testimonials/video-1-poster.webp",
-      videoSrc: "/videos/testimonials/video-1.mp4",
-    },
-    text: {
-      id: "ana",
-      kind: "text",
-      photo: "/images/testimonials/camila.webp",
-      stars: 5,
-    },
-    photo: {
-      id: "brandPlatform",
-      kind: "photo",
-      image: "/images/bullex-team-trading.webp",
-    },
+    id: "feedbacks",
+    kind: "video",
+    poster: "/images/testimonials/video-3-poster.webp",
+    videoSrc: "/videos/testimonials/video-3.mp4",
   },
   {
-    id: "triplet-2",
-    video: {
-      id: "rafael",
-      kind: "video",
-      poster: "/images/testimonials/video-2-poster.webp",
-      videoSrc: "/videos/testimonials/video-2.mp4",
-    },
-    text: {
-      id: "marcos",
-      kind: "text",
-      photo: "/images/testimonials/rogerio.webp",
-      stars: 5,
-    },
-    photo: {
-      id: "brandCommunity",
-      kind: "photo",
-      image: "/images/testimonials/fernanda.webp",
-    },
+    id: "ana",
+    kind: "text",
+    photo: "/images/testimonials/camila.webp",
+    stars: 5,
   },
   {
-    id: "triplet-3",
-    video: {
-      id: "carlosVideo",
-      kind: "video",
-      poster: "/images/testimonials/eduardo.webp",
-      videoSrc: null,
-    },
-    text: {
-      id: "carlos",
-      kind: "text",
-      photo: "/images/testimonials/eduardo.webp",
-      stars: 5,
-    },
-    photo: {
-      id: "tradingCommunity",
-      kind: "photo",
-      image: "/images/bullex-team-trading.webp",
-    },
+    id: "felipe",
+    kind: "video",
+    poster: "/images/testimonials/video-1-poster.webp",
+    videoSrc: "/videos/testimonials/video-1.mp4",
   },
   {
-    id: "triplet-4",
-    video: {
-      id: "joaoVideo",
-      kind: "video",
-      poster: "/images/testimonials/juliana.webp",
-      videoSrc: null,
-    },
-    text: {
-      id: "joao",
-      kind: "text",
-      photo: "/images/testimonials/juliana.webp",
-      stars: 5,
-    },
-    photo: {
-      id: "activeTraders",
-      kind: "photo",
-      image: "/images/testimonials/thiago.webp",
-    },
+    id: "marcos",
+    kind: "text",
+    photo: "/images/testimonials/rogerio.webp",
+    stars: 5,
+  },
+  {
+    id: "arraia",
+    kind: "video",
+    poster: "/images/testimonials/video-4-poster.webp",
+    videoSrc: "/videos/testimonials/video-4.mp4",
+  },
+  {
+    id: "brandPlatform",
+    kind: "photo",
+    image: "/images/testimonials/proof-car.webp",
+  },
+  {
+    id: "joao",
+    kind: "text",
+    photo: "/images/testimonials/juliana.webp",
+    stars: 5,
+  },
+  {
+    id: "brandCommunity",
+    kind: "photo",
+    image: "/images/testimonials/proof-phone-1.webp",
+  },
+  {
+    id: "activeTraders",
+    kind: "photo",
+    image: "/images/testimonials/proof-setup.webp",
   },
 ];
+
+export function chunkTestimonials<T>(items: readonly T[], size: number): T[][] {
+  const rows: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    rows.push(items.slice(i, i + size) as T[]);
+  }
+  return rows;
+}

@@ -141,6 +141,11 @@
     "moreReviews": "รีวิวเพิ่มเติม",
     "lessReviews": "รีวิวน้อยลง",
     "items": {
+      "feedbacks": {
+        "name": "ลูกค้า Bullex",
+        "meta": "รีวิววิดีโอ",
+        "posterAlt": "ปกวิดีโอรีวิว Bullex"
+      },
       "felipe": {
         "name": "Felipe Costa",
         "meta": "เทรดเดอร์ • 2 ปีกับ Bullex",
@@ -160,17 +165,10 @@
         "quote": "จากแพลตฟอร์มไบนารีออปชันทั้งหมดที่ลอง Bullex ดีที่สุด การถอนเงินของฉันมาภายในไม่กี่นาที ต่างจากหลายที่อื่น",
         "photoAlt": "รูปของ Marcos W."
       },
-      "rafael": {
-        "name": "Rafael Mendes",
-        "meta": "เทรดเดอร์มืออาชีพ",
-        "posterAlt": "ปกวิดีโอของ Rafael Mendes"
-      },
-      "carlos": {
-        "name": "Carlos W.",
-        "meta": "เซาเปาโล, บราซิล",
-        "title": "ซัพพอร์ตที่ดีที่สุดในตลาด",
-        "quote": "ทุกครั้งที่มีปัญหา ซัพพอร์ต Bullex ตอบทันที ไม่เคยเห็นบริการที่รวดเร็วแบบนี้",
-        "photoAlt": "รูปของ Carlos W."
+      "arraia": {
+        "name": "แคมเปญ Arraiá",
+        "meta": "มอบเงินทุน R$50,000",
+        "posterAlt": "ปกวิดีโอแคมเปญ Arraiá Bullex"
       },
       "joao": {
         "name": "João A.",
@@ -179,35 +177,20 @@
         "quote": "โบรกเกอร์ยอดเยี่ยม เร็ว ไม่มีดีเลย์และไม่มีก๊าปแย่ ๆ ที่เจอในที่อื่นบ่อย ๆ",
         "photoAlt": "รูปของ João A."
       },
-      "carlosVideo": {
-        "name": "Carlos W.",
-        "meta": "เซาเปาโล, บราซิล",
-        "posterAlt": "ปกวิดีโอของ Carlos W."
-      },
-      "joaoVideo": {
-        "name": "João A.",
-        "meta": "ฟอร์ตาเลซา, บราซิล",
-        "posterAlt": "ปกวิดีโอของ João A."
-      },
       "brandPlatform": {
-        "name": "Bullex",
-        "meta": "แพลตฟอร์มอันดับ 1 ด้านความเร็ว",
-        "imageAlt": "Bullex"
+        "name": "ลูกค้า Bullex",
+        "meta": "เกือบ 1 ปีกับรางวัล",
+        "imageAlt": "ภาพหน้าจอ WhatsApp ของรถที่ได้รับจากแคมเปญ Bullex"
       },
       "brandCommunity": {
-        "name": "ชุมชน Bullex",
-        "meta": "เทรดเดอร์หลายพันคนทุกวัน",
-        "imageAlt": "ชุมชน Bullex"
-      },
-      "tradingCommunity": {
-        "name": "เทรดเดอร์ลงมือจริง",
-        "meta": "เทรดบน Bullex ทุกวัน",
-        "imageAlt": "เทรดเดอร์บน Bullex"
+        "name": "ลูกค้า Bullex",
+        "meta": "ส่งมอบรางวัลแล้ว",
+        "imageAlt": "ภาพหน้าจอ WhatsApp ของมือถือที่ได้รับจากแคมเปญ Bullex"
       },
       "activeTraders": {
-        "name": "Bullex ในชีวิตประจำวัน",
-        "meta": "หลายพันเทรดต่อวัน",
-        "imageAlt": "เทรดเดอร์ที่ใช้งานบน Bullex"
+        "name": "ลูกค้า Bullex",
+        "meta": "เซ็ตอัพและการเทรด",
+        "imageAlt": "ภาพหน้าจอ WhatsApp ของเซ็ตอัพเทรดของลูกค้า"
       }
     }
   },

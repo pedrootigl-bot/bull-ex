@@ -141,6 +141,11 @@
     "moreReviews": "More reviews",
     "lessReviews": "Fewer reviews",
     "items": {
+      "feedbacks": {
+        "name": "Bullex client",
+        "meta": "Video testimonial",
+        "posterAlt": "Bullex testimonial video cover"
+      },
       "felipe": {
         "name": "Felipe Costa",
         "meta": "Trader • 2 years with Bullex",
@@ -160,17 +165,10 @@
         "quote": "Of all the binary options platforms I tried, Bullex was the best. My withdrawals arrive in minutes, unlike many others.",
         "photoAlt": "Photo of Marcos W."
       },
-      "rafael": {
-        "name": "Rafael Mendes",
-        "meta": "Professional trader",
-        "posterAlt": "Rafael Mendes video cover"
-      },
-      "carlos": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brazil",
-        "title": "The best support in the market",
-        "quote": "Whenever I have an issue, Bullex support responds instantly. I've never seen such agile service.",
-        "photoAlt": "Photo of Carlos W."
+      "arraia": {
+        "name": "Arraiá Campaign",
+        "meta": "R$50k in bankroll delivered",
+        "posterAlt": "Bullex Arraiá Campaign video cover"
       },
       "joao": {
         "name": "João A.",
@@ -179,35 +177,20 @@
         "quote": "Excellent broker, fast, no delay and none of those awful gaps you get on many others lol.",
         "photoAlt": "Photo of João A."
       },
-      "carlosVideo": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brazil",
-        "posterAlt": "Carlos W. video cover"
-      },
-      "joaoVideo": {
-        "name": "João A.",
-        "meta": "Fortaleza, Brazil",
-        "posterAlt": "João A. video cover"
-      },
       "brandPlatform": {
-        "name": "Bullex",
-        "meta": "#1 platform for speed",
-        "imageAlt": "Bullex"
+        "name": "Bullex client",
+        "meta": "Almost 1 year with the prize",
+        "imageAlt": "WhatsApp screenshot with photos of the car won in the Bullex campaign"
       },
       "brandCommunity": {
-        "name": "Bullex Community",
-        "meta": "Thousands of traders every day",
-        "imageAlt": "Bullex Community"
-      },
-      "tradingCommunity": {
-        "name": "Traders in action",
-        "meta": "Trading on Bullex every day",
-        "imageAlt": "Traders on Bullex"
+        "name": "Bullex client",
+        "meta": "Prize delivered",
+        "imageAlt": "WhatsApp screenshot with a phone won in the Bullex campaign"
       },
       "activeTraders": {
-        "name": "Bullex day to day",
-        "meta": "Thousands of daily trades",
-        "imageAlt": "Active traders on Bullex"
+        "name": "Bullex client",
+        "meta": "Setup and trading",
+        "imageAlt": "WhatsApp screenshot with the client's trading setup"
       }
     }
   },

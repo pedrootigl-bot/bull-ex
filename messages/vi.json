@@ -141,6 +141,11 @@
     "moreReviews": "Thêm đánh giá",
     "lessReviews": "Ít đánh giá hơn",
     "items": {
+      "feedbacks": {
+        "name": "Khách hàng Bullex",
+        "meta": "Video đánh giá",
+        "posterAlt": "Ảnh bìa video đánh giá Bullex"
+      },
       "felipe": {
         "name": "Felipe Costa",
         "meta": "Trader • 2 năm với Bullex",
@@ -160,17 +165,10 @@
         "quote": "Trong tất cả nền tảng quyền chọn nhị phân tôi đã thử, Bullex là tốt nhất. Tiền rút của tôi về trong vài phút, khác với nhiều nơi khác.",
         "photoAlt": "Ảnh của Marcos W."
       },
-      "rafael": {
-        "name": "Rafael Mendes",
-        "meta": "Trader chuyên nghiệp",
-        "posterAlt": "Ảnh bìa video của Rafael Mendes"
-      },
-      "carlos": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brazil",
-        "title": "Hỗ trợ tốt nhất thị trường",
-        "quote": "Mỗi khi gặp vấn đề, hỗ trợ Bullex phản hồi ngay lập tức. Tôi chưa từng thấy dịch vụ nhanh như vậy.",
-        "photoAlt": "Ảnh của Carlos W."
+      "arraia": {
+        "name": "Chiến dịch Arraiá",
+        "meta": "R$50 nghìn vốn đã trao",
+        "posterAlt": "Ảnh bìa video chiến dịch Arraiá Bullex"
       },
       "joao": {
         "name": "João A.",
@@ -180,34 +178,19 @@
         "photoAlt": "Ảnh của João A."
       },
       "brandPlatform": {
-        "name": "Bullex",
-        "meta": "Nền tảng #1 về tốc độ",
-        "imageAlt": "Bullex"
+        "name": "Khách hàng Bullex",
+        "meta": "Gần 1 năm với giải thưởng",
+        "imageAlt": "Ảnh chụp WhatsApp với xe thắng trong chiến dịch Bullex"
       },
       "brandCommunity": {
-        "name": "Cộng đồng Bullex",
-        "meta": "Hàng nghìn trader mỗi ngày",
-        "imageAlt": "Cộng đồng Bullex"
-      },
-      "carlosVideo": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brazil",
-        "posterAlt": "Ảnh bìa video của Carlos W."
-      },
-      "joaoVideo": {
-        "name": "João A.",
-        "meta": "Fortaleza, Brazil",
-        "posterAlt": "Ảnh bìa video của João A."
-      },
-      "tradingCommunity": {
-        "name": "Trader đang giao dịch",
-        "meta": "Giao dịch trên Bullex mỗi ngày",
-        "imageAlt": "Trader trên Bullex"
+        "name": "Khách hàng Bullex",
+        "meta": "Giải đã giao",
+        "imageAlt": "Ảnh chụp WhatsApp với điện thoại thắng trong chiến dịch Bullex"
       },
       "activeTraders": {
-        "name": "Bullex hàng ngày",
-        "meta": "Hàng nghìn lệnh mỗi ngày",
-        "imageAlt": "Trader tích cực trên Bullex"
+        "name": "Khách hàng Bullex",
+        "meta": "Setup và giao dịch",
+        "imageAlt": "Ảnh chụp WhatsApp với setup trading của khách"
       }
     }
   },

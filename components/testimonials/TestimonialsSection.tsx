@@ -6,10 +6,11 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
-  TESTIMONIAL_TRIPLETS,
+  chunkTestimonials,
+  TESTIMONIAL_ITEMS,
   TESTIMONIALS_COPY,
   type PhotoTestimonial,
-  type TestimonialTriplet,
+  type TestimonialItem,
   type TextTestimonial,
   type VideoTestimonial,
 } from "./testimonialsConfig";
@@ -68,18 +69,17 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
           src={item.poster}
           alt={t(`items.${item.id}.posterAlt`)}
           fill
-          sizes="(max-width: 640px) 86vw, 320px"
+          sizes="(max-width: 640px) 90vw, 380px"
           quality={85}
         />
       )}
 
-      {!playing && (
+      {!playing && videoSrc ? (
         <button
           type="button"
           className={styles.videoOverlay}
           aria-label={t("playVideo")}
           onClick={handlePlay}
-          disabled={!videoSrc}
         >
           <span className={styles.playButton}>
             <PlayIcon />
@@ -89,7 +89,16 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
             <p className={styles.videoMeta}>{t(`items.${item.id}.meta`)}</p>
           </div>
         </button>
-      )}
+      ) : null}
+
+      {!videoSrc ? (
+        <div className={styles.photoOverlay}>
+          <div className={styles.videoCaption}>
+            <p className={styles.videoName}>{t(`items.${item.id}.name`)}</p>
+            <p className={styles.videoMeta}>{t(`items.${item.id}.meta`)}</p>
+          </div>
+        </div>
+      ) : null}
     </article>
   );
 }
@@ -140,7 +149,7 @@ function PhotoTestimonialCard({ item }: { item: PhotoTestimonial }) {
         src={item.image}
         alt={t(`items.${item.id}.imageAlt`)}
         fill
-        sizes="(max-width: 640px) 86vw, 320px"
+        sizes="(max-width: 640px) 90vw, 380px"
         quality={85}
       />
       <div className={styles.photoOverlay}>
@@ -172,44 +181,36 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   );
 }
 
-type TestimonialSlide =
-  | { key: string; kind: "video"; item: VideoTestimonial }
-  | { key: string; kind: "text"; item: TextTestimonial }
-  | { key: string; kind: "photo"; item: PhotoTestimonial };
+type TestimonialSlide = {
+  key: string;
+  item: TestimonialItem;
+};
 
-function tripletToSlides(triplet: TestimonialTriplet): TestimonialSlide[] {
-  return [
-    { key: `${triplet.id}-video`, kind: "video", item: triplet.video },
-    { key: `${triplet.id}-text`, kind: "text", item: triplet.text },
-    { key: `${triplet.id}-photo`, kind: "photo", item: triplet.photo },
-  ];
+function itemToSlide(item: TestimonialItem, index: number): TestimonialSlide {
+  return { key: `${item.kind}-${item.id}-${index}`, item };
 }
 
-function slidesFromTriplets(triplets: readonly TestimonialTriplet[]) {
-  return triplets.flatMap(tripletToSlides);
-}
-
-function TestimonialSlideCard({ slide }: { slide: TestimonialSlide }) {
-  switch (slide.kind) {
+function TestimonialCard({ item }: { item: TestimonialItem }) {
+  switch (item.kind) {
     case "video":
-      return <VideoTestimonialCard item={slide.item} />;
+      return <VideoTestimonialCard item={item} />;
     case "text":
-      return <TextTestimonialCard item={slide.item} />;
+      return <TextTestimonialCard item={item} />;
     case "photo":
-      return <PhotoTestimonialCard item={slide.item} />;
+      return <PhotoTestimonialCard item={item} />;
     default: {
-      const exhaustive: never = slide;
+      const exhaustive: never = item;
       return exhaustive;
     }
   }
 }
 
 function TestimonialRow({
-  triplet,
+  items,
   animated,
   animationIndex,
 }: {
-  triplet: TestimonialTriplet;
+  items: readonly TestimonialItem[];
   animated?: boolean;
   animationIndex?: number;
 }) {
@@ -223,15 +224,11 @@ function TestimonialRow({
       className={`${styles.row} ${animated ? styles.rowAnimated : ""}`}
       style={rowStyle}
     >
-      <div className={styles.rowItem}>
-        <VideoTestimonialCard item={triplet.video} />
-      </div>
-      <div className={styles.rowItem}>
-        <TextTestimonialCard item={triplet.text} />
-      </div>
-      <div className={styles.rowItem}>
-        <PhotoTestimonialCard item={triplet.photo} />
-      </div>
+      {items.map((item, index) => (
+        <div className={styles.rowItem} key={`${item.kind}-${item.id}-${index}`}>
+          <TestimonialCard item={item} />
+        </div>
+      ))}
     </div>
   );
 }
@@ -331,7 +328,7 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
               key={slide.key}
               aria-hidden={index !== activeSlide}
             >
-              <TestimonialSlideCard slide={slide} />
+              <TestimonialCard item={slide.item} />
             </div>
           ))}
         </div>
@@ -356,9 +353,10 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
   );
 }
 
-const VISIBLE_TRIPLET = TESTIMONIAL_TRIPLETS[0];
-const HIDDEN_TRIPLETS = TESTIMONIAL_TRIPLETS.slice(1);
-const ALL_MOBILE_SLIDES = slidesFromTriplets(TESTIMONIAL_TRIPLETS);
+const DESKTOP_ROWS = chunkTestimonials(TESTIMONIAL_ITEMS, 3);
+const VISIBLE_ROW = DESKTOP_ROWS[0] ?? [];
+const HIDDEN_ROWS = DESKTOP_ROWS.slice(1);
+const ALL_MOBILE_SLIDES = TESTIMONIAL_ITEMS.map(itemToSlide);
 
 export function TestimonialsSection() {
   const t = useTranslations("testimonials");
@@ -382,17 +380,17 @@ export function TestimonialsSection() {
         <TestimonialsMobileCarousel slides={ALL_MOBILE_SLIDES} />
 
         <div className={styles.desktopStack}>
-          <TestimonialRow triplet={VISIBLE_TRIPLET} />
+          <TestimonialRow items={VISIBLE_ROW} />
 
           <div
             className={`${styles.expandable} ${expanded ? styles.expandableOpen : ""}`}
             aria-hidden={!expanded}
           >
             <div className={styles.expandableInner}>
-              {HIDDEN_TRIPLETS.map((triplet, index) => (
+              {HIDDEN_ROWS.map((row, index) => (
                 <TestimonialRow
-                  key={triplet.id}
-                  triplet={triplet}
+                  key={`row-${index}`}
+                  items={row}
                   animated={expanded}
                   animationIndex={index}
                 />

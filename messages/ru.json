@@ -141,6 +141,11 @@
     "moreReviews": "Больше отзывов",
     "lessReviews": "Меньше отзывов",
     "items": {
+      "feedbacks": {
+        "name": "Клиент Bullex",
+        "meta": "Видеоотзыв",
+        "posterAlt": "Обложка видеоотзыва Bullex"
+      },
       "felipe": {
         "name": "Felipe Costa",
         "meta": "Трейдер • 2 года в Bullex",
@@ -160,17 +165,10 @@
         "quote": "Из всех платформ бинарных опционов, что я пробовал, Bullex оказался лучшим. Выводы приходят за минуты, в отличие от многих других.",
         "photoAlt": "Фото Marcos W."
       },
-      "rafael": {
-        "name": "Rafael Mendes",
-        "meta": "Профессиональный трейдер",
-        "posterAlt": "Обложка видео Rafael Mendes"
-      },
-      "carlos": {
-        "name": "Carlos W.",
-        "meta": "Сан-Паулу, Бразилия",
-        "title": "Лучшая поддержка на рынке",
-        "quote": "Когда у меня проблема, поддержка Bullex отвечает мгновенно. Такого быстрого сервиса я ещё не видел.",
-        "photoAlt": "Фото Carlos W."
+      "arraia": {
+        "name": "Кампания Arraiá",
+        "meta": "R$50 тыс. банка выдано",
+        "posterAlt": "Обложка видео кампании Arraiá Bullex"
       },
       "joao": {
         "name": "João A.",
@@ -179,35 +177,20 @@
         "quote": "Отличный брокер, быстрый, без задержек и без тех ужасных гэпов, что бывают у многих других.",
         "photoAlt": "Фото João A."
       },
-      "carlosVideo": {
-        "name": "Carlos W.",
-        "meta": "Сан-Паулу, Бразилия",
-        "posterAlt": "Обложка видео Carlos W."
-      },
-      "joaoVideo": {
-        "name": "João A.",
-        "meta": "Форталеза, Бразилия",
-        "posterAlt": "Обложка видео João A."
-      },
       "brandPlatform": {
-        "name": "Bullex",
-        "meta": "Платформа №1 по скорости",
-        "imageAlt": "Bullex"
+        "name": "Клиент Bullex",
+        "meta": "Почти год с призом",
+        "imageAlt": "Скриншот WhatsApp с фото автомобиля из кампании Bullex"
       },
       "brandCommunity": {
-        "name": "Сообщество Bullex",
-        "meta": "Тысячи трейдеров каждый день",
-        "imageAlt": "Сообщество Bullex"
-      },
-      "tradingCommunity": {
-        "name": "Трейдеры в деле",
-        "meta": "Торгуют на Bullex каждый день",
-        "imageAlt": "Трейдеры на Bullex"
+        "name": "Клиент Bullex",
+        "meta": "Приз доставлен",
+        "imageAlt": "Скриншот WhatsApp с телефоном из кампании Bullex"
       },
       "activeTraders": {
-        "name": "Bullex каждый день",
-        "meta": "Тысячи сделок ежедневно",
-        "imageAlt": "Активные трейдеры Bullex"
+        "name": "Клиент Bullex",
+        "meta": "Сетап и сделки",
+        "imageAlt": "Скриншот WhatsApp с торговым сетапом клиента"
       }
     }
   },

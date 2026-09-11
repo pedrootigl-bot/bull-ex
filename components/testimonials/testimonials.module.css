@@ -5,11 +5,11 @@
   padding: 2.5rem 0 3.5rem;
   overflow: hidden;
   content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
+  contain-intrinsic-size: 1px 1200px;
 }
 
 .inner {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1280px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
@@ -57,8 +57,8 @@
 .desktopStack {
   display: none;
   flex-direction: column;
-  gap: 0.75rem;
-  max-width: 1040px;
+  gap: 1rem;
+  max-width: 1200px;
   margin-inline: auto;
 }
 
@@ -94,8 +94,9 @@
 }
 
 .mobileSlide .card {
-  aspect-ratio: 4 / 5;
-  min-height: 19.5rem;
+  aspect-ratio: 3 / 4;
+  width: min(100%, 26rem);
+  min-height: 23rem;
 }
 
 .mobileSlide .textCard {
@@ -103,7 +104,7 @@
   height: auto;
   min-height: 0;
   width: 100%;
-  max-width: 22rem;
+  max-width: 26rem;
   align-items: stretch;
   justify-content: flex-start;
   border-color: rgba(124, 255, 58, 0.22);
@@ -266,7 +267,7 @@
 .row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 1rem;
   min-width: 0;
 }
 
@@ -291,7 +292,7 @@
 .expandableInner {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   overflow: hidden;
 }
 
@@ -320,10 +321,10 @@
 .card {
   position: relative;
   display: flex;
-  aspect-ratio: 1 / 0.92;
+  aspect-ratio: 3 / 4;
   width: 100%;
   overflow: hidden;
-  border-radius: 0.85rem;
+  border-radius: 0.95rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: #0d0d0d;
   transition: border-color 0.3s ease;
@@ -551,15 +552,15 @@
   }
 
   .row {
-    gap: 0.85rem;
+    gap: 1.1rem;
   }
 
   .expandableInner {
-    gap: 0.85rem;
+    gap: 1.1rem;
   }
 
   .textInner {
-    padding: 1.1rem;
+    padding: 1.2rem;
   }
 }
 

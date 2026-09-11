@@ -141,6 +141,11 @@
     "moreReviews": "Mais depoimentos",
     "lessReviews": "Menos depoimentos",
     "items": {
+      "feedbacks": {
+        "name": "Cliente Bullex",
+        "meta": "Depoimento em vídeo",
+        "posterAlt": "Capa do vídeo de depoimento Bullex"
+      },
       "felipe": {
         "name": "Felipe Costa",
         "meta": "Trader • 2 anos na Bullex",
@@ -160,17 +165,10 @@
         "quote": "De todas as plataformas de opções binárias que testei, a Bullex foi a melhor. Meus saques chegam em minutos, diferente de muitas outras.",
         "photoAlt": "Foto de Marcos W."
       },
-      "rafael": {
-        "name": "Rafael Mendes",
-        "meta": "Trader profissional",
-        "posterAlt": "Capa do vídeo de Rafael Mendes"
-      },
-      "carlos": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brasil",
-        "title": "O melhor suporte do mercado",
-        "quote": "Sempre que tenho um problema, o suporte da Bullex responde na hora. Nunca vi um atendimento tão ágil.",
-        "photoAlt": "Foto de Carlos W."
+      "arraia": {
+        "name": "Campanha Arraiá",
+        "meta": "R$50 mil em banca entregues",
+        "posterAlt": "Capa do vídeo da Campanha Arraiá Bullex"
       },
       "joao": {
         "name": "João A.",
@@ -179,35 +177,20 @@
         "quote": "Corretora excelente, rápida, sem delay e sem aqueles gaps horríveis que acontecem em muitas outras kkk.",
         "photoAlt": "Foto de João A."
       },
-      "carlosVideo": {
-        "name": "Carlos W.",
-        "meta": "São Paulo, Brasil",
-        "posterAlt": "Capa do vídeo de Carlos W."
-      },
-      "joaoVideo": {
-        "name": "João A.",
-        "meta": "Fortaleza, Brasil",
-        "posterAlt": "Capa do vídeo de João A."
-      },
       "brandPlatform": {
-        "name": "Bullex",
-        "meta": "Plataforma #1 em velocidade",
-        "imageAlt": "Bullex"
+        "name": "Cliente Bullex",
+        "meta": "Quase 1 ano com o prêmio",
+        "imageAlt": "Print do WhatsApp com fotos do carro ganho na campanha Bullex"
       },
       "brandCommunity": {
-        "name": "Comunidade Bullex",
-        "meta": "Milhares de traders todos os dias",
-        "imageAlt": "Comunidade Bullex"
-      },
-      "tradingCommunity": {
-        "name": "Traders em ação",
-        "meta": "Operando todos os dias na Bullex",
-        "imageAlt": "Traders operando na Bullex"
+        "name": "Cliente Bullex",
+        "meta": "Prêmio entregue",
+        "imageAlt": "Print do WhatsApp com celular ganho na campanha Bullex"
       },
       "activeTraders": {
-        "name": "Bullex no dia a dia",
-        "meta": "Milhares de operações diárias",
-        "imageAlt": "Traders ativos na Bullex"
+        "name": "Cliente Bullex",
+        "meta": "Setup e operações",
+        "imageAlt": "Print do WhatsApp com setup de trading do cliente"
       }
     }
   },
