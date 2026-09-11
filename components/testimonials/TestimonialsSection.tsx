@@ -75,20 +75,22 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
       ) : null}
 
       {!playing && videoSrc ? (
-        <button
-          type="button"
-          className={styles.videoOverlay}
-          aria-label={t("playVideo")}
-          onClick={handlePlay}
-        >
-          <span className={styles.playButton}>
-            <PlayIcon />
-          </span>
-          <div className={styles.videoCaption}>
-            <p className={styles.videoName}>{t(`items.${item.id}.name`)}</p>
-            <p className={styles.videoMeta}>{t(`items.${item.id}.meta`)}</p>
+        <>
+          <div className={styles.photoOverlay}>
+            <div className={styles.videoCaption}>
+              <p className={styles.videoName}>{t(`items.${item.id}.name`)}</p>
+              <p className={styles.videoMeta}>{t(`items.${item.id}.meta`)}</p>
+            </div>
           </div>
-        </button>
+          <button
+            type="button"
+            className={styles.playButton}
+            aria-label={t("playVideo")}
+            onClick={handlePlay}
+          >
+            <PlayIcon />
+          </button>
+        </>
       ) : null}
 
       {!videoSrc ? (
@@ -238,6 +240,12 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
   const reducedMotion = useReducedMotion();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const ignoreScrollSyncRef = useRef(false);
+  const activeSlideRef = useRef(activeSlide);
+  const prevSlideRef = useRef(0);
+  const swipeStartRef = useRef<{ x: number; y: number; slideIndex: number } | null>(null);
+
+  activeSlideRef.current = activeSlide;
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -245,8 +253,116 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
       return;
     }
 
-    scrollToSlideIndex(carousel, activeSlide, reducedMotion);
+    const previous = prevSlideRef.current;
+    prevSlideRef.current = activeSlide;
+
+    // Loop último↔primeiro: mesmo salto das setas, sem animar todos os cards no meio
+    const isWrapJump =
+      (previous === slides.length - 1 && activeSlide === 0) ||
+      (previous === 0 && activeSlide === slides.length - 1 && slides.length > 1);
+
+    ignoreScrollSyncRef.current = true;
+    scrollToSlideIndex(carousel, activeSlide, reducedMotion || isWrapJump);
+
+    const release = window.setTimeout(
+      () => {
+        ignoreScrollSyncRef.current = false;
+      },
+      reducedMotion || isWrapJump ? 80 : 420,
+    );
+
+    return () => window.clearTimeout(release);
   }, [activeSlide, reducedMotion, slides.length]);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) {
+      return;
+    }
+
+    const syncFromScroll = () => {
+      if (ignoreScrollSyncRef.current) {
+        return;
+      }
+
+      const width = carousel.clientWidth;
+      if (width <= 0) {
+        return;
+      }
+
+      const nextIndex = Math.max(
+        0,
+        Math.min(slides.length - 1, Math.round(carousel.scrollLeft / width)),
+      );
+
+      setActiveSlide((current) => (current === nextIndex ? current : nextIndex));
+    };
+
+    carousel.addEventListener("scroll", syncFromScroll, { passive: true });
+    carousel.addEventListener("scrollend", syncFromScroll);
+    return () => {
+      carousel.removeEventListener("scroll", syncFromScroll);
+      carousel.removeEventListener("scrollend", syncFromScroll);
+    };
+  }, [slides.length]);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || slides.length < 2) {
+      return;
+    }
+
+    const SWIPE_THRESHOLD_PX = 56;
+    const lastIndex = slides.length - 1;
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === "mouse" && event.button !== 0) {
+        return;
+      }
+      swipeStartRef.current = {
+        x: event.clientX,
+        y: event.clientY,
+        slideIndex: activeSlideRef.current,
+      };
+    };
+
+    const clearSwipe = () => {
+      swipeStartRef.current = null;
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      const start = swipeStartRef.current;
+      swipeStartRef.current = null;
+      if (!start) {
+        return;
+      }
+
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      if (Math.abs(dx) < SWIPE_THRESHOLD_PX || Math.abs(dx) <= Math.abs(dy)) {
+        return;
+      }
+
+      // Só no extremo: mesmo efeito das setas (próximo / anterior com loop)
+      if (dx < 0 && start.slideIndex === lastIndex) {
+        setActiveSlide((current) => (current + 1) % slides.length);
+        return;
+      }
+
+      if (dx > 0 && start.slideIndex === 0) {
+        setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
+      }
+    };
+
+    carousel.addEventListener("pointerdown", onPointerDown, { passive: true });
+    carousel.addEventListener("pointerup", onPointerUp, { passive: true });
+    carousel.addEventListener("pointercancel", clearSwipe, { passive: true });
+    return () => {
+      carousel.removeEventListener("pointerdown", onPointerDown);
+      carousel.removeEventListener("pointerup", onPointerUp);
+      carousel.removeEventListener("pointercancel", clearSwipe);
+    };
+  }, [slides.length]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -293,61 +409,33 @@ function TestimonialsMobileCarousel({ slides }: { slides: TestimonialSlide[] }) 
     });
   }
 
-  function goToPrev() {
-    setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
-  }
-
-  function goToNext() {
-    setActiveSlide((current) => (current + 1) % slides.length);
-  }
-
   return (
     <div className={styles.mobileCarouselBlock}>
-      <div className={styles.mobileCarouselShell}>
-        <button
-          type="button"
-          className={styles.mobileCarouselArrow}
-          aria-label={t("carouselPrev")}
-          onClick={goToPrev}
-        >
-          <ChevronIcon expanded={false} />
-        </button>
-
-        <div
-          className={styles.mobileCarousel}
-          ref={carouselRef}
-          role="region"
-          aria-label={t("carouselLabel")}
-          aria-roledescription="carousel"
-          aria-live="polite"
-        >
-          {slides.map((slide, index) => (
-            <div
-              className={styles.mobileSlide}
-              data-testimonial-slide
-              key={slide.key}
-              aria-hidden={index !== activeSlide}
-            >
-              <TestimonialCard item={slide.item} />
-            </div>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className={`${styles.mobileCarouselArrow} ${styles.mobileCarouselArrowNext}`}
-          aria-label={t("carouselNext")}
-          onClick={goToNext}
-        >
-          <ChevronIcon expanded={false} />
-        </button>
+      <div
+        className={styles.mobileCarousel}
+        ref={carouselRef}
+        role="region"
+        aria-label={t("carouselLabel")}
+        aria-roledescription="carousel"
+        aria-live="polite"
+      >
+        {slides.map((slide, index) => (
+          <div
+            className={styles.mobileSlide}
+            data-testimonial-slide
+            key={slide.key}
+            aria-hidden={index !== activeSlide}
+          >
+            <TestimonialCard item={slide.item} />
+          </div>
+        ))}
       </div>
 
       <div className={styles.mobileCarouselMeta}>
         <p className={styles.mobileCounter}>
           {t("carouselCounter", { current: activeSlide + 1, total: slides.length })}
         </p>
-        <p className={styles.mobileSwipeHint}>{t("arrowHint")}</p>
+        <p className={styles.mobileSwipeHint}>{t("swipeHint")}</p>
       </div>
     </div>
   );
