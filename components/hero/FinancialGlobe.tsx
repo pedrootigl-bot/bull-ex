@@ -14,6 +14,29 @@ type FinancialGlobeProps = {
   onReadyChange?: (ready: boolean) => void;
 };
 
+/** Fiber ainda usa THREE.Clock (deprecated desde r183); evita spam no console. */
+let threeClockWarnSilenced = false;
+function silenceThreeClockDeprecation() {
+  if (threeClockWarnSilenced || typeof window === "undefined") {
+    return;
+  }
+  threeClockWarnSilenced = true;
+  THREE.setConsoleFunction((type, message, ...params) => {
+    if (type === "warn" && String(message).includes("Clock")) {
+      return;
+    }
+    if (type === "error") {
+      console.error(message, ...params);
+      return;
+    }
+    if (type === "warn") {
+      console.warn(message, ...params);
+      return;
+    }
+    console.log(message, ...params);
+  });
+}
+
 function particleCount(tier: ViewportTier) {
   switch (tier) {
     case "mobile":
@@ -168,6 +191,7 @@ export function FinancialGlobe({
   tier,
   onReadyChange,
 }: FinancialGlobeProps) {
+  silenceThreeClockDeprecation();
   const frameloop =
     HERO_THEME.enableAnimation && !reducedMotion ? "always" : "demand";
   const onReadyChangeRef = useRef(onReadyChange);

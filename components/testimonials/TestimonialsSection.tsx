@@ -37,7 +37,6 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const videoSrc = item.videoSrc ? withBasePath(item.videoSrc) : null;
-  const posterSrc = withBasePath(item.poster);
 
   function handlePlay() {
     if (!videoSrc) {
@@ -50,29 +49,30 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
 
   return (
     <article className={styles.card}>
+      <Image
+        className={styles.videoMedia}
+        src={item.poster}
+        alt={t(`items.${item.id}.posterAlt`)}
+        fill
+        sizes="(max-width: 640px) 90vw, 380px"
+        quality={85}
+        priority={false}
+      />
+
       {videoSrc ? (
         <video
           ref={videoRef}
           className={styles.videoMedia}
           src={videoSrc}
-          poster={posterSrc}
           playsInline
           preload="none"
           controls={playing}
+          style={playing ? undefined : { opacity: 0 }}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onEnded={() => setPlaying(false)}
         />
-      ) : (
-        <Image
-          className={styles.videoMedia}
-          src={item.poster}
-          alt={t(`items.${item.id}.posterAlt`)}
-          fill
-          sizes="(max-width: 640px) 90vw, 380px"
-          quality={85}
-        />
-      )}
+      ) : null}
 
       {!playing && videoSrc ? (
         <button
