@@ -39,12 +39,15 @@ function VideoTestimonialCard({ item }: { item: VideoTestimonial }) {
   const videoSrc = item.videoSrc ? withBasePath(item.videoSrc) : null;
 
   function handlePlay() {
-    if (!videoSrc) {
+    const video = videoRef.current;
+    if (!videoSrc || !video) {
       return;
     }
 
     setPlaying(true);
-    void videoRef.current?.play();
+    void video.play().catch(() => {
+      setPlaying(false);
+    });
   }
 
   return (

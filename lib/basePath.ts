@@ -18,5 +18,12 @@ export function getBasePath(): string {
 export function withBasePath(path: string): string {
   const base = getBasePath();
   const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (!base) {
+    return normalized;
+  }
+  // Idempotente: prepare-dist / next já podem ter prefixado o basePath no bundle
+  if (normalized === base || normalized.startsWith(`${base}/`)) {
+    return normalized;
+  }
   return `${base}${normalized}`;
 }
