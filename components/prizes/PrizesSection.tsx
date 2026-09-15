@@ -1,8 +1,8 @@
 "use client";
 
+import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { useLiteExperience } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { Link } from "@/i18n/navigation";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -166,7 +166,12 @@ export function PrizesSection() {
           <p className={styles.body}>{t("body")}</p>
 
           <div className={styles.introActions}>
-            <Link className={styles.cta} href={PRIZES_COPY.pageHref} prefetch={false}>
+            <BlogNavLink
+              className={styles.cta}
+              href={PRIZES_COPY.pageHref}
+              loadingTitle={t("loadingTitle")}
+              loadingSubtitle={t("loadingSubtitle")}
+            >
               <span className={styles.ctaBeam} aria-hidden="true" />
               <span className={styles.ctaInner}>
                 {t("cta")}
@@ -182,7 +187,7 @@ export function PrizesSection() {
                   </svg>
                 </span>
               </span>
-            </Link>
+            </BlogNavLink>
 
             <ul className={styles.points}>
               {PRIZE_POINTS.map((item) => (

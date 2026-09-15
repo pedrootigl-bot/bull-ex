@@ -1,5 +1,4 @@
 export const RISKFREE_COPY = {
-  activateHref: "https://trade.bull-ex.com/pt/register",
   heroBackground: "/images/prizes/risk-free.webp",
   aboutBackground: "/images/prizes/risk-free-about.webp",
   finalBackground: "/images/prizes/risk-free-final.webp",

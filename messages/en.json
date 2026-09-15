@@ -14,6 +14,7 @@
     "register": "Sign up",
     "why": "Why Bullex",
     "prizes": "Offers",
+    "blog": "Blog",
     "menuOpen": "Open menu",
     "menuClose": "Close menu"
   },
@@ -251,6 +252,8 @@
     "leadAfter": " for those who trade with us.",
     "body": "Benefits designed to help you start with more confidence and grow on Bullex.",
     "cta": "I want to take the offers",
+    "loadingTitle": "Loading offers",
+    "loadingSubtitle": "Please wait while we prepare the RiskFree page for you.",
     "featuredBadge": "Featured",
     "points": {
       "points": "Active offers for new and existing clients.",

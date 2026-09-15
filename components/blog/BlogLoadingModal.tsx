@@ -5,9 +5,11 @@ import styles from "./blogLoading.module.css";
 
 type BlogLoadingModalProps = {
   open: boolean;
+  title?: string;
+  subtitle?: string;
 };
 
-export function BlogLoadingModal({ open }: BlogLoadingModalProps) {
+export function BlogLoadingModal({ open, title, subtitle }: BlogLoadingModalProps) {
   const t = useTranslations("blog");
 
   if (!open) {
@@ -25,10 +27,10 @@ export function BlogLoadingModal({ open }: BlogLoadingModalProps) {
       <div className={styles.panel}>
         <div className={styles.spinner} aria-hidden="true" />
         <p className={styles.title} id="blog-loading-title">
-          {t("loadingTitle")}
+          {title ?? t("loadingTitle")}
         </p>
         <p className={styles.subtitle} id="blog-loading-description">
-          {t("loadingSubtitle")}
+          {subtitle ?? t("loadingSubtitle")}
         </p>
       </div>
     </div>

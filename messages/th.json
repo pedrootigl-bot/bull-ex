@@ -14,6 +14,7 @@
     "register": "สมัครสมาชิก",
     "why": "ทำไมต้อง Bullex",
     "prizes": "ข้อเสนอ",
+    "blog": "บล็อก",
     "menuOpen": "เปิดเมนู",
     "menuClose": "ปิดเมนู"
   },
@@ -251,6 +252,8 @@
     "leadAfter": " สำหรับผู้ที่เทรดกับเรา",
     "body": "สิทธิประโยชน์ที่ออกแบบมาให้เริ่มต้นอย่างมั่นใจและเติบโตไปกับ Bullex",
     "cta": "อยากใช้ข้อเสนอ",
+    "loadingTitle": "Loading offers",
+    "loadingSubtitle": "Please wait while we prepare the RiskFree page for you.",
     "featuredBadge": "แนะนำ",
     "points": {
       "points": "ข้อเสนอสำหรับลูกค้าใหม่และลูกค้าปัจจุบัน",
@@ -450,118 +453,118 @@
   },
   "riskFree": {
     "meta": {
-      "title": "RiskFree Bullex | Trade with Protection and Learn How It Works",
-      "description": "Discover RiskFree Bullex, learn how protection works on an eligible trade, see the step-by-step guide, and explore other Bullex promotions and platform features."
+      "title": "RiskFree Bullex | เทรดพร้อมการป้องกันและเรียนรู้วิธีใช้งาน",
+      "description": "ค้นพบ RiskFree Bullex เรียนรู้การป้องกันในการเทรดที่มีสิทธิ์ ดูขั้นตอน และสำรวจโปรโมชันและฟีเจอร์อื่นของ Bullex"
     },
-    "backToSite": "Back to site",
+    "backToSite": "กลับไปหน้าหลัก",
     "hero": {
       "eyebrow": "RiskFree Bullex",
-      "title": "Trade with more protection with RiskFree Bullex.",
-      "titleLine1": "Trade with more",
-      "titleLine2": "protection with",
-      "lead": "Trade with more protection.\nExperience the market with RiskFree.",
-      "body": "Discover a way to trade with an extra layer of protection. With RiskFree, an eligible trade may include protection if the result is negative, subject to campaign terms.",
-      "cta": "I want to activate my RiskFree",
-      "finePrint": "Review the rules, limits, and applicable conditions before using the benefit.",
-      "imageAlt": "Bullex RiskFree ticket with protection seal",
-      "titleBefore": "Trade with more protection with",
+      "title": "เทรดพร้อมการป้องกันมากขึ้นด้วย RiskFree Bullex.",
+      "titleLine1": "เทรดพร้อมการ",
+      "titleLine2": "ป้องกันมากขึ้นด้วย",
+      "lead": "เทรดพร้อมการป้องกันมากขึ้น.\nสัมผัสตลาดด้วย RiskFree.",
+      "body": "ค้นพบวิธีเทรดพร้อมชั้นการป้องกันเพิ่มเติม ด้วย RiskFree การเทรดที่มีสิทธิ์อาจได้รับการป้องกันหากผลลัพธ์เป็นลบ ตามเงื่อนไขของแคมเปญ",
+      "cta": "ต้องการเปิดใช้ RiskFree",
+      "finePrint": "ตรวจสอบกฎ ข้อจำกัด และเงื่อนไขที่เกี่ยวข้องก่อนใช้สิทธิประโยชน์",
+      "imageAlt": "ตั๋ว RiskFree Bullex พร้อมตราประทับการป้องกัน",
+      "titleBefore": "เทรดพร้อมการป้องกันมากขึ้นด้วย",
       "titleHighlight": "RiskFree Bullex.",
-      "visualCaption": "Trade with more confidence",
-      "visualBadge": "Same market. More freedom.",
+      "visualCaption": "เทรดด้วยความมั่นใจมากขึ้น",
+      "visualBadge": "ตลาดเดิม อิสระมากขึ้น",
       "highlights": {
-        "protect": "More protection on your trades",
-        "trade": "Try with more peace of mind",
-        "community": "Built for those who want to grow",
-        "premium": "Eligible promotional benefit"
+        "protect": "ป้องกันการเทรดมากขึ้น",
+        "trade": "ลองด้วยความสบายใจมากขึ้น",
+        "community": "สำหรับผู้ที่อยากเติบโต",
+        "premium": "สิทธิประโยชน์โปรโมชันที่มีสิทธิ์"
       }
     },
     "what": {
-      "eyebrow": "More protection to trade",
-      "title": "What is RiskFree?",
-      "lead": "You trade.\nRiskFree helps protect your trade.",
-      "body": "RiskFree is a Bullex promotional benefit created to offer protection on an eligible trade. If that trade ends with a negative result, the benefit may refund or compensate the protected amount, within the promotion limits and conditions.",
-      "tagline": "More confidence to start. More freedom to explore.",
-      "videoAlt": "Explainer video about Bullex RiskFree",
+      "eyebrow": "การป้องกันมากขึ้นในการเทรด",
+      "title": "RiskFree คืออะไร?",
+      "lead": "คุณเทรด.\nRiskFree ช่วยป้องกันการเทรดของคุณ.",
+      "body": "RiskFree คือสิทธิประโยชน์โปรโมชันของ Bullex ที่ออกแบบมาเพื่อมอบการป้องกันในการเทรดที่มีสิทธิ์ หากการเทรดนั้นจบด้วยผลลัพธ์ติดลบ สิทธิประโยชน์อาจคืนหรือชดเชยจำนวนเงินที่ป้องกันไว้ ภายใต้ข้อจำกัดและเงื่อนไขของโปรโมชัน",
+      "tagline": "มั่นใจมากขึ้นตอนเริ่ม อิสระมากขึ้นในการสำรวจ",
+      "videoAlt": "วิดีโออธิบาย RiskFree Bullex",
       "points": {
         "protected": {
-          "title": "Protected trade",
-          "text": "Use the benefit on an eligible trade."
+          "title": "การเทรดที่ได้รับการป้องกัน",
+          "text": "ใช้สิทธิประโยชน์กับการเทรดที่มีสิทธิ์"
         },
         "loss": {
-          "title": "Protection on a loss",
-          "text": "If the protected trade closes negatively, the campaign protection applies."
+          "title": "การป้องกันเมื่อขาดทุน",
+          "text": "หากการเทรดที่ป้องกันปิดผลลัพธ์ติดลบ การป้องกันของแคมเปญจะมีผล"
         },
         "try": {
-          "title": "Try the platform",
-          "text": "Experience Bullex trading while using the benefit."
+          "title": "ลองใช้แพลตฟอร์ม",
+          "text": "สัมผัสการเทรดบน Bullex พร้อมใช้สิทธิประโยชน์"
         }
       }
     },
     "how": {
-      "eyebrow": "Simple from start to finish",
-      "title": "How it works",
-      "lead": "Activate. Trade.\nCount on protection.",
-      "cta": "Activate my RiskFree",
-      "note": "Amounts, limits, availability, and rules may vary by campaign and account.",
+      "eyebrow": "ง่ายตั้งแต่ต้นจนจบ",
+      "title": "ทำงานอย่างไร",
+      "lead": "เปิดใช้. เทรด.\nพึ่งพาการป้องกันได้.",
+      "cta": "เปิดใช้ RiskFree ของฉัน",
+      "note": "จำนวนเงิน ข้อจำกัด ความพร้อมใช้ และกฎอาจแตกต่างตามแคมเปญและบัญชี",
       "steps": {
         "activate": {
-          "title": "Activate your RiskFree",
-          "text": "Access the promotion available for your account and review the benefit conditions."
+          "title": "เปิดใช้ RiskFree",
+          "text": "เข้าถึงโปรโมชันที่มีสำหรับบัญชีของคุณและตรวจสอบเงื่อนไขสิทธิประโยชน์"
         },
         "choose": {
-          "title": "Choose your trade",
-          "text": "Select an asset and place an eligible trade within the campaign rules."
+          "title": "เลือกการเทรด",
+          "text": "เลือกสินทรัพย์และเปิดการเทรดที่มีสิทธิ์ตามกฎแคมเปญ"
         },
         "protect": {
-          "title": "Use the protection",
-          "text": "The selected trade then includes the coverage provided by RiskFree."
+          "title": "ใช้การป้องกัน",
+          "text": "การเทรดที่เลือกจะได้รับการคุ้มครองจาก RiskFree"
         },
         "result": {
-          "title": "Trade result",
-          "text": "If the result is positive, you continue as usual. If negative, protection applies under the promotion terms."
+          "title": "ผลลัพธ์การเทรด",
+          "text": "หากผลเป็นบวก คุณดำเนินการตามปกติ หากเป็นลบ การป้องกันจะมีผลตามเงื่อนไขโปรโมชัน"
         }
       }
     },
     "ecosystem": {
-      "eyebrow": "More opportunities on Bullex",
-      "title": "RiskFree is just the beginning.",
-      "body": "Beyond RiskFree, Bullex runs campaigns, bonuses, tournaments, and promotions for eligible users. Follow bonus programs and promotions among the platform features.",
-      "cta": "See available promotions",
-      "comingSoon": "News coming soon"
+      "eyebrow": "โอกาสมากขึ้นบน Bullex",
+      "title": "RiskFree เป็นเพียงจุดเริ่มต้น",
+      "body": "นอกจาก RiskFree แล้ว Bullex ยังมีแคมเปญ โบนัส ทัวร์นาเมนต์ และโปรโมชันสำหรับผู้ใช้ที่มีสิทธิ์ ติดตามโปรแกรมโบนัสและโปรโมชันในฟีเจอร์ของแพลตฟอร์ม",
+      "cta": "ดูโปรโมชันที่มี",
+      "comingSoon": "ข่าวสารเร็วๆ นี้"
     },
     "about": {
-      "eyebrow": "Meet Bullex",
-      "title": "A platform built to go further.",
-      "body": "Bullex offers a complete experience for traders, with access to diverse markets, advanced tools, and specialized support.",
-      "cta": "Discover Bullex",
+      "eyebrow": "ทำความรู้จัก Bullex",
+      "title": "แพลตฟอร์มที่สร้างมาเพื่อไปต่อ",
+      "body": "Bullex มอบประสบการณ์ครบวงจรสำหรับเทรดเดอร์ พร้อมเข้าถึงตลาดที่หลากหลาย เครื่องมือขั้นสูง และการสนับสนุนเฉพาะทาง",
+      "cta": "ค้นพบ Bullex",
       "points": {
         "assets": {
-          "title": "200+ assets",
-          "text": "Explore different opportunities in a single platform."
+          "title": "สินทรัพย์กว่า 200 รายการ",
+          "text": "สำรวจโอกาสต่างๆ ในแพลตฟอร์มเดียว"
         },
         "demo": {
-          "title": "Demo account",
-          "text": "Learn the tools using virtual balance before trading with real funds."
+          "title": "บัญชีทดลอง",
+          "text": "เรียนรู้เครื่องมือด้วยยอดเงินเสมือนก่อนเทรดด้วยเงินจริง"
         },
         "support": {
-          "title": "24/7 support",
-          "text": "Get support whenever you need it."
+          "title": "ซัพพอร์ต 24/7",
+          "text": "รับความช่วยเหลือเมื่อคุณต้องการ"
         },
         "mobile": {
-          "title": "Multiplatform experience",
-          "text": "Access and trade from your phone as well."
+          "title": "ประสบการณ์หลายแพลตฟอร์ม",
+          "text": "เข้าถึงและเทรดจากมือถือได้เช่นกัน"
         }
       },
-      "imageAlt": "Bullex platform on laptop and phone",
-      "visualCaption": "Technology that boosts your potential"
+      "imageAlt": "แพลตฟอร์ม Bullex บนแล็ปท็อปและมือถือ",
+      "visualCaption": "เทคโนโลยีที่เสริมพลังศักยภาพของคุณ"
     },
     "final": {
-      "eyebrow": "Start with more protection",
-      "title": "Your next trade can\nstart with RiskFree.",
-      "body": "Explore the promotion, review the conditions available for your account, and try the Bullex platform with a protected trade.",
-      "ctaPrimary": "I want my RiskFree",
-      "ctaSecondary": "Discover Bullex",
-      "visualBadge": "More traders. More wins."
+      "eyebrow": "เริ่มต้นด้วยการป้องกันมากขึ้น",
+      "title": "การเทรดครั้งต่อไปของคุณอาจ\nเริ่มด้วย RiskFree",
+      "body": "สำรวจโปรโมชัน ตรวจสอบเงื่อนไขที่มีสำหรับบัญชีของคุณ และลองแพลตฟอร์ม Bullex ด้วยการเทรดที่ได้รับการป้องกัน",
+      "ctaPrimary": "ต้องการ RiskFree ของฉัน",
+      "ctaSecondary": "รู้จัก Bullex",
+      "visualBadge": "เทรดเดอร์มากขึ้น ชัยชนะมากขึ้น"
     }
   }
 }

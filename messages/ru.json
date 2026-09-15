@@ -14,6 +14,7 @@
     "register": "Регистрация",
     "why": "Почему Bullex",
     "prizes": "Предложения",
+    "blog": "Блог",
     "menuOpen": "Открыть меню",
     "menuClose": "Закрыть меню"
   },
@@ -251,6 +252,8 @@
     "leadAfter": " для тех, кто торгует с нами.",
     "body": "Преимущества, чтобы начать увереннее и развиваться на Bullex.",
     "cta": "Хочу воспользоваться предложениями",
+    "loadingTitle": "Loading offers",
+    "loadingSubtitle": "Please wait while we prepare the RiskFree page for you.",
     "featuredBadge": "В фокусе",
     "points": {
       "points": "Активные предложения для новых и текущих клиентов.",
@@ -450,118 +453,118 @@
   },
   "riskFree": {
     "meta": {
-      "title": "RiskFree Bullex | Trade with Protection and Learn How It Works",
-      "description": "Discover RiskFree Bullex, learn how protection works on an eligible trade, see the step-by-step guide, and explore other Bullex promotions and platform features."
+      "title": "RiskFree Bullex | Торгуйте с защитой и узнайте, как это работает",
+      "description": "Узнайте о RiskFree Bullex: как работает защита по подходящей сделке, пошаговый процесс и другие акции и возможности платформы Bullex."
     },
-    "backToSite": "Back to site",
+    "backToSite": "На главную",
     "hero": {
       "eyebrow": "RiskFree Bullex",
-      "title": "Trade with more protection with RiskFree Bullex.",
-      "titleLine1": "Trade with more",
-      "titleLine2": "protection with",
-      "lead": "Trade with more protection.\nExperience the market with RiskFree.",
-      "body": "Discover a way to trade with an extra layer of protection. With RiskFree, an eligible trade may include protection if the result is negative, subject to campaign terms.",
-      "cta": "I want to activate my RiskFree",
-      "finePrint": "Review the rules, limits, and applicable conditions before using the benefit.",
-      "imageAlt": "Bullex RiskFree ticket with protection seal",
-      "titleBefore": "Trade with more protection with",
+      "title": "Торгуйте с большей защитой с RiskFree Bullex.",
+      "titleLine1": "Торгуйте с большей",
+      "titleLine2": "защитой с",
+      "lead": "Торгуйте с большей защитой.\nОщутите рынок с RiskFree.",
+      "body": "Откройте способ торговать с дополнительным уровнем защиты. С RiskFree подходящая сделка может включать защиту при отрицательном результате — в соответствии с условиями кампании.",
+      "cta": "Хочу активировать RiskFree",
+      "finePrint": "Ознакомьтесь с правилами, лимитами и условиями до использования бонуса.",
+      "imageAlt": "Билет RiskFree Bullex с печатью защиты",
+      "titleBefore": "Торгуйте с большей защитой с",
       "titleHighlight": "RiskFree Bullex.",
-      "visualCaption": "Trade with more confidence",
-      "visualBadge": "Same market. More freedom.",
+      "visualCaption": "Торгуйте увереннее",
+      "visualBadge": "Тот же рынок. Больше свободы.",
       "highlights": {
-        "protect": "More protection on your trades",
-        "trade": "Try with more peace of mind",
-        "community": "Built for those who want to grow",
-        "premium": "Eligible promotional benefit"
+        "protect": "Больше защиты в сделках",
+        "trade": "Пробуйте спокойнее",
+        "community": "Для тех, кто хочет расти",
+        "premium": "Доступный промобонус"
       }
     },
     "what": {
-      "eyebrow": "More protection to trade",
-      "title": "What is RiskFree?",
-      "lead": "You trade.\nRiskFree helps protect your trade.",
-      "body": "RiskFree is a Bullex promotional benefit created to offer protection on an eligible trade. If that trade ends with a negative result, the benefit may refund or compensate the protected amount, within the promotion limits and conditions.",
-      "tagline": "More confidence to start. More freedom to explore.",
-      "videoAlt": "Explainer video about Bullex RiskFree",
+      "eyebrow": "Больше защиты для торговли",
+      "title": "Что такое RiskFree?",
+      "lead": "Вы торгуете.\nRiskFree помогает защитить сделку.",
+      "body": "RiskFree — промобонус Bullex, созданный для защиты подходящей сделки. Если она завершится с отрицательным результатом, бонус может компенсировать защищённую сумму в пределах лимитов и условий акции.",
+      "tagline": "Больше уверенности на старте. Больше свободы исследовать.",
+      "videoAlt": "Видео о RiskFree Bullex",
       "points": {
         "protected": {
-          "title": "Protected trade",
-          "text": "Use the benefit on an eligible trade."
+          "title": "Защищённая сделка",
+          "text": "Используйте бонус на подходящей сделке."
         },
         "loss": {
-          "title": "Protection on a loss",
-          "text": "If the protected trade closes negatively, the campaign protection applies."
+          "title": "Защита при убытке",
+          "text": "Если защищённая сделка закрылась в минус, действует защита кампании."
         },
         "try": {
-          "title": "Try the platform",
-          "text": "Experience Bullex trading while using the benefit."
+          "title": "Попробуйте платформу",
+          "text": "Ощутите торговлю на Bullex, используя бонус."
         }
       }
     },
     "how": {
-      "eyebrow": "Simple from start to finish",
-      "title": "How it works",
-      "lead": "Activate. Trade.\nCount on protection.",
-      "cta": "Activate my RiskFree",
-      "note": "Amounts, limits, availability, and rules may vary by campaign and account.",
+      "eyebrow": "Просто от начала до конца",
+      "title": "Как это работает",
+      "lead": "Активируйте. Торгуйте.\nРассчитывайте на защиту.",
+      "cta": "Активировать RiskFree",
+      "note": "Суммы, лимиты, доступность и правила могут отличаться в зависимости от кампании и счёта.",
       "steps": {
         "activate": {
-          "title": "Activate your RiskFree",
-          "text": "Access the promotion available for your account and review the benefit conditions."
+          "title": "Активируйте RiskFree",
+          "text": "Откройте акцию, доступную для вашего счёта, и изучите условия бонуса."
         },
         "choose": {
-          "title": "Choose your trade",
-          "text": "Select an asset and place an eligible trade within the campaign rules."
+          "title": "Выберите сделку",
+          "text": "Выберите актив и откройте подходящую сделку по правилам кампании."
         },
         "protect": {
-          "title": "Use the protection",
-          "text": "The selected trade then includes the coverage provided by RiskFree."
+          "title": "Используйте защиту",
+          "text": "Выбранная сделка получает покрытие RiskFree."
         },
         "result": {
-          "title": "Trade result",
-          "text": "If the result is positive, you continue as usual. If negative, protection applies under the promotion terms."
+          "title": "Результат сделки",
+          "text": "При положительном результате вы продолжаете как обычно. При отрицательном — действует защита по условиям акции."
         }
       }
     },
     "ecosystem": {
-      "eyebrow": "More opportunities on Bullex",
-      "title": "RiskFree is just the beginning.",
-      "body": "Beyond RiskFree, Bullex runs campaigns, bonuses, tournaments, and promotions for eligible users. Follow bonus programs and promotions among the platform features.",
-      "cta": "See available promotions",
-      "comingSoon": "News coming soon"
+      "eyebrow": "Больше возможностей на Bullex",
+      "title": "RiskFree — только начало.",
+      "body": "Помимо RiskFree, Bullex проводит кампании, бонусы, турниры и акции для подходящих пользователей. Следите за бонусными программами среди возможностей платформы.",
+      "cta": "Смотреть доступные акции",
+      "comingSoon": "Скоро новости"
     },
     "about": {
-      "eyebrow": "Meet Bullex",
-      "title": "A platform built to go further.",
-      "body": "Bullex offers a complete experience for traders, with access to diverse markets, advanced tools, and specialized support.",
-      "cta": "Discover Bullex",
+      "eyebrow": "Знакомьтесь с Bullex",
+      "title": "Платформа, созданная идти дальше.",
+      "body": "Bullex предлагает полный опыт для трейдеров: доступ к разным рынкам, продвинутые инструменты и специализированная поддержка.",
+      "cta": "Открыть Bullex",
       "points": {
         "assets": {
-          "title": "200+ assets",
-          "text": "Explore different opportunities in a single platform."
+          "title": "Более 200 активов",
+          "text": "Изучайте разные возможности на одной платформе."
         },
         "demo": {
-          "title": "Demo account",
-          "text": "Learn the tools using virtual balance before trading with real funds."
+          "title": "Демо-счёт",
+          "text": "Изучайте инструменты на виртуальном балансе до торговли реальными средствами."
         },
         "support": {
-          "title": "24/7 support",
-          "text": "Get support whenever you need it."
+          "title": "Поддержка 24/7",
+          "text": "Получайте помощь, когда она нужна."
         },
         "mobile": {
-          "title": "Multiplatform experience",
-          "text": "Access and trade from your phone as well."
+          "title": "Мультиплатформенный опыт",
+          "text": "Заходите и торгуйте также с телефона."
         }
       },
-      "imageAlt": "Bullex platform on laptop and phone",
-      "visualCaption": "Technology that boosts your potential"
+      "imageAlt": "Платформа Bullex на ноутбуке и телефоне",
+      "visualCaption": "Технологии, которые усиливают ваш потенциал"
     },
     "final": {
-      "eyebrow": "Start with more protection",
-      "title": "Your next trade can\nstart with RiskFree.",
-      "body": "Explore the promotion, review the conditions available for your account, and try the Bullex platform with a protected trade.",
-      "ctaPrimary": "I want my RiskFree",
-      "ctaSecondary": "Discover Bullex",
-      "visualBadge": "More traders. More wins."
+      "eyebrow": "Начните с большей защитой",
+      "title": "Ваша следующая сделка может\nначаться с RiskFree.",
+      "body": "Изучите акцию, проверьте условия для вашего счёта и попробуйте платформу Bullex с защищённой операцией.",
+      "ctaPrimary": "Хочу свой RiskFree",
+      "ctaSecondary": "Узнать Bullex",
+      "visualBadge": "Больше трейдеров. Больше побед."
     }
   }
 }

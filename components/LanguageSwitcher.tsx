@@ -11,7 +11,8 @@ import {
   type Locale,
 } from "@/i18n/config";
 import { getSavedLocale } from "@/i18n/getSavedLocale";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { withBasePath } from "@/lib/basePath";
 import styles from "./languageSwitcher.module.css";
 
 function currentCanonical(pathLocale: string): Locale {
@@ -41,7 +42,6 @@ function localeTriggerLabel(locale: Locale): string {
 
 export function LanguageSwitcher() {
   const t = useTranslations("languageSwitcher");
-  const router = useRouter();
   const pathname = usePathname();
   const pathLocale = useLocale();
   const current = currentCanonical(pathLocale);
@@ -61,14 +61,17 @@ export function LanguageSwitcher() {
 
   function selectLocale(next: Locale) {
     const valid = getSavedLocale(next);
-    if (!valid) {
+    if (!valid || valid === current) {
+      setOpen(false);
       return;
     }
 
     document.cookie = localeCookieString(valid, window.location.protocol === "https:");
     const hash = window.location.hash;
-    router.replace(`${pathname}${hash}`, { locale: localeToPathLocale(valid) });
-    setOpen(false);
+    const localePath = localeToPathLocale(valid);
+    const pagePath = pathname === "/" ? "" : pathname;
+    // Export estático: full reload garante mensagens/HTML do locale escolhido
+    window.location.assign(withBasePath(`/${localePath}${pagePath}${hash}`));
   }
 
   return (

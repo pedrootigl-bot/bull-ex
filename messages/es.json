@@ -14,6 +14,7 @@
     "register": "Regístrate",
     "why": "Por qué Bullex",
     "prizes": "Ofertas",
+    "blog": "Blog",
     "menuOpen": "Abrir menú",
     "menuClose": "Cerrar menú"
   },
@@ -251,6 +252,8 @@
     "leadAfter": " para quien opera con nosotros.",
     "body": "Beneficios pensados para que empieces con más seguridad y avances en Bullex.",
     "cta": "Quiero aprovechar las ofertas",
+    "loadingTitle": "Cargando ofertas",
+    "loadingSubtitle": "Espera mientras preparamos la página RiskFree para ti.",
     "featuredBadge": "Destacado",
     "points": {
       "points": "Ofertas activas para clientes nuevos y actuales.",

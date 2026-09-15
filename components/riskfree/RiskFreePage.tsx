@@ -2,13 +2,15 @@
 
 import { SiteFooter } from "@/components/footer/Footer";
 import { GhostFibers } from "@/components/ghostFibers/GhostFibers";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
 import { SplitFlapText } from "@/components/splitFlapText/SplitFlapText";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Link } from "@/i18n/navigation";
 import { withBasePath } from "@/lib/basePath";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import stackStyles from "@/components/scrollStack/scrollStack.module.css";
 import {
   ABOUT_POINTS,
@@ -18,6 +20,14 @@ import {
   WHAT_IS_POINTS,
 } from "./riskfreeConfig";
 import styles from "./riskfree.module.css";
+
+function useTradeHrefs() {
+  const locale = useLocale();
+  return {
+    login: bullexLoginHref(locale),
+    register: bullexRegisterHref(locale),
+  };
+}
 
 function FadeTitle({
   as: Tag = "h2",
@@ -56,16 +66,14 @@ function FadeTitle({
     return () => observer.disconnect();
   }, [reducedMotion]);
 
-  const Heading = Tag as ElementType;
-
   return (
-    <Heading
+    <Tag
       ref={ref}
       id={id}
       className={`${className} ${styles.titleFade} ${visible ? styles.titleFadeIn : styles.titleFadeOut}`.trim()}
     >
       {children}
-    </Heading>
+    </Tag>
   );
 }
 
@@ -177,6 +185,7 @@ function RiskFreeHeader() {
   const t = useTranslations("riskFree");
   const nav = useTranslations("navigation");
   const locale = useLocale();
+  const { login, register } = useTradeHrefs();
 
   return (
     <header className={styles.header}>
@@ -195,7 +204,7 @@ function RiskFreeHeader() {
         <nav className={styles.headerNav} aria-label={nav("aria")}>
           <a href={withBasePath(`/${locale}/#ofertas`)}>{nav("prizes")}</a>
           <Link href="/blog" prefetch={false}>
-            Blog
+            {nav("blog")}
           </Link>
           <Link href="/" prefetch={false}>
             {t("backToSite")}
@@ -203,10 +212,11 @@ function RiskFreeHeader() {
         </nav>
 
         <div className={styles.headerActions}>
-          <a className={styles.loginLink} href={RISKFREE_COPY.activateHref}>
+          <LanguageSwitcher />
+          <a className={styles.loginLink} href={login}>
             {nav("login")}
           </a>
-          <a className={styles.headerCta} href={RISKFREE_COPY.activateHref}>
+          <a className={styles.headerCta} href={register}>
             {nav("register")}
           </a>
         </div>
@@ -321,6 +331,7 @@ function HeroTitleLine({
 
 function HeroSection() {
   const t = useTranslations("riskFree");
+  const { register } = useTradeHrefs();
   const titleLine1 = t("hero.titleLine1");
   const titleLine2 = t("hero.titleLine2");
   const titleHighlight = t("hero.titleHighlight");
@@ -356,10 +367,16 @@ function HeroSection() {
               />
             </span>
           </h1>
-          <p className={styles.heroBody}>{t("hero.body")}</p>
+          <p className={`${styles.heroBody} ${styles.heroFadeItem} ${styles.heroFadeDelay1}`}>
+            {t("hero.body")}
+          </p>
           <div className={styles.heroActions}>
-            <PrimaryCta label={t("hero.cta")} href={RISKFREE_COPY.activateHref} solid />
-            <p className={styles.finePrint}>{t("hero.finePrint")}</p>
+            <div className={`${styles.heroFadeItem} ${styles.heroFadeDelay2}`}>
+              <PrimaryCta label={t("hero.cta")} href={register} solid />
+            </div>
+            <p className={`${styles.finePrint} ${styles.heroFadeItem} ${styles.heroFadeDelay3}`}>
+              {t("hero.finePrint")}
+            </p>
           </div>
         </div>
       </div>
@@ -454,6 +471,7 @@ function WhatPointCard({
 
 function WhatIsSection() {
   const t = useTranslations("riskFree");
+  const { register } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
 
   return (
@@ -465,7 +483,7 @@ function WhatIsSection() {
             {t("what.title")}
           </FadeTitle>
           <p className={styles.sectionBody}>{t("what.body")}</p>
-          <TextLink label={t("what.tagline")} href={RISKFREE_COPY.activateHref} />
+          <TextLink label={t("what.tagline")} href={register} />
         </header>
 
         <div className={styles.whatAside}>
@@ -516,6 +534,7 @@ function WhatIsSection() {
 
 function HowSection() {
   const t = useTranslations("riskFree");
+  const { register } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
   const stepRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [activeStep, setActiveStep] = useState(0);
@@ -653,7 +672,7 @@ function HowSection() {
           </nav>
 
           <div className={styles.sectionActions}>
-            <SecondaryCta label={t("how.cta")} href={RISKFREE_COPY.activateHref} />
+            <SecondaryCta label={t("how.cta")} href={register} />
           </div>
         </aside>
 
@@ -756,6 +775,7 @@ function EcosystemSection() {
 
 function FinalCtaSection() {
   const t = useTranslations("riskFree");
+  const { register } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(reducedMotion);
@@ -819,7 +839,7 @@ function FinalCtaSection() {
             </h2>
             <p className={styles.finalBody}>{t("final.body")}</p>
             <div className={styles.finalActions}>
-              <PrimaryCta label={t("final.ctaPrimary")} href={RISKFREE_COPY.activateHref} solid />
+              <PrimaryCta label={t("final.ctaPrimary")} href={register} solid />
               <SecondaryCta label={t("final.ctaSecondary")} href="/" />
             </div>
           </div>

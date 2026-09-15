@@ -6,9 +6,17 @@ import { useBlogNavigation } from "./BlogNavigationContext";
 
 type BlogNavLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: string;
+  loadingTitle?: string;
+  loadingSubtitle?: string;
 };
 
-export function BlogNavLink({ href, onClick, ...props }: BlogNavLinkProps) {
+export function BlogNavLink({
+  href,
+  onClick,
+  loadingTitle,
+  loadingSubtitle,
+  ...props
+}: BlogNavLinkProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { startBlogNavigation } = useBlogNavigation();
@@ -34,7 +42,11 @@ export function BlogNavLink({ href, onClick, ...props }: BlogNavLinkProps) {
     }
 
     event.preventDefault();
-    startBlogNavigation();
+    startBlogNavigation(
+      loadingTitle && loadingSubtitle
+        ? { title: loadingTitle, subtitle: loadingSubtitle }
+        : undefined,
+    );
     router.push(href);
   }
 

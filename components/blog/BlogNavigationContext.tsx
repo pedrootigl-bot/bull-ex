@@ -13,8 +13,13 @@ import { BlogLoadingModal } from "./BlogLoadingModal";
 
 const NAVIGATION_TIMEOUT_MS = 15000;
 
+type LoadingCopy = {
+  title: string;
+  subtitle: string;
+};
+
 type BlogNavigationContextValue = {
-  startBlogNavigation: () => void;
+  startBlogNavigation: (copy?: LoadingCopy) => void;
   endBlogNavigation: () => void;
 };
 
@@ -22,6 +27,7 @@ const BlogNavigationContext = createContext<BlogNavigationContextValue | null>(n
 
 export function BlogNavigationProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingCopy, setLoadingCopy] = useState<LoadingCopy | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const endBlogNavigation = useCallback(() => {
@@ -30,16 +36,19 @@ export function BlogNavigationProvider({ children }: { children: ReactNode }) {
       timeoutRef.current = null;
     }
     setIsLoading(false);
+    setLoadingCopy(null);
   }, []);
 
-  const startBlogNavigation = useCallback(() => {
+  const startBlogNavigation = useCallback((copy?: LoadingCopy) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
+    setLoadingCopy(copy ?? null);
     setIsLoading(true);
     timeoutRef.current = setTimeout(() => {
       setIsLoading(false);
+      setLoadingCopy(null);
       timeoutRef.current = null;
     }, NAVIGATION_TIMEOUT_MS);
   }, []);
@@ -55,7 +64,11 @@ export function BlogNavigationProvider({ children }: { children: ReactNode }) {
   return (
     <BlogNavigationContext.Provider value={value}>
       {children}
-      <BlogLoadingModal open={isLoading} />
+      <BlogLoadingModal
+        open={isLoading}
+        title={loadingCopy?.title}
+        subtitle={loadingCopy?.subtitle}
+      />
     </BlogNavigationContext.Provider>
   );
 }

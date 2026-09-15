@@ -1,3 +1,4 @@
+import { BlogPageReady } from "@/components/blog/BlogPageReady";
 import { RiskFreePage } from "@/components/riskfree/RiskFreePage";
 import { isPathLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
@@ -36,5 +37,10 @@ export default async function RiskFreeRoute({ params }: RiskFreeRouteProps) {
 
   setRequestLocale(locale);
 
-  return <RiskFreePage />;
+  return (
+    <>
+      <BlogPageReady />
+      <RiskFreePage />
+    </>
+  );
 }

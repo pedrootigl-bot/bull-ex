@@ -194,7 +194,7 @@ export function SplitFlapText({
       const targetChars = targetPhrase.split("");
 
       const plans = targetChars
-        .map((targetChar, index) => {
+        .map((targetChar, index): FlipPlan | null => {
           const fromChar = fromPhrase[index] || " ";
           if (fromChar === targetChar) {
             return null;
@@ -208,9 +208,9 @@ export function SplitFlapText({
             start: index * safeStaggerMs,
             step: -1,
             done: false,
-          } satisfies FlipPlan;
+          };
         })
-        .filter((plan): plan is FlipPlan => Boolean(plan));
+        .filter((plan): plan is FlipPlan => plan !== null);
 
       if (!plans.length) {
         currentTextRef.current = targetPhrase;

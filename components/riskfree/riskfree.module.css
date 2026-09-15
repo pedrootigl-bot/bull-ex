@@ -197,6 +197,32 @@
   line-height: 1.65;
 }
 
+.heroFadeItem {
+  opacity: 0;
+  transform: translateY(0.55rem);
+  animation: heroFadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.heroFadeDelay1 {
+  animation-delay: 1.05s;
+}
+
+.heroFadeDelay2 {
+  animation-delay: 1.28s;
+}
+
+.heroFadeDelay3 {
+  animation-delay: 1.5s;
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .heroActions {
   display: flex;
   flex-direction: column;
@@ -1391,6 +1417,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .heroFadeItem,
+  .heroFadeDelay1,
+  .heroFadeDelay2,
+  .heroFadeDelay3 {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    will-change: auto;
+  }
+
   .ctaBeam {
     animation: none;
   }
