@@ -268,8 +268,13 @@
   will-change: transform;
 }
 
+.revealMediaZoomOut {
+  inset: 0;
+}
+
 .revealPhoto {
   object-fit: cover;
+  object-position: center;
   image-rendering: auto;
 }
 

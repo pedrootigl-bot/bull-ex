@@ -13,7 +13,7 @@
     "login": "เข้าสู่ระบบ",
     "register": "สมัครสมาชิก",
     "why": "ทำไมต้อง Bullex",
-    "prizes": "รางวัล",
+    "prizes": "ข้อเสนอ",
     "menuOpen": "เปิดเมนู",
     "menuClose": "ปิดเมนู"
   },
@@ -58,7 +58,7 @@
     "risk": "คำเตือนความเสี่ยง",
     "disclaimer": "การซื้อขายสินทรัพย์มีความเสี่ยง ใช้เฉพาะเงินทุนที่สูญเสียได้ เนื้อหานี้เป็นข้อมูลเพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน",
     "copyright": "© 2026 Bullex สงวนลิขสิทธิ์",
-    "prizes": "รางวัล",
+    "prizes": "ข้อเสนอ",
     "riskAlert": "คำเตือนความเสี่ยง: ผลิตภัณฑ์ทางการเงินที่บริษัทเสนอมีความเสี่ยงสูงและอาจทำให้เกิดการสูญเสีย คุณไม่ควรลงทุนด้วยเงินที่สูญเสียแล้วจะเดือดร้อน",
     "companyLegal": "Digital Smart LLC ที่อยู่: Lighthouse Trust Nevis Ltd, Suite 1, A.L. Evelyn Ltd Building, Main Street, Charlestown, Nevis, Registration Number L 22205",
     "paymentsLegal": "ธุรกรรมการชำระเงินดูแลโดย: DIGITAL SMART CY LIMITED ที่อยู่: 6 Koutsoventi street, Agios Athanasios, 4101, Limassol, Cyprus Company business number: HE 410889"
@@ -244,27 +244,27 @@
     "photoAlt": "มือถือถือแอป Bullex"
   },
   "prizes": {
-    "eyebrow": "รางวัลพรีเมียม",
-    "title": "ของรางวัล",
-    "leadBefore": "รางวัล",
+    "eyebrow": "ข้อเสนอพิเศษ",
+    "title": "ข้อเสนอ",
+    "leadBefore": "เงื่อนไข",
     "leadHighlight": "พิเศษ",
     "leadAfter": " สำหรับผู้ที่เทรดกับเรา",
-    "body": "สะสมแต้มทุกครั้งที่เทรด แลกเป็นของรางวัลจริง",
-    "cta": "อยากได้รางวัล",
-    "featuredBadge": "รางวัลใหญ่",
+    "body": "สิทธิประโยชน์ที่ออกแบบมาให้เริ่มต้นอย่างมั่นใจและเติบโตไปกับ Bullex",
+    "cta": "อยากใช้ข้อเสนอ",
+    "featuredBadge": "แนะนำ",
     "points": {
-      "points": "สะสมแต้มทุกออเดอร์",
-      "redeem": "แลกของรางวัลพิเศษ",
-      "safe": "ปลอดภัยและโปร่งใส 100%"
+      "points": "ข้อเสนอสำหรับลูกค้าใหม่และลูกค้าปัจจุบัน",
+      "redeem": "สิทธิประโยชน์ชัดเจน ไม่มีตัวเล็กซ่อนไว้",
+      "safe": "โปร่งใส 100% — คุณควบคุมได้"
     },
     "barNote": "โปร่งใสทุกขั้นตอน คุณควบคุมได้เสมอ",
-    "barSocial": "ลูกค้ากว่า 25,000 คนได้รับรางวัลแล้ว",
+    "barSocial": "ลูกค้าหลายพันคนใช้เงื่อนไข Bullex อยู่แล้ว",
     "cards": {
-      "car": {
-        "title": "รถป้ายแดง",
+      "riskFree": {
+        "title": "Risk Free",
         "titleHighlight": "",
-        "text": "รางวัลที่ใคร่ที่สุดสำหรับผู้ที่เทรดในระดับสูงสุด",
-        "imageAlt": "รถยนต์ใหม่จากโปรแกรมรางวัล Bullex"
+        "text": "เริ่มต้นพร้อมการปกป้อง: เทรดอย่างสบายใจและลดผลกระทบจากความผิดพลาดครั้งแรก",
+        "imageAlt": "ข้อเสนอ Risk Free ของ Bullex"
       },
       "box": {
         "title": "Trader top Box",
@@ -447,5 +447,121 @@
     "ru": "Русский",
     "th": "ไทย",
     "vi": "Tiếng Việt"
+  },
+  "riskFree": {
+    "meta": {
+      "title": "RiskFree Bullex | Trade with Protection and Learn How It Works",
+      "description": "Discover RiskFree Bullex, learn how protection works on an eligible trade, see the step-by-step guide, and explore other Bullex promotions and platform features."
+    },
+    "backToSite": "Back to site",
+    "hero": {
+      "eyebrow": "RiskFree Bullex",
+      "title": "Trade with more protection with RiskFree Bullex.",
+      "titleLine1": "Trade with more",
+      "titleLine2": "protection with",
+      "lead": "Trade with more protection.\nExperience the market with RiskFree.",
+      "body": "Discover a way to trade with an extra layer of protection. With RiskFree, an eligible trade may include protection if the result is negative, subject to campaign terms.",
+      "cta": "I want to activate my RiskFree",
+      "finePrint": "Review the rules, limits, and applicable conditions before using the benefit.",
+      "imageAlt": "Bullex RiskFree ticket with protection seal",
+      "titleBefore": "Trade with more protection with",
+      "titleHighlight": "RiskFree Bullex.",
+      "visualCaption": "Trade with more confidence",
+      "visualBadge": "Same market. More freedom.",
+      "highlights": {
+        "protect": "More protection on your trades",
+        "trade": "Try with more peace of mind",
+        "community": "Built for those who want to grow",
+        "premium": "Eligible promotional benefit"
+      }
+    },
+    "what": {
+      "eyebrow": "More protection to trade",
+      "title": "What is RiskFree?",
+      "lead": "You trade.\nRiskFree helps protect your trade.",
+      "body": "RiskFree is a Bullex promotional benefit created to offer protection on an eligible trade. If that trade ends with a negative result, the benefit may refund or compensate the protected amount, within the promotion limits and conditions.",
+      "tagline": "More confidence to start. More freedom to explore.",
+      "videoAlt": "Explainer video about Bullex RiskFree",
+      "points": {
+        "protected": {
+          "title": "Protected trade",
+          "text": "Use the benefit on an eligible trade."
+        },
+        "loss": {
+          "title": "Protection on a loss",
+          "text": "If the protected trade closes negatively, the campaign protection applies."
+        },
+        "try": {
+          "title": "Try the platform",
+          "text": "Experience Bullex trading while using the benefit."
+        }
+      }
+    },
+    "how": {
+      "eyebrow": "Simple from start to finish",
+      "title": "How it works",
+      "lead": "Activate. Trade.\nCount on protection.",
+      "cta": "Activate my RiskFree",
+      "note": "Amounts, limits, availability, and rules may vary by campaign and account.",
+      "steps": {
+        "activate": {
+          "title": "Activate your RiskFree",
+          "text": "Access the promotion available for your account and review the benefit conditions."
+        },
+        "choose": {
+          "title": "Choose your trade",
+          "text": "Select an asset and place an eligible trade within the campaign rules."
+        },
+        "protect": {
+          "title": "Use the protection",
+          "text": "The selected trade then includes the coverage provided by RiskFree."
+        },
+        "result": {
+          "title": "Trade result",
+          "text": "If the result is positive, you continue as usual. If negative, protection applies under the promotion terms."
+        }
+      }
+    },
+    "ecosystem": {
+      "eyebrow": "More opportunities on Bullex",
+      "title": "RiskFree is just the beginning.",
+      "body": "Beyond RiskFree, Bullex runs campaigns, bonuses, tournaments, and promotions for eligible users. Follow bonus programs and promotions among the platform features.",
+      "cta": "See available promotions",
+      "comingSoon": "News coming soon"
+    },
+    "about": {
+      "eyebrow": "Meet Bullex",
+      "title": "A platform built to go further.",
+      "body": "Bullex offers a complete experience for traders, with access to diverse markets, advanced tools, and specialized support.",
+      "cta": "Discover Bullex",
+      "points": {
+        "assets": {
+          "title": "200+ assets",
+          "text": "Explore different opportunities in a single platform."
+        },
+        "demo": {
+          "title": "Demo account",
+          "text": "Learn the tools using virtual balance before trading with real funds."
+        },
+        "support": {
+          "title": "24/7 support",
+          "text": "Get support whenever you need it."
+        },
+        "mobile": {
+          "title": "Multiplatform experience",
+          "text": "Access and trade from your phone as well."
+        }
+      },
+      "imageAlt": "Bullex platform on laptop and phone",
+      "visualCaption": "Technology that boosts your potential"
+    },
+    "final": {
+      "eyebrow": "Start with more protection",
+      "title": "Your next trade can\nstart with RiskFree.",
+      "body": "Explore the promotion, review the conditions available for your account, and try the Bullex platform with a protected trade.",
+      "ctaPrimary": "I want my RiskFree",
+      "ctaSecondary": "Discover Bullex",
+      "visualBadge": "More traders. More wins."
+    }
   }
 }

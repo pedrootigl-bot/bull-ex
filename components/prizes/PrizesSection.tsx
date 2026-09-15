@@ -2,6 +2,7 @@
 
 import { useLiteExperience } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { Link } from "@/i18n/navigation";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -79,8 +80,17 @@ function PrizeReveal({
     [0, 0.42],
     ["inset(0% 50% 0% 50%)", "inset(0% 0% 0% 0%)"],
   );
-  const scale = useTransform(scrollYProgress, [0, 0.42, 1], [1.28, 1, 1.08]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const isRiskFree = id === "riskFree";
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.42, 1],
+    isRiskFree ? [1.1, 1, 1.03] : [1.28, 1, 1.08],
+  );
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isRiskFree ? ["0%", "8%"] : ["0%", "16%"],
+  );
   const copyOpacity = useTransform(scrollYProgress, [0.08, 0.36], [0, 1]);
   const copyY = useTransform(scrollYProgress, [0.08, 0.36], [28, 0]);
 
@@ -99,7 +109,7 @@ function PrizeReveal({
       >
         <div className={styles.copyMeta}>
           <span className={styles.index}>{number}</span>
-          {id === "car" ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
+          {id === "riskFree" ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
         </div>
 
         <p className={styles.product}>{t(`cards.${id}.title`)}</p>
@@ -109,7 +119,7 @@ function PrizeReveal({
       <motion.div className={styles.revealMask} style={staticMotion ? undefined : { clipPath }}>
         {src ? (
           <motion.div
-            className={styles.revealMedia}
+            className={`${styles.revealMedia} ${isRiskFree ? styles.revealMediaZoomOut : ""}`}
             style={
               staticMotion
                 ? undefined
@@ -156,7 +166,7 @@ export function PrizesSection() {
           <p className={styles.body}>{t("body")}</p>
 
           <div className={styles.introActions}>
-            <a className={styles.cta} href={PRIZES_COPY.ctaHref}>
+            <Link className={styles.cta} href={PRIZES_COPY.pageHref} prefetch={false}>
               <span className={styles.ctaBeam} aria-hidden="true" />
               <span className={styles.ctaInner}>
                 {t("cta")}
@@ -172,7 +182,7 @@ export function PrizesSection() {
                   </svg>
                 </span>
               </span>
-            </a>
+            </Link>
 
             <ul className={styles.points}>
               {PRIZE_POINTS.map((item) => (

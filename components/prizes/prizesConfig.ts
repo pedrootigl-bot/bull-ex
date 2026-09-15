@@ -1,11 +1,11 @@
 export const PRIZES_COPY = {
-  id: "premios",
-  ctaHref: "https://trade.bull-ex.com/pt/register",
+  id: "ofertas",
+  pageHref: "/riskfree",
 } as const;
 
 export const PRIZE_POINTS = ["points", "redeem", "safe"] as const;
 
-export const FEATURED_PRIZE = "car" as const;
+export const FEATURED_PRIZE = "riskFree" as const;
 
 export const ROW_PRIZES = ["box", "tech"] as const;
 
@@ -15,7 +15,7 @@ export type PrizeId = (typeof PRIZE_CARDS)[number];
 
 /** Caminho em /public quando a imagem do card chegar. */
 export const PRIZE_IMAGES: Record<PrizeId, string | null> = {
-  car: "/images/prizes/haval-h6.webp",
+  riskFree: "/images/prizes/risk-free.webp",
   box: "/images/prizes/trader-top-box.webp",
   tech: "/images/prizes/trader-top.webp",
 };
