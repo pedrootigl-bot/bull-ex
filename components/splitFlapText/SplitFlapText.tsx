@@ -107,6 +107,8 @@ export type SplitFlapTextProps = {
   bare?: boolean;
   className?: string;
   style?: CSSProperties;
+  /** Disparado quando a última frase termina de virar (apenas com loop desligado). */
+  onComplete?: () => void;
 };
 
 export function SplitFlapText({
@@ -127,11 +129,17 @@ export function SplitFlapText({
   bare = false,
   className = "",
   style = {},
+  onComplete,
   ...props
 }: SplitFlapTextProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const rafRef = useRef<number | null>(null);
   const cycleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const onCompleteRef = useRef(onComplete);
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
   const currentTextRef = useRef("");
 
   const sourceWords = Array.isArray(words) && words.length > 0 ? words : DEFAULT_WORDS;
@@ -171,6 +179,7 @@ export function SplitFlapText({
     setTiles(createTiles(firstPhrase));
 
     if (normalizedPhrases.length <= 1 || typeof window === "undefined") {
+      onCompleteRef.current?.();
       return clearAnimation;
     }
 
@@ -183,10 +192,13 @@ export function SplitFlapText({
     const safeFlips = Math.max(0, Math.floor(Number(flipsPerChar) || 0));
     const activeCharset = resolveCharset(charset);
 
-    const animateTo = (targetPhrase: string) => {
+    const animateTo = (targetPhrase: string, isFinal: boolean) => {
       if (prefersReducedMotion) {
         currentTextRef.current = targetPhrase;
         setTiles(createTiles(targetPhrase));
+        if (isFinal) {
+          onCompleteRef.current?.();
+        }
         return 0;
       }
 
@@ -215,6 +227,9 @@ export function SplitFlapText({
       if (!plans.length) {
         currentTextRef.current = targetPhrase;
         setTiles(createTiles(targetPhrase));
+        if (isFinal) {
+          onCompleteRef.current?.();
+        }
         return 0;
       }
 
@@ -297,6 +312,9 @@ export function SplitFlapText({
         } else {
           currentTextRef.current = targetPhrase;
           rafRef.current = null;
+          if (isFinal) {
+            onCompleteRef.current?.();
+          }
         }
       };
 
@@ -317,7 +335,8 @@ export function SplitFlapText({
         }
 
         phraseIndex = nextIndex % normalizedPhrases.length;
-        const animationDuration = animateTo(normalizedPhrases[phraseIndex]);
+        const isFinal = !loop && phraseIndex === normalizedPhrases.length - 1;
+        const animationDuration = animateTo(normalizedPhrases[phraseIndex], isFinal);
         scheduleNext(safeCycleDelay + animationDuration);
       }, delay);
     };

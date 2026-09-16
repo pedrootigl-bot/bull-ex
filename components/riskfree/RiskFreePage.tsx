@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/footer/Footer";
 import { GhostFibers } from "@/components/ghostFibers/GhostFibers";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
+import { OFFERS_PAGE_HREF } from "@/components/offers/offersConfig";
 import { SplitFlapText } from "@/components/splitFlapText/SplitFlapText";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Link } from "@/i18n/navigation";
@@ -20,6 +21,8 @@ import {
   WHAT_IS_POINTS,
 } from "./riskfreeConfig";
 import styles from "./riskfree.module.css";
+
+const WHAT_SECTION_ID = "riskfree-what";
 
 function useTradeHrefs() {
   const locale = useLocale();
@@ -196,29 +199,9 @@ function SecondaryCta({ label, href }: { label: string; href: string }) {
   );
 }
 
-function TextLink({ label, href }: { label: string; href: string }) {
-  if (href.startsWith("http") || href.includes("#")) {
-    const resolved = href.includes("#") && !href.startsWith("http") ? withBasePath(href) : href;
-    return (
-      <a className={styles.textLink} href={resolved}>
-        {label}
-        <CtaArrow />
-      </a>
-    );
-  }
-
-  return (
-    <Link className={styles.textLink} href={href} prefetch={false}>
-      {label}
-      <CtaArrow />
-    </Link>
-  );
-}
-
 function RiskFreeHeader() {
   const t = useTranslations("riskFree");
   const nav = useTranslations("navigation");
-  const locale = useLocale();
   const { login, register } = useTradeHrefs();
 
   return (
@@ -236,7 +219,9 @@ function RiskFreeHeader() {
         </Link>
 
         <nav className={styles.headerNav} aria-label={nav("aria")}>
-          <a href={withBasePath(`/${locale}/#ofertas`)}>{nav("prizes")}</a>
+          <Link href={OFFERS_PAGE_HREF} prefetch={false}>
+            {nav("prizes")}
+          </Link>
           <Link href="/blog" prefetch={false}>
             {nav("blog")}
           </Link>
@@ -333,14 +318,17 @@ function HeroTitleLine({
   text,
   className = "",
   cycleDelay = 320,
+  onComplete,
 }: {
   text: string;
   className?: string;
   cycleDelay?: number;
+  onComplete?: () => void;
 }) {
   return (
     <SplitFlapText
       className={`${styles.heroSplitFlap} ${className}`.trim()}
+      onComplete={onComplete}
       words={["", text]}
       flipDuration={0.06}
       stagger={0.022}
@@ -363,36 +351,116 @@ function HeroTitleLine({
   );
 }
 
+const HERO_MARQUEE_ROWS = 5;
+
+function HeroMarquee({ words }: { words: string[] }) {
+  if (words.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={styles.heroMarquee} aria-hidden="true">
+      {Array.from({ length: HERO_MARQUEE_ROWS }, (_, row) => {
+        const offset = row % words.length;
+        const line = `${[...words.slice(offset), ...words.slice(0, offset)].join(" • ")} • `;
+
+        return (
+          <div className={styles.heroMarqueeRow} key={row}>
+            <div className={styles.heroMarqueeTrack}>
+              <span className={styles.heroMarqueeGroup}>{line}</span>
+              <span className={styles.heroMarqueeGroup}>{line}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Rede de seguranca: libera o restante do hero mesmo se o callback do split-flap nao chegar. */
+const HERO_TITLE_FALLBACK_MS = 3500;
+
 function HeroSection() {
   const t = useTranslations("riskFree");
   const { register } = useTradeHrefs();
+  const reducedMotion = useReducedMotion();
+  const [titleDone, setTitleDone] = useState(false);
+  const marqueeWords = t("hero.marquee")
+    .split("•")
+    .map((word) => word.trim())
+    .filter(Boolean);
   const titleLine1 = t("hero.titleLine1");
   const titleLine2 = t("hero.titleLine2");
   const titleHighlight = t("hero.titleHighlight");
-  const heroTitle = `${titleLine1} ${titleLine2} ${titleHighlight}`;
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setTitleDone(true);
+      return;
+    }
+
+    const fallback = setTimeout(() => setTitleDone(true), HERO_TITLE_FALLBACK_MS);
+    return () => clearTimeout(fallback);
+  }, [reducedMotion]);
+
+  const revealClass = (delayClass: string) =>
+    titleDone ? `${styles.heroFadeItem} ${delayClass}` : styles.heroPending;
 
   return (
     <section className={`${styles.hero} ${styles.sectionBlend} ${styles.sectionBlendTop}`} aria-labelledby="riskfree-h1">
       <div className={styles.heroBg} aria-hidden="true">
-        <Image
-          src={RISKFREE_COPY.heroBackground}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          quality={88}
-          className={styles.heroBgImage}
-        />
+        <HeroMarquee words={marqueeWords} />
         <div className={styles.heroOverlay} />
+        <svg className={styles.heroPanel} viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="rf-panel-outer" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#04120a" stopOpacity="0.42" />
+              <stop offset="100%" stopColor="#010703" stopOpacity="0.24" />
+            </linearGradient>
+            <linearGradient id="rf-panel-inner" x1="0.1" y1="0" x2="0.9" y2="1">
+              <stop offset="0%" stopColor="#0b1b0e" stopOpacity="0.97" />
+              <stop offset="60%" stopColor="#020803" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#010500" stopOpacity="0.88" />
+            </linearGradient>
+            <linearGradient id="rf-panel-haze" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#7cff3a" stopOpacity="0.24" />
+              <stop offset="70%" stopColor="#7cff3a" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="#7cff3a" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="rf-panel-edge" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#eaffe0" stopOpacity="0.62" />
+              <stop offset="35%" stopColor="#9dff6a" stopOpacity="0.38" />
+              <stop offset="100%" stopColor="#7cff3a" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+          <polygon fill="url(#rf-panel-outer)" points="-5,0 76,0 57,105 -5,105" />
+          <polygon fill="url(#rf-panel-haze)" points="-5,-5 68,-5 68,0 -5,15" />
+          <polygon fill="url(#rf-panel-inner)" points="-5,15 68,0 49,105 -5,105" />
+          <path className={styles.heroPanelEdgeSoft} d="M 76 0 L 57 105" />
+          <path className={styles.heroPanelGlow} d="M -5 15 L 68 0 L 49 105" />
+          <path className={styles.heroPanelEdge} d="M -5 15 L 68 0 L 49 105" />
+        </svg>
+        <div className={styles.heroTicket}>
+          <Image
+            src={RISKFREE_COPY.heroTicket}
+            alt=""
+            width={729}
+            height={431}
+            priority
+            quality={90}
+            sizes="(max-width: 960px) 78vw, 46vw"
+            className={styles.heroTicketImage}
+          />
+        </div>
       </div>
 
       <div className={styles.heroInner}>
         <div className={styles.heroCopy}>
-          <p className={`${styles.eyebrow} ${styles.heroFadeItem} ${styles.heroFadeDelay0}`}>
+          <p className={`${styles.heroEyebrow} ${revealClass(styles.heroFadeDelay0)}`}>
             {t("hero.eyebrow")}
           </p>
           <h1 className={styles.heroTitle} id="riskfree-h1">
-            <span className={styles.heroTitleSr}>{heroTitle}</span>
+            <span className={styles.heroTitleSr}>{t("hero.title")}</span>
             <span className={styles.heroTitleStack} aria-hidden="true">
               <HeroTitleLine text={titleLine1} cycleDelay={280} />
               <HeroTitleLine text={titleLine2} cycleDelay={520} />
@@ -400,24 +468,46 @@ function HeroSection() {
                 text={titleHighlight}
                 className={styles.heroTitleHighlight}
                 cycleDelay={760}
+                onComplete={() => setTitleDone(true)}
               />
             </span>
           </h1>
-          <p className={`${styles.heroBody} ${styles.heroFadeItem} ${styles.heroFadeDelay1}`}>
+          <p className={`${styles.heroBody} ${revealClass(styles.heroFadeDelay1)}`}>
             {t("hero.body")}
           </p>
+          {/* Versao em fluxo do ticket: so aparece no mobile, entre o texto e os botoes. */}
+          <div className={styles.heroTicketInline} aria-hidden="true">
+            <Image
+              src={RISKFREE_COPY.heroTicket}
+              alt=""
+              width={729}
+              height={431}
+              quality={90}
+              sizes="82vw"
+              loading="eager"
+              className={styles.heroTicketImage}
+            />
+          </div>
           <div className={styles.heroActions}>
-            <div className={`${styles.heroFadeItem} ${styles.heroFadeDelay2}`}>
+            <div className={`${styles.heroCtaRow} ${revealClass(styles.heroFadeDelay2)}`}>
               <PrimaryCta label={t("hero.cta")} href={register} solid />
+              <a className={styles.heroPlayLink} href={`#${WHAT_SECTION_ID}`}>
+                <span className={styles.heroPlayIcon} aria-hidden="true">
+                  <svg width="11" height="13" viewBox="0 0 11 13" fill="none">
+                    <path d="M1.6 1.4 9.8 6.5 1.6 11.6V1.4Z" fill="currentColor" />
+                  </svg>
+                </span>
+                {t("hero.howItWorks")}
+              </a>
             </div>
-            <p className={`${styles.finePrint} ${styles.heroFadeItem} ${styles.heroFadeDelay3}`}>
+            <p className={`${styles.finePrint} ${revealClass(styles.heroFadeDelay3)}`}>
               {t("hero.finePrint")}
             </p>
           </div>
         </div>
       </div>
 
-      <ul className={styles.heroBar}>
+      <ul className={`${styles.heroBar} ${revealClass(styles.heroFadeDelay3)}`}>
         {HERO_HIGHLIGHTS.map((id) => (
           <li className={styles.heroBarItem} key={id}>
             <span className={styles.heroBarIcon} aria-hidden="true">
@@ -511,10 +601,15 @@ function WhatIsSection() {
   const reducedMotion = useReducedMotion();
   const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
   const bodyReveal = useReveal<HTMLParagraphElement>(styles.sectionBody, 0.08);
-  const taglineReveal = useReveal<HTMLSpanElement>(styles.revealInline, 0.16);
+  const ctaReveal = useReveal<HTMLSpanElement>(styles.revealInline, 0.16);
+  const faqReveal = useReveal<HTMLDivElement>(`${styles.inner} ${styles.whatFaq}`, 0.08);
 
   return (
-    <section className={`${styles.section} ${styles.sectionBlend}`} aria-labelledby="what-title">
+    <section
+      className={`${styles.section} ${styles.sectionBlend}`}
+      id={WHAT_SECTION_ID}
+      aria-labelledby="what-title"
+    >
       <div className={`${styles.inner} ${styles.whatSplit}`}>
         <header className={styles.whatHead}>
           <p {...eyebrowReveal}>{t("what.eyebrow")}</p>
@@ -522,8 +617,8 @@ function WhatIsSection() {
             {t("what.title")}
           </FadeTitle>
           <p {...bodyReveal}>{t("what.body")}</p>
-          <span {...taglineReveal}>
-            <TextLink label={t("what.tagline")} href={register} />
+          <span {...ctaReveal}>
+            <PrimaryCta label={t("what.cta")} href={register} solid />
           </span>
         </header>
 
@@ -556,6 +651,11 @@ function WhatIsSection() {
             <WhatPointCard id={id} index={index} key={id} />
           ))}
         </ul>
+      </div>
+
+      <div {...faqReveal}>
+        <h3 className={styles.whatFaqTitle}>{t("what.faqTitle")}</h3>
+        <p className={styles.whatFaqBody}>{t("what.faqBody")}</p>
       </div>
     </section>
   );

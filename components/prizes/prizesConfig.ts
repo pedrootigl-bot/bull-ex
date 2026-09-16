@@ -1,6 +1,8 @@
+import { OFFERS_PAGE_HREF } from "@/components/offers/offersConfig";
+
 export const PRIZES_COPY = {
   id: "ofertas",
-  pageHref: "/riskfree",
+  pageHref: OFFERS_PAGE_HREF,
 } as const;
 
 export const PRIZE_POINTS = ["points", "redeem", "safe"] as const;

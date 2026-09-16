@@ -1,23 +1,15 @@
 "use client";
 
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { SiteCardNav } from "@/components/cardNav/SiteCardNav";
 import { useAllowHeavyVisuals } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { MONEY_AMOUNTS } from "@/i18n/moneyAmounts";
 import { useViewportTier } from "@/hooks/useViewportTier";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { type Locale } from "@/i18n/config";
-import {
-  HERO_COPY,
-  HERO_THEME,
-  NAV_COPY,
-  bullexLoginHref,
-  bullexRegisterHref,
-} from "./heroConfig";
+import { HERO_COPY, HERO_THEME } from "./heroConfig";
 import { HeroGlow } from "./HeroGlow";
 import styles from "./hero.module.css";
 
@@ -37,61 +29,16 @@ const FREQ_HEIGHTS = [
   22, 58,
 ];
 
-function NavLinkIcon({ name }: { name: (typeof NAV_COPY.links)[number]["icon"] }) {
-  switch (name) {
-    case "markets":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2 12.5 5.5 8l2.6 2.4L14 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    case "why":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M4.2 11.2 8 3.8l3.8 7.4H4.2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-          <path d="M6.2 9.4h3.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        </svg>
-      );
-    case "prizes":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M5.2 7.2V4.6h5.6v2.6c0 1.7-1.2 3-2.8 3s-2.8-1.3-2.8-3Z" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M5.2 4.6H3.6c-.7 0-1.2.6-1.1 1.3.2 1.2 1.2 2 2.4 2.1M10.8 4.6h1.6c.7 0 1.2.6 1.1 1.3-.2 1.2-1.2 2-2.4 2.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-          <path d="M6.4 13.2h3.2M8 10.2v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        </svg>
-      );
-    case "faq":
-      return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="5.4" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M6.4 6.3c.2-.9 1-1.4 1.7-1.4.9 0 1.6.5 1.6 1.4 0 .9-.7 1.2-1.3 1.6-.4.2-.6.5-.6 1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-          <circle cx="8" cy="11.2" r="0.7" fill="currentColor" />
-        </svg>
-      );
-    default: {
-      const _exhaustive: never = name;
-      return _exhaustive;
-    }
-  }
-}
-
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
   const allowHeavy = useAllowHeavyVisuals();
   const lite = !allowHeavy;
   const tier = useViewportTier();
   const rgb = HERO_THEME.accentRgb;
-  const tNav = useTranslations("navigation");
   const tHero = useTranslations("hero");
-  const locale = useLocale() as Locale;
-  const registerHref = bullexRegisterHref(locale);
-  const loginHref = bullexLoginHref(locale);
   const { formatMoney, moneyParams } = useFormatMoney();
   const contentRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const navRef = useRef<HTMLElement>(null);
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
   const entrancePlayedRef = useRef(false);
   const stats = [
@@ -102,34 +49,6 @@ export function HeroSection() {
     { value: tHero("stats.feesValue"), label: tHero("stats.feesLabel") },
     { value: tHero("stats.hoursValue"), label: tHero("stats.hoursLabel") },
   ];
-
-  useEffect(() => {
-    const update = () => setNavScrolled(window.scrollY > 20);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
-
-  useEffect(() => {
-    if (!menuOpen) {
-      return;
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-      }
-    };
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [menuOpen]);
 
   // Modo leve: libera o hero na hora (sem esperar WebGL/GSAP)
   useEffect(() => {
@@ -175,12 +94,11 @@ export function HeroSection() {
 
       const intro = content.querySelectorAll<HTMLElement>("[data-hero-intro]");
       const visuals = hero.querySelectorAll<HTMLElement>("[data-hero-visual]");
-      const nav = navRef.current;
       const riseItems = gsap.utils.toArray<HTMLElement>(
         content.querySelectorAll(`[data-hero-rise]`),
       );
       const freq = hero.querySelector<HTMLElement>(`.${styles.freq}`);
-      const revealItems = [...(nav ? [nav] : []), ...riseItems, ...(freq ? [freq] : [])];
+      const revealItems = [...riseItems, ...(freq ? [freq] : [])];
 
       ctx = gsap.context(() => {
         gsap.set(intro, { autoAlpha: 0, y: 18 });
@@ -234,105 +152,7 @@ export function HeroSection() {
       className={`${styles.hero} ${lite || reducedMotion ? styles.heroEntered : styles.heroPending}`}
       style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
     >
-      <nav
-        ref={navRef}
-        className={`${styles.nav} ${navScrolled ? styles.navScrolled : ""} ${menuOpen ? styles.navMenuOpen : ""}`}
-        aria-label={tNav("aria")}
-      >
-        <div className={styles.navShell}>
-          <div className={styles.navInner}>
-            <a className={styles.brand} href={`#${HERO_COPY.id}`} onClick={() => setMenuOpen(false)}>
-              <Image
-                src="/images/bullex-logo.webp"
-                alt={tNav("brand")}
-                width={200}
-                height={87}
-                className={styles.brandLogo}
-                priority
-                sizes="120px"
-              />
-            </a>
-            <ul className={styles.navLinks}>
-              {NAV_COPY.links.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href}>
-                    <NavLinkIcon name={link.icon} />
-                    <span>{tNav(link.labelKey)}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.navEnd}>
-              <LanguageSwitcher />
-              <a
-                className={styles.navRegister}
-                href={registerHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {tNav("register")}
-              </a>
-              <a
-                className={styles.navCta}
-                href={loginHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className={styles.beam} aria-hidden="true" />
-                <span className={styles.navCtaInner}>
-                  {tNav("login")}
-                  <span className={styles.navCtaIcon} aria-hidden="true">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path
-                        d="M1.5 5h7M5.5 2l3 3-3 3"
-                        stroke="#fff"
-                        strokeWidth="1.3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </span>
-              </a>
-              <button
-                className={styles.menuToggle}
-                type="button"
-                aria-expanded={menuOpen}
-                aria-controls="hero-mobile-nav"
-                aria-label={menuOpen ? tNav("menuClose") : tNav("menuOpen")}
-                onClick={() => setMenuOpen((value) => !value)}
-              >
-                <span className={styles.menuToggleBars} aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </span>
-              </button>
-            </div>
-          </div>
-          <div className={styles.mobilePanel} id="hero-mobile-nav" hidden={!menuOpen}>
-            <a
-              className={styles.mobileRegister}
-              href={registerHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-            >
-              {tNav("register")}
-            </a>
-            <ul className={styles.mobileLinks}>
-              {NAV_COPY.links.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} onClick={() => setMenuOpen(false)}>
-                    <NavLinkIcon name={link.icon} />
-                    <span>{tNav(link.labelKey)}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <SiteCardNav />
 
       <div className={styles.heroStage}>
         <div className={styles.background} />

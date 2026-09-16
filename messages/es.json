@@ -18,7 +18,14 @@
     "loadingTitle": "Cargando página",
     "loadingSubtitle": "Espera mientras preparamos el contenido para ti.",
     "menuOpen": "Abrir menú",
-    "menuClose": "Cerrar menú"
+    "menuClose": "Cerrar menú",
+    "cardPlatform": "Plataforma",
+    "cardOffers": "Ofertas",
+    "cardContent": "Contenido",
+    "createAccount": "Crear cuenta",
+    "riskFree": "Risk Free",
+    "saldoPromo": "Saldo promocional",
+    "testimonials": "Testimonios"
   },
   "hero": {
     "headline": "Opera acciones, criptomonedas y productos de divisas<br></br>de forma sencilla.",
@@ -255,7 +262,7 @@
     "body": "Beneficios pensados para que empieces con más seguridad y avances en Bullex.",
     "cta": "Quiero aprovechar las ofertas",
     "loadingTitle": "Cargando ofertas",
-    "loadingSubtitle": "Espera mientras preparamos la página RiskFree para ti.",
+    "loadingSubtitle": "Espera mientras preparamos la página de ofertas para ti.",
     "featuredBadge": "Destacado",
     "points": {
       "points": "Ofertas activas para clientes nuevos y actuales.",
@@ -364,6 +371,164 @@
       }
     }
   },
+  "tickets": {
+    "meta": {
+      "title": "Tickets Bullex | Campañas, Eventos y Premios",
+      "description": "Sigue las campañas de Bullex. Descubre cuándo activar un cupón, cómo acumular tickets y qué reglas se aplican a la participación y a la premiación."
+    },
+    "backToSite": "Volver al sitio",
+    "hero": {
+      "eyebrow": "Tickets y campañas",
+      "marquee": "Tickets • Campañas • Eventos • Premios • Bullex • Trading",
+      "title": "Tickets Bullex: participa en las campañas y eventos",
+      "titleLine1": "Participa en las",
+      "titleLine2": "campañas",
+      "titleHighlight": "y eventos",
+      "body": "Sigue las campañas de temporada de Bullex y descubre las oportunidades de participación. Cada evento tiene su propio periodo, reglas para acumular tickets y condiciones de premiación.",
+      "cta": "Quiero participar en las campañas",
+      "finePrint": "Los periodos, las reglas de participación y los criterios de premiación varían según cada campaña.",
+      "highlights": {
+        "seasonal": "Campañas de temporada",
+        "tickets": "Tickets acumulables",
+        "rules": "Reglas por evento",
+        "prizes": "Premios según el reglamento"
+      }
+    },
+    "steps": {
+      "eyebrow": "Paso a paso",
+      "title": "Cómo participar en las campañas",
+      "aside": "De elegir la campaña al premio",
+      "cta": "Ver campañas disponibles",
+      "items": {
+        "choose": {
+          "title": "Elige una campaña disponible",
+          "text": "Consulta el periodo del evento, los premios y los requisitos para participar."
+        },
+        "coupon": {
+          "title": "Activa el cupón cuando sea necesario",
+          "text": "En las campañas que exigen cupón, haz la activación en la plataforma según las instrucciones."
+        },
+        "accumulate": {
+          "title": "Cumple las condiciones y acumula tickets",
+          "text": "Mira qué actividades generan tickets y sigue tu participación por el canal indicado en la campaña."
+        },
+        "prize": {
+          "title": "Consulta cómo funciona la premiación",
+          "text": "Revisa las reglas de cálculo, canje o cambio, según la mecánica de cada evento."
+        }
+      }
+    },
+    "campaigns": {
+      "eyebrow": "Campañas destacadas",
+      "title": "Oportunidades para ti",
+      "aside": "Periodos, cupones, reglas y premios varían según el evento.",
+      "allLink": "Ver todas las campañas",
+      "cta": "Ver detalles",
+      "status": {
+        "live": "Activa ahora",
+        "running": "En curso",
+        "soon": "Muy pronto"
+      },
+      "items": {
+        "seasonal": {
+          "tag": "Protección",
+          "title": "Risk Free",
+          "text": "Protección en tu primera operación elegible, según el reglamento.",
+          "perks": {
+            "1": "Activación con cupón",
+            "2": "Cobertura hasta el límite definido",
+            "3": "Reglas en el reglamento"
+          }
+        },
+        "coupon": {
+          "tag": "Crédito extra",
+          "title": "Saldo promocional",
+          "text": "Crédito promocional para usar en las operaciones previstas en la oferta.",
+          "perks": {
+            "1": "Crédito extra en tu cuenta",
+            "2": "Disponible por tiempo limitado",
+            "3": "Condiciones en el reglamento"
+          }
+        },
+        "rewards": {
+          "tag": "Premios y canjes",
+          "title": "Canjea tus tickets",
+          "text": "Acumula tickets en las campañas y cámbialos por premios.",
+          "perks": {
+            "1": "Tickets por participar",
+            "2": "Canje por premios",
+            "3": "Reglas de cada campaña"
+          }
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Preguntas importantes",
+      "aside": "Información clara antes de participar",
+      "exploreLink": "Explora todas las promociones Bullex",
+      "items": {
+        "mechanics": {
+          "question": "¿Todas las campañas funcionan igual?",
+          "answer": "No. La necesidad de cupón, la forma de acumular tickets, la vigencia y los criterios de premiación pueden cambiar. Consulta siempre el reglamento de la campaña elegida."
+        },
+        "guarantee": {
+          "question": "¿Acumular tickets garantiza un premio?",
+          "answer": "Depende de la mecánica. En los sorteos, los tickets representan oportunidades de ganar. En las campañas de canje o cambio, es necesario cumplir los requisitos indicados en el reglamento."
+        }
+      }
+    }
+  },
+  "offers": {
+    "meta": {
+      "title": "Ofertas Bullex | Todas las promociones disponibles",
+      "description": "Conoce todas las ofertas de Bullex: Risk Free, saldo promocional y otras promociones. Consulta las condiciones de cada beneficio y cómo activarlo."
+    },
+    "eyebrow": "Ofertas Bullex",
+    "backToSite": "Volver al sitio",
+    "indexTitle": "Ofertas Bullex",
+    "indexSubtitle": "Todas las promociones disponibles en un solo lugar. Elige una oferta para conocer las reglas, los límites y cómo activar el beneficio.",
+    "listSection": "Ofertas disponibles",
+    "featuredLabel": "Destacada",
+    "seeOffer": "Ver oferta",
+    "soonLabel": "Muy pronto",
+    "soonAction": "Disponible pronto",
+    "note": "Los valores, límites, disponibilidad y reglas pueden variar según la campaña y la cuenta del usuario. Consulta el reglamento de cada oferta.",
+    "loadingTitle": "Cargando oferta",
+    "loadingSubtitle": "Espera mientras preparamos la página {offer} para ti.",
+    "items": {
+      "riskFree": {
+        "title": "Risk Free",
+        "tag": "Protección en la primera operación",
+        "excerpt": "Protección para tu primera operación elegible. Consulta cómo activar el beneficio, cuál es el límite de cobertura y cómo funciona la compensación.",
+        "imageAlt": "Oferta Risk Free de Bullex"
+      },
+      "saldoPromo": {
+        "title": "Saldo promocional",
+        "tag": "Crédito extra para operar",
+        "excerpt": "Crédito extra disponible en ofertas de Bullex para usar en las operaciones previstas en el reglamento.",
+        "imageAlt": "Oferta de saldo promocional de Bullex"
+      },
+      "tickets": {
+        "title": "Tickets y campañas",
+        "tag": "Campañas y eventos",
+        "excerpt": "Sigue las campañas de temporada, mira cómo acumular tickets y consulta las condiciones de premiación de cada evento.",
+        "imageAlt": "Campañas y eventos de Bullex"
+      },
+      "box": {
+        "title": "Trader Top Box",
+        "tag": "Kit exclusivo",
+        "excerpt": "Más que un kit: una experiencia Bullex entregada en tu casa.",
+        "imageAlt": "Trader Top Box de Bullex"
+      },
+      "tech": {
+        "title": "Trader Top",
+        "tag": "Pieza de colección",
+        "excerpt": "Una pieza de colección a la altura de quien opera en la cima.",
+        "imageAlt": "Estatua Trader Top de Bullex"
+      }
+    }
+  },
   "blog": {
     "eyebrow": "Blog Bullex",
     "backSection": "Ver más historias",
@@ -453,24 +618,109 @@
     "th": "ไทย",
     "vi": "Tiếng Việt"
   },
+  "saldoPromo": {
+    "meta": {
+      "title": "Saldo Promocional Bullex | Cómo Activar y Utilizar",
+      "description": "Entiende cómo funciona el saldo promocional Bullex. Consulta cómo activar el crédito extra, dónde utilizarlo y qué condiciones se aplican a la oferta."
+    },
+    "backToSite": "Volver al sitio",
+    "hero": {
+      "eyebrow": "Saldo promocional Bullex",
+      "marquee": "Saldo promocional • Bullex • Trading • Cripto • Forex • Acciones",
+      "title": "Saldo promocional Bullex: crédito extra para operar",
+      "titleLine1": "Saldo",
+      "titleLine2": "promocional",
+      "titleHighlight": "crédito extra",
+      "body": "El saldo promocional es un crédito extra disponible en ofertas de Bullex para usar en las operaciones previstas en el reglamento. Consulta las condiciones disponibles para tu cuenta y entiende cómo utilizar el beneficio.",
+      "cta": "Quiero mi saldo promocional",
+      "finePrint": "Consulta las reglas, límites y condiciones aplicables antes de utilizar el beneficio.",
+      "highlights": {
+        "credit": "Crédito extra para operar",
+        "trade": "Úsalo en las operaciones previstas",
+        "community": "Disponible en ofertas seleccionadas",
+        "premium": "Condiciones según el reglamento"
+      }
+    },
+    "steps": {
+      "eyebrow": "Paso a paso",
+      "title": "Cómo utilizar tu saldo promocional",
+      "aside": "Del crédito a las oportunidades",
+      "items": {
+        "offer": {
+          "title": "Consulta la oferta",
+          "text": "Mira el crédito disponible, los requisitos de participación y el plazo de validez."
+        },
+        "activate": {
+          "title": "Sigue las instrucciones de activación",
+          "text": "Verifica si es necesario utilizar un cupón o cumplir otras condiciones."
+        },
+        "trade": {
+          "title": "Utilízalo en las operaciones permitidas",
+          "text": "Sigue el saldo en la plataforma y observa las reglas de uso de la promoción."
+        }
+      }
+    },
+    "demo": {
+      "eyebrow": "Cuenta demo Bullex",
+      "aside": "Misma plataforma más posibilidades",
+      "titleLine1": "¿Quieres practicar con saldo virtual?",
+      "titleLine2": "Conoce la cuenta demo Bullex.",
+      "body": "Prueba estrategias, explora los mercados y conoce toda nuestra plataforma antes de operar con recursos reales. La cuenta demo es gratuita e ideal para que evoluciones a tu ritmo.",
+      "cta": "Conocer la cuenta demo",
+      "highlights": {
+        "virtual": "Saldo virtual para practicar",
+        "practice": "Entorno de práctica realista",
+        "multiplatform": "Experiencia multiplataforma"
+      }
+    },
+    "next": {
+      "eyebrow": "Tu próximo paso",
+      "aside": "Disciplina hoy resultados mañana",
+      "title": "Usa el saldo promocional con más claridad y estrategia.",
+      "body": "Consulta las ofertas disponibles para tu cuenta y entiende cómo activar y utilizar el beneficio en la plataforma Bullex.",
+      "cta": "Ver ofertas de saldo promocional",
+      "highlights": {
+        "opportunities": "Aprovecha las oportunidades",
+        "strategy": "Opera con más estrategia",
+        "evolve": "Evoluciona en cada operación"
+      }
+    },
+    "faq": {
+      "eyebrow": "Dudas frecuentes",
+      "title": "Preguntas importantes",
+      "aside": "Información que te lleva más lejos",
+      "items": {
+        "withdraw": {
+          "question": "¿Puedo retirar el saldo promocional?",
+          "answer": "Las condiciones de retiro del crédito y de los resultados obtenidos con su uso dependen del reglamento. Consulta esta información antes de activar la oferta."
+        },
+        "demo": {
+          "question": "¿El saldo promocional es igual al saldo de la cuenta demo?",
+          "answer": "No. La cuenta demo utiliza saldo virtual para simular operaciones. El saldo promocional es un beneficio con condiciones propias de utilización y permite que retires tus ganancias después de cumplir los criterios previstos."
+        }
+      }
+    }
+  },
   "riskFree": {
     "meta": {
-      "title": "RiskFree Bullex | Opera con protección y conoce cómo funciona",
-      "description": "Conoce RiskFree Bullex, entiende cómo funciona la protección en una operación elegible, mira el paso a paso y descubre otras promociones y recursos de la plataforma Bullex."
+      "title": "Risk Free Bullex | Protección en la Primera Operación",
+      "description": "Descubre cómo funciona Risk Free Bullex, la promoción de protección en la primera operación elegible. Consulta las reglas de activación, cobertura y compensación."
     },
     "backToSite": "Volver al sitio",
     "hero": {
       "eyebrow": "RiskFree Bullex",
-      "title": "Opera con más protección con RiskFree Bullex.",
-      "titleLine1": "Opera con más",
-      "titleLine2": "protección con",
+      "marquee": "RiskFree • Bullex • Trading • Cripto • Divisas • Acciones",
+      "title": "Risk Free Bullex: protección en la primera operación",
+      "titleLine1": "Protección en",
+      "titleLine2": "la primera",
       "lead": "Opera con más protección.\nExperimenta el mercado con RiskFree.",
-      "body": "Conoce una forma de operar con una capa extra de protección. Con RiskFree, una operación elegible puede contar con protección si el resultado es negativo, según las condiciones de la campaña.",
+      "body": "Conoce la promoción que ofrece protección para tu primera operación elegible. Antes de empezar, revisa cómo activar el beneficio, cuál es el límite de cobertura y cómo funciona la compensación prevista en el reglamento.",
       "cta": "Quiero activar mi RiskFree",
+      "howItWorks": "Mira cómo funciona",
       "finePrint": "Consulta las reglas, límites y condiciones aplicables antes de usar el beneficio.",
       "imageAlt": "Ticket RiskFree Bullex con sello de protección",
       "titleBefore": "Opera con más protección con",
-      "titleHighlight": "RiskFree Bullex.",
+      "titleHighlight": "operación",
       "visualCaption": "Opera con más confianza",
       "visualBadge": "Mismo mercado. Más libertad.",
       "highlights": {
@@ -481,30 +731,32 @@
       }
     },
     "what": {
-      "eyebrow": "Más protección para operar",
-      "title": "¿Qué es RiskFree?",
+      "eyebrow": "Paso a paso",
+      "title": "¿Cómo funciona el Risk Free?",
       "lead": "Tú operas.\nRiskFree ayuda a proteger tu operación.",
-      "body": "RiskFree es un beneficio promocional de Bullex creado para ofrecer protección en una operación elegible. Si esa operación termina con resultado negativo, el beneficio puede devolver o compensar el valor protegido, respetando el límite y las condiciones de la promoción.",
-      "tagline": "Más confianza para empezar. Más libertad para experimentar.",
+      "body": "Mira cómo activar el beneficio, cuál es el límite de cobertura y cómo funciona la compensación prevista en el reglamento.",
+      "cta": "Ver condiciones y activar",
+      "faqTitle": "¿El Risk Free elimina todos los riesgos?",
+      "faqBody": "No. La protección se aplica solo a la primera operación después de activar el cupón elegible y dentro de los límites de la promoción. Consulta el reglamento para saber qué está cubierto, cómo se concede la compensación y qué condiciones se aplican a tu uso y retiro.",
       "videoAlt": "Vídeo explicativo sobre RiskFree Bullex",
       "points": {
         "protected": {
-          "title": "Operación protegida",
-          "text": "Usa el beneficio en una operación elegible."
+          "title": "1. Revisa las condiciones",
+          "text": "Verifica si tu cuenta y la operación cumplen los requisitos de la promoción."
         },
         "loss": {
-          "title": "Protección en caso de loss",
-          "text": "Si la operación protegida cierra en negativo, se aplica la protección de la campaña."
+          "title": "2. Activa el beneficio",
+          "text": "Sigue las instrucciones de la oferta antes de realizar la operación."
         },
         "try": {
-          "title": "Prueba la plataforma",
-          "text": "Conoce la experiencia de trading de Bullex usando el beneficio."
+          "title": "3. Sigue el resultado",
+          "text": "Si la operación cumple las condiciones de compensación, el beneficio se aplica según el reglamento."
         }
       }
     },
     "how": {
       "eyebrow": "Simple de principio a fin",
-      "title": "Cómo funciona",
+      "title": "Activación en 4 pasos",
       "lead": "Activa. Opera.\nCuenta con la protección.",
       "cta": "Activar mi RiskFree",
       "note": "Valores, límites, disponibilidad y reglas pueden variar según la campaña y la cuenta.",

@@ -18,7 +18,14 @@
     "loadingTitle": "Loading page",
     "loadingSubtitle": "Hold on while we prepare the content for you.",
     "menuOpen": "Open menu",
-    "menuClose": "Close menu"
+    "menuClose": "Close menu",
+    "cardPlatform": "Platform",
+    "cardOffers": "Offers",
+    "cardContent": "Content",
+    "createAccount": "Create account",
+    "riskFree": "Risk Free",
+    "saldoPromo": "Promotional balance",
+    "testimonials": "Testimonials"
   },
   "hero": {
     "headline": "Trade stocks, cryptocurrencies and FX products<br></br>the simple way!",
@@ -255,7 +262,7 @@
     "body": "Benefits designed to help you start with more confidence and grow on Bullex.",
     "cta": "I want to take the offers",
     "loadingTitle": "Loading offers",
-    "loadingSubtitle": "Please wait while we prepare the RiskFree page for you.",
+    "loadingSubtitle": "Please wait while we prepare the offers page for you.",
     "featuredBadge": "Featured",
     "points": {
       "points": "Active offers for new and existing clients.",
@@ -364,6 +371,164 @@
       }
     }
   },
+  "tickets": {
+    "meta": {
+      "title": "Bullex Tickets | Campaigns, Events and Prizes",
+      "description": "Follow the Bullex campaigns. Find out when to activate a coupon, how to collect tickets and which rules apply to participation and prizes."
+    },
+    "backToSite": "Back to site",
+    "hero": {
+      "eyebrow": "Tickets and campaigns",
+      "marquee": "Tickets • Campaigns • Events • Prizes • Bullex • Trading",
+      "title": "Bullex Tickets: join the campaigns and events",
+      "titleLine1": "Join the",
+      "titleLine2": "campaigns",
+      "titleHighlight": "and events",
+      "body": "Follow Bullex seasonal campaigns and discover the opportunities to take part. Each event has its own period, rules for collecting tickets and prize conditions.",
+      "cta": "I want to join the campaigns",
+      "finePrint": "Periods, participation rules and prize criteria vary according to each campaign.",
+      "highlights": {
+        "seasonal": "Seasonal campaigns",
+        "tickets": "Tickets you can collect",
+        "rules": "Rules for each event",
+        "prizes": "Prizes under the terms"
+      }
+    },
+    "steps": {
+      "eyebrow": "Step by step",
+      "title": "How to join the campaigns",
+      "aside": "From choosing a campaign to the prize",
+      "cta": "See available campaigns",
+      "items": {
+        "choose": {
+          "title": "Choose an available campaign",
+          "text": "Check the event period, the prizes and the requirements to take part."
+        },
+        "coupon": {
+          "title": "Activate the coupon when required",
+          "text": "In campaigns that require a coupon, activate it on the platform following the instructions."
+        },
+        "accumulate": {
+          "title": "Meet the conditions and collect tickets",
+          "text": "See which activities generate tickets and follow your participation through the channel indicated in the campaign."
+        },
+        "prize": {
+          "title": "Check how the prize works",
+          "text": "Read the rules for calculation, redemption or exchange, according to each event's mechanics."
+        }
+      }
+    },
+    "campaigns": {
+      "eyebrow": "Featured campaigns",
+      "title": "Opportunities for you",
+      "aside": "Periods, coupons, rules and prizes vary by event.",
+      "allLink": "See all campaigns",
+      "cta": "See details",
+      "status": {
+        "live": "Live now",
+        "running": "In progress",
+        "soon": "Coming soon"
+      },
+      "items": {
+        "seasonal": {
+          "tag": "Protection",
+          "title": "Risk Free",
+          "text": "Protection on your first eligible trade, as set out in the terms.",
+          "perks": {
+            "1": "Activated with a coupon",
+            "2": "Coverage up to the set limit",
+            "3": "Rules in the terms"
+          }
+        },
+        "coupon": {
+          "tag": "Extra credit",
+          "title": "Promotional balance",
+          "text": "Promotional credit to use on the trades covered by the offer.",
+          "perks": {
+            "1": "Extra credit in your account",
+            "2": "Available for a limited time",
+            "3": "Conditions in the terms"
+          }
+        },
+        "rewards": {
+          "tag": "Prizes and redemptions",
+          "title": "Exchange your tickets",
+          "text": "Collect tickets in the campaigns and exchange them for prizes.",
+          "perks": {
+            "1": "Tickets for taking part",
+            "2": "Exchange for prizes",
+            "3": "Rules of each campaign"
+          }
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "Important questions",
+      "aside": "Clear information before joining",
+      "exploreLink": "Explore all Bullex promotions",
+      "items": {
+        "mechanics": {
+          "question": "Do all campaigns work the same way?",
+          "answer": "No. The need for a coupon, the way tickets are collected, the validity and the prize criteria may change. Always check the terms of the campaign you choose."
+        },
+        "guarantee": {
+          "question": "Does collecting tickets guarantee a prize?",
+          "answer": "It depends on the mechanics. In draws, tickets represent chances of winning. In exchange or redemption campaigns, you must meet the requirements set out in the terms."
+        }
+      }
+    }
+  },
+  "offers": {
+    "meta": {
+      "title": "Bullex Offers | All available promotions",
+      "description": "Discover every Bullex offer: Risk Free, promotional balance and other promotions. Check the conditions of each benefit and how to activate it."
+    },
+    "eyebrow": "Bullex offers",
+    "backToSite": "Back to site",
+    "indexTitle": "Bullex offers",
+    "indexSubtitle": "All available promotions in one place. Pick an offer to see the rules, limits and how to activate the benefit.",
+    "listSection": "Available offers",
+    "featuredLabel": "Featured",
+    "seeOffer": "View offer",
+    "soonLabel": "Coming soon",
+    "soonAction": "Available soon",
+    "note": "Amounts, limits, availability and rules may vary according to the campaign and the user's account. Check the terms of each offer.",
+    "loadingTitle": "Loading offer",
+    "loadingSubtitle": "Please wait while we prepare the {offer} page for you.",
+    "items": {
+      "riskFree": {
+        "title": "Risk Free",
+        "tag": "Protection on your first trade",
+        "excerpt": "Protection for your first eligible trade. See how to activate the benefit, the coverage limit and how compensation works.",
+        "imageAlt": "Bullex Risk Free offer"
+      },
+      "saldoPromo": {
+        "title": "Promotional balance",
+        "tag": "Extra credit to trade",
+        "excerpt": "Extra credit available in Bullex offers for use in the trades set out in the terms and conditions.",
+        "imageAlt": "Bullex promotional balance offer"
+      },
+      "tickets": {
+        "title": "Tickets and campaigns",
+        "tag": "Campaigns and events",
+        "excerpt": "Follow the seasonal campaigns, see how to collect tickets and check the prize conditions of each event.",
+        "imageAlt": "Bullex campaigns and events"
+      },
+      "box": {
+        "title": "Trader Top Box",
+        "tag": "Exclusive kit",
+        "excerpt": "More than a kit: a Bullex experience delivered to your door.",
+        "imageAlt": "Bullex Trader Top Box"
+      },
+      "tech": {
+        "title": "Trader Top",
+        "tag": "Collectible piece",
+        "excerpt": "A collectible piece worthy of those who trade at the top.",
+        "imageAlt": "Bullex Trader Top statue"
+      }
+    }
+  },
   "blog": {
     "eyebrow": "Bullex Blog",
     "backSection": "See more stories",
@@ -453,24 +618,109 @@
     "th": "ไทย",
     "vi": "Tiếng Việt"
   },
+  "saldoPromo": {
+    "meta": {
+      "title": "Bullex Promotional Balance | How to Activate and Use",
+      "description": "Understand how the Bullex promotional balance works. Check how to activate the extra credit, where to use it and which conditions apply to the offer."
+    },
+    "backToSite": "Back to the site",
+    "hero": {
+      "eyebrow": "Bullex promotional balance",
+      "marquee": "Promotional balance • Bullex • Trading • Crypto • Forex • Stocks",
+      "title": "Bullex promotional balance: extra credit to trade",
+      "titleLine1": "Promotional",
+      "titleLine2": "balance",
+      "titleHighlight": "extra credit",
+      "body": "The promotional balance is an extra credit released in Bullex offers for use on the trades set out in the terms. Check the conditions available for your account and learn how to use the benefit.",
+      "cta": "I want my promotional balance",
+      "finePrint": "Check the applicable rules, limits and conditions before using the benefit.",
+      "highlights": {
+        "credit": "Extra credit to trade",
+        "trade": "Use it on eligible trades",
+        "community": "Available in selected offers",
+        "premium": "Conditions follow the terms"
+      }
+    },
+    "steps": {
+      "eyebrow": "Step by step",
+      "title": "How to use your promotional balance",
+      "aside": "From credit to opportunities",
+      "items": {
+        "offer": {
+          "title": "Check the offer",
+          "text": "See the available credit, the participation requirements and the validity period."
+        },
+        "activate": {
+          "title": "Follow the activation instructions",
+          "text": "Check whether you need to use a coupon or meet other conditions."
+        },
+        "trade": {
+          "title": "Use it on the allowed trades",
+          "text": "Track the balance on the platform and follow the promotion usage rules."
+        }
+      }
+    },
+    "demo": {
+      "eyebrow": "Bullex demo account",
+      "aside": "Same platform more possibilities",
+      "titleLine1": "Want to practice with virtual balance?",
+      "titleLine2": "Meet the Bullex demo account.",
+      "body": "Test strategies, explore the markets and get to know our whole platform before trading with real funds. The demo account is free and ideal for you to evolve at your own pace.",
+      "cta": "Explore the demo account",
+      "highlights": {
+        "virtual": "Virtual balance to practice",
+        "practice": "Realistic practice environment",
+        "multiplatform": "Multiplatform experience"
+      }
+    },
+    "next": {
+      "eyebrow": "Your next step",
+      "aside": "Discipline today results tomorrow",
+      "title": "Use the promotional balance with more clarity and strategy.",
+      "body": "Check the offers available for your account and learn how to activate and use the benefit on the Bullex platform.",
+      "cta": "See promotional balance offers",
+      "highlights": {
+        "opportunities": "Seize the opportunities",
+        "strategy": "Trade with more strategy",
+        "evolve": "Evolve on every trade"
+      }
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "Important questions",
+      "aside": "Information that takes you further",
+      "items": {
+        "withdraw": {
+          "question": "Can I withdraw the promotional balance?",
+          "answer": "The withdrawal conditions for the credit and for the results obtained with it depend on the terms. Check this information before activating the offer."
+        },
+        "demo": {
+          "question": "Is the promotional balance the same as the demo account balance?",
+          "answer": "No. The demo account uses virtual balance to simulate trades. The promotional balance is a benefit with its own usage conditions and lets you withdraw your gains after meeting the required criteria."
+        }
+      }
+    }
+  },
   "riskFree": {
     "meta": {
-      "title": "RiskFree Bullex | Trade with Protection and Learn How It Works",
-      "description": "Discover RiskFree Bullex, learn how protection works on an eligible trade, see the step-by-step guide, and explore other Bullex promotions and platform features."
+      "title": "Risk Free Bullex | Protection on Your First Trade",
+      "description": "Learn how Risk Free Bullex works, the promotion that protects your first eligible trade. Check the activation rules, coverage limit, and compensation."
     },
     "backToSite": "Back to site",
     "hero": {
       "eyebrow": "RiskFree Bullex",
-      "title": "Trade with more protection with RiskFree Bullex.",
-      "titleLine1": "Trade with more",
-      "titleLine2": "protection with",
+      "marquee": "RiskFree • Bullex • Trading • Crypto • Forex • Stocks",
+      "title": "Risk Free Bullex: protection on your first trade",
+      "titleLine1": "Protection on",
+      "titleLine2": "your first",
       "lead": "Trade with more protection.\nExperience the market with RiskFree.",
-      "body": "Discover a way to trade with an extra layer of protection. With RiskFree, an eligible trade may include protection if the result is negative, subject to campaign terms.",
+      "body": "Discover the promotion that protects your first eligible trade. Before you start, check how to activate the benefit, the coverage limit, and how the compensation set out in the rules works.",
       "cta": "I want to activate my RiskFree",
+      "howItWorks": "See how it works",
       "finePrint": "Review the rules, limits, and applicable conditions before using the benefit.",
       "imageAlt": "Bullex RiskFree ticket with protection seal",
       "titleBefore": "Trade with more protection with",
-      "titleHighlight": "RiskFree Bullex.",
+      "titleHighlight": "trade",
       "visualCaption": "Trade with more confidence",
       "visualBadge": "Same market. More freedom.",
       "highlights": {
@@ -481,30 +731,32 @@
       }
     },
     "what": {
-      "eyebrow": "More protection to trade",
-      "title": "What is RiskFree?",
+      "eyebrow": "Step by step",
+      "title": "How does Risk Free work?",
       "lead": "You trade.\nRiskFree helps protect your trade.",
-      "body": "RiskFree is a Bullex promotional benefit created to offer protection on an eligible trade. If that trade ends with a negative result, the benefit may refund or compensate the protected amount, within the promotion limits and conditions.",
-      "tagline": "More confidence to start. More freedom to explore.",
+      "body": "See how to activate the benefit, what the coverage limit is and how the compensation set out in the terms works.",
+      "cta": "See conditions and activate",
+      "faqTitle": "Does Risk Free remove all risk?",
+      "faqBody": "No. The protection applies only to the first trade after activating the eligible coupon and within the promotion limits. Check the terms to know what is covered, how the compensation is granted and which conditions apply to your use and withdrawal.",
       "videoAlt": "Explainer video about Bullex RiskFree",
       "points": {
         "protected": {
-          "title": "Protected trade",
-          "text": "Use the benefit on an eligible trade."
+          "title": "1. Check the conditions",
+          "text": "Confirm that your account and the trade meet the promotion requirements."
         },
         "loss": {
-          "title": "Protection on a loss",
-          "text": "If the protected trade closes negatively, the campaign protection applies."
+          "title": "2. Activate the benefit",
+          "text": "Follow the offer instructions before placing the trade."
         },
         "try": {
-          "title": "Try the platform",
-          "text": "Experience Bullex trading while using the benefit."
+          "title": "3. Track the result",
+          "text": "If the trade meets the compensation conditions, the benefit is applied according to the terms."
         }
       }
     },
     "how": {
       "eyebrow": "Simple from start to finish",
-      "title": "How it works",
+      "title": "Activation in 4 steps",
       "lead": "Activate. Trade.\nCount on protection.",
       "cta": "Activate my RiskFree",
       "note": "Amounts, limits, availability, and rules may vary by campaign and account.",

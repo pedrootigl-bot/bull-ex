@@ -1,0 +1,454 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.88);
+  border-bottom: 1px solid rgba(124, 255, 58, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0.85rem 0;
+}
+
+.brand {
+  display: inline-flex;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.brandLogo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.backHomeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 255, 58, 0.28);
+  background: rgba(124, 255, 58, 0.08);
+  color: #7cff3a;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.backHomeBtn:hover,
+.backHomeBtn:focus-visible {
+  background: rgba(124, 255, 58, 0.16);
+  border-color: rgba(124, 255, 58, 0.45);
+  color: #9dff66;
+  outline: none;
+}
+
+.page {
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 40% at 10% 0%, rgba(124, 255, 58, 0.07), transparent 55%),
+    radial-gradient(ellipse 50% 35% at 90% 8%, rgba(124, 255, 58, 0.04), transparent 50%),
+    #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* —— Index —— */
+
+.index {
+  position: relative;
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vh, 3rem) 0 clamp(3.5rem, 7vh, 5rem);
+}
+
+.indexGlow {
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  width: min(70vw, 520px);
+  height: 220px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(124, 255, 58, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.indexHero {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 4vh, 2.8rem);
+}
+
+.indexEyebrow {
+  margin: 0 0 0.65rem;
+  color: #7cff3a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.indexTitle {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.indexSubtitle {
+  margin: 0;
+  color: #a8a8a8;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.indexSection {
+  position: relative;
+  z-index: 1;
+}
+
+.indexSectionHead {
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(124, 255, 58, 0.16);
+}
+
+.indexSectionTitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7cff3a;
+}
+
+.indexFeaturedList {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.indexFeaturedItem {
+  list-style: none;
+}
+
+.indexFeatured {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  min-height: 22rem;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(124, 255, 58, 0.2);
+  background: #0a0a0a;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.indexFeatured:hover,
+.indexFeatured:focus-visible {
+  border-color: rgba(124, 255, 58, 0.42);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.indexFeaturedMedia {
+  position: relative;
+  min-height: 100%;
+  background: #111;
+}
+
+.indexFeaturedImage {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.indexFeatured:hover .indexFeaturedImage {
+  transform: scale(1.04);
+}
+
+.indexFeaturedShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+
+.indexFeaturedBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  background:
+    linear-gradient(160deg, rgba(124, 255, 58, 0.06), transparent 50%),
+    #0b0b0b;
+}
+
+.indexFeaturedBadge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 255, 58, 0.4);
+  color: #7cff3a;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.indexFeaturedTitle {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.indexFeaturedExcerpt {
+  margin: 0;
+  color: #a8a8a8;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.indexFeaturedMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.indexList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.indexCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.indexCard:hover,
+.indexCard:focus-visible {
+  border-color: rgba(124, 255, 58, 0.32);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.cardSoon {
+  cursor: default;
+}
+
+.cardSoon:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: none;
+}
+
+.cardSoon .indexCardImage {
+  opacity: 0.55;
+  filter: saturate(0.5);
+}
+
+.cardSoon:hover .indexCardImage {
+  transform: none;
+}
+
+.indexCardMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #111;
+  overflow: hidden;
+}
+
+.indexCardImage {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.indexCard:hover .indexCardImage {
+  transform: scale(1.05);
+}
+
+.indexCardShade {
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+}
+
+.indexCardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.05rem 1.1rem 1.15rem;
+}
+
+.indexCardEyebrow {
+  color: #6f6f6f;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.indexCardSoonTag {
+  align-self: flex-start;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #8f8f8f;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.indexCardTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.indexCardExcerpt {
+  flex: 1;
+  margin: 0;
+  color: #9a9a9a;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.indexCardMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.indexCardMeta {
+  color: #6f6f6f;
+  font-size: 0.75rem;
+}
+
+.indexCardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #7cff3a;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.indexCardSoonAction {
+  color: #6f6f6f;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.indexNote {
+  margin: 1.6rem 0 0;
+  color: #6f6f6f;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .indexFeatured {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .indexFeaturedMedia {
+    aspect-ratio: 16 / 10;
+  }
+
+  .indexFeaturedShade {
+    background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.7) 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .headerInner {
+    padding: 0.75rem 0;
+  }
+
+  .backHomeBtn {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .indexList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indexCard:hover,
+  .indexFeatured:hover {
+    transform: none;
+  }
+
+  .indexCardImage,
+  .indexFeaturedImage {
+    transition: none;
+  }
+
+  .indexCard:hover .indexCardImage,
+  .indexFeatured:hover .indexFeaturedImage {
+    transform: none;
+  }
+}

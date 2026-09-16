@@ -1,5 +1,5 @@
 export const RISKFREE_COPY = {
-  heroBackground: "/images/prizes/risk-free.webp",
+  heroTicket: "/images/prizes/riskfree-ticket.webp",
   aboutBackground: "/images/prizes/risk-free-about.webp",
   finalBackground: "/images/prizes/risk-free-final.webp",
   whatVideo: "/videos/riskfree-what.mp4",

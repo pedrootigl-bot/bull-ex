@@ -18,7 +18,14 @@
     "loadingTitle": "Đang tải trang",
     "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị nội dung.",
     "menuOpen": "Mở menu",
-    "menuClose": "Đóng menu"
+    "menuClose": "Đóng menu",
+    "cardPlatform": "Nền tảng",
+    "cardOffers": "Ưu đãi",
+    "cardContent": "Nội dung",
+    "createAccount": "Tạo tài khoản",
+    "riskFree": "Risk Free",
+    "saldoPromo": "Số dư khuyến mãi",
+    "testimonials": "Đánh giá"
   },
   "hero": {
     "headline": "Giao dịch cổ phiếu, tiền mã hóa và sản phẩm ngoại hối<br></br>một cách đơn giản hơn.",
@@ -255,7 +262,7 @@
     "body": "Quyền lợi được thiết kế để bạn bắt đầu an tâm hơn và phát triển cùng Bullex.",
     "cta": "Tôi muốn nhận ưu đãi",
     "loadingTitle": "Loading offers",
-    "loadingSubtitle": "Please wait while we prepare the RiskFree page for you.",
+    "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị trang ưu đãi cho bạn.",
     "featuredBadge": "Nổi bật",
     "points": {
       "points": "Ưu đãi dành cho khách mới và khách hiện tại.",
@@ -364,6 +371,164 @@
       }
     }
   },
+  "tickets": {
+    "meta": {
+      "title": "Vé Bullex | Chiến dịch, sự kiện và giải thưởng",
+      "description": "Theo dõi các chiến dịch của Bullex. Tìm hiểu khi nào cần kích hoạt phiếu, cách tích lũy vé và những quy định áp dụng cho việc tham gia và trao thưởng."
+    },
+    "backToSite": "Quay lại trang chủ",
+    "hero": {
+      "eyebrow": "Vé và chiến dịch",
+      "marquee": "Vé • Chiến dịch • Sự kiện • Giải thưởng • Bullex • Giao dịch",
+      "title": "Vé Bullex: tham gia các chiến dịch và sự kiện",
+      "titleLine1": "Tham gia các",
+      "titleLine2": "chiến dịch",
+      "titleHighlight": "và sự kiện",
+      "body": "Theo dõi các chiến dịch theo mùa của Bullex và khám phá cơ hội tham gia. Mỗi sự kiện có thời gian, quy định tích lũy vé và điều kiện trao thưởng riêng.",
+      "cta": "Tôi muốn tham gia chiến dịch",
+      "finePrint": "Thời gian, quy định tham gia và tiêu chí trao thưởng thay đổi tùy theo từng chiến dịch.",
+      "highlights": {
+        "seasonal": "Chiến dịch theo mùa",
+        "tickets": "Vé có thể tích lũy",
+        "rules": "Quy định cho từng sự kiện",
+        "prizes": "Giải thưởng theo thể lệ"
+      }
+    },
+    "steps": {
+      "eyebrow": "Từng bước",
+      "title": "Cách tham gia các chiến dịch",
+      "aside": "Từ lúc chọn chiến dịch đến khi nhận thưởng",
+      "cta": "Xem chiến dịch hiện có",
+      "items": {
+        "choose": {
+          "title": "Chọn một chiến dịch đang diễn ra",
+          "text": "Xem thời gian sự kiện, giải thưởng và các yêu cầu để tham gia."
+        },
+        "coupon": {
+          "title": "Kích hoạt phiếu khi cần",
+          "text": "Với các chiến dịch yêu cầu phiếu, hãy kích hoạt trên nền tảng theo hướng dẫn."
+        },
+        "accumulate": {
+          "title": "Đáp ứng điều kiện và tích lũy vé",
+          "text": "Xem những hoạt động nào tạo ra vé và theo dõi phần tham gia của bạn qua kênh được nêu trong chiến dịch."
+        },
+        "prize": {
+          "title": "Tìm hiểu cách trao thưởng",
+          "text": "Tham khảo quy định về xét duyệt, đổi hoặc nhận thưởng theo cơ chế của từng sự kiện."
+        }
+      }
+    },
+    "campaigns": {
+      "eyebrow": "Chiến dịch nổi bật",
+      "title": "Cơ hội dành cho bạn",
+      "aside": "Thời gian, phiếu, quy định và giải thưởng thay đổi theo từng sự kiện.",
+      "allLink": "Xem tất cả chiến dịch",
+      "cta": "Xem chi tiết",
+      "status": {
+        "live": "Đang diễn ra",
+        "running": "Đang thực hiện",
+        "soon": "Sắp ra mắt"
+      },
+      "items": {
+        "seasonal": {
+          "tag": "Bảo vệ",
+          "title": "Risk Free",
+          "text": "Bảo vệ cho giao dịch hợp lệ đầu tiên theo thể lệ.",
+          "perks": {
+            "1": "Kích hoạt bằng phiếu",
+            "2": "Bảo vệ trong hạn mức quy định",
+            "3": "Quy định trong thể lệ"
+          }
+        },
+        "coupon": {
+          "tag": "Tín dụng thêm",
+          "title": "Số dư khuyến mãi",
+          "text": "Tín dụng khuyến mãi dùng cho các giao dịch nêu trong ưu đãi.",
+          "perks": {
+            "1": "Tín dụng thêm vào tài khoản",
+            "2": "Có hiệu lực trong thời gian giới hạn",
+            "3": "Điều kiện trong thể lệ"
+          }
+        },
+        "rewards": {
+          "tag": "Giải thưởng và đổi quà",
+          "title": "Đổi vé của bạn",
+          "text": "Tích lũy vé từ các chiến dịch và đổi lấy phần thưởng.",
+          "perks": {
+            "1": "Vé khi tham gia",
+            "2": "Đổi lấy phần thưởng",
+            "3": "Quy định từng chiến dịch"
+          }
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Câu hỏi thường gặp",
+      "title": "Những câu hỏi quan trọng",
+      "aside": "Thông tin rõ ràng trước khi tham gia",
+      "exploreLink": "Khám phá tất cả khuyến mãi Bullex",
+      "items": {
+        "mechanics": {
+          "question": "Tất cả các chiến dịch có hoạt động giống nhau không?",
+          "answer": "Không. Yêu cầu về phiếu, cách tích lũy vé, thời hạn và tiêu chí trao thưởng có thể thay đổi. Hãy luôn xem thể lệ của chiến dịch bạn chọn."
+        },
+        "guarantee": {
+          "question": "Tích lũy vé có đảm bảo nhận thưởng không?",
+          "answer": "Tùy theo cơ chế. Trong các đợt quay số, vé là cơ hội trúng thưởng. Với các chiến dịch đổi hoặc nhận thưởng, bạn cần đáp ứng những yêu cầu nêu trong thể lệ."
+        }
+      }
+    }
+  },
+  "offers": {
+    "meta": {
+      "title": "Ưu đãi Bullex | Tất cả khuyến mãi hiện có",
+      "description": "Khám phá mọi ưu đãi của Bullex: Risk Free, số dư khuyến mãi và các chương trình khác. Xem điều kiện của từng quyền lợi và cách kích hoạt."
+    },
+    "eyebrow": "Ưu đãi Bullex",
+    "backToSite": "Quay lại trang chủ",
+    "indexTitle": "Ưu đãi Bullex",
+    "indexSubtitle": "Tất cả khuyến mãi hiện có ở cùng một nơi. Chọn một ưu đãi để xem quy định, hạn mức và cách kích hoạt quyền lợi.",
+    "listSection": "Ưu đãi hiện có",
+    "featuredLabel": "Nổi bật",
+    "seeOffer": "Xem ưu đãi",
+    "soonLabel": "Sắp ra mắt",
+    "soonAction": "Sắp có",
+    "note": "Giá trị, hạn mức, tình trạng áp dụng và quy định có thể thay đổi tùy theo chiến dịch và tài khoản của người dùng. Vui lòng xem thể lệ của từng ưu đãi.",
+    "loadingTitle": "Đang tải ưu đãi",
+    "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị trang {offer} cho bạn.",
+    "items": {
+      "riskFree": {
+        "title": "Risk Free",
+        "tag": "Bảo vệ giao dịch đầu tiên",
+        "excerpt": "Bảo vệ cho giao dịch đầu tiên đủ điều kiện của bạn. Xem cách kích hoạt quyền lợi, hạn mức bảo vệ và cách bồi hoàn hoạt động.",
+        "imageAlt": "Ưu đãi Risk Free của Bullex"
+      },
+      "saldoPromo": {
+        "title": "Số dư khuyến mãi",
+        "tag": "Tín dụng thêm để giao dịch",
+        "excerpt": "Tín dụng thêm được cấp trong các ưu đãi của Bullex để sử dụng cho những giao dịch theo quy định.",
+        "imageAlt": "Ưu đãi số dư khuyến mãi của Bullex"
+      },
+      "tickets": {
+        "title": "Vé và chiến dịch",
+        "tag": "Chiến dịch và sự kiện",
+        "excerpt": "Theo dõi các chiến dịch theo mùa, xem cách tích lũy vé và tìm hiểu điều kiện trao thưởng của từng sự kiện.",
+        "imageAlt": "Chiến dịch và sự kiện của Bullex"
+      },
+      "box": {
+        "title": "Trader Top Box",
+        "tag": "Bộ quà độc quyền",
+        "excerpt": "Hơn cả một bộ quà: trải nghiệm Bullex được giao tận nhà bạn.",
+        "imageAlt": "Trader Top Box của Bullex"
+      },
+      "tech": {
+        "title": "Trader Top",
+        "tag": "Vật phẩm sưu tầm",
+        "excerpt": "Một vật phẩm sưu tầm xứng tầm với những ai giao dịch ở đỉnh cao.",
+        "imageAlt": "Tượng Trader Top của Bullex"
+      }
+    }
+  },
   "blog": {
     "eyebrow": "Blog Bullex",
     "backSection": "Xem thêm câu chuyện",
@@ -453,24 +618,109 @@
     "th": "ไทย",
     "vi": "Tiếng Việt"
   },
+  "saldoPromo": {
+    "meta": {
+      "title": "Số dư khuyến mãi Bullex | Cách kích hoạt và sử dụng",
+      "description": "Hiểu cách số dư khuyến mãi Bullex hoạt động. Xem cách kích hoạt tín dụng thêm, dùng ở đâu và những điều kiện nào áp dụng cho ưu đãi."
+    },
+    "backToSite": "Quay lại trang chính",
+    "hero": {
+      "eyebrow": "Số dư khuyến mãi Bullex",
+      "marquee": "Số dư khuyến mãi • Bullex • Giao dịch • Crypto • Forex • Cổ phiếu",
+      "title": "Số dư khuyến mãi Bullex: tín dụng thêm để giao dịch",
+      "titleLine1": "Số dư",
+      "titleLine2": "khuyến mãi",
+      "titleHighlight": "tín dụng thêm",
+      "body": "Số dư khuyến mãi là tín dụng thêm được cấp trong các ưu đãi của Bullex để dùng cho những giao dịch quy định trong thể lệ. Hãy xem các điều kiện áp dụng cho tài khoản của bạn và cách sử dụng quyền lợi.",
+      "cta": "Tôi muốn số dư khuyến mãi",
+      "finePrint": "Hãy xem quy tắc, hạn mức và điều kiện áp dụng trước khi dùng quyền lợi.",
+      "highlights": {
+        "credit": "Tín dụng thêm để giao dịch",
+        "trade": "Dùng cho giao dịch quy định",
+        "community": "Có trong các ưu đãi chọn lọc",
+        "premium": "Điều kiện theo thể lệ"
+      }
+    },
+    "steps": {
+      "eyebrow": "Từng bước",
+      "title": "Cách sử dụng số dư khuyến mãi",
+      "aside": "Từ tín dụng đến cơ hội",
+      "items": {
+        "offer": {
+          "title": "Xem ưu đãi",
+          "text": "Xem tín dụng khả dụng, yêu cầu tham gia và thời hạn hiệu lực."
+        },
+        "activate": {
+          "title": "Làm theo hướng dẫn kích hoạt",
+          "text": "Kiểm tra xem bạn có cần dùng mã hay đáp ứng điều kiện nào khác không."
+        },
+        "trade": {
+          "title": "Dùng cho các giao dịch được phép",
+          "text": "Theo dõi số dư trên nền tảng và tuân thủ quy tắc sử dụng của chương trình."
+        }
+      }
+    },
+    "demo": {
+      "eyebrow": "Tài khoản demo Bullex",
+      "aside": "Cùng nền tảng nhiều khả năng hơn",
+      "titleLine1": "Muốn luyện tập với số dư ảo?",
+      "titleLine2": "Khám phá tài khoản demo Bullex.",
+      "body": "Thử nghiệm chiến lược, khám phá các thị trường và làm quen toàn bộ nền tảng trước khi giao dịch bằng tiền thật. Tài khoản demo miễn phí và lý tưởng để bạn tiến bộ theo nhịp của mình.",
+      "cta": "Khám phá tài khoản demo",
+      "highlights": {
+        "virtual": "Số dư ảo để luyện tập",
+        "practice": "Môi trường luyện tập thực tế",
+        "multiplatform": "Trải nghiệm đa nền tảng"
+      }
+    },
+    "next": {
+      "eyebrow": "Bước tiếp theo của bạn",
+      "aside": "Kỷ luật hôm nay kết quả ngày mai",
+      "title": "Dùng số dư khuyến mãi rõ ràng và có chiến lược.",
+      "body": "Xem các ưu đãi khả dụng cho tài khoản của bạn và tìm hiểu cách kích hoạt, sử dụng quyền lợi trên nền tảng Bullex.",
+      "cta": "Xem ưu đãi số dư khuyến mãi",
+      "highlights": {
+        "opportunities": "Nắm bắt cơ hội",
+        "strategy": "Giao dịch có chiến lược hơn",
+        "evolve": "Tiến bộ trong mỗi giao dịch"
+      }
+    },
+    "faq": {
+      "eyebrow": "Câu hỏi thường gặp",
+      "title": "Những câu hỏi quan trọng",
+      "aside": "Thông tin đưa bạn đi xa hơn",
+      "items": {
+        "withdraw": {
+          "question": "Tôi có rút được số dư khuyến mãi không?",
+          "answer": "Điều kiện rút tín dụng và lợi nhuận thu được từ việc sử dụng phụ thuộc vào thể lệ. Hãy xem thông tin này trước khi kích hoạt ưu đãi."
+        },
+        "demo": {
+          "question": "Số dư khuyến mãi có giống số dư tài khoản demo không?",
+          "answer": "Không. Tài khoản demo dùng số dư ảo để mô phỏng giao dịch. Số dư khuyến mãi là quyền lợi có điều kiện sử dụng riêng và cho phép bạn rút lợi nhuận sau khi đáp ứng các tiêu chí quy định."
+        }
+      }
+    }
+  },
   "riskFree": {
     "meta": {
-      "title": "RiskFree Bullex | Giao dịch có bảo vệ và tìm hiểu cách hoạt động",
-      "description": "Khám phá RiskFree Bullex, tìm hiểu cách bảo vệ hoạt động trên giao dịch đủ điều kiện, xem hướng dẫn từng bước và khám phá các ưu đãi cùng tính năng khác của Bullex."
+      "title": "Risk Free Bullex | Bảo vệ giao dịch đầu tiên",
+      "description": "Tìm hiểu cách Risk Free Bullex hoạt động, ưu đãi bảo vệ giao dịch đủ điều kiện đầu tiên. Xem quy tắc kích hoạt, hạn mức bảo vệ và cách bồi hoàn."
     },
     "backToSite": "Về trang chủ",
     "hero": {
       "eyebrow": "RiskFree Bullex",
-      "title": "Giao dịch với nhiều bảo vệ hơn cùng RiskFree Bullex.",
-      "titleLine1": "Giao dịch với nhiều",
-      "titleLine2": "bảo vệ hơn cùng",
+      "marquee": "RiskFree • Bullex • Giao dịch • Crypto • Forex • Cổ phiếu",
+      "title": "Risk Free Bullex: bảo vệ giao dịch đầu tiên",
+      "titleLine1": "Bảo vệ",
+      "titleLine2": "giao dịch",
       "lead": "Giao dịch với nhiều bảo vệ hơn.\nTrải nghiệm thị trường với RiskFree.",
-      "body": "Khám phá cách giao dịch với lớp bảo vệ bổ sung. Với RiskFree, một giao dịch đủ điều kiện có thể được bảo vệ nếu kết quả âm, theo điều khoản chiến dịch.",
+      "body": "Ưu đãi mang đến lớp bảo vệ cho giao dịch đủ điều kiện đầu tiên của bạn. Trước khi bắt đầu, hãy xem cách kích hoạt quyền lợi, hạn mức bảo vệ và cách bồi hoàn theo thể lệ chương trình.",
       "cta": "Tôi muốn kích hoạt RiskFree",
+      "howItWorks": "Xem cách hoạt động",
       "finePrint": "Xem lại quy tắc, hạn mức và điều kiện áp dụng trước khi dùng quyền lợi.",
       "imageAlt": "Vé RiskFree Bullex với dấu bảo vệ",
       "titleBefore": "Giao dịch với nhiều bảo vệ hơn cùng",
-      "titleHighlight": "RiskFree Bullex.",
+      "titleHighlight": "đầu tiên",
       "visualCaption": "Giao dịch tự tin hơn",
       "visualBadge": "Cùng thị trường. Nhiều tự do hơn.",
       "highlights": {
@@ -481,30 +731,32 @@
       }
     },
     "what": {
-      "eyebrow": "Nhiều bảo vệ hơn để giao dịch",
-      "title": "RiskFree là gì?",
+      "eyebrow": "Từng bước",
+      "title": "Risk Free hoạt động thế nào?",
       "lead": "Bạn giao dịch.\nRiskFree giúp bảo vệ giao dịch của bạn.",
-      "body": "RiskFree là quyền lợi khuyến mãi của Bullex nhằm bảo vệ một giao dịch đủ điều kiện. Nếu giao dịch đó kết thúc với kết quả âm, quyền lợi có thể hoàn hoặc bù số tiền được bảo vệ, trong hạn mức và điều kiện của chương trình.",
-      "tagline": "Tự tin hơn khi bắt đầu. Tự do hơn để khám phá.",
+      "body": "Xem cách kích hoạt quyền lợi, hạn mức bảo vệ là bao nhiêu và cách bù trừ được quy định trong thể lệ.",
+      "cta": "Xem điều kiện và kích hoạt",
+      "faqTitle": "Risk Free có loại bỏ mọi rủi ro không?",
+      "faqBody": "Không. Bảo vệ chỉ áp dụng cho giao dịch đầu tiên sau khi kích hoạt phiếu hợp lệ và trong hạn mức của chương trình. Hãy xem thể lệ để biết những gì được bảo vệ, cách bù trừ được cấp và điều kiện nào áp dụng cho việc sử dụng và rút tiền của bạn.",
       "videoAlt": "Video giải thích về RiskFree Bullex",
       "points": {
         "protected": {
-          "title": "Giao dịch được bảo vệ",
-          "text": "Dùng quyền lợi trên một giao dịch đủ điều kiện."
+          "title": "1. Kiểm tra điều kiện",
+          "text": "Xác nhận tài khoản và giao dịch của bạn đáp ứng yêu cầu của chương trình."
         },
         "loss": {
-          "title": "Bảo vệ khi lỗ",
-          "text": "Nếu giao dịch được bảo vệ đóng âm, bảo vệ của chiến dịch sẽ áp dụng."
+          "title": "2. Kích hoạt quyền lợi",
+          "text": "Làm theo hướng dẫn của ưu đãi trước khi thực hiện giao dịch."
         },
         "try": {
-          "title": "Thử nền tảng",
-          "text": "Trải nghiệm giao dịch Bullex khi dùng quyền lợi."
+          "title": "3. Theo dõi kết quả",
+          "text": "Nếu giao dịch đáp ứng điều kiện bù trừ, quyền lợi sẽ được áp dụng theo thể lệ."
         }
       }
     },
     "how": {
       "eyebrow": "Đơn giản từ đầu đến cuối",
-      "title": "Cách hoạt động",
+      "title": "Kích hoạt qua 4 bước",
       "lead": "Kích hoạt. Giao dịch.\nTin vào sự bảo vệ.",
       "cta": "Kích hoạt RiskFree của tôi",
       "note": "Số tiền, hạn mức, khả dụng và quy tắc có thể khác nhau tùy chiến dịch và tài khoản.",
