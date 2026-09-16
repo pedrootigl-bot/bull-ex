@@ -849,11 +849,7 @@ function FinalCtaSection() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        setVisible(true);
-        observer.disconnect();
+        setVisible(entry.isIntersecting);
       },
       { threshold: 0.18 },
     );
