@@ -2,6 +2,7 @@
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
+import { TICKETS_PAGE_HREF } from "@/components/tickets/ticketsConfig";
 import { useLocale, useTranslations } from "next-intl";
 import { CardNav, type CardNavItem } from "./CardNav";
 
@@ -28,6 +29,7 @@ export function SiteCardNav() {
         { label: t("prizes"), href: "#ofertas" },
         { label: t("riskFree"), href: "/riskfree" },
         { label: t("saldoPromo"), href: "/saldopromo" },
+        { label: t("tickets"), href: TICKETS_PAGE_HREF },
       ],
     },
     {
