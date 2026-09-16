@@ -13,6 +13,7 @@ import {
 import { getSavedLocale } from "@/i18n/getSavedLocale";
 import { usePathname } from "@/i18n/navigation";
 import { withBasePath } from "@/lib/basePath";
+import { useOptionalBlogNavigation } from "./blog/BlogNavigationContext";
 import styles from "./languageSwitcher.module.css";
 
 function currentCanonical(pathLocale: string): Locale {
@@ -42,6 +43,8 @@ function localeTriggerLabel(locale: Locale): string {
 
 export function LanguageSwitcher() {
   const t = useTranslations("languageSwitcher");
+  const nav = useTranslations("navigation");
+  const navigation = useOptionalBlogNavigation();
   const pathname = usePathname();
   const pathLocale = useLocale();
   const current = currentCanonical(pathLocale);
@@ -70,8 +73,19 @@ export function LanguageSwitcher() {
     const hash = window.location.hash;
     const localePath = localeToPathLocale(valid);
     const pagePath = pathname === "/" ? "" : pathname;
-    // Export estático: full reload garante mensagens/HTML do locale escolhido
-    window.location.assign(withBasePath(`/${localePath}${pagePath}${hash}`));
+    navigation?.startBlogNavigation({
+      title: nav("loadingTitle"),
+      subtitle: nav("loadingSubtitle"),
+    });
+
+    // Export estático: full reload garante mensagens/HTML do locale escolhido.
+    // Espera o modal pintar antes de sair da página.
+    const target = withBasePath(`/${localePath}${pagePath}${hash}`);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.location.assign(target);
+      });
+    });
   }
 
   return (
