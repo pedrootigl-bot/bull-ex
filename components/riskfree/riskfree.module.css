@@ -204,6 +204,10 @@
   will-change: opacity, transform;
 }
 
+.heroFadeDelay0 {
+  animation-delay: 0.25s;
+}
+
 .heroFadeDelay1 {
   animation-delay: 1.05s;
 }
@@ -342,6 +346,24 @@
   white-space: pre-line;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(0.9rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.revealIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealInline {
+  display: inline-flex;
+}
+
 .titleFade {
   opacity: 0;
   transform: translateY(0.55rem);
@@ -453,7 +475,7 @@
   will-change: transform, box-shadow, border-color;
 }
 
-.pointMarquee {
+.pointCarousel {
   display: none;
 }
 
@@ -476,20 +498,12 @@
   }
 }
 
-@keyframes pointMarqueeLoop {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .ecoSection {
   position: relative;
   overflow: clip;
   isolation: isolate;
-  min-height: clamp(24rem, 52vh, 34rem);
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   background: #050806;
@@ -1298,7 +1312,8 @@
   }
 
   .ecoSection {
-    min-height: clamp(20rem, 48vh, 28rem);
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .aboutSection {
@@ -1354,6 +1369,14 @@
     padding-block: 0.35rem;
   }
 
+  .howProgressList {
+    display: none;
+  }
+
+  .howProgressMeta {
+    margin-bottom: 0;
+  }
+
   .headerInner {
     grid-template-columns: 1fr auto;
   }
@@ -1362,62 +1385,40 @@
     display: none;
   }
 
-  .pointMarquee {
+  .pointCarousel {
     display: block;
     width: 100%;
     margin-top: 0.35rem;
   }
 
-  .pointMarqueeViewport {
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  }
-
-  .pointMarqueeTrack {
-    display: flex;
-    width: max-content;
-    animation: pointMarqueeLoop 22s linear infinite;
-    will-change: transform;
-  }
-
-  .pointMarqueeStatic .pointMarqueeTrack {
-    animation: none;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-
-  .pointMarqueeStatic .pointMarqueeSet:last-child {
-    display: none;
-  }
-
-  .pointMarqueeSet {
+  .pointCarouselTrack {
     display: flex;
     gap: 0.85rem;
     margin: 0;
-    padding: 0.35rem 1rem 0.55rem;
+    padding: 0.35rem 1rem 0.75rem;
     list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;
+    scrollbar-width: none;
   }
 
-  .pointMarqueeSet .pointCard {
+  .pointCarouselTrack::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pointCarouselTrack .pointCard {
     flex: 0 0 min(78vw, 17.5rem);
     min-height: 11.5rem;
     scroll-snap-align: center;
-  }
-
-  .pointMarqueeStatic .pointMarqueeSet   .pointCard {
-    animation: none;
-    will-change: auto;
-  }
-
-  .pointMarqueeTrack {
-    animation: none !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroFadeItem,
+  .heroFadeDelay0,
   .heroFadeDelay1,
   .heroFadeDelay2,
   .heroFadeDelay3 {
@@ -1471,6 +1472,15 @@
     opacity: 1;
     transform: none;
     transition: none;
+    will-change: auto;
+  }
+
+  .reveal,
+  .revealIn {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0s !important;
     will-change: auto;
   }
 

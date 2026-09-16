@@ -77,6 +77,40 @@ function FadeTitle({
   );
 }
 
+function useReveal<T extends HTMLElement>(className = "", delay = 0) {
+  const reducedMotion = useReducedMotion();
+  const ref = useRef<T | null>(null);
+  const [visible, setVisible] = useState(reducedMotion);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const node = ref.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -6% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  return {
+    ref,
+    className: `${className} ${styles.reveal} ${visible ? styles.revealIn : ""}`.trim(),
+    style: { transitionDelay: `${delay}s` },
+  };
+}
+
 function CtaArrow() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -354,7 +388,9 @@ function HeroSection() {
 
       <div className={styles.heroInner}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>{t("hero.eyebrow")}</p>
+          <p className={`${styles.eyebrow} ${styles.heroFadeItem} ${styles.heroFadeDelay0}`}>
+            {t("hero.eyebrow")}
+          </p>
           <h1 className={styles.heroTitle} id="riskfree-h1">
             <span className={styles.heroTitleSr}>{heroTitle}</span>
             <span className={styles.heroTitleStack} aria-hidden="true">
@@ -473,17 +509,22 @@ function WhatIsSection() {
   const t = useTranslations("riskFree");
   const { register } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
+  const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
+  const bodyReveal = useReveal<HTMLParagraphElement>(styles.sectionBody, 0.08);
+  const taglineReveal = useReveal<HTMLSpanElement>(styles.revealInline, 0.16);
 
   return (
     <section className={`${styles.section} ${styles.sectionBlend}`} aria-labelledby="what-title">
       <div className={`${styles.inner} ${styles.whatSplit}`}>
         <header className={styles.whatHead}>
-          <p className={styles.eyebrow}>{t("what.eyebrow")}</p>
+          <p {...eyebrowReveal}>{t("what.eyebrow")}</p>
           <FadeTitle className={styles.sectionTitle} id="what-title">
             {t("what.title")}
           </FadeTitle>
-          <p className={styles.sectionBody}>{t("what.body")}</p>
-          <TextLink label={t("what.tagline")} href={register} />
+          <p {...bodyReveal}>{t("what.body")}</p>
+          <span {...taglineReveal}>
+            <TextLink label={t("what.tagline")} href={register} />
+          </span>
         </header>
 
         <div className={styles.whatAside}>
@@ -509,26 +550,45 @@ function WhatIsSection() {
         </div>
       </div>
 
-      <div
-        className={`${styles.pointMarquee} ${reducedMotion ? styles.pointMarqueeStatic : ""}`}
-        aria-label={t("what.title")}
-      >
-        <div className={styles.pointMarqueeViewport}>
-          <div className={styles.pointMarqueeTrack}>
-            <ul className={styles.pointMarqueeSet}>
-              {WHAT_IS_POINTS.map((id, index) => (
-                <WhatPointCard id={id} index={index} key={`a-${id}`} />
-              ))}
-            </ul>
-            <ul className={styles.pointMarqueeSet} aria-hidden="true">
-              {WHAT_IS_POINTS.map((id, index) => (
-                <WhatPointCard id={id} index={index} key={`b-${id}`} />
-              ))}
-            </ul>
-          </div>
-        </div>
+      <div className={styles.pointCarousel} aria-label={t("what.title")}>
+        <ul className={styles.pointCarouselTrack} tabIndex={0}>
+          {WHAT_IS_POINTS.map((id, index) => (
+            <WhatPointCard id={id} index={index} key={id} />
+          ))}
+        </ul>
       </div>
     </section>
+  );
+}
+
+function HowProgressItem({
+  id,
+  index,
+  isActive,
+  isDone,
+  onSelect,
+}: {
+  id: (typeof HOW_STEPS)[number];
+  index: number;
+  isActive: boolean;
+  isDone: boolean;
+  onSelect: () => void;
+}) {
+  const t = useTranslations("riskFree");
+  const itemReveal = useReveal<HTMLLIElement>("", 0.3 + index * 0.07);
+
+  return (
+    <li {...itemReveal}>
+      <button
+        type="button"
+        className={`${styles.howProgressItem} ${isActive ? styles.howProgressItemActive : ""} ${isDone ? styles.howProgressItemDone : ""}`}
+        aria-current={isActive ? "step" : undefined}
+        onClick={onSelect}
+      >
+        <span className={styles.howProgressIndex}>{String(index + 1).padStart(2, "0")}</span>
+        <span className={styles.howProgressLabel}>{t(`how.steps.${id}.title`)}</span>
+      </button>
+    </li>
   );
 }
 
@@ -536,6 +596,11 @@ function HowSection() {
   const t = useTranslations("riskFree");
   const { register } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
+  const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
+  const leadReveal = useReveal<HTMLParagraphElement>(styles.sectionLead, 0.08);
+  const noteReveal = useReveal<HTMLParagraphElement>(styles.sectionBody, 0.16);
+  const metaReveal = useReveal<HTMLDivElement>(styles.howProgressMeta, 0.24);
+  const actionsReveal = useReveal<HTMLDivElement>(styles.sectionActions, 0.5);
   const stepRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [activeStep, setActiveStep] = useState(0);
   const [revealed, setRevealed] = useState(() =>
@@ -619,15 +684,15 @@ function HowSection() {
     >
       <div className={`${styles.inner} ${styles.howLayout}`}>
         <aside className={styles.howSticky}>
-          <p className={styles.eyebrow}>{t("how.eyebrow")}</p>
+          <p {...eyebrowReveal}>{t("how.eyebrow")}</p>
           <FadeTitle className={styles.sectionTitle} id="how-title">
             {t("how.title")}
           </FadeTitle>
-          <p className={styles.sectionLead}>{t("how.lead")}</p>
-          <p className={styles.sectionBody}>{t("how.note")}</p>
+          <p {...leadReveal}>{t("how.lead")}</p>
+          <p {...noteReveal}>{t("how.note")}</p>
 
           <nav className={styles.howProgress} aria-label={t("how.title")}>
-            <div className={styles.howProgressMeta}>
+            <div {...metaReveal}>
               <span>
                 {String(activeStep + 1).padStart(2, "0")} / {String(HOW_STEPS.length).padStart(2, "0")}
               </span>
@@ -647,31 +712,20 @@ function HowSection() {
             </div>
 
             <ol className={styles.howProgressList}>
-              {HOW_STEPS.map((id, index) => {
-                const isActive = index === activeStep;
-                const isDone = index < activeStep || revealed[index];
-                return (
-                  <li key={id}>
-                    <button
-                      type="button"
-                      className={`${styles.howProgressItem} ${isActive ? styles.howProgressItemActive : ""} ${isDone ? styles.howProgressItemDone : ""}`}
-                      aria-current={isActive ? "step" : undefined}
-                      onClick={() => scrollToStep(index)}
-                    >
-                      <span className={styles.howProgressIndex}>
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className={styles.howProgressLabel}>
-                        {t(`how.steps.${id}.title`)}
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
+              {HOW_STEPS.map((id, index) => (
+                <HowProgressItem
+                  key={id}
+                  id={id}
+                  index={index}
+                  isActive={index === activeStep}
+                  isDone={index < activeStep || revealed[index]}
+                  onSelect={() => scrollToStep(index)}
+                />
+              ))}
             </ol>
           </nav>
 
-          <div className={styles.sectionActions}>
+          <div {...actionsReveal}>
             <SecondaryCta label={t("how.cta")} href={register} />
           </div>
         </aside>
@@ -720,6 +774,9 @@ function HowSection() {
 
 function EcosystemSection() {
   const t = useTranslations("riskFree");
+  const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
+  const bodyReveal = useReveal<HTMLParagraphElement>(styles.sectionBody, 0.08);
+  const comingSoonReveal = useReveal<HTMLParagraphElement>(styles.ecoComingSoonText, 0.16);
 
   return (
     <section
@@ -758,14 +815,14 @@ function EcosystemSection() {
 
       <div className={`${styles.inner} ${styles.ecoSectionInner}`}>
         <div className={styles.splitCopy}>
-          <p className={styles.eyebrow}>{t("ecosystem.eyebrow")}</p>
+          <p {...eyebrowReveal}>{t("ecosystem.eyebrow")}</p>
           <FadeTitle className={styles.sectionTitle} id="eco-title">
             {t("ecosystem.title")}
           </FadeTitle>
-          <p className={styles.sectionBody}>{t("ecosystem.body")}</p>
+          <p {...bodyReveal}>{t("ecosystem.body")}</p>
         </div>
 
-        <p className={styles.ecoComingSoonText} role="status">
+        <p {...comingSoonReveal} role="status">
           {t("ecosystem.comingSoon")}
         </p>
       </div>
@@ -921,8 +978,36 @@ function AboutPointIcon({ id }: { id: (typeof ABOUT_POINTS)[number] }) {
   }
 }
 
+function AboutPointItem({
+  id,
+  index,
+}: {
+  id: (typeof ABOUT_POINTS)[number];
+  index: number;
+}) {
+  const t = useTranslations("riskFree");
+  const itemReveal = useReveal<HTMLLIElement>(styles.aboutListItem, index * 0.09);
+
+  return (
+    <li {...itemReveal}>
+      <span className={styles.aboutListIcon} aria-hidden="true">
+        <AboutPointIcon id={id} />
+      </span>
+      <div className={styles.aboutCardCopy}>
+        <h3 className={styles.aboutCardTitle}>{t(`about.points.${id}.title`)}</h3>
+        <p className={styles.aboutCardText}>{t(`about.points.${id}.text`)}</p>
+      </div>
+    </li>
+  );
+}
+
 function AboutSection() {
   const t = useTranslations("riskFree");
+  const eyebrowReveal = useReveal<HTMLParagraphElement>(
+    `${styles.eyebrow} ${styles.aboutEyebrow}`,
+  );
+  const bodyReveal = useReveal<HTMLParagraphElement>(styles.aboutBody, 0.08);
+  const actionsReveal = useReveal<HTMLDivElement>(styles.sectionActions, 0.16);
 
   return (
     <section
@@ -943,27 +1028,19 @@ function AboutSection() {
 
       <div className={`${styles.inner} ${styles.aboutSplit}`}>
         <div className={`${styles.splitCopy} ${styles.aboutCopy}`}>
-          <p className={`${styles.eyebrow} ${styles.aboutEyebrow}`}>{t("about.eyebrow")}</p>
+          <p {...eyebrowReveal}>{t("about.eyebrow")}</p>
           <FadeTitle className={styles.aboutTitle} id="about-title">
             {t("about.title")}
           </FadeTitle>
-          <p className={styles.aboutBody}>{t("about.body")}</p>
-          <div className={styles.sectionActions}>
+          <p {...bodyReveal}>{t("about.body")}</p>
+          <div {...actionsReveal}>
             <PrimaryCta label={t("about.cta")} href="/" solid />
           </div>
         </div>
 
         <ul className={styles.aboutList}>
-          {ABOUT_POINTS.map((id) => (
-            <li className={styles.aboutListItem} key={id}>
-              <span className={styles.aboutListIcon} aria-hidden="true">
-                <AboutPointIcon id={id} />
-              </span>
-              <div className={styles.aboutCardCopy}>
-                <h3 className={styles.aboutCardTitle}>{t(`about.points.${id}.title`)}</h3>
-                <p className={styles.aboutCardText}>{t(`about.points.${id}.text`)}</p>
-              </div>
-            </li>
+          {ABOUT_POINTS.map((id, index) => (
+            <AboutPointItem id={id} index={index} key={id} />
           ))}
         </ul>
       </div>
