@@ -116,13 +116,14 @@ export function MarketCategoriesSection() {
   const baseId = useId();
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState<MarketCategoryId>("digital");
+  const [active, setActive] = useState<MarketCategoryId | null>("digital");
+  const [lastActive, setLastActive] = useState<MarketCategoryId>("digital");
   const [preview, setPreview] = useState<MarketCategoryId | null>(null);
   const [visible, setVisible] = useState(reducedMotion);
   const [sceneKey, setSceneKey] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
-  const displayed = preview ?? active;
+  const displayed = preview ?? active ?? lastActive;
 
   useEffect(() => {
     if (reducedMotion) {
@@ -154,7 +155,12 @@ export function MarketCategoriesSection() {
   }, [displayed]);
 
   function selectCategory(id: MarketCategoryId) {
-    setActive(id);
+    if (active === id) {
+      setActive(null);
+    } else {
+      setActive(id);
+      setLastActive(id);
+    }
     setPreview(null);
   }
 
@@ -186,19 +192,19 @@ export function MarketCategoriesSection() {
       </div>
 
       <div className={styles.inner}>
-        <div className={styles.left}>
-          <header className={styles.header}>
-            <p className={styles.eyebrow}>
-              <span className={styles.eyebrowDot} aria-hidden="true" />
-              {t("eyebrow")}
-            </p>
-            <h2 className={styles.title} id={`${baseId}-title`}>
-              <span className={styles.titleLine}>{t("titleLine1")}</span>
-              <span className={styles.titleLine}>
-                {t("titleLine2")}{" "}
-                <em className={styles.titleHighlight}>{t("titleHighlight")}</em>
-              </span>
-            </h2>
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>
+            <span className={styles.eyebrowDot} aria-hidden="true" />
+            {t("eyebrow")}
+          </p>
+          <h2 className={styles.title} id={`${baseId}-title`}>
+            <span className={styles.titleLine}>{t("titleLine1")}</span>
+            <span className={styles.titleLine}>
+              {t("titleLine2")}{" "}
+              <em className={styles.titleHighlight}>{t("titleHighlight")}</em>
+            </span>
+          </h2>
+          <div className={styles.headerRow}>
             <p className={styles.body}>{t("body")}</p>
             <a
               className={styles.cta}
@@ -211,112 +217,116 @@ export function MarketCategoriesSection() {
                 →
               </span>
             </a>
-          </header>
-
-          <div className={styles.nav} role="list">
-            {MARKET_CATEGORY_IDS.map((id, index) => {
-              const meta = MARKET_CATEGORY_META[id];
-              const isActive = active === id;
-              const isPreview = preview === id && !isActive;
-              const panelId = `${baseId}-panel-${id}`;
-              const buttonId = `${baseId}-btn-${id}`;
-
-              return (
-                <div
-                  className={styles.navItem}
-                  key={id}
-                  role="listitem"
-                  style={{ "--i": index } as CSSProperties}
-                >
-                  <button
-                    type="button"
-                    id={buttonId}
-                    className={`${styles.item} ${isActive ? styles.itemActive : ""} ${isPreview ? styles.itemPreview : ""}`}
-                    aria-expanded={isActive}
-                    aria-controls={panelId}
-                    onClick={() => selectCategory(id)}
-                    onMouseEnter={() => {
-                      if (!reducedMotion) {
-                        setPreview(id);
-                      }
-                    }}
-                    onMouseLeave={() => setPreview(null)}
-                    onFocus={() => {
-                      if (!reducedMotion) {
-                        setPreview(id);
-                      }
-                    }}
-                    onBlur={() => setPreview(null)}
-                  >
-                    <span className={styles.itemIndex}>{meta.index}</span>
-                    <span className={styles.itemMain}>
-                      <span className={styles.itemTitleRow}>
-                        <span className={styles.itemTitleBlock}>
-                          <span className={styles.itemTitle}>{t(`items.${id}.label`)}</span>
-                          <span className={styles.itemTag}>{t(`items.${id}.tag`)}</span>
-                        </span>
-                        <PlusMinus open={isActive} />
-                      </span>
-                      <span className={styles.itemDetails} id={panelId}>
-                        <span className={styles.itemDescription}>
-                          {t(`items.${id}.description`)}
-                        </span>
-                        <span className={styles.itemMeta}>
-                          {meta.indicators.map((indicator, i) => (
-                            <span className={styles.metaBit} key={indicator.key}>
-                              {i > 0 ? (
-                                <span className={styles.metaSep} aria-hidden="true">
-                                  ·
-                                </span>
-                              ) : null}
-                              <IndicatorGlyph icon={indicator.icon} />
-                              {t(`items.${id}.indicators.${indicator.key}`)}
-                            </span>
-                          ))}
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-
-                  <div
-                    className={`${styles.mobileScene} ${isActive ? styles.mobileSceneActive : ""}`}
-                    aria-hidden={!isActive}
-                  >
-                    {isActive ? <MarketScene category={id} /> : null}
-                  </div>
-                </div>
-              );
-            })}
           </div>
-        </div>
+        </header>
 
-        <div className={styles.right}>
-          <div
-            className={styles.stage}
-            ref={stageRef}
-            onMouseMove={handleStageMove}
-            onMouseLeave={resetTilt}
-            style={
-              reducedMotion
-                ? undefined
-                : {
-                    transform: `perspective(1600px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-                  }
-            }
-          >
-            <div className={styles.stageAura} aria-hidden="true" />
-            <div className={styles.stageRing} aria-hidden="true" />
-            <div className={styles.stageFloor} aria-hidden="true" />
-            <div className={styles.sceneFrame} key={sceneKey}>
-              <MarketScene category={displayed} />
+        <div className={styles.workspace}>
+          <div className={styles.rail}>
+            <div className={styles.nav} role="list">
+              {MARKET_CATEGORY_IDS.map((id, index) => {
+                const meta = MARKET_CATEGORY_META[id];
+                const isActive = active === id;
+                const isPreview = preview === id && !isActive;
+                const panelId = `${baseId}-panel-${id}`;
+                const buttonId = `${baseId}-btn-${id}`;
+
+                return (
+                  <div
+                    className={styles.navItem}
+                    key={id}
+                    role="listitem"
+                    style={{ "--i": index } as CSSProperties}
+                  >
+                    <button
+                      type="button"
+                      id={buttonId}
+                      className={`${styles.item} ${isActive ? styles.itemActive : ""} ${isPreview ? styles.itemPreview : ""}`}
+                      aria-expanded={isActive}
+                      aria-controls={panelId}
+                      onClick={() => selectCategory(id)}
+                      onMouseEnter={() => {
+                        if (!reducedMotion) {
+                          setPreview(id);
+                        }
+                      }}
+                      onMouseLeave={() => setPreview(null)}
+                      onFocus={() => {
+                        if (!reducedMotion) {
+                          setPreview(id);
+                        }
+                      }}
+                      onBlur={() => setPreview(null)}
+                    >
+                      <span className={styles.itemIndex}>{meta.index}</span>
+                      <span className={styles.itemMain}>
+                        <span className={styles.itemTitleRow}>
+                          <span className={styles.itemTitleBlock}>
+                            <span className={styles.itemTitle}>{t(`items.${id}.label`)}</span>
+                            <span className={styles.itemTag}>{t(`items.${id}.tag`)}</span>
+                          </span>
+                          <PlusMinus open={isActive} />
+                        </span>
+                        <span className={styles.itemDetails} id={panelId}>
+                          <span className={styles.itemDescription}>
+                            {t(`items.${id}.description`)}
+                          </span>
+                          <span className={styles.itemMeta}>
+                            {meta.indicators.map((indicator, i) => (
+                              <span className={styles.metaBit} key={indicator.key}>
+                                {i > 0 ? (
+                                  <span className={styles.metaSep} aria-hidden="true">
+                                    ·
+                                  </span>
+                                ) : null}
+                                <IndicatorGlyph icon={indicator.icon} />
+                                {t(`items.${id}.indicators.${indicator.key}`)}
+                              </span>
+                            ))}
+                          </span>
+                        </span>
+                      </span>
+                    </button>
+
+                    <div
+                      className={`${styles.mobileScene} ${isActive ? styles.mobileSceneActive : ""}`}
+                      aria-hidden={!isActive}
+                    >
+                      {isActive ? <MarketScene category={id} /> : null}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className={styles.stageCaption} key={`cap-${displayed}`}>
-              <span className={styles.stageIndex}>
-                {MARKET_CATEGORY_META[displayed].index}
-              </span>
-              <div className={styles.stageCaptionText}>
-                <strong>{t(`items.${displayed}.label`)}</strong>
-                <span>{t(`items.${displayed}.tag`)}</span>
+          </div>
+
+          <div className={styles.right}>
+            <div
+              className={styles.stage}
+              ref={stageRef}
+              onMouseMove={handleStageMove}
+              onMouseLeave={resetTilt}
+              style={
+                reducedMotion
+                  ? undefined
+                  : {
+                      transform: `perspective(1600px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
+                    }
+              }
+            >
+              <div className={styles.stageAura} aria-hidden="true" />
+              <div className={styles.stageRing} aria-hidden="true" />
+              <div className={styles.stageFloor} aria-hidden="true" />
+              <div className={styles.sceneFrame} key={sceneKey}>
+                <MarketScene category={displayed} />
+              </div>
+              <div className={styles.stageCaption} key={`cap-${displayed}`}>
+                <span className={styles.stageIndex}>
+                  {MARKET_CATEGORY_META[displayed].index}
+                </span>
+                <div className={styles.stageCaptionText}>
+                  <strong>{t(`items.${displayed}.label`)}</strong>
+                  <span>{t(`items.${displayed}.tag`)}</span>
+                </div>
               </div>
             </div>
           </div>
