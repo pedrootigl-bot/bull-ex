@@ -387,39 +387,39 @@
   "prizes": {
     "eyebrow": "Exclusive offers",
     "title": "Offers",
-    "leadBefore": "Special ",
-    "leadHighlight": "conditions",
-    "leadAfter": " for those who trade with us.",
-    "body": "Benefits designed to help you start with more confidence and grow on Bullex.",
+    "leadBefore": "Extra credit, ",
+    "leadHighlight": "tickets",
+    "leadAfter": " and protection for those who trade with us.",
+    "body": "Benefits you can see in practice: activated promotional balance, campaign tickets and Risk Free to trade with more peace of mind.",
     "cta": "I want to take the offers",
     "loadingTitle": "Loading offers",
     "loadingSubtitle": "Please wait while we prepare the offers page for you.",
     "featuredBadge": "Featured",
     "points": {
-      "points": "Active offers for new and existing clients.",
-      "redeem": "Clear benefits, no hidden fine print.",
-      "safe": "100% transparent — you stay in control."
+      "points": "Promotional balance and extra credit to expand your trades.",
+      "redeem": "Tickets and campaigns with rewards for taking part.",
+      "safe": "Risk Free and clear rules — you stay in control."
     },
     "barNote": "Transparency at every step. You stay in control.",
-    "barSocial": "Thousands of clients already enjoy Bullex conditions.",
+    "barSocial": "Real traders, real achievements — opportunities that move stories.",
     "cards": {
+      "saldoPromo": {
+        "title": "Promotional Balance",
+        "titleHighlight": "",
+        "text": "Extra credit activated for more trading and more possibilities. Opportunities that move traders.",
+        "imageAlt": "Bullex Promotional Balance card with +500 USD extra credit activated"
+      },
+      "tickets": {
+        "title": "Tickets and campaigns",
+        "titleHighlight": "",
+        "text": "More trades, more achievements: extra tickets, live campaigns and rewards for disciplined trading.",
+        "imageAlt": "Bullex extra tickets, reward box and campaigns with +10 tickets"
+      },
       "riskFree": {
         "title": "Risk Free",
         "titleHighlight": "",
         "text": "Start with protection: trade with more peace of mind and soften the impact of your first mistake.",
         "imageAlt": "Bullex Risk Free offer"
-      },
-      "box": {
-        "title": "Trader top Box",
-        "titleHighlight": "",
-        "text": "More than a kit: a Bullex experience delivered to your home.",
-        "imageAlt": "Bullex Trader top Box"
-      },
-      "tech": {
-        "title": "Trader top",
-        "titleHighlight": "",
-        "text": "A collectible piece worthy of those who trade at the top.",
-        "imageAlt": "Bullex Trader top statue"
       }
     }
   },
@@ -636,15 +636,15 @@
       },
       "saldoPromo": {
         "title": "Promotional balance",
-        "tag": "Extra credit to trade",
-        "excerpt": "Extra credit available in Bullex offers for use in the trades set out in the terms and conditions.",
-        "imageAlt": "Bullex promotional balance offer"
+        "tag": "Extra credit activated",
+        "excerpt": "More trading, more possibilities: extra credit for eligible operations under the offer rules. Opportunities that move traders.",
+        "imageAlt": "Bullex Promotional Balance card with +500 USD extra credit"
       },
       "tickets": {
         "title": "Tickets and campaigns",
-        "tag": "Campaigns and events",
-        "excerpt": "Follow the seasonal campaigns, see how to collect tickets and check the prize conditions of each event.",
-        "imageAlt": "Bullex campaigns and events"
+        "tag": "More trades, more achievements",
+        "excerpt": "Extra tickets, live campaigns and rewards: discipline, progress and more opportunities in every trade.",
+        "imageAlt": "Bullex extra tickets and campaigns with reward box"
       },
       "box": {
         "title": "Trader Top Box",
@@ -658,7 +658,12 @@
         "excerpt": "A collectible piece worthy of those who trade at the top.",
         "imageAlt": "Bullex Trader Top statue"
       }
-    }
+    },
+    "adjacentTitle": "Other offers",
+    "adjacentAll": "See all",
+    "adjacentNavLabel": "Navigate offers",
+    "adjacentPrev": "Previous offer",
+    "adjacentNext": "Next offer"
   },
   "blog": {
     "eyebrow": "Bullex Blog",

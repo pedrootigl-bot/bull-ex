@@ -387,39 +387,39 @@
   "prizes": {
     "eyebrow": "Ofertas exclusivas",
     "title": "Ofertas",
-    "leadBefore": "Condições ",
-    "leadHighlight": "especiais",
-    "leadAfter": " para quem opera com a gente.",
-    "body": "Benefícios pensados para você começar com mais segurança e evoluir na Bullex.",
+    "leadBefore": "Crédito extra, ",
+    "leadHighlight": "tickets",
+    "leadAfter": " e proteção para quem opera com a gente.",
+    "body": "Benefícios que você vê na prática: saldo promocional ativado, tickets em campanhas e Risk Free para negociar com mais tranquilidade.",
     "cta": "Quero aproveitar as ofertas",
     "loadingTitle": "Carregando ofertas",
     "loadingSubtitle": "Aguarde enquanto preparamos a página de ofertas para você.",
     "featuredBadge": "Destaque",
     "points": {
-      "points": "Ofertas ativas para novos e atuais clientes.",
-      "redeem": "Benefícios claros, sem letras miúdas escondidas.",
-      "safe": "100% transparente — você no controle."
+      "points": "Saldo promocional e crédito extra para ampliar suas operações.",
+      "redeem": "Tickets e campanhas com recompensas por participação.",
+      "safe": "Risk Free e regras claras — você no controle."
     },
     "barNote": "Transparência em cada etapa. Você sempre no controle.",
-    "barSocial": "Milhares de clientes já aproveitam as condições Bullex.",
+    "barSocial": "Traders reais, conquistas reais — oportunidades que movem histórias.",
     "cards": {
+      "saldoPromo": {
+        "title": "Saldo Promocional",
+        "titleHighlight": "",
+        "text": "Crédito extra ativado para mais trading e mais possibilidades. Oportunidades que movem traders.",
+        "imageAlt": "Cartão Saldo Promocional Bullex com crédito extra de +500 USD ativado"
+      },
+      "tickets": {
+        "title": "Tickets e campanhas",
+        "titleHighlight": "",
+        "text": "Mais trades, mais conquistas: tickets extras, campanhas ativas e recompensas para quem opera com disciplina.",
+        "imageAlt": "Tickets extras Bullex, caixa de recompensas e campanhas com +10 tickets"
+      },
       "riskFree": {
         "title": "Risk Free",
         "titleHighlight": "",
         "text": "Comece com proteção: opere com mais tranquilidade e reduza o impacto do primeiro erro.",
         "imageAlt": "Oferta Risk Free Bullex"
-      },
-      "box": {
-        "title": "Trader top Box",
-        "titleHighlight": "",
-        "text": "Mais que um kit: \numa experiência Bullex\n entregue na sua casa.",
-        "imageAlt": "Trader top Box da Bullex"
-      },
-      "tech": {
-        "title": "Trader top",
-        "titleHighlight": "",
-        "text": "Uma peça colecionável à altura de quem opera no topo.",
-        "imageAlt": "Estátua Trader top da Bullex"
       }
     }
   },
@@ -627,6 +627,11 @@
     "note": "Valores, limites, disponibilidade e regras podem variar conforme a campanha e a conta do usuário. Consulte o regulamento de cada oferta.",
     "loadingTitle": "Carregando oferta",
     "loadingSubtitle": "Aguarde enquanto preparamos a página {offer} para você.",
+    "adjacentTitle": "Outras ofertas",
+    "adjacentAll": "Ver todas",
+    "adjacentNavLabel": "Navegar entre ofertas",
+    "adjacentPrev": "Oferta anterior",
+    "adjacentNext": "Próxima oferta",
     "items": {
       "riskFree": {
         "title": "Risk Free",
@@ -636,15 +641,15 @@
       },
       "saldoPromo": {
         "title": "Saldo promocional",
-        "tag": "Crédito extra para negociar",
-        "excerpt": "Crédito extra disponibilizado em ofertas da Bullex para uso nas operações previstas no regulamento.",
-        "imageAlt": "Oferta de saldo promocional Bullex"
+        "tag": "Crédito extra ativado",
+        "excerpt": "Mais trading, mais possibilidades: crédito extra para usar nas operações previstas no regulamento. Oportunidades que movem traders.",
+        "imageAlt": "Cartão Saldo Promocional Bullex com +500 USD de crédito extra"
       },
       "tickets": {
         "title": "Tickets e campanhas",
-        "tag": "Campanhas e eventos",
-        "excerpt": "Acompanhe as campanhas sazonais, veja como acumular tickets e confira as condições de premiação de cada evento.",
-        "imageAlt": "Campanhas e eventos Bullex"
+        "tag": "Mais trades, mais conquistas",
+        "excerpt": "Tickets extras, campanhas ativas e recompensas: disciplina, evolução e mais oportunidades em cada trade.",
+        "imageAlt": "Tickets extras e campanhas Bullex com caixa de recompensas"
       },
       "box": {
         "title": "Trader Top Box",

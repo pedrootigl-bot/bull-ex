@@ -7,17 +7,17 @@ export const PRIZES_COPY = {
 
 export const PRIZE_POINTS = ["points", "redeem", "safe"] as const;
 
-export const FEATURED_PRIZE = "riskFree" as const;
+export const FEATURED_PRIZE = "saldoPromo" as const;
 
-export const ROW_PRIZES = ["box", "tech"] as const;
+export const ROW_PRIZES = ["tickets", "riskFree"] as const;
 
 export const PRIZE_CARDS = [FEATURED_PRIZE, ...ROW_PRIZES] as const;
 
 export type PrizeId = (typeof PRIZE_CARDS)[number];
 
-/** Caminho em /public quando a imagem do card chegar. */
+/** Caminho em /public para a arte de cada card. */
 export const PRIZE_IMAGES: Record<PrizeId, string | null> = {
+  saldoPromo: "/images/prizes/saldopromo-home.webp",
+  tickets: "/images/prizes/tickets-home.webp",
   riskFree: "/images/prizes/risk-free.webp",
-  box: "/images/prizes/trader-top-box.webp",
-  tech: "/images/prizes/trader-top.webp",
 };

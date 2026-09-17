@@ -3,6 +3,7 @@
 import { SiteFooter } from "@/components/footer/Footer";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
+import { OffersAdjacentNav } from "@/components/offers/OffersAdjacentNav";
 import { OFFERS_PAGE_HREF } from "@/components/offers/offersConfig";
 import { SplitFlapText } from "@/components/splitFlapText/SplitFlapText";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -809,6 +810,7 @@ export function TicketsPage() {
         <CampaignsSection />
         <FaqSection />
       </main>
+      <OffersAdjacentNav currentId="tickets" />
       <SiteFooter />
     </div>
   );

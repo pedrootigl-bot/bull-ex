@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import {
+  FEATURED_PRIZE,
   PRIZE_CARDS,
   PRIZE_IMAGES,
   PRIZE_POINTS,
@@ -80,16 +81,16 @@ function PrizeReveal({
     [0, 0.42],
     ["inset(0% 50% 0% 50%)", "inset(0% 0% 0% 0%)"],
   );
-  const isRiskFree = id === "riskFree";
+  const isFeatured = id === FEATURED_PRIZE;
   const scale = useTransform(
     scrollYProgress,
     [0, 0.42, 1],
-    isRiskFree ? [1.1, 1, 1.03] : [1.28, 1, 1.08],
+    isFeatured ? [1.1, 1, 1.03] : [1.28, 1, 1.08],
   );
   const imageY = useTransform(
     scrollYProgress,
     [0, 1],
-    isRiskFree ? ["0%", "8%"] : ["0%", "16%"],
+    isFeatured ? ["0%", "8%"] : ["0%", "16%"],
   );
   const copyOpacity = useTransform(scrollYProgress, [0.08, 0.36], [0, 1]);
   const copyY = useTransform(scrollYProgress, [0.08, 0.36], [28, 0]);
@@ -109,7 +110,7 @@ function PrizeReveal({
       >
         <div className={styles.copyMeta}>
           <span className={styles.index}>{number}</span>
-          {id === "riskFree" ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
+          {id === FEATURED_PRIZE ? <span className={styles.badge}>{t("featuredBadge")}</span> : null}
         </div>
 
         <p className={styles.product}>{t(`cards.${id}.title`)}</p>
@@ -119,7 +120,7 @@ function PrizeReveal({
       <motion.div className={styles.revealMask} style={staticMotion ? undefined : { clipPath }}>
         {src ? (
           <motion.div
-            className={`${styles.revealMedia} ${isRiskFree ? styles.revealMediaZoomOut : ""}`}
+            className={`${styles.revealMedia} ${isFeatured ? styles.revealMediaZoomOut : ""}`}
             style={
               staticMotion
                 ? undefined

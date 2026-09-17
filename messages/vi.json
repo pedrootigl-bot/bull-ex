@@ -387,39 +387,39 @@
   "prizes": {
     "eyebrow": "Ưu đãi độc quyền",
     "title": "Ưu đãi",
-    "leadBefore": "Điều kiện ",
-    "leadHighlight": "đặc biệt",
-    "leadAfter": " cho ai giao dịch cùng chúng tôi.",
-    "body": "Quyền lợi được thiết kế để bạn bắt đầu an tâm hơn và phát triển cùng Bullex.",
+    "leadBefore": "Tín dụng thêm, ",
+    "leadHighlight": "vé",
+    "leadAfter": " và bảo vệ cho người giao dịch cùng chúng tôi.",
+    "body": "Lợi ích thấy rõ trên thực tế: số dư khuyến mãi đã kích hoạt, vé trong chiến dịch và Risk Free để giao dịch an tâm hơn.",
     "cta": "Tôi muốn nhận ưu đãi",
-    "loadingTitle": "Loading offers",
-    "loadingSubtitle": "Vui lòng đợi trong khi chúng tôi chuẩn bị trang ưu đãi cho bạn.",
+    "loadingTitle": "Đang tải ưu đãi",
+    "loadingSubtitle": "Vui lòng chờ trong khi chúng tôi chuẩn bị trang ưu đãi.",
     "featuredBadge": "Nổi bật",
     "points": {
-      "points": "Ưu đãi dành cho khách mới và khách hiện tại.",
-      "redeem": "Quyền lợi rõ ràng, không chữ nhỏ ẩn.",
-      "safe": "Minh bạch 100% — bạn luôn kiểm soát."
+      "points": "Số dư khuyến mãi và tín dụng thêm để mở rộng giao dịch.",
+      "redeem": "Vé và chiến dịch với phần thưởng khi tham gia.",
+      "safe": "Risk Free và quy tắc rõ ràng — bạn kiểm soát."
     },
     "barNote": "Minh bạch từng bước. Bạn luôn kiểm soát.",
-    "barSocial": "Hàng nghìn khách hàng đã tận dụng điều kiện Bullex.",
+    "barSocial": "Trader thật, thành quả thật — cơ hội thúc đẩy câu chuyện.",
     "cards": {
+      "saldoPromo": {
+        "title": "Số dư khuyến mãi",
+        "titleHighlight": "",
+        "text": "Tín dụng thêm đã kích hoạt để giao dịch nhiều hơn và có thêm khả năng. Cơ hội thúc đẩy trader.",
+        "imageAlt": "Thẻ số dư khuyến mãi Bullex với +500 USD tín dụng thêm"
+      },
+      "tickets": {
+        "title": "Vé và chiến dịch",
+        "titleHighlight": "",
+        "text": "Nhiều lệnh hơn, nhiều thành quả hơn: vé thêm, chiến dịch đang chạy và phần thưởng cho kỷ luật.",
+        "imageAlt": "Vé thêm Bullex, hộp phần thưởng và chiến dịch +10 vé"
+      },
       "riskFree": {
         "title": "Risk Free",
         "titleHighlight": "",
-        "text": "Bắt đầu có bảo vệ: giao dịch an tâm hơn và giảm tác động của lần sai đầu tiên.",
-        "imageAlt": "Ưu đãi Risk Free của Bullex"
-      },
-      "box": {
-        "title": "Trader top Box",
-        "titleHighlight": "",
-        "text": "Hơn cả một bộ quà: trải nghiệm Bullex giao tận nhà bạn.",
-        "imageAlt": "Trader top Box của Bullex"
-      },
-      "tech": {
-        "title": "Trader top",
-        "titleHighlight": "",
-        "text": "Món sưu tầm xứng tầm với người giao dịch đỉnh cao.",
-        "imageAlt": "Tượng Trader top của Bullex"
+        "text": "Bắt đầu với bảo vệ: giao dịch an tâm hơn và giảm tác động của lỗi đầu tiên.",
+        "imageAlt": "Ưu đãi Risk Free Bullex"
       }
     }
   },
@@ -636,15 +636,15 @@
       },
       "saldoPromo": {
         "title": "Số dư khuyến mãi",
-        "tag": "Tín dụng thêm để giao dịch",
-        "excerpt": "Tín dụng thêm được cấp trong các ưu đãi của Bullex để sử dụng cho những giao dịch theo quy định.",
-        "imageAlt": "Ưu đãi số dư khuyến mãi của Bullex"
+        "tag": "Tín dụng thêm đã kích hoạt",
+        "excerpt": "Giao dịch nhiều hơn, nhiều khả năng hơn: tín dụng thêm cho lệnh theo quy định. Cơ hội thúc đẩy trader.",
+        "imageAlt": "Thẻ số dư khuyến mãi Bullex +500 USD"
       },
       "tickets": {
         "title": "Vé và chiến dịch",
-        "tag": "Chiến dịch và sự kiện",
-        "excerpt": "Theo dõi các chiến dịch theo mùa, xem cách tích lũy vé và tìm hiểu điều kiện trao thưởng của từng sự kiện.",
-        "imageAlt": "Chiến dịch và sự kiện của Bullex"
+        "tag": "Nhiều lệnh hơn, nhiều thành quả hơn",
+        "excerpt": "Vé thêm, chiến dịch đang chạy và phần thưởng: kỷ luật, tiến bộ và nhiều cơ hội hơn mỗi lệnh.",
+        "imageAlt": "Vé thêm và chiến dịch Bullex với hộp phần thưởng"
       },
       "box": {
         "title": "Trader Top Box",
@@ -658,7 +658,12 @@
         "excerpt": "Một vật phẩm sưu tầm xứng tầm với những ai giao dịch ở đỉnh cao.",
         "imageAlt": "Tượng Trader Top của Bullex"
       }
-    }
+    },
+    "adjacentTitle": "Ưu đãi khác",
+    "adjacentAll": "Xem tất cả",
+    "adjacentNavLabel": "Điều hướng ưu đãi",
+    "adjacentPrev": "Ưu đãi trước",
+    "adjacentNext": "Ưu đãi tiếp theo"
   },
   "blog": {
     "eyebrow": "Blog Bullex",

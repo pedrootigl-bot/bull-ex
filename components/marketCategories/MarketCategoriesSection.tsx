@@ -116,7 +116,7 @@ export function MarketCategoriesSection() {
   const baseId = useId();
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState<MarketCategoryId>("forex");
+  const [active, setActive] = useState<MarketCategoryId>("digital");
   const [preview, setPreview] = useState<MarketCategoryId | null>(null);
   const [visible, setVisible] = useState(reducedMotion);
   const [sceneKey, setSceneKey] = useState(0);

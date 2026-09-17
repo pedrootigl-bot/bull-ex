@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/footer/Footer";
 import { GhostFibers } from "@/components/ghostFibers/GhostFibers";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
+import { OffersAdjacentNav } from "@/components/offers/OffersAdjacentNav";
 import { OFFERS_PAGE_HREF } from "@/components/offers/offersConfig";
 import { SplitFlapText } from "@/components/splitFlapText/SplitFlapText";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -1170,6 +1171,7 @@ export function RiskFreePage() {
         <EcosystemSection />
         <FinalCtaSection />
       </main>
+      <OffersAdjacentNav currentId="riskFree" />
       <SiteFooter />
     </div>
   );
