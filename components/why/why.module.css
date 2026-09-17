@@ -98,9 +98,129 @@
 }
 
 .features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: none;
+}
+
+.loop {
+  display: flex;
+  flex-direction: column;
   gap: 0.85rem;
+  max-width: 36rem;
+}
+
+.loopTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.loopTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 5.6rem;
+  padding: 0.85rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.loopTab:hover {
+  border-color: rgba(124, 255, 58, 0.28);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.loopTabActive {
+  border-color: rgba(124, 255, 58, 0.5);
+  background: linear-gradient(165deg, rgba(124, 255, 58, 0.12), rgba(255, 255, 255, 0.02));
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(124, 255, 58, 0.12);
+}
+
+.loopTabLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.loopPanel {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 0.85rem 0.9rem;
+  align-items: start;
+  min-height: 7.5rem;
+  padding: 1.15rem 1.15rem 1rem;
+  border: 1px solid rgba(124, 255, 58, 0.22);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(124, 255, 58, 0.08), rgba(255, 255, 255, 0.02));
+  animation: whyLoopPanelIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.loopPanelIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124, 255, 58, 0.12);
+}
+
+.loopPanelTitle {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.loopPanelText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.loopProgress {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.4rem;
+  padding-top: 0.35rem;
+}
+
+.loopProgressDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.loopProgressDotActive {
+  width: 22px;
+  background: #7cff3a;
+}
+
+@keyframes whyLoopPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .bar {
@@ -148,28 +268,9 @@
   transform: translateY(-40px);
 }
 
-.features .fromDown.in:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-.features .fromDown.in:nth-child(2) {
-  transition-delay: 0.18s;
-}
-
-.features .fromDown.in:nth-child(3) {
-  transition-delay: 0.26s;
-}
-
-.features .fromDown.in:nth-child(4) {
-  transition-delay: 0.34s;
-}
-
-.features .fromDown.in:nth-child(5) {
-  transition-delay: 0.42s;
-}
-
-.features .fromDown.in:nth-child(6) {
-  transition-delay: 0.5s;
+.features .fromDown.in:nth-child(1),
+.loop.fromDown.in {
+  transition-delay: 0.12s;
 }
 
 .fromLeft.in,
@@ -369,8 +470,8 @@
     gap: 1.5rem;
   }
 
-  .features {
-    grid-template-columns: 1fr 1fr;
+  .loop {
+    max-width: none;
   }
 
   .visual {
@@ -436,7 +537,7 @@
     margin: 0 auto;
   }
 
-  .features {
+  .loop {
     display: none;
   }
 
@@ -519,44 +620,45 @@
   }
 
   .carousel {
-    display: flex;
-    gap: 0.85rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0.35rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
     padding: 0.15rem 0.35rem 0.35rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
   }
 
-  .carousel::-webkit-scrollbar {
+  .carouselCard {
     display: none;
-  }
-
-  .carousel .feature,
-  .carousel .barItem {
-    flex: 0 0 min(72vw, 280px);
-    scroll-snap-align: center;
-    min-height: 132px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     gap: 0.85rem;
-    padding: 1.15rem 1rem 1.2rem;
+    width: 100%;
+    min-height: 148px;
+    padding: 1.2rem 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    color: inherit;
+    cursor: pointer;
   }
 
-  .carousel .feature h3,
-  .carousel .barItem h3 {
+  .carouselCardActive {
+    display: flex;
+    border-color: rgba(124, 255, 58, 0.4);
+    background: linear-gradient(165deg, rgba(124, 255, 58, 0.1), rgba(255, 255, 255, 0.02));
+  }
+
+  .carouselCard h3 {
     margin: 0 0 0.35rem;
+    font-size: 0.98rem;
   }
 
-  .carousel .feature p,
-  .carousel .barItem p {
+  .carouselCard p {
     margin: 0;
+    color: #9a9a9a;
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 
   .carouselDots {
@@ -570,8 +672,11 @@
   .carouselDot {
     width: 6px;
     height: 6px;
+    padding: 0;
+    border: 0;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.22);
+    cursor: pointer;
     transition: width 0.25s ease, background-color 0.25s ease;
   }
 
@@ -595,20 +700,17 @@
   .fromRight {
     transform: translateX(40px);
   }
-
-  .carousel .feature,
-  .carousel .barItem {
-    flex-basis: min(76vw, 280px);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .fromLeft,
   .fromRight,
-  .fromDown {
+  .fromDown,
+  .loopPanel {
     transform: none;
     opacity: 1;
     transition: none;
+    animation: none;
     will-change: auto;
   }
 
@@ -623,7 +725,9 @@
     inset: 0;
   }
 
-  .carouselDot {
+  .carouselDot,
+  .loopProgressDot,
+  .loopTab {
     transition: none;
   }
 

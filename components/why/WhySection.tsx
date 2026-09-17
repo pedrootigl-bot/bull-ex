@@ -9,18 +9,16 @@ import { WhyIcon } from "./WhyIcon";
 import { WHY_COPY } from "./whyConfig";
 import styles from "./why.module.css";
 
-type CardIcon = (typeof WHY_COPY.features)[number];
-
-const CAROUSEL_CARDS: CardIcon[] = [...WHY_COPY.features];
+const FEATURES = WHY_COPY.features;
 
 export function WhySection() {
   const t = useTranslations("why");
   const tHero = useTranslations("hero");
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -49,69 +47,34 @@ export function WhySection() {
   }, [reducedMotion]);
 
   useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) {
+    if (reducedMotion || paused || !visible) {
       return;
     }
 
-    const updateActive = () => {
-      const slides = carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]");
-      if (!slides.length) {
-        return;
-      }
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % FEATURES.length);
+    }, WHY_COPY.loopIntervalMs);
 
-      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
-      let closest = 0;
-      let closestDist = Number.POSITIVE_INFINITY;
-
-      slides.forEach((slide, index) => {
-        const center = slide.offsetLeft + slide.offsetWidth / 2;
-        const dist = Math.abs(center - mid);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closest = index;
-        }
-      });
-
-      setActiveSlide(closest);
-    };
-
-    updateActive();
-    carousel.addEventListener("scroll", updateActive, { passive: true });
-    return () => carousel.removeEventListener("scroll", updateActive);
-  }, []);
+    return () => window.clearInterval(timer);
+  }, [reducedMotion, paused, visible]);
 
   const motionClass = reducedMotion ? styles.motionStatic : "";
   const textClass = `${styles.fromLeft} ${visible ? styles.in : ""} ${motionClass}`;
   const imageClass = `${styles.fromRight} ${visible ? styles.in : ""} ${motionClass}`;
-  const slideCount = CAROUSEL_CARDS.length;
+  const activeId = FEATURES[activeIndex];
 
-  function scrollToSlide(index: number) {
-    const carousel = carouselRef.current;
-    if (!carousel || slideCount === 0) {
-      return;
-    }
-
-    const slides = carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]");
-    const targetIndex = ((index % slideCount) + slideCount) % slideCount;
-    const target = slides[targetIndex];
-    if (!target) {
-      return;
-    }
-
-    const left = target.offsetLeft - (carousel.clientWidth - target.offsetWidth) / 2;
-    carousel.scrollTo({
-      left,
-      behavior: reducedMotion ? "auto" : "smooth",
-    });
+  function selectFeature(index: number) {
+    setActiveIndex(index);
+    setPaused(true);
+    window.setTimeout(() => setPaused(false), WHY_COPY.loopIntervalMs * 1.4);
   }
 
-  function goToPrevSlide() {
-    scrollToSlide(activeSlide - 1);
+  function goToPrev() {
+    selectFeature((activeIndex - 1 + FEATURES.length) % FEATURES.length);
   }
 
-  function goToNextSlide() {
-    scrollToSlide(activeSlide + 1);
+  function goToNext() {
+    selectFeature((activeIndex + 1) % FEATURES.length);
   }
 
   return (
@@ -133,21 +96,57 @@ export function WhySection() {
               <p className={styles.subtitle}>{t("subtitle")}</p>
             </div>
 
-            <div className={styles.features}>
-              {WHY_COPY.features.map((icon) => (
-                <article
-                  className={`${styles.feature} ${styles.fromDown} ${visible ? styles.in : ""} ${motionClass}`}
-                  key={icon}
-                >
-                  <div className={styles.iconWrap}>
-                    <WhyIcon name={icon} />
-                  </div>
-                  <div>
-                    <h3>{t(`features.${icon}.title`)}</h3>
-                    <p>{t(`features.${icon}.text`)}</p>
-                  </div>
-                </article>
-              ))}
+            <div
+              className={`${styles.loop} ${styles.fromDown} ${visible ? styles.in : ""} ${motionClass}`}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <div className={styles.loopTabs} role="tablist" aria-label={t("carouselLabel")}>
+                {FEATURES.map((id, index) => {
+                  const isActive = index === activeIndex;
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      role="tab"
+                      id={`why-tab-${id}`}
+                      aria-selected={isActive}
+                      aria-controls={`why-panel-${id}`}
+                      className={`${styles.loopTab} ${isActive ? styles.loopTabActive : ""}`}
+                      onClick={() => selectFeature(index)}
+                    >
+                      <span className={styles.iconWrap}>
+                        <WhyIcon name={id} />
+                      </span>
+                      <span className={styles.loopTabLabel}>{t(`features.${id}.title`)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div
+                className={styles.loopPanel}
+                role="tabpanel"
+                id={`why-panel-${activeId}`}
+                aria-labelledby={`why-tab-${activeId}`}
+                key={activeId}
+              >
+                <div className={styles.loopPanelIcon}>
+                  <WhyIcon name={activeId} />
+                </div>
+                <div>
+                  <h3 className={styles.loopPanelTitle}>{t(`features.${activeId}.title`)}</h3>
+                  <p className={styles.loopPanelText}>{t(`features.${activeId}.text`)}</p>
+                </div>
+                <div className={styles.loopProgress} aria-hidden="true">
+                  {FEATURES.map((id, index) => (
+                    <span
+                      key={id}
+                      className={`${styles.loopProgressDot} ${index === activeIndex ? styles.loopProgressDotActive : ""}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className={`${styles.ctaWrap} ${textClass} ${styles.delayCta}`}>
@@ -188,12 +187,16 @@ export function WhySection() {
             />
           </div>
 
-          <div className={styles.carouselBlock}>
+          <div
+            className={styles.carouselBlock}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             <div className={styles.carouselShell}>
               <button
                 className={styles.carouselArrow}
                 type="button"
-                onClick={goToPrevSlide}
+                onClick={goToPrev}
                 aria-label={t("carouselPrev")}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -209,33 +212,37 @@ export function WhySection() {
 
               <div
                 className={styles.carousel}
-                ref={carouselRef}
                 tabIndex={0}
                 aria-label={t("carouselLabel")}
                 aria-roledescription="carousel"
               >
-                {CAROUSEL_CARDS.map((icon, index) => (
-                  <article
-                    className={styles.feature}
-                    data-carousel-slide
-                    aria-hidden={index !== activeSlide}
-                    key={`carousel-${icon}`}
-                  >
-                    <div className={styles.iconWrap}>
-                      <WhyIcon name={icon} />
-                    </div>
-                    <div>
-                      <h3>{t(`features.${icon}.title`)}</h3>
-                      <p>{t(`features.${icon}.text`)}</p>
-                    </div>
-                  </article>
-                ))}
+                {FEATURES.map((id, index) => {
+                  const isActive = index === activeIndex;
+                  return (
+                    <button
+                      type="button"
+                      className={`${styles.carouselCard} ${isActive ? styles.carouselCardActive : ""}`}
+                      data-carousel-slide
+                      aria-current={isActive ? "true" : undefined}
+                      key={`carousel-${id}`}
+                      onClick={() => selectFeature(index)}
+                    >
+                      <div className={styles.iconWrap}>
+                        <WhyIcon name={id} />
+                      </div>
+                      <div>
+                        <h3>{t(`features.${id}.title`)}</h3>
+                        <p>{t(`features.${id}.text`)}</p>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
 
               <button
                 className={styles.carouselArrow}
                 type="button"
-                onClick={goToNextSlide}
+                onClick={goToNext}
                 aria-label={t("carouselNext")}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -250,10 +257,13 @@ export function WhySection() {
               </button>
             </div>
             <div className={styles.carouselDots} aria-hidden="true">
-              {CAROUSEL_CARDS.map((icon, index) => (
-                <span
-                  key={`dot-${icon}`}
-                  className={`${styles.carouselDot} ${index === activeSlide ? styles.carouselDotActive : ""}`}
+              {FEATURES.map((id, index) => (
+                <button
+                  key={`dot-${id}`}
+                  type="button"
+                  className={`${styles.carouselDot} ${index === activeIndex ? styles.carouselDotActive : ""}`}
+                  onClick={() => selectFeature(index)}
+                  aria-label={t(`features.${id}.title`)}
                 />
               ))}
             </div>

@@ -102,33 +102,21 @@
     "subtitle": "Khi cần hỗ trợ, đội ngũ phản hồi. Đồng thời, chiến dịch đang chạy và ưu đãi độc quyền sẵn sàng để bạn kích hoạt trên tài khoản và dùng ngay trong giao dịch.",
     "callout": "Giao dịch với <highlight>hỗ trợ chuyên trách</highlight>, <highlight>khuyến mãi đang diễn ra</highlight> và quyền lợi độc quyền phù hợp cách bạn vận hành.",
     "photoAlt": "Nhân vật đầu bò xanh cầm app Bullex với bảng lợi nhuận và hiệu suất",
-    "carouselLabel": "Lợi ích cụ thể của Bullex",
+    "carouselLabel": "Hỗ trợ, khuyến mãi và quyền lợi độc quyền",
     "carouselPrev": "Thẻ trước",
     "carouselNext": "Thẻ tiếp theo",
     "features": {
-      "liquidity": {
-        "title": "Khớp lệnh theo nhu cầu",
-        "text": "Lệnh được xử lý nhanh ổn định, kể cả giờ thị trường sôi động."
-      },
-      "security": {
-        "title": "Tài khoản được bảo vệ",
-        "text": "Quy trình truy cập, nạp và rút rõ ràng, với nhiều lớp bảo mật trên nền tảng."
-      },
-      "exclusive": {
-        "title": "Khuyến mãi và độc quyền",
-        "text": "Chiến dịch đang chạy, bonus và quyền lợi độc quyền theo hồ sơ tài khoản."
-      },
       "support": {
         "title": "Hỗ trợ có phản hồi",
-        "text": "Luôn sẵn sàng giải đáp và đồng hành giao dịch, 24 giờ mỗi ngày."
+        "text": "Hỗ trợ 24/7 để giải đáp và đồng hành giao dịch — khi cần, Bullex phản hồi."
       },
-      "platform": {
-        "title": "Công cụ dùng thật",
-        "text": "Biểu đồ, cảnh báo và khớp lệnh vài cú nhấp — tính năng bạn dùng khi giao dịch."
+      "promotions": {
+        "title": "Khuyến mãi đang chạy",
+        "text": "Chiến dịch đang diễn ra với tín dụng thêm, bonus và điều kiện đặc biệt bạn kích hoạt trên tài khoản."
       },
-      "diversify": {
-        "title": "Nhiều thị trường một chỗ",
-        "text": "Tài sản số, Forex, ETF, Blitz và hơn thế trong một tài khoản."
+      "exclusive": {
+        "title": "Quyền lợi độc quyền",
+        "text": "Ưu đãi theo hồ sơ tài khoản: độc quyền để mở rộng cách bạn giao dịch."
       }
     }
   },
@@ -615,7 +603,7 @@
       "title": "Ưu đãi Bullex | Tất cả khuyến mãi hiện có",
       "description": "Khám phá mọi ưu đãi của Bullex: Risk Free, số dư khuyến mãi và các chương trình khác. Xem điều kiện của từng quyền lợi và cách kích hoạt."
     },
-    "eyebrow": "Ưu đãi Bullex",
+    "eyebrow": "Khuyến mãi",
     "backToSite": "Quay lại trang chủ",
     "indexTitle": "Ưu đãi Bullex",
     "indexSubtitle": "Tất cả khuyến mãi hiện có ở cùng một nơi. Chọn một ưu đãi để xem quy định, hạn mức và cách kích hoạt quyền lợi.",
@@ -915,13 +903,6 @@
         }
       }
     },
-    "ecosystem": {
-      "eyebrow": "Nhiều cơ hội hơn trên Bullex",
-      "title": "RiskFree chỉ là khởi đầu.",
-      "body": "Ngoài RiskFree, Bullex còn có chiến dịch, bonus, giải đấu và khuyến mãi cho người dùng đủ điều kiện. Theo dõi chương trình bonus và khuyến mãi trong các tính năng nền tảng.",
-      "cta": "Xem khuyến mãi hiện có",
-      "comingSoon": "Tin mới sắp ra mắt"
-    },
     "about": {
       "eyebrow": "Khám phá Bullex",
       "title": "Nền tảng được xây để đi xa hơn.",
@@ -955,6 +936,13 @@
       "ctaPrimary": "Tôi muốn RiskFree của mình",
       "ctaSecondary": "Tìm hiểu Bullex",
       "visualBadge": "Nhiều trader hơn. Nhiều chiến thắng hơn."
+    },
+    "otherOffers": {
+      "eyebrow": "Ưu đãi khác",
+      "title": "Tiếp tục khám phá cơ hội trên Bullex.",
+      "body": "Ngoài RiskFree, xem thêm Saldo Promo và Tickets — chiến dịch đang mở với lợi ích cho người dùng đủ điều kiện.",
+      "seeOffer": "Xem ưu đãi",
+      "cta": "Xem tất cả ưu đãi"
     }
   }
 }

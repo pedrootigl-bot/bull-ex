@@ -1,11 +1,15 @@
 "use client";
 
 import { SiteFooter } from "@/components/footer/Footer";
-import { GhostFibers } from "@/components/ghostFibers/GhostFibers";
+import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
-import { OffersAdjacentNav } from "@/components/offers/OffersAdjacentNav";
-import { OFFERS_PAGE_HREF } from "@/components/offers/offersConfig";
+import {
+  OFFER_IMAGES,
+  offerHref,
+  OFFERS_PAGE_HREF,
+  type PublishedOfferId,
+} from "@/components/offers/offersConfig";
 import { SplitFlapText } from "@/components/splitFlapText/SplitFlapText";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Link } from "@/i18n/navigation";
@@ -24,6 +28,7 @@ import {
 import styles from "./riskfree.module.css";
 
 const WHAT_SECTION_ID = "riskfree-what";
+const OTHER_OFFERS: PublishedOfferId[] = ["saldoPromo", "tickets"];
 
 function useTradeHrefs() {
   const locale = useLocale();
@@ -873,59 +878,100 @@ function HowSection() {
   );
 }
 
-function EcosystemSection() {
+function OtherOffersSection() {
   const t = useTranslations("riskFree");
+  const tOffers = useTranslations("offers");
   const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
   const bodyReveal = useReveal<HTMLParagraphElement>(styles.sectionBody, 0.08);
-  const comingSoonReveal = useReveal<HTMLParagraphElement>(styles.ecoComingSoonText, 0.16);
+  const actionsReveal = useReveal<HTMLDivElement>(styles.otherOffersActions, 0.16);
 
   return (
     <section
-      className={`${styles.section} ${styles.ecoSection} ${styles.sectionBlend} ${styles.sectionBlendBottom}`}
-      aria-labelledby="eco-title"
+      className={`${styles.section} ${styles.otherOffersSection} ${styles.sectionBlend} ${styles.sectionBlendBottom}`}
+      aria-labelledby="other-offers-title"
     >
-      <div className={styles.ecoSectionBg} aria-hidden="true">
-        <GhostFibers
-          lineColor="#054b34"
-          glowColor="#10B981"
-          speed={0.2}
-          scale={2}
-          rotation={0}
-          rotationSpeed={0.25}
-          layers={4}
-          waveAmplitude={0.015}
-          waveFrequency={3}
-          waveSpeed={0.15}
-          layerSpeed={0.08}
-          twist={0.1}
-          twistFrequency={5}
-          twistSpeed={1.2}
-          lineFrequency={5}
-          lineSpacing={2}
-          lineSharpness={16}
-          glowFalloff={10}
-          glowIntensity={1.6}
-          brightness={2}
-          blueBoost={1.25}
-          vignette={0.8}
-          grain={0.05}
-          dpr={1}
-        />
-        <div className={styles.ecoSectionOverlay} />
-      </div>
-
-      <div className={`${styles.inner} ${styles.ecoSectionInner}`}>
+      <div className={`${styles.inner} ${styles.otherOffersInner}`}>
         <div className={styles.splitCopy}>
-          <p {...eyebrowReveal}>{t("ecosystem.eyebrow")}</p>
-          <FadeTitle className={styles.sectionTitle} id="eco-title">
-            {t("ecosystem.title")}
+          <p {...eyebrowReveal}>{t("otherOffers.eyebrow")}</p>
+          <FadeTitle className={styles.sectionTitle} id="other-offers-title">
+            {t("otherOffers.title")}
           </FadeTitle>
-          <p {...bodyReveal}>{t("ecosystem.body")}</p>
+          <p {...bodyReveal}>{t("otherOffers.body")}</p>
         </div>
 
-        <p {...comingSoonReveal} role="status">
-          {t("ecosystem.comingSoon")}
-        </p>
+        <ul className={styles.otherOffersGrid}>
+          {OTHER_OFFERS.map((id, index) => {
+            const href = offerHref(id);
+            if (!href) {
+              return null;
+            }
+
+            return (
+              <li key={id}>
+                <BlogNavLink
+                  className={styles.otherOfferCard}
+                  href={href}
+                  style={{ transitionDelay: `${0.08 + index * 0.08}s` }}
+                  loadingTitle={tOffers("loadingTitle")}
+                  loadingSubtitle={tOffers("loadingSubtitle", {
+                    offer: tOffers(`items.${id}.title`),
+                  })}
+                >
+                  <div className={styles.otherOfferMedia}>
+                    <Image
+                      src={OFFER_IMAGES[id]}
+                      alt={tOffers(`items.${id}.imageAlt`)}
+                      fill
+                      sizes="(max-width: 720px) 100vw, 420px"
+                      className={styles.otherOfferImage}
+                    />
+                  </div>
+                  <div className={styles.otherOfferBody}>
+                    <span className={styles.otherOfferTag}>{tOffers(`items.${id}.tag`)}</span>
+                    <strong className={styles.otherOfferTitle}>
+                      {tOffers(`items.${id}.title`)}
+                    </strong>
+                    <span className={styles.otherOfferExcerpt}>
+                      {tOffers(`items.${id}.excerpt`)}
+                    </span>
+                    <span className={styles.otherOfferAction}>
+                      {t("otherOffers.seeOffer")}
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path
+                          d="M3.5 8h9M9.2 4.8 13 8l-3.8 3.2"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </BlogNavLink>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div {...actionsReveal}>
+          <BlogNavLink
+            className={styles.otherOffersAllLink}
+            href={OFFERS_PAGE_HREF}
+            loadingTitle={tOffers("loadingTitle")}
+            loadingSubtitle={tOffers("loadingSubtitle", { offer: tOffers("indexTitle") })}
+          >
+            {t("otherOffers.cta")}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3.5 8h9M9.2 4.8 13 8l-3.8 3.2"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </BlogNavLink>
+        </div>
       </div>
     </section>
   );
@@ -1168,10 +1214,9 @@ export function RiskFreePage() {
       <main>
         <HeroSection />
         <WhatAboutHowStack />
-        <EcosystemSection />
+        <OtherOffersSection />
         <FinalCtaSection />
       </main>
-      <OffersAdjacentNav currentId="riskFree" />
       <SiteFooter />
     </div>
   );

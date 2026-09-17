@@ -102,33 +102,21 @@
     "subtitle": "When you need help, support answers. Meanwhile, live campaigns and exclusive perks stay ready for you to activate in your account and use in your trades.",
     "callout": "Trade with <highlight>dedicated support</highlight>, <highlight>active promotions</highlight> and exclusive benefits built for how you operate.",
     "photoAlt": "Executive with green bull head holding the Bullex app with profit and performance panels",
-    "carouselLabel": "Concrete Bullex benefits",
+    "carouselLabel": "Support, promotions and exclusive benefits",
     "carouselPrev": "Previous card",
     "carouselNext": "Next card",
     "features": {
-      "liquidity": {
-        "title": "On-demand execution",
-        "text": "Orders processed with consistent speed, including during peak market hours."
-      },
-      "security": {
-        "title": "Protected account",
-        "text": "Clear access, deposit and withdrawal flows, with layered platform security."
-      },
-      "exclusive": {
-        "title": "Promos and exclusives",
-        "text": "Live campaigns, bonuses and exclusive benefits unlocked by your account profile."
-      },
       "support": {
         "title": "Support that answers",
-        "text": "Help available to resolve questions and follow your trading, 24 hours a day."
+        "text": "Help available 24/7 to clear doubts and follow your trading — when you need it, Bullex responds."
       },
-      "platform": {
-        "title": "Tools you actually use",
-        "text": "Charts, alerts and execution in a few clicks — features built for real trading."
+      "promotions": {
+        "title": "Active promotions",
+        "text": "Live campaigns with extra credit, bonuses and special conditions you activate right in your account."
       },
-      "diversify": {
-        "title": "Markets in one place",
-        "text": "Digital assets, Forex, ETFs, Blitz and more in a single account."
+      "exclusive": {
+        "title": "Exclusive benefits",
+        "text": "Perks unlocked by your account profile: exclusives built to expand how you trade."
       }
     }
   },
@@ -615,7 +603,7 @@
       "title": "Bullex Offers | All available promotions",
       "description": "Discover every Bullex offer: Risk Free, promotional balance and other promotions. Check the conditions of each benefit and how to activate it."
     },
-    "eyebrow": "Bullex offers",
+    "eyebrow": "Promotions",
     "backToSite": "Back to site",
     "indexTitle": "Bullex offers",
     "indexSubtitle": "All available promotions in one place. Pick an offer to see the rules, limits and how to activate the benefit.",
@@ -915,13 +903,6 @@
         }
       }
     },
-    "ecosystem": {
-      "eyebrow": "More opportunities on Bullex",
-      "title": "RiskFree is just the beginning.",
-      "body": "Beyond RiskFree, Bullex runs campaigns, bonuses, tournaments, and promotions for eligible users. Follow bonus programs and promotions among the platform features.",
-      "cta": "See available promotions",
-      "comingSoon": "News coming soon"
-    },
     "about": {
       "eyebrow": "Meet Bullex",
       "title": "A platform built to go further.",
@@ -955,6 +936,13 @@
       "ctaPrimary": "I want my RiskFree",
       "ctaSecondary": "Discover Bullex",
       "visualBadge": "More traders. More wins."
+    },
+    "otherOffers": {
+      "eyebrow": "Other offers",
+      "title": "Keep exploring opportunities on Bullex.",
+      "body": "Beyond RiskFree, check Saldo Promo and Tickets — active campaigns with benefits for eligible users.",
+      "seeOffer": "See offer",
+      "cta": "See all offers"
     }
   }
 }

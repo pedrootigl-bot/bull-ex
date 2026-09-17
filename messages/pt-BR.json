@@ -102,33 +102,21 @@
     "subtitle": "Quando precisar, o suporte responde. Enquanto isso, campanhas ativas e vantagens exclusivas ficam disponíveis para você ativar direto na conta e usar nas suas operações.",
     "callout": "Opere com <highlight>suporte dedicado</highlight>, <highlight>promoções em andamento</highlight> e benefícios exclusivos pensados para a sua operação.",
     "photoAlt": "Executivo com cabeça de touro verde segurando o app Bullex com painéis de lucro e performance",
-    "carouselLabel": "Benefícios concretos da Bullex",
+    "carouselLabel": "Suporte, promoções e benefícios exclusivos",
     "carouselPrev": "Card anterior",
     "carouselNext": "Próximo card",
     "features": {
-      "liquidity": {
-        "title": "Execução sob demanda",
-        "text": "Ordens processadas com velocidade consistente, inclusive nos horários de maior movimento."
-      },
-      "security": {
-        "title": "Conta protegida",
-        "text": "Processos claros de acesso, depósito e saque, com camadas de segurança na plataforma."
-      },
-      "exclusive": {
-        "title": "Promoções e exclusivos",
-        "text": "Campanhas ativas, bônus e benefícios exclusivos liberados conforme o perfil da conta."
-      },
       "support": {
         "title": "Suporte que responde",
-        "text": "Atendimento disponível para tirar dúvidas e acompanhar sua operação, 24h por dia."
+        "text": "Atendimento disponível 24h para tirar dúvidas e acompanhar sua operação — quando precisar, a Bullex responde."
       },
-      "platform": {
-        "title": "Ferramentas na prática",
-        "text": "Gráficos, alertas e execução em poucos cliques — recursos que você usa de verdade."
+      "promotions": {
+        "title": "Promoções ativas",
+        "text": "Campanhas em andamento com crédito extra, bônus e condições especiais que você ativa direto na conta."
       },
-      "diversify": {
-        "title": "Mercados no mesmo lugar",
-        "text": "Digitais, Forex, ETFs, Blitz e outros ativos em uma única conta."
+      "exclusive": {
+        "title": "Benefícios exclusivos",
+        "text": "Vantagens liberadas conforme o perfil da conta: exclusivos pensados para ampliar suas possibilidades de operar."
       }
     }
   },
@@ -615,7 +603,7 @@
       "title": "Ofertas Bullex | Todas as promoções disponíveis",
       "description": "Conheça todas as ofertas Bullex: Risk Free, saldo promocional e outras promoções. Veja as condições de cada benefício e como ativar."
     },
-    "eyebrow": "Ofertas Bullex",
+    "eyebrow": "Promoções",
     "backToSite": "Voltar para o site",
     "indexTitle": "Ofertas Bullex",
     "indexSubtitle": "Todas as promoções disponíveis em um só lugar. Escolha uma oferta para conhecer as regras, os limites e como ativar o benefício.",
@@ -906,13 +894,6 @@
         }
       }
     },
-    "ecosystem": {
-      "eyebrow": "Mais oportunidades na Bullex",
-      "title": "RiskFree é só o começo.",
-      "body": "Além do RiskFree, a Bullex realiza campanhas, bônus, torneios e ações promocionais para usuários elegíveis. Acompanhe programas de bônus e promoções entre os recursos disponíveis da plataforma.",
-      "cta": "Ver promoções disponíveis",
-      "comingSoon": "Novidades em breve"
-    },
     "about": {
       "eyebrow": "Conheça a Bullex",
       "title": "Uma plataforma feita para ir mais longe.",
@@ -946,6 +927,13 @@
       "ctaPrimary": "Quero meu RiskFree",
       "ctaSecondary": "Conhecer a Bullex",
       "visualBadge": "Mais traders. Mais conquistas."
+    },
+    "otherOffers": {
+      "eyebrow": "Outras ofertas",
+      "title": "Continue explorando as oportunidades da Bullex.",
+      "body": "Além do RiskFree, confira também Saldo Promo e Tickets — campanhas ativas com benefícios para usuários elegíveis.",
+      "seeOffer": "Ver oferta",
+      "cta": "Ver todas as ofertas"
     }
   },
   "languageSwitcher": {
