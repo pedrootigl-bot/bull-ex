@@ -571,16 +571,21 @@ function WhatIsSection() {
       aria-labelledby="what-title"
     >
       <div className={`${styles.inner} ${styles.whatSplit}`}>
-        <header className={styles.whatHead}>
-          <p {...eyebrowReveal}>{t("what.eyebrow")}</p>
-          <FadeTitle className={styles.sectionTitle} id="what-title">
-            {t("what.title")}
-          </FadeTitle>
-          <p {...bodyReveal}>{t("what.body")}</p>
-          <span {...ctaReveal}>
-            <PrimaryCta label={t("what.cta")} href={register} solid />
-          </span>
-        </header>
+        <div className={styles.whatLead}>
+          <header className={styles.whatHead}>
+            <p {...eyebrowReveal}>{t("what.eyebrow")}</p>
+            <FadeTitle className={styles.sectionTitle} id="what-title">
+              {t("what.title")}
+            </FadeTitle>
+          </header>
+
+          <div className={styles.whatCopy}>
+            <p {...bodyReveal}>{t("what.body")}</p>
+            <span {...ctaReveal}>
+              <PrimaryCta label={t("what.cta")} href={register} solid />
+            </span>
+          </div>
+        </div>
 
         <div className={styles.whatAside}>
           <div className={styles.whatVideoWrap}>

@@ -647,9 +647,17 @@
   align-items: center;
 }
 
-.whatHead {
+.whatLead {
   max-width: 26rem;
   margin-left: var(--rf-title-indent);
+}
+
+.whatHead .sectionTitle {
+  margin-bottom: 0.95rem;
+}
+
+.whatCopy .sectionBody {
+  margin-bottom: 1.25rem;
 }
 
 .whatAside {
@@ -1743,8 +1751,37 @@
     min-height: clamp(24rem, 68vh, 36rem);
   }
 
+  .whatSplit {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "video"
+      "copy"
+      "points";
+    align-items: stretch;
+  }
+
+  .whatLead,
+  .whatAside {
+    display: contents;
+  }
+
   .whatHead {
+    grid-area: head;
     max-width: 40rem;
+  }
+
+  .whatVideoWrap {
+    grid-area: video;
+  }
+
+  .whatCopy {
+    grid-area: copy;
+    max-width: 40rem;
+  }
+
+  .whatSplit .pointGrid {
+    grid-area: points;
   }
 
   .howSticky {
