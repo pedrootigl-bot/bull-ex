@@ -23,6 +23,7 @@
     "cardOffers": "Ưu đãi",
     "cardContent": "Nội dung",
     "createAccount": "Tạo tài khoản",
+    "demoAccount": "Tài khoản demo",
     "riskFree": "Risk Free",
     "saldoPromo": "Số dư khuyến mãi",
     "tickets": "Vé và chiến dịch",
@@ -53,6 +54,8 @@
     "support": "Hỗ trợ",
     "faq": "FAQ",
     "openAccount": "Mở tài khoản",
+    "createAccount": "Tạo tài khoản",
+    "demoAccount": "Tài khoản demo",
     "login": "Đăng nhập",
     "legal": "Pháp lý",
     "terms": "Điều khoản sử dụng",
@@ -93,39 +96,39 @@
     "subtitle": "Chọn một tài sản và bắt đầu chỉ với vài cú nhấp."
   },
   "why": {
-    "eyebrow": "Vì sao Bullex?",
-    "titleBefore": "Vì sao Bullex là môi giới phù hợp cho ",
-    "titleHighlight": "nhà đầu tư nghiêm túc?",
-    "subtitle": "Tại Bullex, chúng tôi kết hợp công nghệ, an toàn và điều kiện riêng cho người giao dịch ở mức cao.",
-    "callout": "Hơn cả một môi giới: đối tác chiến lược để bạn <highlight>giao dịch không giới hạn</highlight> và <highlight>đi xa hơn</highlight>.",
+    "eyebrow": "Vì sao Bullex",
+    "titleBefore": "Vì sao Bullex\n",
+    "titleHighlight": "hỗ trợ, khuyến mãi và quyền lợi độc quyền",
+    "subtitle": "Khi cần hỗ trợ, đội ngũ phản hồi. Đồng thời, chiến dịch đang chạy và ưu đãi độc quyền sẵn sàng để bạn kích hoạt trên tài khoản và dùng ngay trong giao dịch.",
+    "callout": "Giao dịch với <highlight>hỗ trợ chuyên trách</highlight>, <highlight>khuyến mãi đang diễn ra</highlight> và quyền lợi độc quyền phù hợp cách bạn vận hành.",
     "photoAlt": "Nhân vật đầu bò xanh cầm app Bullex với bảng lợi nhuận và hiệu suất",
-    "carouselLabel": "Điểm nổi bật của Bullex dành cho nhà đầu tư lớn",
+    "carouselLabel": "Lợi ích cụ thể của Bullex",
     "carouselPrev": "Thẻ trước",
     "carouselNext": "Thẻ tiếp theo",
     "features": {
       "liquidity": {
-        "title": "Thanh khoản cao",
-        "text": "Khớp lệnh nhanh và ổn định ngay cả khối lượng lớn."
+        "title": "Khớp lệnh theo nhu cầu",
+        "text": "Lệnh được xử lý nhanh ổn định, kể cả giờ thị trường sôi động."
       },
       "security": {
-        "title": "An toàn và tin cậy",
-        "text": "Hạ tầng vững và tuân thủ các tiêu chuẩn cao."
+        "title": "Tài khoản được bảo vệ",
+        "text": "Quy trình truy cập, nạp và rút rõ ràng, với nhiều lớp bảo mật trên nền tảng."
       },
       "exclusive": {
-        "title": "Điều kiện riêng",
-        "text": "Spread cạnh tranh, đòn bẩy linh hoạt và chi phí thấp hơn."
+        "title": "Khuyến mãi và độc quyền",
+        "text": "Chiến dịch đang chạy, bonus và quyền lợi độc quyền theo hồ sơ tài khoản."
       },
       "support": {
-        "title": "Hỗ trợ cao cấp",
-        "text": "Đội ngũ sẵn sàng khi bạn cần, 24 giờ mỗi ngày."
+        "title": "Hỗ trợ có phản hồi",
+        "text": "Luôn sẵn sàng giải đáp và đồng hành giao dịch, 24 giờ mỗi ngày."
       },
       "platform": {
-        "title": "Nền tảng nâng cao",
-        "text": "Công cụ chuyên nghiệp và công nghệ hiện đại cho giao dịch."
+        "title": "Công cụ dùng thật",
+        "text": "Biểu đồ, cảnh báo và khớp lệnh vài cú nhấp — tính năng bạn dùng khi giao dịch."
       },
       "diversify": {
-        "title": "Đa dạng hóa thông minh",
-        "text": "Tiếp cận nhiều thị trường và cơ hội trong một chỗ."
+        "title": "Nhiều thị trường một chỗ",
+        "text": "Tài sản số, Forex, ETF, Blitz và hơn thế trong một tài khoản."
       }
     }
   },
@@ -206,8 +209,8 @@
     }
   },
   "platform": {
-    "title": "Hơn 200 tài sản để đầu tư, không phức tạp.",
-    "subtitle": "Chọn một tài sản và bắt đầu chỉ với vài cú nhấp.",
+    "title": "Nền tảng Bullex trên máy tính và điện thoại.",
+    "subtitle": "Cùng một trải nghiệm trên mọi màn hình, với bộ công cụ đầy đủ.",
     "aria": "Nền tảng Bullex trên máy tính và điện thoại",
     "imageAlt": "Giao diện Bullex trên máy tính với biểu đồ nến và trên điện thoại với nút Lên và Xuống"
   },
@@ -230,9 +233,9 @@
   },
   "teamGrid": {
     "aria": "Bullex trong hành động",
-    "titleStrong": "Hơn 200 tài sản",
-    "titleLight": "để đầu tư một cách đơn giản",
-    "subtitle": "Chọn một tài sản và bắt đầu đầu tư chỉ với vài cú nhấp.",
+    "titleStrong": "Bắt đầu với số vốn nhỏ",
+    "titleLight": "và giao dịch theo nhịp của bạn",
+    "subtitle": "Mức nạp và mức đầu tư tối thiểu dành cho những bước đầu tiên.",
     "imageAlt": "Đội ngũ Bullex phân tích thị trường trong môi trường giao dịch",
     "cards": {
       "deposit": {
@@ -244,6 +247,133 @@
         "lead": "Chỉ"
       }
     }
+  },
+  "demoAccount": {
+    "eyebrow": "Tài khoản demo",
+    "title": "Luyện tập với số dư ảo của bạn",
+    "subtitle": "Tài khoản demo mô phỏng nền tảng thật với {demoBalance} số dư ảo. Dùng để làm quen với công cụ và thử chiến lược trước khi giao dịch bằng vốn của bạn.",
+    "cards": {
+      "balance": {
+        "title": "Số dư ảo {demoBalance}",
+        "text": "Số tiền này là mô phỏng, chỉ dùng để luyện tập và không thể rút hay chuyển đi."
+      },
+      "access": {
+        "title": "Truy cập không cần nạp tiền",
+        "text": "Chỉ cần tạo tài khoản Bullex để mở bản demo. Không yêu cầu nạp tiền để bắt đầu luyện tập."
+      },
+      "refill": {
+        "title": "Nạp lại số dư ảo",
+        "text": "Nếu số dư ảo hết, bạn có thể nạp lại ngay trên nền tảng theo quy định hiện hành."
+      },
+      "difference": {
+        "title": "Khác biệt so với tài khoản thật",
+        "text": "Bản demo không có tiền thật: kết quả là mô phỏng và không tạo ra lợi nhuận, thua lỗ hay lệnh rút tiền."
+      }
+    },
+    "cta": "Mở tài khoản demo",
+    "note": "Số tiền, khả năng cung cấp và quy định của tài khoản demo có thể thay đổi tùy nền tảng và tài khoản người dùng."
+  },
+  "marketCategories": {
+    "eyebrow": "Thị trường Bullex",
+    "titleLine1": "Một thị trường.",
+    "titleLine2": "Nhiều cách",
+    "titleHighlight": "để giao dịch.",
+    "body": "Khám phá các danh mục tài sản khác nhau trên một nền tảng. Tài sản số, Forex, ETF, Blitz và nhiều khả năng giao dịch khác.",
+    "cta": "Khám phá thị trường",
+    "footer": "Nhiều thị trường. Một trải nghiệm.",
+    "items": {
+      "digital": {
+        "label": "Tài sản số",
+        "tag": "Crypto",
+        "description": "Giao dịch tiền mã hóa và tài sản số trong môi trường được thiết kế để theo kịp thị trường.",
+        "indicators": {
+          "1": "BTC & ETH",
+          "2": "Biến động cao",
+          "3": "24/7"
+        }
+      },
+      "forex": {
+        "label": "Forex",
+        "tag": "Ngoại hối",
+        "description": "Giao dịch các cặp tiền tệ toàn cầu với quyền truy cập vào nhiều thị trường.",
+        "indicators": {
+          "1": "Cặp toàn cầu",
+          "2": "Thực thi nhanh",
+          "3": "Thanh khoản"
+        }
+      },
+      "etf": {
+        "label": "ETF",
+        "tag": "Chỉ số",
+        "description": "Đa dạng hóa với quỹ ETF và theo dõi chỉ số theo hướng mang tính tổ chức hơn.",
+        "indicators": {
+          "1": "SPY & QQQ",
+          "2": "Rổ tài sản",
+          "3": "Phơi nhiễm rộng"
+        }
+      },
+      "blitz": {
+        "label": "Blitz",
+        "tag": "Ngắn hạn",
+        "description": "Giao dịch linh hoạt với đọc biểu đồ nhanh, bộ đếm giờ và quyết định trong khung hẹp.",
+        "indicators": {
+          "1": "Bộ đếm giờ",
+          "2": "Biểu đồ ngắn",
+          "3": "Phản hồi tức thì"
+        }
+      },
+      "other": {
+        "label": "Thị trường khác",
+        "tag": "Đa dạng",
+        "description": "Chỉ số, hàng hóa và các danh mục khác để mở rộng chiến lược của bạn.",
+        "indicators": {
+          "1": "Chỉ số",
+          "2": "Hàng hóa",
+          "3": "Thêm tài sản"
+        }
+      }
+    },
+    "scenes": {
+      "digital": {
+        "primaryPair": "BTC/USD",
+        "primaryChange": "+2,84%",
+        "secondaryPair": "ETH/USD",
+        "secondaryChange": "+1,12%",
+        "tertiaryPair": "SOL/USD",
+        "tertiaryChange": "-0,46%"
+      },
+      "forex": {
+        "primaryPair": "EUR/USD",
+        "primaryValue": "1.0824",
+        "primaryChange": "+0,21%",
+        "secondaryPair": "GBP/USD",
+        "secondaryValue": "1.2641",
+        "tertiaryPair": "USD/JPY",
+        "tertiaryValue": "151.32"
+      },
+      "etf": {
+        "primaryLabel": "ETF",
+        "primaryPair": "SPY",
+        "primaryChange": "+0,68%",
+        "secondaryPair": "QQQ",
+        "secondaryChange": "+1,04%",
+        "tertiaryPair": "IVV",
+        "tertiaryChange": "+0,55%"
+      },
+      "blitz": {
+        "timer": "00:42",
+        "pair": "EUR/USD",
+        "direction": "Lên",
+        "payout": "+82%"
+      },
+      "other": {
+        "index": "Chỉ số",
+        "commodity": "Hàng hóa",
+        "currency": "Tiền tệ",
+        "more": "Tài sản khác"
+      }
+    },
+    "sceneSoon": "Hình ảnh danh mục này sẽ sớm có mặt."
   },
   "mobileApp": {
     "titleBefore": "Không chỉ trên máy tính. Bullex cũng có trên ",

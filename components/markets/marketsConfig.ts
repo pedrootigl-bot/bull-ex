@@ -11,7 +11,7 @@ export type MarketItem = {
 };
 
 export const MARKETS_COPY = {
-  id: "mercados",
+  id: "mercados-ativos",
 } as const;
 
 export const MARKET_ITEMS: readonly MarketItem[] = [

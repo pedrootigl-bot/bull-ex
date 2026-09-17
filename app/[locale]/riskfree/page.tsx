@@ -1,46 +1,15 @@
-import { BlogPageReady } from "@/components/blog/BlogPageReady";
-import { RiskFreePage } from "@/components/riskfree/RiskFreePage";
-import { isPathLocale } from "@/i18n/config";
-import { routing } from "@/i18n/routing";
-import { hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+"use client";
 
-type RiskFreeRouteProps = {
-  params: Promise<{ locale: string }>;
-};
+import { RISKFREE_PAGE_HREF } from "@/components/offers/offersConfig";
+import { useRouter } from "@/i18n/navigation";
+import { useEffect } from "react";
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+export default function RiskFreeLegacyRedirect() {
+  const router = useRouter();
 
-export async function generateMetadata({ params }: RiskFreeRouteProps): Promise<Metadata> {
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    return {};
-  }
+  useEffect(() => {
+    router.replace(RISKFREE_PAGE_HREF);
+  }, [router]);
 
-  const t = await getTranslations({ locale, namespace: "riskFree" });
-
-  return {
-    title: t("meta.title"),
-    description: t("meta.description"),
-  };
-}
-
-export default async function RiskFreeRoute({ params }: RiskFreeRouteProps) {
-  const { locale } = await params;
-  if (!isPathLocale(locale) || !hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
-  setRequestLocale(locale);
-
-  return (
-    <>
-      <BlogPageReady />
-      <RiskFreePage />
-    </>
-  );
+  return null;
 }

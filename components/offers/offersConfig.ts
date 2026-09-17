@@ -12,14 +12,18 @@ export const OFFER_IMAGES: Record<OfferId, string> = {
   tech: "/images/prizes/trader-top.webp",
 };
 
-/** Ofertas sem landing própria ainda ficam listadas como "em breve". */
+/** Landings publicadas sob /ofertas/{slug}/. null = listada como "em breve". */
 export const OFFER_HREFS: Record<OfferId, string | null> = {
-  riskFree: "/riskfree",
-  saldoPromo: "/saldopromo",
-  tickets: "/tickets",
+  riskFree: "/ofertas/riskfree",
+  saldoPromo: "/ofertas/saldopromo",
+  tickets: "/ofertas/tickets",
   box: null,
   tech: null,
 };
+
+export const RISKFREE_PAGE_HREF = OFFER_HREFS.riskFree!;
+export const SALDOPROMO_PAGE_HREF = OFFER_HREFS.saldoPromo!;
+export const TICKETS_OFFER_PAGE_HREF = OFFER_HREFS.tickets!;
 
 export function offerHref(id: OfferId): string | null {
   return OFFER_HREFS[id];

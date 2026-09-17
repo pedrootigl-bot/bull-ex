@@ -12,6 +12,14 @@ const PlatformSection = dynamic(() =>
 const TeamGridSection = dynamic(() =>
   import("@/components/teamGrid/TeamGridSection").then((mod) => mod.TeamGridSection),
 );
+const DemoAccountSection = dynamic(() =>
+  import("@/components/demoAccount/DemoAccountSection").then((mod) => mod.DemoAccountSection),
+);
+const MarketCategoriesSection = dynamic(() =>
+  import("@/components/marketCategories/MarketCategoriesSection").then(
+    (mod) => mod.MarketCategoriesSection,
+  ),
+);
 const AppToMarketsScrollStack = dynamic(() =>
   import("@/components/scrollStack/AppToMarketsScrollStack").then(
     (mod) => mod.AppToMarketsScrollStack,
@@ -50,6 +58,12 @@ function DesktopSections() {
       </div>
       <div className={styles.slotTeam}>
         <TeamGridSection />
+      </div>
+      <div className={styles.slotDemo}>
+        <DemoAccountSection />
+      </div>
+      <div className={styles.slotMarketCategories}>
+        <MarketCategoriesSection />
       </div>
       <AppToMarketsScrollStack
         groupClassName={styles.stackGroup}
@@ -90,6 +104,12 @@ function MobileSections() {
       </div>
       <div className={styles.slotTeam}>
         <TeamGridSection />
+      </div>
+      <div className={styles.slotDemo}>
+        <DemoAccountSection />
+      </div>
+      <div className={styles.slotMarketCategories}>
+        <MarketCategoriesSection />
       </div>
       <div className={styles.slotMarkets}>
         <MarketsSection />

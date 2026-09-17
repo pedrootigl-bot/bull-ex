@@ -12,9 +12,11 @@ export function SiteFooter() {
     {
       title: t("platform"),
       links: [
+        { href: "#conta-demo", label: t("demoAccount"), external: false },
         { href: "#mercados", label: t("markets"), external: false },
         { href: "#por-que-bullex", label: t("why"), external: false },
         { href: "#ofertas", label: t("prizes"), external: false },
+        { href: "#criar-conta", label: t("createAccount"), external: false },
         { href: "#faq", label: t("faq"), external: false },
       ],
     },

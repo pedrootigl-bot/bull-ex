@@ -10,9 +10,6 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-const LegalNotice = dynamic(() =>
-  import("@/components/legal/LegalNotice").then((mod) => mod.LegalNotice),
-);
 const BackToTop = dynamic(() =>
   import("@/components/ui/BackToTop").then((mod) => mod.BackToTop),
 );
@@ -67,7 +64,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <BlogNavigationProvider>
         <HtmlLang lang={htmlLang} />
         {children}
-        <LegalNotice />
         <BackToTop />
       </BlogNavigationProvider>
     </NextIntlClientProvider>

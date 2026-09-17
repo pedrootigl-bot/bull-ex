@@ -2,7 +2,11 @@
 
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
-import { TICKETS_PAGE_HREF } from "@/components/tickets/ticketsConfig";
+import {
+  RISKFREE_PAGE_HREF,
+  SALDOPROMO_PAGE_HREF,
+  TICKETS_OFFER_PAGE_HREF,
+} from "@/components/offers/offersConfig";
 import { useLocale, useTranslations } from "next-intl";
 import { CardNav, type CardNavItem } from "./CardNav";
 
@@ -16,6 +20,7 @@ export function SiteCardNav() {
       bgColor: "#0c1509",
       textColor: "#e9f5e6",
       links: [
+        { label: t("demoAccount"), href: "#conta-demo" },
         { label: t("markets"), href: "#mercados" },
         { label: t("why"), href: "#por-que-bullex" },
         { label: t("createAccount"), href: "#criar-conta" },
@@ -26,10 +31,10 @@ export function SiteCardNav() {
       bgColor: "#101c0c",
       textColor: "#e9f5e6",
       links: [
-        { label: t("prizes"), href: "#ofertas" },
-        { label: t("riskFree"), href: "/riskfree" },
-        { label: t("saldoPromo"), href: "/saldopromo" },
-        { label: t("tickets"), href: TICKETS_PAGE_HREF },
+        { label: t("prizes"), href: "/ofertas" },
+        { label: t("riskFree"), href: RISKFREE_PAGE_HREF },
+        { label: t("saldoPromo"), href: SALDOPROMO_PAGE_HREF },
+        { label: t("tickets"), href: TICKETS_OFFER_PAGE_HREF },
       ],
     },
     {
@@ -38,8 +43,8 @@ export function SiteCardNav() {
       textColor: "#e9f5e6",
       links: [
         { label: t("blog"), href: "/blog" },
-        { label: t("faq"), href: "#faq" },
         { label: t("testimonials"), href: "#depoimentos" },
+        { label: t("faq"), href: "#faq" },
       ],
     },
   ];

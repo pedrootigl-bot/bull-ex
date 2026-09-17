@@ -2,10 +2,46 @@
 
 import { BlogNavLink } from "@/components/blog/BlogNavLink";
 import { OFFER_IDS, OFFER_IMAGES, offerHref, type OfferId } from "@/components/offers/offersConfig";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "./offers.module.css";
+
+/** Entrada dos cards: aparecem "popando" quando entram na viewport. */
+function usePopIn(delay = 0) {
+  const reducedMotion = useReducedMotion();
+  const ref = useRef<HTMLLIElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const node = ref.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  return {
+    ref,
+    visible,
+    style: { transitionDelay: `${delay}s` },
+  };
+}
 
 function ArrowIcon() {
   return (
@@ -50,12 +86,31 @@ function OfferShell({
   );
 }
 
-function OfferCard({ id, featured = false }: { id: OfferId; featured?: boolean }) {
+function OfferCard({
+  id,
+  featured = false,
+  delay = 0,
+}: {
+  id: OfferId;
+  featured?: boolean;
+  delay?: number;
+}) {
   const t = useTranslations("offers");
   const available = offerHref(id) !== null;
+  const pop = usePopIn(delay);
 
   return (
-    <li className={featured ? styles.indexFeaturedItem : undefined}>
+    <li
+      ref={pop.ref}
+      style={pop.style}
+      className={[
+        featured ? styles.indexFeaturedItem : "",
+        styles.pop,
+        pop.visible ? styles.popIn : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <OfferShell id={id} featured={featured}>
         <div className={featured ? styles.indexFeaturedMedia : styles.indexCardMedia}>
           <Image
@@ -130,8 +185,8 @@ export function OffersIndex() {
         </ul>
 
         <ul className={styles.indexList}>
-          {rest.map((id) => (
-            <OfferCard key={id} id={id} />
+          {rest.map((id, index) => (
+            <OfferCard key={id} id={id} delay={0.08 * index} />
           ))}
         </ul>
 

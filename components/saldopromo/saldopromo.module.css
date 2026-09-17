@@ -1865,15 +1865,17 @@
 }
 
 .stepsGrid {
+  --steps-gap: clamp(0.85rem, 2vw, 1.35rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.85rem, 2vw, 1.35rem);
+  gap: var(--steps-gap);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .stepCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
@@ -1885,6 +1887,20 @@
     border-color 0.35s ease,
     box-shadow 0.35s ease,
     transform 0.35s ease;
+}
+
+/* Conector entre as etapas: seta na goteira do grid. */
+.stepCard:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(var(--steps-gap) / -2);
+  width: 0.58rem;
+  height: 0.58rem;
+  border-top: 2px solid rgba(124, 255, 58, 0.6);
+  border-right: 2px solid rgba(124, 255, 58, 0.6);
+  transform: translate(50%, -50%) rotate(45deg);
+  pointer-events: none;
 }
 
 .stepCard:hover {
@@ -2020,6 +2036,14 @@
   .stepsGrid,
   .faqGrid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stepCard:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: calc(var(--steps-gap) / -2);
+    transform: translate(-50%, 50%) rotate(135deg);
   }
 }
 

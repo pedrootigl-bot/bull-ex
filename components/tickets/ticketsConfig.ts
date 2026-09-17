@@ -1,4 +1,6 @@
-export const TICKETS_PAGE_HREF = "/tickets";
+import { TICKETS_OFFER_PAGE_HREF } from "@/components/offers/offersConfig";
+
+export const TICKETS_PAGE_HREF = TICKETS_OFFER_PAGE_HREF;
 
 export const TICKETS_COPY = {
   /** Arte do hero: preencher quando a imagem da campanha estiver disponivel. */

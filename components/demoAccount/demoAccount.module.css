@@ -1,0 +1,220 @@
+.section {
+  position: relative;
+  padding: clamp(3.5rem, 9vh, 5.5rem) 0;
+  background: #000;
+  color: #fff;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 640px;
+}
+
+.inner {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vh, 2.75rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgba(124, 255, 58, 0.35);
+  border-radius: 999px;
+  background: rgba(124, 255, 58, 0.08);
+  color: #7cff3a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.55rem, 3.8vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 44rem;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(0.95rem, 2.1vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.grid {
+  --steps-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--steps-gap);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease;
+}
+
+/* Conector entre os cards: seta na goteira do grid. */
+.card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(var(--steps-gap) / -2);
+  width: 0.58rem;
+  height: 0.58rem;
+  border-top: 2px solid rgba(124, 255, 58, 0.6);
+  border-right: 2px solid rgba(124, 255, 58, 0.6);
+  transform: translate(50%, -50%) rotate(45deg);
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: rgba(124, 255, 58, 0.4);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.95rem;
+  border: 1px solid rgba(124, 255, 58, 0.35);
+  border-radius: 12px;
+  background: rgba(124, 255, 58, 0.08);
+  color: #7cff3a;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: clamp(2rem, 5vh, 2.75rem);
+  text-align: center;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: #7cff3a;
+  color: #08130a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124, 255, 58, 0.25);
+}
+
+.cta:focus-visible {
+  outline: 2px solid #7cff3a;
+  outline-offset: 3px;
+}
+
+.ctaIcon {
+  display: inline-flex;
+}
+
+.note {
+  margin: 0;
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealIn {
+  opacity: 1;
+  transform: none;
+}
+
+.motionStatic {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+@media (max-width: 1100px) and (min-width: 641px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Na grade de duas colunas o segundo card quebra a linha: sem seta. */
+  .card:nth-child(even)::after {
+    content: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: calc(var(--steps-gap) / -2);
+    transform: translate(-50%, 50%) rotate(135deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .card,
+  .cta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

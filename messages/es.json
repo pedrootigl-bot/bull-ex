@@ -23,6 +23,7 @@
     "cardOffers": "Ofertas",
     "cardContent": "Contenido",
     "createAccount": "Crear cuenta",
+    "demoAccount": "Cuenta demo",
     "riskFree": "Risk Free",
     "saldoPromo": "Saldo promocional",
     "tickets": "Tickets y campañas",
@@ -53,6 +54,8 @@
     "support": "Soporte",
     "faq": "FAQ",
     "openAccount": "Abrir cuenta",
+    "createAccount": "Crear cuenta",
+    "demoAccount": "Cuenta demo",
     "login": "Entrar",
     "legal": "Legal",
     "terms": "Términos de uso",
@@ -93,39 +96,39 @@
     "subtitle": "Elige un activo y empieza a invertir en unos pocos clics."
   },
   "why": {
-    "eyebrow": "¿Por qué Bullex?",
-    "titleBefore": "¿Por qué Bullex es el bróker ideal para ",
-    "titleHighlight": "inversores exigentes?",
-    "subtitle": "En Bullex unimos tecnología, seguridad y condiciones exclusivas para quien opera a alto nivel.",
-    "callout": "Más que un bróker, un socio estratégico para que puedas <highlight>operar sin límites</highlight> y <highlight>llegar más lejos</highlight>.",
+    "eyebrow": "Por qué Bullex",
+    "titleBefore": "Por qué Bullex\n",
+    "titleHighlight": "soporte, promociones y beneficios exclusivos",
+    "subtitle": "Cuando lo necesites, el soporte responde. Mientras tanto, campañas activas y ventajas exclusivas quedan listas para activar en tu cuenta y usar en tus operaciones.",
+    "callout": "Opera con <highlight>soporte dedicado</highlight>, <highlight>promociones activas</highlight> y beneficios exclusivos pensados para tu operación.",
     "photoAlt": "Ejecutivo con cabeza de toro verde sosteniendo la app Bullex con paneles de ganancias y rendimiento",
-    "carouselLabel": "Destacados de Bullex para grandes inversores",
+    "carouselLabel": "Beneficios concretos de Bullex",
     "carouselPrev": "Tarjeta anterior",
     "carouselNext": "Siguiente tarjeta",
     "features": {
       "liquidity": {
-        "title": "Liquidez de alto nivel",
-        "text": "Ejecución rápida y estable incluso en grandes volúmenes."
+        "title": "Ejecución bajo demanda",
+        "text": "Órdenes procesadas con velocidad consistente, incluso en horarios de mayor movimiento."
       },
       "security": {
-        "title": "Seguridad y confianza",
-        "text": "Infraestructura sólida y cumplimiento de altos estándares."
+        "title": "Cuenta protegida",
+        "text": "Flujos claros de acceso, depósito y retiro, con capas de seguridad en la plataforma."
       },
       "exclusive": {
-        "title": "Condiciones exclusivas",
-        "text": "Spreads competitivos, apalancamiento flexible y costos más bajos."
+        "title": "Promos y exclusivos",
+        "text": "Campañas activas, bonos y beneficios exclusivos según el perfil de tu cuenta."
       },
       "support": {
-        "title": "Soporte premium",
-        "text": "Atención dedicada cuando más lo necesitas, las 24 horas."
+        "title": "Soporte que responde",
+        "text": "Atención disponible para resolver dudas y acompañar tu operación, las 24 horas."
       },
       "platform": {
-        "title": "Plataforma avanzada",
-        "text": "Herramientas profesionales y tecnología de punta para tus operaciones."
+        "title": "Herramientas en la práctica",
+        "text": "Gráficos, alertas y ejecución en pocos clics — recursos que usas de verdad."
       },
       "diversify": {
-        "title": "Diversificación inteligente",
-        "text": "Accede a distintos mercados y oportunidades en un solo lugar."
+        "title": "Mercados en un solo lugar",
+        "text": "Digitales, Forex, ETFs, Blitz y más activos en una sola cuenta."
       }
     }
   },
@@ -206,8 +209,8 @@
     }
   },
   "platform": {
-    "title": "Más de 200 activos para invertir de forma simple.",
-    "subtitle": "Elige un activo y empieza a invertir en unos pocos clics.",
+    "title": "La plataforma Bullex en el ordenador y en el móvil.",
+    "subtitle": "La misma experiencia en cualquier pantalla, con herramientas completas.",
     "aria": "Plataforma Bullex en computadora y móvil",
     "imageAlt": "Interfaz de Bullex en escritorio con gráfico de velas y en el móvil con botones Arriba y Abajo"
   },
@@ -230,9 +233,9 @@
   },
   "teamGrid": {
     "aria": "Bullex en acción",
-    "titleStrong": "Más de 200 activos",
-    "titleLight": "para invertir de forma sencilla",
-    "subtitle": "Elige un activo y empieza a invertir con solo unos clics.",
+    "titleStrong": "Empieza con poco",
+    "titleLight": "y opera a tu ritmo",
+    "subtitle": "Depósito e inversión mínimos pensados para los primeros pasos.",
     "imageAlt": "Equipo de Bullex analizando el mercado en un entorno de trading",
     "cards": {
       "deposit": {
@@ -244,6 +247,133 @@
         "lead": "Solo"
       }
     }
+  },
+  "demoAccount": {
+    "eyebrow": "Cuenta demo",
+    "title": "Practica con tu saldo virtual",
+    "subtitle": "La cuenta demo reproduce la plataforma real con {demoBalance} en saldo virtual. Úsala para conocer las herramientas y probar estrategias antes de operar con fondos propios.",
+    "cards": {
+      "balance": {
+        "title": "Saldo virtual de {demoBalance}",
+        "text": "El importe es ficticio, sirve solo para simulación y no se puede retirar ni transferir."
+      },
+      "access": {
+        "title": "Acceso sin depósito",
+        "text": "Solo tienes que crear tu cuenta Bullex para abrir la demo. No se exige ningún depósito para empezar a practicar."
+      },
+      "refill": {
+        "title": "Reposición del saldo",
+        "text": "Si el saldo virtual se agota, puede reponerse en la propia plataforma según las reglas vigentes."
+      },
+      "difference": {
+        "title": "Diferencias con la cuenta real",
+        "text": "En la demo no hay dinero real: los resultados son simulados y no generan ganancias, pérdidas ni retiros."
+      }
+    },
+    "cta": "Abrir mi cuenta demo",
+    "note": "Los importes, la disponibilidad y las reglas de la cuenta demo pueden variar según la plataforma y la cuenta del usuario."
+  },
+  "marketCategories": {
+    "eyebrow": "Mercados Bullex",
+    "titleLine1": "Un mercado.",
+    "titleLine2": "Muchas formas",
+    "titleHighlight": "de operar.",
+    "body": "Explora distintas categorías de activos en una sola plataforma. Activos digitales, Forex, ETFs, Blitz y más posibilidades de negociación.",
+    "cta": "Explorar mercados",
+    "footer": "Diversos mercados. Una sola experiencia.",
+    "items": {
+      "digital": {
+        "label": "Activos digitales",
+        "tag": "Cripto",
+        "description": "Opera criptomonedas y activos digitales en un entorno pensado para seguir el ritmo del mercado.",
+        "indicators": {
+          "1": "BTC y ETH",
+          "2": "Alta volatilidad",
+          "3": "24/7"
+        }
+      },
+      "forex": {
+        "label": "Forex",
+        "tag": "Divisas",
+        "description": "Negocia pares globales de divisas con acceso a distintos mercados.",
+        "indicators": {
+          "1": "Pares globales",
+          "2": "Ejecución rápida",
+          "3": "Liquidez"
+        }
+      },
+      "etf": {
+        "label": "ETFs",
+        "tag": "Índices",
+        "description": "Diversifica con fondos cotizados y sigue índices con un enfoque más institucional.",
+        "indicators": {
+          "1": "SPY y QQQ",
+          "2": "Cestas de activos",
+          "3": "Exposición amplia"
+        }
+      },
+      "blitz": {
+        "label": "Blitz",
+        "tag": "Corto plazo",
+        "description": "Operaciones ágiles con lectura rápida del gráfico, timers y decisiones en ventanas reducidas.",
+        "indicators": {
+          "1": "Timer activo",
+          "2": "Gráficos cortos",
+          "3": "Respuesta inmediata"
+        }
+      },
+      "other": {
+        "label": "Otros mercados",
+        "tag": "Variedad",
+        "description": "Índices, materias primas y más categorías para ampliar tus estrategias.",
+        "indicators": {
+          "1": "Índices",
+          "2": "Commodities",
+          "3": "Más activos"
+        }
+      }
+    },
+    "scenes": {
+      "digital": {
+        "primaryPair": "BTC/USD",
+        "primaryChange": "+2,84%",
+        "secondaryPair": "ETH/USD",
+        "secondaryChange": "+1,12%",
+        "tertiaryPair": "SOL/USD",
+        "tertiaryChange": "-0,46%"
+      },
+      "forex": {
+        "primaryPair": "EUR/USD",
+        "primaryValue": "1.0824",
+        "primaryChange": "+0,21%",
+        "secondaryPair": "GBP/USD",
+        "secondaryValue": "1.2641",
+        "tertiaryPair": "USD/JPY",
+        "tertiaryValue": "151.32"
+      },
+      "etf": {
+        "primaryLabel": "ETFs",
+        "primaryPair": "SPY",
+        "primaryChange": "+0,68%",
+        "secondaryPair": "QQQ",
+        "secondaryChange": "+1,04%",
+        "tertiaryPair": "IVV",
+        "tertiaryChange": "+0,55%"
+      },
+      "blitz": {
+        "timer": "00:42",
+        "pair": "EUR/USD",
+        "direction": "Arriba",
+        "payout": "+82%"
+      },
+      "other": {
+        "index": "Índices",
+        "commodity": "Commodities",
+        "currency": "Divisas",
+        "more": "Otros activos"
+      }
+    },
+    "sceneSoon": "Visual de esta categoría próximamente."
   },
   "mobileApp": {
     "titleBefore": "No es solo en escritorio. Bullex también está en ",

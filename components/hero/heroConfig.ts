@@ -75,6 +75,7 @@ export function bullexLoginHref(locale: Locale | PathLocale | string): string {
 
 export const NAV_COPY = {
   links: [
+    { href: "#conta-demo", labelKey: "demoAccount", icon: "why" },
     { href: "#mercados", labelKey: "markets", icon: "markets" },
     { href: "#por-que-bullex", labelKey: "why", icon: "why" },
     { href: "#ofertas", labelKey: "prizes", icon: "prizes" },
