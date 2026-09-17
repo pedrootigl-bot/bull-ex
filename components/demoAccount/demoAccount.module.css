@@ -52,6 +52,11 @@
   line-height: 1.55;
 }
 
+.subtitleHighlight {
+  color: #7cff3a;
+  font-weight: 600;
+}
+
 .grid {
   --steps-gap: 1rem;
   display: grid;

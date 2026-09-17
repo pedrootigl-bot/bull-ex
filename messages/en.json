@@ -239,7 +239,7 @@
   "demoAccount": {
     "eyebrow": "Demo account",
     "title": "Practice with your virtual balance",
-    "subtitle": "The demo account mirrors the live platform with {demoBalance} in virtual balance. Use it to explore the tools and test strategies before trading with your own funds.",
+    "subtitle": "The demo account mirrors <highlight>the live platform with {demoBalance} in virtual balance</highlight>. Use it to explore the tools and test strategies before trading with your own funds.",
     "cards": {
       "balance": {
         "title": "{demoBalance} virtual balance",

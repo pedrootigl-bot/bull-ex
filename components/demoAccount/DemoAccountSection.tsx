@@ -118,7 +118,12 @@ export function DemoAccountSection() {
             {t("title")}
           </h2>
           <p className={styles.subtitle}>
-            {t("subtitle", { demoBalance: moneyParams.demoBalance })}
+            {t.rich("subtitle", {
+              demoBalance: moneyParams.demoBalance,
+              highlight: (chunks) => (
+                <span className={styles.subtitleHighlight}>{chunks}</span>
+              ),
+            })}
           </p>
         </header>
 

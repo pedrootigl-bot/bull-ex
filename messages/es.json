@@ -239,7 +239,7 @@
   "demoAccount": {
     "eyebrow": "Cuenta demo",
     "title": "Practica con tu saldo virtual",
-    "subtitle": "La cuenta demo reproduce la plataforma real con {demoBalance} en saldo virtual. Úsala para conocer las herramientas y probar estrategias antes de operar con fondos propios.",
+    "subtitle": "La cuenta demo reproduce <highlight>la plataforma real con {demoBalance} en saldo virtual</highlight>. Úsala para conocer las herramientas y probar estrategias antes de operar con fondos propios.",
     "cards": {
       "balance": {
         "title": "Saldo virtual de {demoBalance}",

@@ -342,7 +342,7 @@ const HERO_TITLE_FALLBACK_MS = 3500;
 
 function HeroSection() {
   const t = useTranslations("riskFree");
-  const { register } = useTradeHrefs();
+  const { login } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
   const [titleDone, setTitleDone] = useState(false);
   const marqueeWords = t("hero.marquee")
@@ -450,7 +450,7 @@ function HeroSection() {
           </div>
           <div className={styles.heroActions}>
             <div className={`${styles.heroCtaRow} ${revealClass(styles.heroFadeDelay2)}`}>
-              <PrimaryCta label={t("hero.cta")} href={register} solid />
+              <PrimaryCta label={t("hero.cta")} href={login} solid />
               <a className={styles.heroPlayLink} href={`#${WHAT_SECTION_ID}`}>
                 <span className={styles.heroPlayIcon} aria-hidden="true">
                   <svg width="11" height="13" viewBox="0 0 11 13" fill="none">

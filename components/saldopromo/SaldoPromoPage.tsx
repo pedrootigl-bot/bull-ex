@@ -230,7 +230,7 @@ const HERO_TITLE_FALLBACK_MS = 3500;
 
 function HeroSection() {
   const t = useTranslations("saldoPromo");
-  const { register } = useTradeHrefs();
+  const { login } = useTradeHrefs();
   const reducedMotion = useReducedMotion();
   const [titleDone, setTitleDone] = useState(false);
   const marqueeWords = t("hero.marquee")
@@ -325,7 +325,7 @@ function HeroSection() {
           </p>
           <div className={styles.heroActions}>
             <div className={`${styles.heroCtaRow} ${revealClass(styles.heroFadeDelay2)}`}>
-              <PrimaryCta label={t("hero.cta")} href={register} />
+              <PrimaryCta label={t("hero.cta")} href={login} />
             </div>
             <p className={`${styles.finePrint} ${revealClass(styles.heroFadeDelay3)}`}>
               {t("hero.finePrint")}
@@ -675,7 +675,7 @@ function NextHighlightIcon({ id }: { id: (typeof NEXT_HIGHLIGHTS)[number] }) {
 
 function NextStepSection() {
   const t = useTranslations("saldoPromo");
-  const { register } = useTradeHrefs();
+  const { login } = useTradeHrefs();
   const asideReveal = useReveal<HTMLParagraphElement>(styles.nextAside, 0.16);
   const eyebrowReveal = useReveal<HTMLParagraphElement>(styles.eyebrow);
   const titleReveal = useReveal<HTMLHeadingElement>(styles.nextTitle, 0.08);
@@ -710,7 +710,7 @@ function NextStepSection() {
           </h2>
           <p {...bodyReveal}>{t("next.body")}</p>
           <div {...ctaReveal}>
-            <PrimaryCta label={t("next.cta")} href={register} />
+            <PrimaryCta label={t("next.cta")} href={login} />
           </div>
         </div>
 

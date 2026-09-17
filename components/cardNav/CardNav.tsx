@@ -299,7 +299,7 @@ export function CardNav({
                 height={87}
                 className={styles.logo}
                 priority
-                sizes="120px"
+                sizes="210px"
               />
             </a>
           ) : (
@@ -311,7 +311,7 @@ export function CardNav({
                 height={87}
                 className={styles.logo}
                 priority
-                sizes="120px"
+                sizes="210px"
               />
             </Link>
           )}

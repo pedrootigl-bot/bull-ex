@@ -6,43 +6,12 @@
   contain-intrinsic-size: 1px 860px;
 }
 
-.slideOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: #000;
-  transform: translateX(0);
-  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.revealIn.slideOverlay {
-  transform: translateX(-100%);
-}
-
-.slidePanel {
+.panel {
   position: relative;
   z-index: 1;
   background: #e8e8e8;
   padding: clamp(3.5rem, 8vh, 5rem) 0;
-  transform: translateX(102%);
-  transition: transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
-  will-change: transform;
   overflow: hidden;
-}
-
-.revealIn.slidePanel {
-  transform: translateX(0);
-}
-
-.motionStatic.slideOverlay {
-  display: none;
-}
-
-.motionStatic.slidePanel {
-  transform: none;
-  transition: none;
 }
 
 .decorTop,
@@ -222,6 +191,22 @@
     box-shadow 0.25s ease,
     transform 0.2s ease,
     opacity 0.25s ease;
+}
+
+.pop {
+  opacity: 0;
+  transform: scale(0.88) translateY(22px);
+  transition:
+    opacity 0.42s ease,
+    transform 0.55s cubic-bezier(0.22, 1.25, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  will-change: opacity, transform;
+}
+
+.popIn {
+  opacity: 1;
+  transform: none;
 }
 
 .card:hover {
@@ -414,17 +399,14 @@
 
   .card,
   .progressMark,
-  .progressSegment::after,
-  .slideOverlay,
-  .slidePanel {
+  .progressSegment::after {
     transition: none;
   }
 
-  .slideOverlay {
-    display: none;
-  }
-
-  .slidePanel {
+  .pop,
+  .popIn {
+    opacity: 1;
     transform: none;
+    transition: none;
   }
 }

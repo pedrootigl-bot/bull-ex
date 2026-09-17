@@ -37,7 +37,10 @@
 .motionStatic .sceneShine,
 .motionStatic .stageAura,
 .motionStatic .stageRing,
-.motionStatic .stageFloor {
+.motionStatic .stageFloor,
+.motionStatic .digitalCoin,
+.motionStatic .digitalCard,
+.motionStatic .sceneFloatPulse .sceneImageCompact {
   animation: none !important;
   transition: none !important;
 }
@@ -496,8 +499,9 @@
   z-index: 2;
   display: grid;
   place-items: center;
-  padding: 1rem 0.5rem 0.5rem;
+  padding: 0.75rem 0.75rem 0.35rem;
   perspective: 1200px;
+  overflow: visible;
   animation: sceneIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -522,12 +526,44 @@
   filter: drop-shadow(0 32px 56px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 28px rgba(124, 255, 58, 0.14));
 }
 
+.sceneFloatCompact {
+  width: min(100%, 320px);
+  max-height: min(52vh, 400px);
+}
+
+.sceneFloatPulse .sceneImageCompact {
+  animation: sceneImagePulse 2.6s ease-in-out 1s infinite;
+  transform-origin: 50% 55%;
+  will-change: transform, filter;
+  isolation: isolate;
+}
+
+@keyframes sceneImagePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.06);
+  }
+}
+
 .sceneImageWrap {
   position: relative;
   width: 100%;
   overflow: hidden;
   animation: sceneReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
   transform-origin: 50% 70%;
+}
+
+.sceneImageWrapCompact {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  max-height: inherit;
+  border-radius: 1.1rem;
 }
 
 .sceneShine {
@@ -557,6 +593,13 @@
   transform: translateZ(0);
 }
 
+.sceneImageCompact {
+  width: auto;
+  max-width: 100%;
+  max-height: min(52vh, 400px);
+  height: auto;
+}
+
 .scenePlaceholder {
   width: min(100%, 380px);
   min-height: 260px;
@@ -565,6 +608,169 @@
   border-radius: 1.25rem;
   background: linear-gradient(160deg, rgba(124, 255, 58, 0.05), rgba(0, 0, 0, 0.28));
   text-align: center;
+}
+
+/* —— Ativos digitais / Forex: entrada → pulsação → saída —— */
+.digitalScene {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.55rem, 1.6vw, 1.05rem);
+  width: min(100%, 720px);
+  max-height: 100%;
+  padding: 0.5rem 0.35rem 0.35rem;
+  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.5));
+  overflow: visible;
+}
+
+.digitalCol {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.45rem, 1.3vh, 0.85rem);
+  min-width: 0;
+  max-width: 14.5rem;
+}
+
+.digitalCoin,
+.digitalCard {
+  opacity: 0;
+  transform: scale(0.84) translateY(18px);
+  will-change: opacity, transform, filter;
+}
+
+.digitalCoin {
+  width: 64%;
+  max-width: 7.5rem;
+}
+
+.digitalCard {
+  width: 100%;
+}
+
+.digitalCoinImg,
+.digitalCardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.forexScene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.3vh, 0.85rem);
+  width: min(100%, 680px);
+  max-height: 100%;
+  padding: 0.5rem 0.35rem 0.35rem;
+  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.5));
+  overflow: visible;
+}
+
+.forexTop {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.forexBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(0.55rem, 1.8vw, 1.1rem);
+  width: 100%;
+  z-index: 1;
+}
+
+.forexCardTop {
+  width: min(68%, 18.5rem);
+}
+
+.forexCardBottom {
+  width: min(52%, 16.5rem);
+  flex: 1 1 0;
+  max-width: 16.5rem;
+}
+
+.pairEnter .digitalCoin,
+.pairEnter .digitalCard {
+  animation: pairItemIn 0.58s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+.pairIdle .digitalCoin,
+.pairIdle .digitalCard {
+  opacity: 1;
+  transform: none;
+  animation: pairItemPulse 3.2s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0ms);
+  transform-origin: 50% 55%;
+}
+
+.pairExit .digitalCoin,
+.pairExit .digitalCard {
+  animation: pairItemOut 0.42s cubic-bezier(0.4, 0, 0.7, 0.2) both;
+  animation-delay: var(--exit-delay, 0ms);
+}
+
+.pairStatic .digitalCoin,
+.pairStatic .digitalCard {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes pairItemIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(22px);
+    filter: blur(4px);
+  }
+  65% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pairItemPulse {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2.4deg);
+  }
+  75% {
+    transform: rotate(2.4deg);
+  }
+}
+
+@keyframes pairItemOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.88) translateY(-14px);
+    filter: blur(3px);
+  }
 }
 
 .placeholderLabel {
@@ -850,6 +1056,8 @@
   .mobileScene .scene {
     position: relative;
     min-height: 220px;
+    height: auto;
+    overflow: visible;
   }
 
   .mobileScene .sceneImageWrap {
@@ -860,6 +1068,47 @@
   .mobileScene .sceneFloat {
     width: min(100%, 480px);
     margin: 0 auto;
+  }
+
+  .mobileScene .sceneFloatCompact {
+    width: min(58%, 260px);
+    max-height: 280px;
+  }
+
+  .mobileScene .sceneImageCompact {
+    max-height: 280px;
+  }
+
+  .mobileScene .digitalScene {
+    width: min(100%, 100%);
+    margin: 0 auto;
+    max-height: none;
+    gap: 0.4rem;
+    padding-inline: 0.1rem;
+  }
+
+  .mobileScene .forexScene {
+    width: min(100%, 100%);
+    margin: 0 auto;
+    gap: 0.4rem;
+  }
+
+  .mobileScene .forexCardTop {
+    width: min(62%, 13.5rem);
+  }
+
+  .mobileScene .forexCardBottom {
+    max-width: 12rem;
+  }
+
+  .mobileScene .digitalCol {
+    max-width: none;
+    gap: 0.35rem;
+  }
+
+  .mobileScene .digitalCoin {
+    width: 68%;
+    max-width: 5.25rem;
   }
 
   .sectionNote {
@@ -881,14 +1130,26 @@
   .sceneShine,
   .stageAura,
   .stageRing,
-  .stageFloor {
+  .stageFloor,
+  .digitalCoin,
+  .digitalCard,
+  .sceneFloatPulse .sceneImageCompact {
     animation: none !important;
     transition: none !important;
   }
 
   .section,
-  .navItem {
+  .navItem,
+  .digitalCoin,
+  .digitalCard,
+  .pairEnter .digitalCoin,
+  .pairEnter .digitalCard,
+  .pairIdle .digitalCoin,
+  .pairIdle .digitalCard,
+  .pairExit .digitalCoin,
+  .pairExit .digitalCard {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { BlogNavLink } from "@/components/blog/BlogNavLink";
+import { offerHref } from "@/components/offers/offersConfig";
 import { useLiteExperience } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -64,11 +65,13 @@ function PrizeReveal({
   reverse: boolean;
 }) {
   const t = useTranslations("prizes");
+  const tOffers = useTranslations("offers");
   const reducedMotion = useReducedMotion();
   const lite = useLiteExperience();
   const staticMotion = reducedMotion || lite;
   const ref = useRef<HTMLElement>(null);
   const src = PRIZE_IMAGES[id];
+  const href = offerHref(id);
   const number = String(index + 1).padStart(2, "0");
 
   const { scrollYProgress } = useScroll({
@@ -95,6 +98,32 @@ function PrizeReveal({
   const copyOpacity = useTransform(scrollYProgress, [0.08, 0.36], [0, 1]);
   const copyY = useTransform(scrollYProgress, [0.08, 0.36], [28, 0]);
 
+  const media = src ? (
+    <motion.div
+      className={`${styles.revealMedia} ${isFeatured ? styles.revealMediaZoomOut : ""}`}
+      style={
+        staticMotion
+          ? undefined
+          : {
+              scale,
+              y: imageY,
+            }
+      }
+    >
+      <Image
+        className={styles.revealPhoto}
+        src={src}
+        alt={t(`cards.${id}.imageAlt`)}
+        fill
+        sizes="(max-width: 640px) 92vw, min(720px, 52vw)"
+        quality={75}
+        loading="lazy"
+      />
+    </motion.div>
+  ) : (
+    <div className={styles.placeholder} aria-hidden="true" />
+  );
+
   return (
     <article className={`${styles.reveal} ${reverse ? styles.revealReverse : ""}`} ref={ref}>
       <motion.div
@@ -118,30 +147,20 @@ function PrizeReveal({
       </motion.div>
 
       <motion.div className={styles.revealMask} style={staticMotion ? undefined : { clipPath }}>
-        {src ? (
-          <motion.div
-            className={`${styles.revealMedia} ${isFeatured ? styles.revealMediaZoomOut : ""}`}
-            style={
-              staticMotion
-                ? undefined
-                : {
-                    scale,
-                    y: imageY,
-                  }
-            }
+        {href ? (
+          <BlogNavLink
+            className={styles.revealImageLink}
+            href={href}
+            loadingTitle={tOffers("loadingTitle")}
+            loadingSubtitle={tOffers("loadingSubtitle", {
+              offer: tOffers(`items.${id}.title`),
+            })}
+            aria-label={`${tOffers("seeOffer")}: ${t(`cards.${id}.title`)}`}
           >
-            <Image
-              className={styles.revealPhoto}
-              src={src}
-              alt={t(`cards.${id}.imageAlt`)}
-              fill
-              sizes="(max-width: 640px) 92vw, min(720px, 52vw)"
-              quality={75}
-              loading="lazy"
-            />
-          </motion.div>
+            {media}
+          </BlogNavLink>
         ) : (
-          <div className={styles.placeholder} aria-hidden="true" />
+          media
         )}
       </motion.div>
     </article>

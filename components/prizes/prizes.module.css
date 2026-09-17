@@ -262,6 +262,20 @@
   will-change: clip-path;
 }
 
+.revealImageLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.revealImageLink:focus-visible {
+  outline: 2px solid #7cff3a;
+  outline-offset: -2px;
+}
+
 .revealMedia {
   position: absolute;
   inset: -8%;

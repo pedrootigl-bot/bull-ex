@@ -70,14 +70,35 @@ export const MARKET_CITIES = [
   "Sydney",
 ] as const;
 
-/** Cenas visuais por categoria. null = placeholder até a arte chegar. */
+/** Cenas visuais por categoria. null = placeholder / cena composta. */
 export const MARKET_SCENE_IMAGES: Record<MarketCategoryId, string | null> = {
-  digital: "/images/markets/digital.png",
-  forex: "/images/markets/forex.png",
+  digital: null, // DigitalAssetsScene
+  forex: null, // ForexAssetsScene
   etf: "/images/markets/etf.png",
   blitz: "/images/markets/blitz.png",
   other: "/images/markets/other.png",
 };
+
+export const DIGITAL_SCENE_ASSETS = {
+  coins: [
+    { id: "btc", src: "/images/markets/digital/coin-btc.png", altKey: "primaryPair" },
+    { id: "eth", src: "/images/markets/digital/coin-eth.png", altKey: "secondaryPair" },
+    { id: "sol", src: "/images/markets/digital/coin-sol.png", altKey: "tertiaryPair" },
+  ],
+  cards: [
+    { id: "btc", src: "/images/markets/digital/card-btc.png", altKey: "primaryPair" },
+    { id: "eth", src: "/images/markets/digital/card-eth.png", altKey: "secondaryPair" },
+    { id: "sol", src: "/images/markets/digital/card-sol.png", altKey: "tertiaryPair" },
+  ],
+} as const;
+
+export const FOREX_SCENE_ASSETS = {
+  top: { id: "gbp", src: "/images/markets/forex/card-gbp.png", altKey: "secondaryPair" },
+  bottom: [
+    { id: "eur", src: "/images/markets/forex/card-eur.png", altKey: "primaryPair" },
+    { id: "jpy", src: "/images/markets/forex/card-jpy.png", altKey: "tertiaryPair" },
+  ],
+} as const;
 
 /** Dimensões intrínsecas dos assets (após upscale de qualidade). */
 export const MARKET_SCENE_DIMENSIONS: Record<
@@ -86,7 +107,7 @@ export const MARKET_SCENE_DIMENSIONS: Record<
 > = {
   digital: { width: 1154, height: 866 },
   forex: { width: 1154, height: 866 },
-  etf: { width: 1620, height: 1215 },
+  etf: { width: 456, height: 547 },
   blitz: { width: 1620, height: 1215 },
   other: { width: 1296, height: 924 },
 };

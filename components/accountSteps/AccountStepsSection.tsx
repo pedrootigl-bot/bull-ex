@@ -76,6 +76,7 @@ type AccountStepCardProps = {
   index: number;
   isActive: boolean;
   isCompleted: boolean;
+  popIn: boolean;
   id?: string;
   onSelect?: () => void;
 };
@@ -85,17 +86,19 @@ function AccountStepCard({
   index,
   isActive,
   isCompleted,
+  popIn,
   id,
   onSelect,
 }: AccountStepCardProps) {
   const t = useTranslations("accountSteps");
-  const className = `${styles.card} ${isActive ? styles.cardActive : ""} ${isCompleted ? styles.cardCompleted : ""}`;
+  const className = `${styles.card} ${styles.pop} ${popIn ? styles.popIn : ""} ${isActive ? styles.cardActive : ""} ${isCompleted ? styles.cardCompleted : ""}`;
 
   return (
     <button
       type="button"
       id={id}
       className={className}
+      style={{ transitionDelay: `${index * 0.14}s` }}
       aria-current={isActive ? "step" : undefined}
       onClick={onSelect}
     >
@@ -162,8 +165,7 @@ export function AccountStepsSection() {
 
   const stepCount = ACCOUNT_STEPS.length;
   const isLastStep = activeStep === 2;
-  const motionClass = reducedMotion ? styles.motionStatic : "";
-  const revealClass = visible ? styles.revealIn : "";
+  const popIn = visible || reducedMotion;
 
   return (
     <section
@@ -172,8 +174,7 @@ export function AccountStepsSection() {
       id={ACCOUNT_STEPS_COPY.id}
       aria-labelledby={`${baseId}-title`}
     >
-      <div className={`${styles.slideOverlay} ${revealClass} ${motionClass}`} aria-hidden="true" />
-      <div className={`${styles.slidePanel} ${revealClass} ${motionClass}`}>
+      <div className={styles.panel}>
         <div className={styles.decorTop} aria-hidden="true" />
         <div className={styles.decorBottom} aria-hidden="true" />
 
@@ -228,6 +229,7 @@ export function AccountStepsSection() {
                       index={index}
                       isActive={isActive}
                       isCompleted={isCompleted}
+                      popIn={popIn}
                       id={`${baseId}-step-${step}`}
                       onSelect={() => handleCardClick(index)}
                     />

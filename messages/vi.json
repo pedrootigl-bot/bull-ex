@@ -239,7 +239,7 @@
   "demoAccount": {
     "eyebrow": "Tài khoản demo",
     "title": "Luyện tập với số dư ảo của bạn",
-    "subtitle": "Tài khoản demo mô phỏng nền tảng thật với {demoBalance} số dư ảo. Dùng để làm quen với công cụ và thử chiến lược trước khi giao dịch bằng vốn của bạn.",
+    "subtitle": "Tài khoản demo mô phỏng <highlight>nền tảng thật với {demoBalance} số dư ảo</highlight>. Dùng để làm quen với công cụ và thử chiến lược trước khi giao dịch bằng vốn của bạn.",
     "cards": {
       "balance": {
         "title": "Số dư ảo {demoBalance}",

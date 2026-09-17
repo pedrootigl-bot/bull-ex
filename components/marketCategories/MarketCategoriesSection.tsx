@@ -1,6 +1,6 @@
 "use client";
 
-import { bullexRegisterHref } from "@/components/hero/heroConfig";
+import { bullexLoginHref } from "@/components/hero/heroConfig";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useLocale, useTranslations } from "next-intl";
 import {
@@ -20,6 +20,7 @@ import {
 } from "./marketCategoriesConfig";
 import { MarketScene } from "./MarketScene";
 import styles from "./marketCategories.module.css";
+import { PAIR_SCENE_EXIT_MS } from "./usePairScenePhase";
 
 function PlusMinus({ open }: { open: boolean }) {
   return (
@@ -122,8 +123,11 @@ export function MarketCategoriesSection() {
   const [visible, setVisible] = useState(reducedMotion);
   const [sceneKey, setSceneKey] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [stageCategory, setStageCategory] = useState<MarketCategoryId>("digital");
+  const [sceneLeaving, setSceneLeaving] = useState(false);
 
-  const displayed = preview ?? active ?? lastActive;
+  const committed = active ?? lastActive;
+  const displayed = preview ?? committed;
 
   useEffect(() => {
     if (reducedMotion) {
@@ -151,8 +155,46 @@ export function MarketCategoriesSection() {
   }, [reducedMotion]);
 
   useEffect(() => {
-    setSceneKey((key) => key + 1);
-  }, [displayed]);
+    if (preview) {
+      if (preview === stageCategory) {
+        setSceneLeaving(false);
+        return;
+      }
+      setSceneLeaving(false);
+      setStageCategory(preview);
+      setSceneKey((key) => key + 1);
+      return;
+    }
+
+    if (committed === stageCategory) {
+      setSceneLeaving(false);
+      return;
+    }
+
+    if (reducedMotion) {
+      setSceneLeaving(false);
+      setStageCategory(committed);
+      setSceneKey((key) => key + 1);
+      return;
+    }
+
+    const needsExit = stageCategory === "digital" || stageCategory === "forex";
+    if (!needsExit) {
+      setSceneLeaving(false);
+      setStageCategory(committed);
+      setSceneKey((key) => key + 1);
+      return;
+    }
+
+    setSceneLeaving(true);
+    const timer = window.setTimeout(() => {
+      setSceneLeaving(false);
+      setStageCategory(committed);
+      setSceneKey((key) => key + 1);
+    }, PAIR_SCENE_EXIT_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [preview, committed, stageCategory, reducedMotion]);
 
   function selectCategory(id: MarketCategoryId) {
     if (active === id) {
@@ -208,7 +250,7 @@ export function MarketCategoriesSection() {
             <p className={styles.body}>{t("body")}</p>
             <a
               className={styles.cta}
-              href={bullexRegisterHref(locale)}
+              href={bullexLoginHref(locale)}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -317,7 +359,7 @@ export function MarketCategoriesSection() {
               <div className={styles.stageRing} aria-hidden="true" />
               <div className={styles.stageFloor} aria-hidden="true" />
               <div className={styles.sceneFrame} key={sceneKey}>
-                <MarketScene category={displayed} />
+                <MarketScene category={stageCategory} leaving={sceneLeaving} />
               </div>
               <div className={styles.stageCaption} key={`cap-${displayed}`}>
                 <span className={styles.stageIndex}>
