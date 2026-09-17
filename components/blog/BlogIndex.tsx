@@ -7,15 +7,70 @@ import {
   blogHref,
   type BlogPostId,
 } from "@/components/blog/blogConfig";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import styles from "./blog.module.css";
 
-function BlogCard({ id, featured = false }: { id: BlogPostId; featured?: boolean }) {
+function useFadeIn(delay = 0) {
+  const reducedMotion = useReducedMotion();
+  const ref = useRef<HTMLLIElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
+    const node = ref.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  return {
+    ref,
+    visible,
+    style: { transitionDelay: `${delay}s` },
+  };
+}
+
+function BlogCard({
+  id,
+  featured = false,
+  delay = 0,
+}: {
+  id: BlogPostId;
+  featured?: boolean;
+  delay?: number;
+}) {
   const t = useTranslations("blog");
+  const fade = useFadeIn(delay);
 
   return (
-    <li className={featured ? styles.indexFeaturedItem : undefined}>
+    <li
+      ref={fade.ref}
+      style={fade.style}
+      className={[
+        featured ? styles.indexFeaturedItem : "",
+        styles.fadeCard,
+        fade.visible ? styles.fadeCardIn : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <BlogNavLink
         className={featured ? styles.indexFeatured : styles.indexCard}
         href={blogHref(id)}
@@ -93,12 +148,12 @@ export function BlogIndex() {
         </div>
 
         <ul className={styles.indexFeaturedList}>
-          <BlogCard id={featured} featured />
+          <BlogCard id={featured} featured delay={0} />
         </ul>
 
         <ul className={styles.indexList}>
-          {rest.map((id) => (
-            <BlogCard key={id} id={id} />
+          {rest.map((id, index) => (
+            <BlogCard key={id} id={id} delay={0.08 * (index + 1)} />
           ))}
         </ul>
       </section>

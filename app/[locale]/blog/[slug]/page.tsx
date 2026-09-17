@@ -1,4 +1,3 @@
-import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogPageReady } from "@/components/blog/BlogPageReady";
 import { BlogRelatedPosts } from "@/components/blog/BlogRelatedPosts";
 import styles from "@/components/blog/blog.module.css";
@@ -64,7 +63,6 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
   return (
     <div className={styles.page}>
       <BlogPageReady />
-      <BlogHeader />
 
       <article className={styles.article}>
         <div className={styles.articleHero}>

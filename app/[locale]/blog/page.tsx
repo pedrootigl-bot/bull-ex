@@ -1,4 +1,3 @@
-import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogIndex } from "@/components/blog/BlogIndex";
 import styles from "@/components/blog/blog.module.css";
 import { SiteFooter } from "@/components/footer/Footer";
@@ -40,7 +39,6 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
 
   return (
     <div className={styles.page}>
-      <BlogHeader />
       <BlogIndex />
       <SiteFooter />
     </div>

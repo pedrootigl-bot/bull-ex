@@ -1,6 +1,5 @@
 "use client";
 
-import { SiteCardNav } from "@/components/cardNav/SiteCardNav";
 import { useAllowHeavyVisuals } from "@/hooks/useLiteExperience";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useFormatMoney } from "@/hooks/useFormatMoney";
@@ -152,8 +151,6 @@ export function HeroSection() {
       className={`${styles.hero} ${lite || reducedMotion ? styles.heroEntered : styles.heroPending}`}
       style={{ ["--hero-accent" as string]: HERO_THEME.accent }}
     >
-      <SiteCardNav />
-
       <div className={styles.heroStage}>
         <div className={styles.background} />
         {!lite ? (

@@ -1,6 +1,5 @@
 import { BlogPageReady } from "@/components/blog/BlogPageReady";
 import { SiteFooter } from "@/components/footer/Footer";
-import { OffersHeader } from "@/components/offers/OffersHeader";
 import { OffersIndex } from "@/components/offers/OffersIndex";
 import styles from "@/components/offers/offers.module.css";
 import { isPathLocale } from "@/i18n/config";
@@ -43,7 +42,6 @@ export default async function OffersRoute({ params }: OffersRouteProps) {
   return (
     <div className={styles.page}>
       <BlogPageReady />
-      <OffersHeader />
       <OffersIndex />
       <SiteFooter />
     </div>

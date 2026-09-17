@@ -72,6 +72,7 @@
     #000;
   color: #fff;
   min-height: 100vh;
+  padding-top: calc(0.85rem + 62px);
 }
 
 /* —— Index —— */

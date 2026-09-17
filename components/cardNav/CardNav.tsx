@@ -209,7 +209,7 @@ export function CardNav({
       </>
     );
 
-    if (link.external || link.href.startsWith("http") || link.href.startsWith("#")) {
+    if (link.external || link.href.startsWith("http")) {
       return (
         <a
           className={styles.cardLink}
@@ -221,6 +221,37 @@ export function CardNav({
         >
           {content}
         </a>
+      );
+    }
+
+    if (link.href.startsWith("#")) {
+      return (
+        <a
+          className={styles.cardLink}
+          href={link.href}
+          aria-label={link.ariaLabel ?? link.label}
+          key={`${link.label}-${index}`}
+          onClick={closeMenu}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    const hashIndex = link.href.indexOf("#");
+    if (hashIndex >= 0) {
+      const hash = link.href.slice(hashIndex + 1);
+      return (
+        <Link
+          className={styles.cardLink}
+          href={{ pathname: "/", hash }}
+          aria-label={link.ariaLabel ?? link.label}
+          key={`${link.label}-${index}`}
+          onClick={closeMenu}
+          prefetch={false}
+        >
+          {content}
+        </Link>
       );
     }
 
@@ -259,17 +290,31 @@ export function CardNav({
             <span className={styles.hamburgerLine} />
           </button>
 
-          <a className={styles.logoLink} href={logoHref} onClick={closeMenu}>
-            <Image
-              src={logo}
-              alt={logoAlt}
-              width={200}
-              height={87}
-              className={styles.logo}
-              priority
-              sizes="120px"
-            />
-          </a>
+          {logoHref.startsWith("#") || logoHref.startsWith("http") ? (
+            <a className={styles.logoLink} href={logoHref} onClick={closeMenu}>
+              <Image
+                src={logo}
+                alt={logoAlt}
+                width={200}
+                height={87}
+                className={styles.logo}
+                priority
+                sizes="120px"
+              />
+            </a>
+          ) : (
+            <Link className={styles.logoLink} href={logoHref} onClick={closeMenu} prefetch={false}>
+              <Image
+                src={logo}
+                alt={logoAlt}
+                width={200}
+                height={87}
+                className={styles.logo}
+                priority
+                sizes="120px"
+              />
+            </Link>
+          )}
 
           <div className={styles.actions}>
             {children}

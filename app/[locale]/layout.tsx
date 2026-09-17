@@ -3,6 +3,7 @@ import { getMoneyMessageParams } from "@/i18n/formatMoney";
 import { routing } from "@/i18n/routing";
 import { withBasePath } from "@/lib/basePath";
 import { BlogNavigationProvider } from "@/components/blog/BlogNavigationContext";
+import { SiteCardNav } from "@/components/cardNav/SiteCardNav";
 import { HtmlLang } from "@/components/HtmlLang";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -63,6 +64,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <NextIntlClientProvider messages={messages}>
       <BlogNavigationProvider>
         <HtmlLang lang={htmlLang} />
+        <SiteCardNav />
         {children}
         <BackToTop />
       </BlogNavigationProvider>

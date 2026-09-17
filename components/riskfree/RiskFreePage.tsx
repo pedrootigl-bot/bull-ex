@@ -2,7 +2,6 @@
 
 import { SiteFooter } from "@/components/footer/Footer";
 import { BlogNavLink } from "@/components/blog/BlogNavLink";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { bullexLoginHref, bullexRegisterHref } from "@/components/hero/heroConfig";
 import {
   OFFER_IMAGES,
@@ -202,51 +201,6 @@ function SecondaryCta({ label, href }: { label: string; href: string }) {
       {label}
       <CtaArrow />
     </Link>
-  );
-}
-
-function RiskFreeHeader() {
-  const t = useTranslations("riskFree");
-  const nav = useTranslations("navigation");
-  const { login, register } = useTradeHrefs();
-
-  return (
-    <header className={styles.header}>
-      <div className={styles.headerInner}>
-        <Link className={styles.brand} href="/" prefetch={false}>
-          <Image
-            src="/images/bullex-logo.webp"
-            alt="Bullex"
-            width={755}
-            height={330}
-            className={styles.brandLogo}
-            priority
-          />
-        </Link>
-
-        <nav className={styles.headerNav} aria-label={nav("aria")}>
-          <Link href={OFFERS_PAGE_HREF} prefetch={false}>
-            {nav("prizes")}
-          </Link>
-          <Link href="/blog" prefetch={false}>
-            {nav("blog")}
-          </Link>
-          <Link href="/" prefetch={false}>
-            {t("backToSite")}
-          </Link>
-        </nav>
-
-        <div className={styles.headerActions}>
-          <LanguageSwitcher />
-          <a className={styles.loginLink} href={login}>
-            {nav("login")}
-          </a>
-          <a className={styles.headerCta} href={register}>
-            {nav("register")}
-          </a>
-        </div>
-      </div>
-    </header>
   );
 }
 
@@ -1210,7 +1164,6 @@ function WhatAboutHowStack() {
 export function RiskFreePage() {
   return (
     <div className={styles.page}>
-      <RiskFreeHeader />
       <main>
         <HeroSection />
         <WhatAboutHowStack />
