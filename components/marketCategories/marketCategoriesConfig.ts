@@ -6,108 +6,91 @@ export const MARKET_CATEGORY_IDS = ["digital", "forex", "etf", "blitz", "other"]
 
 export type MarketCategoryId = (typeof MARKET_CATEGORY_IDS)[number];
 
-export type IndicatorIcon = "nodes" | "flash" | "clock" | "globe" | "bolt" | "chart" | "basket" | "layers" | "spread" | "timer" | "pulse" | "zap" | "index" | "commodity" | "more";
+export const MARKET_FEATURES = ["secure", "speed", "markets"] as const;
+
+export type MarketFeatureId = (typeof MARKET_FEATURES)[number];
+
+export const MARKET_GLOBE_TAGS = ["forex", "crypto", "indices", "commodities", "stocks"] as const;
+
+export type MarketQuote = {
+  id: string;
+  pairKey: string;
+  valueKey?: string;
+  changeKey: string;
+  negative?: boolean;
+};
 
 export const MARKET_CATEGORY_META: Record<
   MarketCategoryId,
   {
     index: string;
-    indicators: readonly [
-      { key: "1"; icon: IndicatorIcon },
-      { key: "2"; icon: IndicatorIcon },
-      { key: "3"; icon: IndicatorIcon },
-    ];
+    cover: string;
+    coverWidth: number;
+    coverHeight: number;
+    quotes: readonly MarketQuote[];
   }
 > = {
   digital: {
     index: "01",
-    indicators: [
-      { key: "1", icon: "nodes" },
-      { key: "2", icon: "flash" },
-      { key: "3", icon: "clock" },
+    cover: "/images/markets/cards/digital.png",
+    coverWidth: 1024,
+    coverHeight: 1024,
+    quotes: [
+      { id: "btc", pairKey: "btc", valueKey: "btcValue", changeKey: "btcChange" },
+      { id: "eth", pairKey: "eth", valueKey: "ethValue", changeKey: "ethChange" },
+      { id: "sol", pairKey: "sol", valueKey: "solValue", changeKey: "solChange" },
     ],
   },
   forex: {
     index: "02",
-    indicators: [
-      { key: "1", icon: "globe" },
-      { key: "2", icon: "bolt" },
-      { key: "3", icon: "chart" },
+    cover: "/images/markets/cards/forex.png",
+    coverWidth: 1024,
+    coverHeight: 1024,
+    quotes: [
+      { id: "eur", pairKey: "eur", valueKey: "eurValue", changeKey: "eurChange" },
+      { id: "gbp", pairKey: "gbp", valueKey: "gbpValue", changeKey: "gbpChange" },
+      { id: "jpy", pairKey: "jpy", valueKey: "jpyValue", changeKey: "jpyChange", negative: true },
     ],
   },
   etf: {
     index: "03",
-    indicators: [
-      { key: "1", icon: "basket" },
-      { key: "2", icon: "layers" },
-      { key: "3", icon: "spread" },
+    cover: "/images/markets/cards/etf.png",
+    coverWidth: 1024,
+    coverHeight: 1024,
+    quotes: [
+      { id: "spy", pairKey: "spy", valueKey: "spyValue", changeKey: "spyChange" },
+      { id: "qqq", pairKey: "qqq", valueKey: "qqqValue", changeKey: "qqqChange" },
+      { id: "ivv", pairKey: "ivv", valueKey: "ivvValue", changeKey: "ivvChange" },
     ],
   },
   blitz: {
     index: "04",
-    indicators: [
-      { key: "1", icon: "timer" },
-      { key: "2", icon: "pulse" },
-      { key: "3", icon: "zap" },
+    cover: "/images/markets/cards/blitz.png",
+    coverWidth: 1024,
+    coverHeight: 1024,
+    quotes: [
+      { id: "eur", pairKey: "eur", valueKey: "eurSide", changeKey: "eurPayout" },
+      { id: "gbp", pairKey: "gbp", valueKey: "gbpSide", changeKey: "gbpPayout", negative: true },
+      { id: "btc", pairKey: "btc", valueKey: "btcSide", changeKey: "btcPayout" },
+      { id: "timer", pairKey: "timer", valueKey: "timerValue", changeKey: "timerStatus" },
     ],
   },
   other: {
     index: "05",
-    indicators: [
-      { key: "1", icon: "index" },
-      { key: "2", icon: "commodity" },
-      { key: "3", icon: "more" },
+    cover: "/images/markets/cards/other.png",
+    coverWidth: 1024,
+    coverHeight: 1024,
+    quotes: [
+      { id: "gold", pairKey: "gold", valueKey: "goldValue", changeKey: "goldChange" },
+      { id: "oil", pairKey: "oil", valueKey: "oilValue", changeKey: "oilChange" },
+      { id: "coffee", pairKey: "coffee", valueKey: "coffeeValue", changeKey: "coffeeChange", negative: true },
+      { id: "wheat", pairKey: "wheat", valueKey: "wheatValue", changeKey: "wheatChange" },
     ],
   },
 };
 
-export const MARKET_CITIES = [
-  "New York",
-  "London",
-  "Tokyo",
-  "Singapore",
-  "Frankfurt",
-  "Sydney",
-] as const;
-
-/** Cenas visuais por categoria. null = placeholder / cena composta. */
-export const MARKET_SCENE_IMAGES: Record<MarketCategoryId, string | null> = {
-  digital: null, // DigitalAssetsScene
-  forex: null, // ForexAssetsScene
-  etf: "/images/markets/etf.png",
-  blitz: "/images/markets/blitz.png",
-  other: "/images/markets/other.png",
-};
-
-export const DIGITAL_SCENE_ASSETS = {
-  coins: [
-    { id: "btc", src: "/images/markets/digital/coin-btc.png", altKey: "primaryPair" },
-    { id: "eth", src: "/images/markets/digital/coin-eth.png", altKey: "secondaryPair" },
-    { id: "sol", src: "/images/markets/digital/coin-sol.png", altKey: "tertiaryPair" },
-  ],
-  cards: [
-    { id: "btc", src: "/images/markets/digital/card-btc.png", altKey: "primaryPair" },
-    { id: "eth", src: "/images/markets/digital/card-eth.png", altKey: "secondaryPair" },
-    { id: "sol", src: "/images/markets/digital/card-sol.png", altKey: "tertiaryPair" },
-  ],
+export const MARKET_HERO = {
+  globe: "/images/markets/hero/globe.png",
+  globeWidth: 1024,
+  globeHeight: 1024,
 } as const;
-
-export const FOREX_SCENE_ASSETS = {
-  top: { id: "gbp", src: "/images/markets/forex/card-gbp.png", altKey: "secondaryPair" },
-  bottom: [
-    { id: "eur", src: "/images/markets/forex/card-eur.png", altKey: "primaryPair" },
-    { id: "jpy", src: "/images/markets/forex/card-jpy.png", altKey: "tertiaryPair" },
-  ],
-} as const;
-
-/** Dimensões intrínsecas dos assets (após upscale de qualidade). */
-export const MARKET_SCENE_DIMENSIONS: Record<
-  MarketCategoryId,
-  { width: number; height: number }
-> = {
-  digital: { width: 1154, height: 866 },
-  forex: { width: 1154, height: 866 },
-  etf: { width: 456, height: 547 },
-  blitz: { width: 1620, height: 1215 },
-  other: { width: 1296, height: 924 },
-};

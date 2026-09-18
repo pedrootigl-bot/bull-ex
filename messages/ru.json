@@ -266,59 +266,63 @@
     "titleLine1": "Один рынок.",
     "titleLine2": "Много способов",
     "titleHighlight": "торговать.",
-    "body": "Изучайте разные категории активов на одной платформе. Цифровые активы, Forex, ETF, Blitz и другие возможности для торговли.",
+    "body": "On Bullex, access Digital Assets, Forex, ETFs, Blitz and other markets on a single platform — with more clarity, speed and possibilities.",
     "cta": "Изучить рынки",
-    "footer": "Много рынков. Один опыт.",
     "items": {
       "digital": {
-        "label": "Цифровые активы",
-        "tag": "Крипто",
+        "label": "Digital Assets",
+        "tag": "Crypto 24/7",
         "description": "Торгуйте криптовалютами и цифровыми активами в среде, созданной под темп рынка.",
         "indicators": {
           "1": "BTC и ETH",
           "2": "Высокая волатильность",
           "3": "24/7"
-        }
+        },
+        "blurb": "Explore the crypto market and trade around the clock."
       },
       "forex": {
         "label": "Forex",
-        "tag": "Валюты",
+        "tag": "Global FX",
         "description": "Торгуйте глобальными валютными парами с доступом к разным рынкам.",
         "indicators": {
           "1": "Глобальные пары",
           "2": "Быстрое исполнение",
           "3": "Ликвидность"
-        }
+        },
+        "blurb": "Trade the world’s major currency pairs."
       },
       "etf": {
-        "label": "ETF",
-        "tag": "Индексы",
+        "label": "ETFs",
+        "tag": "Global indices & stocks",
         "description": "Диверсифицируйте с биржевыми фондами и следите за индексами в более институциональном формате.",
         "indicators": {
           "1": "SPY и QQQ",
           "2": "Корзины активов",
           "3": "Широкий охват"
-        }
+        },
+        "blurb": "Access the world’s largest markets with a single asset."
       },
       "blitz": {
         "label": "Blitz",
-        "tag": "Краткосрок",
+        "tag": "Short term",
         "description": "Быстрые сделки с чтением графика, таймерами и решениями в коротких окнах.",
         "indicators": {
           "1": "Таймер",
           "2": "Короткие графики",
           "3": "Мгновенный отклик"
-        }
+        },
+        "blurb": "Живые таймеры, высокий payout и решения за секунды — в ритме рынка."
       },
       "other": {
-        "label": "Другие рынки",
-        "tag": "Разнообразие",
+        "label": "Other markets",
+        "tag": "More opportunities",
         "description": "Индексы, сырьё и другие категории для расширения стратегий.",
         "indicators": {
           "1": "Индексы",
           "2": "Сырьё",
           "3": "Больше активов"
-        }
+        },
+        "blurb": "Commodities, indices and much more in one place."
       }
     },
     "scenes": {
@@ -361,7 +365,89 @@
         "more": "Другие активы"
       }
     },
-    "sceneSoon": "Визуал этой категории скоро появится."
+    "sceneSoon": "Визуал этой категории скоро появится.",
+    "features": {
+      "secure": "Secure and regulated platform",
+      "speed": "Ultra-fast, stable execution",
+      "markets": "A world of markets in one place"
+    },
+    "globeCaption": "Торгуйте миром",
+    "globeCaptionLead": "Торгуйте",
+    "globeCaptionAccent": "миром",
+    "tradersLabel": "Трейдеры по всему миру",
+    "tradersValue": "+150 стран",
+    "footerLeft": "Реальные рынки. Реальные результаты.",
+    "footerRight": "Bullex / Трейдинг без границ",
+    "globeTags": {
+      "forex": "Forex",
+      "crypto": "Crypto",
+      "indices": "Indices",
+      "commodities": "Commodities",
+      "stocks": "Stocks"
+    },
+    "quotes": {
+      "digital": {
+        "btc": "BTC/USD",
+        "btcValue": "68,432.50",
+        "btcChange": "+2.84%",
+        "eth": "ETH/USD",
+        "ethValue": "3,421.20",
+        "ethChange": "+1.62%",
+        "sol": "SOL/USD",
+        "solValue": "178.45",
+        "solChange": "+4.51%"
+      },
+      "forex": {
+        "eur": "EUR/USD",
+        "eurValue": "1.0824",
+        "eurChange": "+0.21%",
+        "gbp": "GBP/USD",
+        "gbpValue": "1.2657",
+        "gbpChange": "+0.38%",
+        "jpy": "USD/JPY",
+        "jpyValue": "149.32",
+        "jpyChange": "-0.12%"
+      },
+      "etf": {
+        "spy": "SPY",
+        "spyValue": "496.32",
+        "spyChange": "+1.26%",
+        "qqq": "QQQ",
+        "qqqValue": "429.17",
+        "qqqChange": "+1.11%",
+        "ivv": "IVV",
+        "ivvValue": "496.85",
+        "ivvChange": "+1.23%"
+      },
+      "blitz": {
+        "eur": "EUR/USD",
+        "eurSide": "CALL",
+        "eurPayout": "+82%",
+        "gbp": "GBP/USD",
+        "gbpSide": "PUT",
+        "gbpPayout": "+76%",
+        "btc": "BTC/USD",
+        "btcSide": "CALL",
+        "btcPayout": "+88%",
+        "timer": "Таймер",
+        "timerValue": "00:42",
+        "timerStatus": "Онлайн"
+      },
+      "other": {
+        "gold": "Gold (XAU)",
+        "goldValue": "2,471.30",
+        "goldChange": "+0.87%",
+        "oil": "Oil (WTI)",
+        "oilValue": "78.21",
+        "oilChange": "+1.24%",
+        "coffee": "Coffee (KC)",
+        "coffeeValue": "246.50",
+        "coffeeChange": "-0.35%",
+        "wheat": "Wheat (ZW)",
+        "wheatValue": "539.25",
+        "wheatChange": "+0.52%"
+      }
+    }
   },
   "mobileApp": {
     "titleBefore": "Не только на компьютере. Bullex также ",

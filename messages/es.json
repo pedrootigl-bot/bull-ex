@@ -266,39 +266,41 @@
     "titleLine1": "Un mercado.",
     "titleLine2": "Muchas formas",
     "titleHighlight": "de operar.",
-    "body": "Explora distintas categorías de activos en una sola plataforma. Activos digitales, Forex, ETFs, Blitz y más posibilidades de negociación.",
+    "body": "En Bullex accedes a Activos Digitales, Forex, ETFs, Blitz y otros mercados en una sola plataforma — con más claridad, velocidad y posibilidades.",
     "cta": "Explorar mercados",
-    "footer": "Diversos mercados. Una sola experiencia.",
     "items": {
       "digital": {
-        "label": "Activos digitales",
-        "tag": "Cripto",
+        "label": "Activos Digitales",
+        "tag": "Cripto 24/7",
         "description": "Opera criptomonedas y activos digitales en un entorno pensado para seguir el ritmo del mercado.",
         "indicators": {
           "1": "BTC y ETH",
           "2": "Alta volatilidad",
           "3": "24/7"
-        }
+        },
+        "blurb": "Explora el mercado de criptomonedas y opera las 24 horas."
       },
       "forex": {
         "label": "Forex",
-        "tag": "Divisas",
+        "tag": "Cambio global",
         "description": "Negocia pares globales de divisas con acceso a distintos mercados.",
         "indicators": {
           "1": "Pares globales",
           "2": "Ejecución rápida",
           "3": "Liquidez"
-        }
+        },
+        "blurb": "Negocia los principales pares de divisas del mundo."
       },
       "etf": {
         "label": "ETFs",
-        "tag": "Índices",
+        "tag": "Índices y acciones globales",
         "description": "Diversifica con fondos cotizados y sigue índices con un enfoque más institucional.",
         "indicators": {
           "1": "SPY y QQQ",
           "2": "Cestas de activos",
           "3": "Exposición amplia"
-        }
+        },
+        "blurb": "Accede a los mayores mercados del mundo con un solo activo."
       },
       "blitz": {
         "label": "Blitz",
@@ -308,17 +310,19 @@
           "1": "Timer activo",
           "2": "Gráficos cortos",
           "3": "Respuesta inmediata"
-        }
+        },
+        "blurb": "Timers en vivo, altos payouts y decisiones en segundos — al ritmo del mercado."
       },
       "other": {
         "label": "Otros mercados",
-        "tag": "Variedad",
+        "tag": "Más oportunidades",
         "description": "Índices, materias primas y más categorías para ampliar tus estrategias.",
         "indicators": {
           "1": "Índices",
           "2": "Commodities",
           "3": "Más activos"
-        }
+        },
+        "blurb": "Commodities, índices y mucho más en un solo lugar."
       }
     },
     "scenes": {
@@ -361,7 +365,89 @@
         "more": "Otros activos"
       }
     },
-    "sceneSoon": "Visual de esta categoría próximamente."
+    "sceneSoon": "Visual de esta categoría próximamente.",
+    "features": {
+      "secure": "Plataforma segura y regulada",
+      "speed": "Ejecución ultrarrápida y estable",
+      "markets": "Un mundo de mercados en un solo lugar"
+    },
+    "globeCaption": "Opera el mundo",
+    "globeCaptionLead": "Opera el",
+    "globeCaptionAccent": "mundo",
+    "tradersLabel": "Traders en todo el mundo",
+    "tradersValue": "+150 países",
+    "footerLeft": "Mercados reales. Resultados reales.",
+    "footerRight": "Bullex / Trading sin límites",
+    "globeTags": {
+      "forex": "Forex",
+      "crypto": "Cripto",
+      "indices": "Índices",
+      "commodities": "Commodities",
+      "stocks": "Acciones"
+    },
+    "quotes": {
+      "digital": {
+        "btc": "BTC/USD",
+        "btcValue": "68.432,50",
+        "btcChange": "+2,84%",
+        "eth": "ETH/USD",
+        "ethValue": "3.421,20",
+        "ethChange": "+1,62%",
+        "sol": "SOL/USD",
+        "solValue": "178,45",
+        "solChange": "+4,51%"
+      },
+      "forex": {
+        "eur": "EUR/USD",
+        "eurValue": "1,0824",
+        "eurChange": "+0,21%",
+        "gbp": "GBP/USD",
+        "gbpValue": "1,2657",
+        "gbpChange": "+0,38%",
+        "jpy": "USD/JPY",
+        "jpyValue": "149,32",
+        "jpyChange": "-0,12%"
+      },
+      "etf": {
+        "spy": "SPY",
+        "spyValue": "496,32",
+        "spyChange": "+1,26%",
+        "qqq": "QQQ",
+        "qqqValue": "429,17",
+        "qqqChange": "+1,11%",
+        "ivv": "IVV",
+        "ivvValue": "496,85",
+        "ivvChange": "+1,23%"
+      },
+      "blitz": {
+        "eur": "EUR/USD",
+        "eurSide": "CALL",
+        "eurPayout": "+82%",
+        "gbp": "GBP/USD",
+        "gbpSide": "PUT",
+        "gbpPayout": "+76%",
+        "btc": "BTC/USD",
+        "btcSide": "CALL",
+        "btcPayout": "+88%",
+        "timer": "Timer",
+        "timerValue": "00:42",
+        "timerStatus": "En vivo"
+      },
+      "other": {
+        "gold": "Ouro (XAU)",
+        "goldValue": "2.471,30",
+        "goldChange": "+0,87%",
+        "oil": "Petróleo (WTI)",
+        "oilValue": "78,21",
+        "oilChange": "+1,24%",
+        "coffee": "Café (KC)",
+        "coffeeValue": "246,50",
+        "coffeeChange": "-0,35%",
+        "wheat": "Trigo (ZW)",
+        "wheatValue": "539,25",
+        "wheatChange": "+0,52%"
+      }
+    }
   },
   "mobileApp": {
     "titleBefore": "No es solo en escritorio. Bullex también está en ",

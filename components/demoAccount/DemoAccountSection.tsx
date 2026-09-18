@@ -4,7 +4,7 @@ import { bullexRegisterHref } from "@/components/hero/heroConfig";
 import { useFormatMoney } from "@/hooks/useFormatMoney";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { DEMO_ACCOUNT_CARDS, DEMO_ACCOUNT_COPY, type DemoAccountCardId } from "./demoAccountConfig";
 import styles from "./demoAccount.module.css";
 
@@ -132,7 +132,12 @@ export function DemoAccountSection() {
             <article
               className={`${styles.card} ${revealClass}`}
               key={id}
-              style={{ transitionDelay: `${index * 0.08}s` }}
+              style={
+                {
+                  transitionDelay: `${index * 0.08}s`,
+                  "--card-delay": `${index * 0.12}s`,
+                } as CSSProperties
+              }
             >
               <span className={styles.cardIcon} aria-hidden="true">
                 <CardIcon id={id} />

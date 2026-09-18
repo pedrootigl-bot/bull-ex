@@ -2,58 +2,45 @@
 
 import { bullexLoginHref } from "@/components/hero/heroConfig";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type CSSProperties,
-  type MouseEvent,
-} from "react";
+import { useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import {
   MARKET_CATEGORIES_COPY,
   MARKET_CATEGORY_IDS,
   MARKET_CATEGORY_META,
-  type IndicatorIcon,
+  MARKET_FEATURES,
+  MARKET_GLOBE_TAGS,
+  MARKET_HERO,
   type MarketCategoryId,
+  type MarketFeatureId,
+  type MarketQuote,
 } from "./marketCategoriesConfig";
-import { MarketScene } from "./MarketScene";
 import styles from "./marketCategories.module.css";
-import { PAIR_SCENE_EXIT_MS } from "./usePairScenePhase";
 
-function PlusMinus({ open }: { open: boolean }) {
-  return (
-    <span className={styles.itemToggle} aria-hidden="true">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M3 7h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        {!open ? (
-          <path d="M7 3v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        ) : null}
-      </svg>
-    </span>
-  );
-}
-
-function IndicatorGlyph({ icon }: { icon: IndicatorIcon }) {
-  switch (icon) {
-    case "globe":
-    case "nodes":
+function FeatureIcon({ id }: { id: MarketFeatureId }) {
+  switch (id) {
+    case "secure":
       return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.6" />
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
-            d="M4 12h16M12 4c2.5 2.4 3.8 5 3.8 8S14.5 17.6 12 20c-2.5-2.4-3.8-5-3.8-8S9.5 6.4 12 4Z"
+            d="M12 3 5 6.2v5.1c0 4.3 2.9 8.2 7 9.7 4.1-1.5 7-5.4 7-9.7V6.2L12 3Z"
             stroke="currentColor"
             strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+          <path
+            d="m9.2 12.1 1.9 1.9 3.8-4"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       );
-    case "bolt":
-    case "flash":
-    case "zap":
+    case "speed":
       return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M13 3 5.5 13.5h5.2L10.2 21 18.5 10.2h-5.3L13 3Z"
             stroke="currentColor"
@@ -62,11 +49,9 @@ function IndicatorGlyph({ icon }: { icon: IndicatorIcon }) {
           />
         </svg>
       );
-    case "chart":
-    case "pulse":
-    case "index":
+    case "markets":
       return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M4 18V9M10 18V6M16 18v-5M22 18V8"
             stroke="currentColor"
@@ -75,36 +60,73 @@ function IndicatorGlyph({ icon }: { icon: IndicatorIcon }) {
           />
         </svg>
       );
-    case "clock":
-    case "timer":
-      return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="13" r="7" stroke="currentColor" strokeWidth="1.6" />
-          <path
-            d="M12 10v3.5l2 1.5M9 4h6"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-          />
-        </svg>
-      );
-    case "basket":
-    case "layers":
-    case "spread":
-    case "commodity":
-    case "more":
-      return (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M4 8h16M6 8l1.5 11h9L18 8M9 8V6.5A3 3 0 0 1 15 6.5V8"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-          />
-        </svg>
-      );
     default: {
-      const exhaustive: never = icon;
+      const exhaustive: never = id;
+      return exhaustive;
+    }
+  }
+}
+
+function CardArrow() {
+  return (
+    <span className={styles.cardArrow} aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+        <path
+          d="M4.2 9.8 9.8 4.2M5.5 4.2h4.3v4.3"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function QuoteList({
+  categoryId,
+  quotes,
+}: {
+  categoryId: MarketCategoryId;
+  quotes: readonly MarketQuote[];
+}) {
+  const translate = useTranslations(
+    `marketCategories.quotes.${categoryId}`,
+  ) as unknown as (key: string) => string;
+
+  return (
+    <ul className={styles.quoteList}>
+      {quotes.map((quote) => (
+        <li key={quote.id} className={styles.quoteRow}>
+          <span className={styles.quotePair}>{translate(quote.pairKey)}</span>
+          {quote.valueKey ? (
+            <span className={styles.quoteValue}>{translate(quote.valueKey)}</span>
+          ) : null}
+          <span
+            className={`${styles.quoteChange} ${quote.negative ? styles.quoteDown : styles.quoteUp}`}
+          >
+            {translate(quote.changeKey)}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function globeTagClass(tag: (typeof MARKET_GLOBE_TAGS)[number]): string {
+  switch (tag) {
+    case "forex":
+      return styles.globeTagForex;
+    case "crypto":
+      return styles.globeTagCrypto;
+    case "indices":
+      return styles.globeTagIndices;
+    case "commodities":
+      return styles.globeTagCommodities;
+    case "stocks":
+      return styles.globeTagStocks;
+    default: {
+      const exhaustive: never = tag;
       return exhaustive;
     }
   }
@@ -116,18 +138,9 @@ export function MarketCategoriesSection() {
   const reducedMotion = useReducedMotion();
   const baseId = useId();
   const sectionRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState<MarketCategoryId | null>("digital");
-  const [lastActive, setLastActive] = useState<MarketCategoryId>("digital");
-  const [preview, setPreview] = useState<MarketCategoryId | null>(null);
   const [visible, setVisible] = useState(reducedMotion);
-  const [sceneKey, setSceneKey] = useState(0);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [stageCategory, setStageCategory] = useState<MarketCategoryId>("digital");
-  const [sceneLeaving, setSceneLeaving] = useState(false);
-
-  const committed = active ?? lastActive;
-  const displayed = preview ?? committed;
+  const [featured, setFeatured] = useState<MarketCategoryId>("digital");
+  const loginHref = bullexLoginHref(locale);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -147,77 +160,59 @@ export function MarketCategoriesSection() {
         setVisible(true);
         observer.disconnect();
       },
-      { threshold: 0.12 },
+      { threshold: 0.1 },
     );
 
     observer.observe(section);
     return () => observer.disconnect();
   }, [reducedMotion]);
 
-  useEffect(() => {
-    if (preview) {
-      if (preview === stageCategory) {
-        setSceneLeaving(false);
-        return;
-      }
-      setSceneLeaving(false);
-      setStageCategory(preview);
-      setSceneKey((key) => key + 1);
-      return;
-    }
+  function renderCards(options: { inert?: boolean }) {
+    return MARKET_CATEGORY_IDS.map((id, index) => {
+      const meta = MARKET_CATEGORY_META[id];
+      const isFeatured = featured === id;
 
-    if (committed === stageCategory) {
-      setSceneLeaving(false);
-      return;
-    }
+      return (
+        <a
+          key={`${options.inert ? "dup" : "main"}-${id}`}
+          href={loginHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.card} ${isFeatured ? styles.cardFeatured : ""}`}
+          role="listitem"
+          tabIndex={options.inert ? -1 : undefined}
+          style={{ "--i": index } as CSSProperties}
+          onMouseEnter={() => setFeatured(id)}
+          onFocus={() => setFeatured(id)}
+        >
+          <div className={styles.cardHead}>
+            <span className={styles.cardIndex}>{meta.index}</span>
+            <div className={styles.cardTitles}>
+              <strong className={styles.cardTitle}>{t(`items.${id}.label`)}</strong>
+              <span className={styles.cardTag}>{t(`items.${id}.tag`)}</span>
+            </div>
+            <CardArrow />
+          </div>
 
-    if (reducedMotion) {
-      setSceneLeaving(false);
-      setStageCategory(committed);
-      setSceneKey((key) => key + 1);
-      return;
-    }
+          <div className={styles.cardVisual}>
+            <Image
+              className={styles.cardVisualImg}
+              src={meta.cover}
+              alt=""
+              width={meta.coverWidth}
+              height={meta.coverHeight}
+              sizes="(max-width: 900px) 70vw, 220px"
+            />
+          </div>
 
-    const needsExit = stageCategory === "digital" || stageCategory === "forex";
-    if (!needsExit) {
-      setSceneLeaving(false);
-      setStageCategory(committed);
-      setSceneKey((key) => key + 1);
-      return;
-    }
+          {meta.quotes.length > 0 ? (
+            <QuoteList categoryId={id} quotes={meta.quotes} />
+          ) : null}
 
-    setSceneLeaving(true);
-    const timer = window.setTimeout(() => {
-      setSceneLeaving(false);
-      setStageCategory(committed);
-      setSceneKey((key) => key + 1);
-    }, PAIR_SCENE_EXIT_MS);
-
-    return () => window.clearTimeout(timer);
-  }, [preview, committed, stageCategory, reducedMotion]);
-
-  function selectCategory(id: MarketCategoryId) {
-    if (active === id) {
-      setActive(null);
-    } else {
-      setActive(id);
-      setLastActive(id);
-    }
-    setPreview(null);
-  }
-
-  function handleStageMove(event: MouseEvent<HTMLDivElement>) {
-    if (reducedMotion || !stageRef.current) {
-      return;
-    }
-    const rect = stageRef.current.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2.4;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * -1.8;
-    setTilt({ x, y });
-  }
-
-  function resetTilt() {
-    setTilt({ x: 0, y: 0 });
+          <p className={styles.cardBlurb}>{t(`items.${id}.blurb`)}</p>
+        </a>
+      );
+    });
   }
 
   return (
@@ -227,30 +222,26 @@ export function MarketCategoriesSection() {
       id={MARKET_CATEGORIES_COPY.id}
       aria-labelledby={`${baseId}-title`}
     >
-      <div className={styles.bg} aria-hidden="true">
-        <div className={styles.bgGlow} />
-        <div className={styles.bgGrid} />
-        <div className={styles.bgMist} />
-      </div>
+      <div className={styles.bg} aria-hidden="true" />
 
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>
-            <span className={styles.eyebrowDot} aria-hidden="true" />
-            {t("eyebrow")}
-          </p>
-          <h2 className={styles.title} id={`${baseId}-title`}>
-            <span className={styles.titleLine}>{t("titleLine1")}</span>
-            <span className={styles.titleLine}>
-              {t("titleLine2")}{" "}
-              <em className={styles.titleHighlight}>{t("titleHighlight")}</em>
-            </span>
-          </h2>
-          <div className={styles.headerRow}>
+        <div className={styles.hero}>
+          <div className={styles.intro}>
+            <p className={styles.eyebrow}>
+              <span className={styles.eyebrowDot} aria-hidden="true" />
+              {t("eyebrow")}
+            </p>
+            <h2 className={styles.title} id={`${baseId}-title`}>
+              <span className={styles.titleLine}>{t("titleLine1")}</span>
+              <span className={styles.titleLine}>
+                {t("titleLine2")}{" "}
+                <em className={styles.titleHighlight}>{t("titleHighlight")}</em>
+              </span>
+            </h2>
             <p className={styles.body}>{t("body")}</p>
             <a
               className={styles.cta}
-              href={bullexLoginHref(locale)}
+              href={loginHref}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -259,123 +250,62 @@ export function MarketCategoriesSection() {
                 →
               </span>
             </a>
+            <ul className={styles.features}>
+              {MARKET_FEATURES.map((feature) => (
+                <li key={feature} className={styles.feature}>
+                  <span className={styles.featureIcon}>
+                    <FeatureIcon id={feature} />
+                  </span>
+                  <span>{t(`features.${feature}`)}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </header>
 
-        <div className={styles.workspace}>
-          <div className={styles.rail}>
-            <div className={styles.nav} role="list">
-              {MARKET_CATEGORY_IDS.map((id, index) => {
-                const meta = MARKET_CATEGORY_META[id];
-                const isActive = active === id;
-                const isPreview = preview === id && !isActive;
-                const panelId = `${baseId}-panel-${id}`;
-                const buttonId = `${baseId}-btn-${id}`;
-
-                return (
-                  <div
-                    className={styles.navItem}
-                    key={id}
-                    role="listitem"
-                    style={{ "--i": index } as CSSProperties}
-                  >
-                    <button
-                      type="button"
-                      id={buttonId}
-                      className={`${styles.item} ${isActive ? styles.itemActive : ""} ${isPreview ? styles.itemPreview : ""}`}
-                      aria-expanded={isActive}
-                      aria-controls={panelId}
-                      onClick={() => selectCategory(id)}
-                      onMouseEnter={() => {
-                        if (!reducedMotion) {
-                          setPreview(id);
-                        }
-                      }}
-                      onMouseLeave={() => setPreview(null)}
-                      onFocus={() => {
-                        if (!reducedMotion) {
-                          setPreview(id);
-                        }
-                      }}
-                      onBlur={() => setPreview(null)}
-                    >
-                      <span className={styles.itemIndex}>{meta.index}</span>
-                      <span className={styles.itemMain}>
-                        <span className={styles.itemTitleRow}>
-                          <span className={styles.itemTitleBlock}>
-                            <span className={styles.itemTitle}>{t(`items.${id}.label`)}</span>
-                            <span className={styles.itemTag}>{t(`items.${id}.tag`)}</span>
-                          </span>
-                          <PlusMinus open={isActive} />
-                        </span>
-                        <span className={styles.itemDetails} id={panelId}>
-                          <span className={styles.itemDescription}>
-                            {t(`items.${id}.description`)}
-                          </span>
-                          <span className={styles.itemMeta}>
-                            {meta.indicators.map((indicator, i) => (
-                              <span className={styles.metaBit} key={indicator.key}>
-                                {i > 0 ? (
-                                  <span className={styles.metaSep} aria-hidden="true">
-                                    ·
-                                  </span>
-                                ) : null}
-                                <IndicatorGlyph icon={indicator.icon} />
-                                {t(`items.${id}.indicators.${indicator.key}`)}
-                              </span>
-                            ))}
-                          </span>
-                        </span>
-                      </span>
-                    </button>
-
-                    <div
-                      className={`${styles.mobileScene} ${isActive ? styles.mobileSceneActive : ""}`}
-                      aria-hidden={!isActive}
-                    >
-                      {isActive ? <MarketScene category={id} /> : null}
-                    </div>
-                  </div>
-                );
-              })}
+          <div className={styles.globePanel} aria-hidden="true">
+            <div className={styles.globeWrap}>
+              <Image
+                className={styles.globeImg}
+                src={MARKET_HERO.globe}
+                alt=""
+                width={MARKET_HERO.globeWidth}
+                height={MARKET_HERO.globeHeight}
+                sizes="(max-width: 900px) 70vw, 380px"
+                priority
+              />
+              <p className={styles.globeCaption}>
+                <span className={styles.globeCaptionLead}>{t("globeCaptionLead")}</span>
+                <span className={styles.globeCaptionAccent}>{t("globeCaptionAccent")}</span>
+              </p>
             </div>
-          </div>
-
-          <div className={styles.right}>
-            <div
-              className={styles.stage}
-              ref={stageRef}
-              onMouseMove={handleStageMove}
-              onMouseLeave={resetTilt}
-              style={
-                reducedMotion
-                  ? undefined
-                  : {
-                      transform: `perspective(1600px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-                    }
-              }
-            >
-              <div className={styles.stageAura} aria-hidden="true" />
-              <div className={styles.stageRing} aria-hidden="true" />
-              <div className={styles.stageFloor} aria-hidden="true" />
-              <div className={styles.sceneFrame} key={sceneKey}>
-                <MarketScene category={stageCategory} leaving={sceneLeaving} />
-              </div>
-              <div className={styles.stageCaption} key={`cap-${displayed}`}>
-                <span className={styles.stageIndex}>
-                  {MARKET_CATEGORY_META[displayed].index}
-                </span>
-                <div className={styles.stageCaptionText}>
-                  <strong>{t(`items.${displayed}.label`)}</strong>
-                  <span>{t(`items.${displayed}.tag`)}</span>
-                </div>
-              </div>
+            {MARKET_GLOBE_TAGS.map((tag) => (
+              <span key={tag} className={`${styles.globeTag} ${globeTagClass(tag)}`}>
+                {t(`globeTags.${tag}`)}
+              </span>
+            ))}
+            <div className={styles.tradersCard}>
+              <span className={styles.tradersLabel}>{t("tradersLabel")}</span>
+              <strong className={styles.tradersValue}>{t("tradersValue")}</strong>
             </div>
           </div>
         </div>
-      </div>
 
-      <p className={styles.sectionNote}>{t("footer")}</p>
+        <div className={styles.cardsViewport}>
+          <div className={styles.cardsTrack}>
+            <div className={styles.cardsSet} role="list">
+              {renderCards({})}
+            </div>
+            <div className={styles.cardsSetDup} aria-hidden="true">
+              {renderCards({ inert: true })}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.footerBar}>
+          <span>{t("footerLeft")}</span>
+          <span className={styles.footerRight}>{t("footerRight")}</span>
+        </div>
+      </div>
     </section>
   );
 }

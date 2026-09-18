@@ -12,6 +12,8 @@ type FinancialGlobeProps = {
   reducedMotion: boolean;
   tier: ViewportTier;
   onReadyChange?: (ready: boolean) => void;
+  /** Layout contido (ex.: section de mercados), sem stage absoluto do hero. */
+  embedded?: boolean;
 };
 
 /** Fiber ainda usa THREE.Clock (deprecated desde r183); evita spam no console. */
@@ -190,6 +192,7 @@ export function FinancialGlobe({
   reducedMotion,
   tier,
   onReadyChange,
+  embedded = false,
 }: FinancialGlobeProps) {
   silenceThreeClockDeprecation();
   const frameloop =
@@ -233,9 +236,12 @@ export function FinancialGlobe({
   }, []);
 
   return (
-    <div className={styles.globeStage} aria-hidden="true">
+    <div
+      className={embedded ? styles.globeStageEmbedded : styles.globeStage}
+      aria-hidden="true"
+    >
       <Canvas
-        className={styles.globeCanvas}
+        className={embedded ? styles.globeCanvasEmbedded : styles.globeCanvas}
         dpr={tier === "mobile" ? 1 : [1, 1.5]}
         frameloop={frameloop}
         gl={{

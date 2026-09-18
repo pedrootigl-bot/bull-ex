@@ -266,59 +266,63 @@
     "titleLine1": "Một thị trường.",
     "titleLine2": "Nhiều cách",
     "titleHighlight": "để giao dịch.",
-    "body": "Khám phá các danh mục tài sản khác nhau trên một nền tảng. Tài sản số, Forex, ETF, Blitz và nhiều khả năng giao dịch khác.",
+    "body": "On Bullex, access Digital Assets, Forex, ETFs, Blitz and other markets on a single platform — with more clarity, speed and possibilities.",
     "cta": "Khám phá thị trường",
-    "footer": "Nhiều thị trường. Một trải nghiệm.",
     "items": {
       "digital": {
-        "label": "Tài sản số",
-        "tag": "Crypto",
+        "label": "Digital Assets",
+        "tag": "Crypto 24/7",
         "description": "Giao dịch tiền mã hóa và tài sản số trong môi trường được thiết kế để theo kịp thị trường.",
         "indicators": {
           "1": "BTC & ETH",
           "2": "Biến động cao",
           "3": "24/7"
-        }
+        },
+        "blurb": "Explore the crypto market and trade around the clock."
       },
       "forex": {
         "label": "Forex",
-        "tag": "Ngoại hối",
+        "tag": "Global FX",
         "description": "Giao dịch các cặp tiền tệ toàn cầu với quyền truy cập vào nhiều thị trường.",
         "indicators": {
           "1": "Cặp toàn cầu",
           "2": "Thực thi nhanh",
           "3": "Thanh khoản"
-        }
+        },
+        "blurb": "Trade the world’s major currency pairs."
       },
       "etf": {
-        "label": "ETF",
-        "tag": "Chỉ số",
+        "label": "ETFs",
+        "tag": "Global indices & stocks",
         "description": "Đa dạng hóa với quỹ ETF và theo dõi chỉ số theo hướng mang tính tổ chức hơn.",
         "indicators": {
           "1": "SPY & QQQ",
           "2": "Rổ tài sản",
           "3": "Phơi nhiễm rộng"
-        }
+        },
+        "blurb": "Access the world’s largest markets with a single asset."
       },
       "blitz": {
         "label": "Blitz",
-        "tag": "Ngắn hạn",
+        "tag": "Short term",
         "description": "Giao dịch linh hoạt với đọc biểu đồ nhanh, bộ đếm giờ và quyết định trong khung hẹp.",
         "indicators": {
           "1": "Bộ đếm giờ",
           "2": "Biểu đồ ngắn",
           "3": "Phản hồi tức thì"
-        }
+        },
+        "blurb": "Bộ đếm giờ trực tiếp, payout cao và quyết định trong vài giây — theo nhịp thị trường."
       },
       "other": {
-        "label": "Thị trường khác",
-        "tag": "Đa dạng",
+        "label": "Other markets",
+        "tag": "More opportunities",
         "description": "Chỉ số, hàng hóa và các danh mục khác để mở rộng chiến lược của bạn.",
         "indicators": {
           "1": "Chỉ số",
           "2": "Hàng hóa",
           "3": "Thêm tài sản"
-        }
+        },
+        "blurb": "Commodities, indices and much more in one place."
       }
     },
     "scenes": {
@@ -361,7 +365,89 @@
         "more": "Tài sản khác"
       }
     },
-    "sceneSoon": "Hình ảnh danh mục này sẽ sớm có mặt."
+    "sceneSoon": "Hình ảnh danh mục này sẽ sớm có mặt.",
+    "features": {
+      "secure": "Secure and regulated platform",
+      "speed": "Ultra-fast, stable execution",
+      "markets": "A world of markets in one place"
+    },
+    "globeCaption": "Giao dịch thế giới",
+    "globeCaptionLead": "Giao dịch",
+    "globeCaptionAccent": "thế giới",
+    "tradersLabel": "Traders worldwide",
+    "tradersValue": "+150 countries",
+    "footerLeft": "Real markets. Real results.",
+    "footerRight": "Bullex / Trading without limits",
+    "globeTags": {
+      "forex": "Forex",
+      "crypto": "Crypto",
+      "indices": "Indices",
+      "commodities": "Commodities",
+      "stocks": "Stocks"
+    },
+    "quotes": {
+      "digital": {
+        "btc": "BTC/USD",
+        "btcValue": "68,432.50",
+        "btcChange": "+2.84%",
+        "eth": "ETH/USD",
+        "ethValue": "3,421.20",
+        "ethChange": "+1.62%",
+        "sol": "SOL/USD",
+        "solValue": "178.45",
+        "solChange": "+4.51%"
+      },
+      "forex": {
+        "eur": "EUR/USD",
+        "eurValue": "1.0824",
+        "eurChange": "+0.21%",
+        "gbp": "GBP/USD",
+        "gbpValue": "1.2657",
+        "gbpChange": "+0.38%",
+        "jpy": "USD/JPY",
+        "jpyValue": "149.32",
+        "jpyChange": "-0.12%"
+      },
+      "etf": {
+        "spy": "SPY",
+        "spyValue": "496.32",
+        "spyChange": "+1.26%",
+        "qqq": "QQQ",
+        "qqqValue": "429.17",
+        "qqqChange": "+1.11%",
+        "ivv": "IVV",
+        "ivvValue": "496.85",
+        "ivvChange": "+1.23%"
+      },
+      "blitz": {
+        "eur": "EUR/USD",
+        "eurSide": "CALL",
+        "eurPayout": "+82%",
+        "gbp": "GBP/USD",
+        "gbpSide": "PUT",
+        "gbpPayout": "+76%",
+        "btc": "BTC/USD",
+        "btcSide": "CALL",
+        "btcPayout": "+88%",
+        "timer": "Timer",
+        "timerValue": "00:42",
+        "timerStatus": "Trực tiếp"
+      },
+      "other": {
+        "gold": "Gold (XAU)",
+        "goldValue": "2,471.30",
+        "goldChange": "+0.87%",
+        "oil": "Oil (WTI)",
+        "oilValue": "78.21",
+        "oilChange": "+1.24%",
+        "coffee": "Coffee (KC)",
+        "coffeeValue": "246.50",
+        "coffeeChange": "-0.35%",
+        "wheat": "Wheat (ZW)",
+        "wheatValue": "539.25",
+        "wheatChange": "+0.52%"
+      }
+    }
   },
   "mobileApp": {
     "titleBefore": "Không chỉ trên máy tính. Bullex cũng có trên ",

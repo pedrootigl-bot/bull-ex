@@ -266,59 +266,63 @@
     "titleLine1": "ตลาดเดียว.",
     "titleLine2": "หลายวิธี",
     "titleHighlight": "ในการเทรด.",
-    "body": "สำรวจหมวดหมู่สินทรัพย์ต่างๆ บนแพลตฟอร์มเดียว สินทรัพย์ดิจิทัล, Forex, ETF, Blitz และโอกาสอื่นๆ ในการเทรด",
+    "body": "On Bullex, access Digital Assets, Forex, ETFs, Blitz and other markets on a single platform — with more clarity, speed and possibilities.",
     "cta": "สำรวจตลาด",
-    "footer": "หลายตลาด ประสบการณ์เดียว.",
     "items": {
       "digital": {
-        "label": "สินทรัพย์ดิจิทัล",
-        "tag": "คริปโต",
+        "label": "Digital Assets",
+        "tag": "Crypto 24/7",
         "description": "เทรดคริปโตและสินทรัพย์ดิจิทัลในสภาพแวดล้อมที่ออกแบบมาให้ทันตลาด",
         "indicators": {
           "1": "BTC และ ETH",
           "2": "ความผันผวนสูง",
           "3": "24/7"
-        }
+        },
+        "blurb": "Explore the crypto market and trade around the clock."
       },
       "forex": {
         "label": "Forex",
-        "tag": "ค่าเงิน",
+        "tag": "Global FX",
         "description": "เทรดคู่สกุลเงินทั่วโลกพร้อมเข้าถึงตลาดที่หลากหลาย",
         "indicators": {
           "1": "คู่เงินทั่วโลก",
           "2": "ดำเนินการเร็ว",
           "3": "สภาพคล่อง"
-        }
+        },
+        "blurb": "Trade the world’s major currency pairs."
       },
       "etf": {
-        "label": "ETF",
-        "tag": "ดัชนี",
+        "label": "ETFs",
+        "tag": "Global indices & stocks",
         "description": "กระจายความเสี่ยงด้วยกองทุนซื้อขายแลกเปลี่ยนและติดตามดัชนีในแนวทางเชิงสถาบันมากขึ้น",
         "indicators": {
           "1": "SPY และ QQQ",
           "2": "ตะกร้าสินทรัพย์",
           "3": "การเปิดรับกว้าง"
-        }
+        },
+        "blurb": "Access the world’s largest markets with a single asset."
       },
       "blitz": {
         "label": "Blitz",
-        "tag": "ระยะสั้น",
+        "tag": "Short term",
         "description": "การเทรดคล่องตัวพร้อมการอ่านกราฟเร็ว ตัวจับเวลา และการตัดสินใจในช่วงเวลาสั้นๆ",
         "indicators": {
           "1": "ตัวจับเวลา",
           "2": "กราฟสั้น",
           "3": "ตอบสนองทันที"
-        }
+        },
+        "blurb": "ตัวจับเวลาสด จ่ายสูง และตัดสินใจในไม่กี่วินาที — ตามจังหวะตลาด"
       },
       "other": {
-        "label": "ตลาดอื่นๆ",
-        "tag": "ความหลากหลาย",
+        "label": "Other markets",
+        "tag": "More opportunities",
         "description": "ดัชนี สินค้าโภคภัณฑ์ และหมวดหมู่อื่นเพื่อขยายกลยุทธ์ของคุณ",
         "indicators": {
           "1": "ดัชนี",
           "2": "สินค้าโภคภัณฑ์",
           "3": "สินทรัพย์เพิ่ม"
-        }
+        },
+        "blurb": "Commodities, indices and much more in one place."
       }
     },
     "scenes": {
@@ -361,7 +365,89 @@
         "more": "สินทรัพย์อื่นๆ"
       }
     },
-    "sceneSoon": "ภาพของหมวดหมู่นี้จะมาเร็วๆ นี้"
+    "sceneSoon": "ภาพของหมวดหมู่นี้จะมาเร็วๆ นี้",
+    "features": {
+      "secure": "Secure and regulated platform",
+      "speed": "Ultra-fast, stable execution",
+      "markets": "A world of markets in one place"
+    },
+    "globeCaption": "เทรดทั่วโลก",
+    "globeCaptionLead": "เทรด",
+    "globeCaptionAccent": "ทั่วโลก",
+    "tradersLabel": "Traders worldwide",
+    "tradersValue": "+150 countries",
+    "footerLeft": "Real markets. Real results.",
+    "footerRight": "Bullex / Trading without limits",
+    "globeTags": {
+      "forex": "Forex",
+      "crypto": "Crypto",
+      "indices": "Indices",
+      "commodities": "Commodities",
+      "stocks": "Stocks"
+    },
+    "quotes": {
+      "digital": {
+        "btc": "BTC/USD",
+        "btcValue": "68,432.50",
+        "btcChange": "+2.84%",
+        "eth": "ETH/USD",
+        "ethValue": "3,421.20",
+        "ethChange": "+1.62%",
+        "sol": "SOL/USD",
+        "solValue": "178.45",
+        "solChange": "+4.51%"
+      },
+      "forex": {
+        "eur": "EUR/USD",
+        "eurValue": "1.0824",
+        "eurChange": "+0.21%",
+        "gbp": "GBP/USD",
+        "gbpValue": "1.2657",
+        "gbpChange": "+0.38%",
+        "jpy": "USD/JPY",
+        "jpyValue": "149.32",
+        "jpyChange": "-0.12%"
+      },
+      "etf": {
+        "spy": "SPY",
+        "spyValue": "496.32",
+        "spyChange": "+1.26%",
+        "qqq": "QQQ",
+        "qqqValue": "429.17",
+        "qqqChange": "+1.11%",
+        "ivv": "IVV",
+        "ivvValue": "496.85",
+        "ivvChange": "+1.23%"
+      },
+      "blitz": {
+        "eur": "EUR/USD",
+        "eurSide": "CALL",
+        "eurPayout": "+82%",
+        "gbp": "GBP/USD",
+        "gbpSide": "PUT",
+        "gbpPayout": "+76%",
+        "btc": "BTC/USD",
+        "btcSide": "CALL",
+        "btcPayout": "+88%",
+        "timer": "Timer",
+        "timerValue": "00:42",
+        "timerStatus": "สด"
+      },
+      "other": {
+        "gold": "Gold (XAU)",
+        "goldValue": "2,471.30",
+        "goldChange": "+0.87%",
+        "oil": "Oil (WTI)",
+        "oilValue": "78.21",
+        "oilChange": "+1.24%",
+        "coffee": "Coffee (KC)",
+        "coffeeValue": "246.50",
+        "coffeeChange": "-0.35%",
+        "wheat": "Wheat (ZW)",
+        "wheatValue": "539.25",
+        "wheatChange": "+0.52%"
+      }
+    }
   },
   "mobileApp": {
     "titleBefore": "ไม่ใช่แค่เดสก์ท็อป Bullex อยู่บน ",

@@ -152,6 +152,19 @@
   height: 100% !important;
 }
 
+.globeStageEmbedded {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.globeCanvasEmbedded {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .orbitLayer {
   position: absolute;
   left: 50%;
